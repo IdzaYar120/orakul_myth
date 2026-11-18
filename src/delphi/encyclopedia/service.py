@@ -1,5 +1,4 @@
-from collections.abc import Generator, Iterable
-from contextlib import contextmanager
+from collections.abc import Iterable
 
 from sqlmodel import Session, col, or_, select
 
@@ -12,18 +11,14 @@ from delphi.db.models import (
     PassageEntity,
     Place,
     Relation,
-    Route,
 )
-from delphi.db.repo import engine
+from delphi.encyclopedia.map_service import MapService
 from delphi.encyclopedia.models import (
     EntityCard,
     EntityRef,
     EntityRelationItem,
     Lineage,
-    MapLayer,
     MapMarker,
-    MapRoute,
-    MapRouteStop,
     MythRef,
     PassageRef,
     RelatedEntity,
@@ -31,33 +26,12 @@ from delphi.encyclopedia.models import (
     SiblingGroup,
 )
 from delphi.encyclopedia.search import search_entities
+from delphi.encyclopedia.session import SessionMixin, entity_ref
 from delphi.encyclopedia.vocab import RELATION_LABELS, is_verified
 
 LINEAGE_RELS = {"parent_of", "spouse_of", "sibling_of"}
 PLACE_RELS = {"worshipped_at", "born_at", "ruled"}
 MAX_PASSAGES = 5
-
-
-class _SessionMixin:
-    def __init__(self, session: Session | None = None):
-        self._session = session
-
-    @contextmanager
-    def _use_session(self, session: Session | None = None) -> Generator[Session]:
-        """Use the injected/explicit session, or open (and close) a short-lived one."""
-        if session is not None:
-            yield session
-        elif self._session is not None:
-            yield self._session
-        else:
-            with Session(engine) as sess:
-                yield sess
-
-
-def _ref(e: Entity) -> EntityRef:
-    return EntityRef(
-        id=e.id, type=e.type, name_uk=e.name_uk, name_en=e.name_en, summary_uk=e.summary_uk
-    )
 
 
 def _related(pairs: Iterable[tuple[str, str]], entities: dict[str, Entity]) -> list[RelatedEntity]:
@@ -74,7 +48,7 @@ def _related(pairs: Iterable[tuple[str, str]], entities: dict[str, Entity]) -> l
             continue
         items.append(
             RelatedEntity(
-                entity=_ref(ent),
+                entity=entity_ref(ent),
                 source_refs=refs,
                 verified=any(is_verified(r) for r in refs),
             )
@@ -82,7 +56,7 @@ def _related(pairs: Iterable[tuple[str, str]], entities: dict[str, Entity]) -> l
     return items
 
 
-class EncyclopediaService(_SessionMixin):
+class EncyclopediaService(SessionMixin):
     """Entity search and cards. SQLite only — works without an LLM or API key."""
 
     # ------------------------------------------------------------------ search
@@ -101,7 +75,7 @@ class EncyclopediaService(_SessionMixin):
             entities = {
                 e.id: e for e in session.exec(select(Entity).where(col(Entity.id).in_(ids)))
             }
-            return [_ref(entities[i]) for i in ids if i in allowed and i in entities][:limit]
+            return [entity_ref(entities[i]) for i in ids if i in allowed and i in entities][:limit]
 
     def list_entities(
         self, entity_type: str | None = None, cycle: str | None = None
@@ -113,7 +87,7 @@ class EncyclopediaService(_SessionMixin):
             if cycle:
                 stmt = stmt.where(col(Entity.id).in_(self._cycle_entity_ids(session, cycle)))
             entities = session.exec(stmt).all()
-            return sorted((_ref(e) for e in entities), key=lambda r: r.name_uk.lower())
+            return sorted((entity_ref(e) for e in entities), key=lambda r: r.name_uk.lower())
 
     def _filter_ids(
         self, session: Session, ids: list[str], entity_type: str | None, cycle: str | None
@@ -245,7 +219,9 @@ class EncyclopediaService(_SessionMixin):
             pairs = [p for p in via_parent.get(pid, []) if p[0] not in explicit]
             if pairs and pid in entities:
                 half.append(
-                    SiblingGroup(via=_ref(entities[pid]), items=by_name(_related(pairs, entities)))
+                    SiblingGroup(
+                        via=entity_ref(entities[pid]), items=by_name(_related(pairs, entities))
+                    )
                 )
 
         return Lineage(
@@ -344,7 +320,9 @@ class EncyclopediaService(_SessionMixin):
                     cycle=myth.cycle,
                     role=link.role,
                     summary_uk=myth.summary_uk,
-                    participants=[_ref(entities[p]) for p in participant_ids if p in entities],
+                    participants=[
+                        entity_ref(entities[p]) for p in participant_ids if p in entities
+                    ],
                 )
             )
         return myths
@@ -364,54 +342,4 @@ class EncyclopediaService(_SessionMixin):
         ]
 
 
-class MapService(_SessionMixin):
-    def get_map_layer(self, place_kind: str | None = None) -> MapLayer:
-        with self._use_session() as session:
-            stmt = select(Place)
-            if place_kind:
-                stmt = stmt.where(Place.place_kind == place_kind)
-            places = session.exec(stmt).all()
-            entities = {e.id: e for e in session.exec(select(Entity)).all()}
-
-            markers = []
-            for p in places:
-                ent = entities.get(p.entity_id)
-                markers.append(
-                    MapMarker(
-                        entity_id=p.entity_id,
-                        name_uk=ent.name_uk if ent else p.entity_id,
-                        place_kind=p.place_kind,
-                        lat=p.lat,
-                        lon=p.lon,
-                        certainty=p.certainty,
-                        summary_uk=ent.summary_uk if ent else None,
-                        pleiades_id=p.pleiades_id,
-                    )
-                )
-
-            routes = []
-            for r in session.exec(select(Route)).all():
-                stops = [
-                    MapRouteStop(
-                        stop_number=s.get("stop_number", idx + 1),
-                        entity_id=s.get("entity_id", ""),
-                        title=s.get("title", ""),
-                        lat=s.get("lat", 0.0),
-                        lon=s.get("lon", 0.0),
-                        certainty=s.get("certainty", "high"),
-                        source_ref=s.get("source_ref"),
-                        description=s.get("description"),
-                    )
-                    for idx, s in enumerate(r.stops)
-                ]
-                routes.append(
-                    MapRoute(
-                        id=r.id,
-                        title_uk=r.title_uk,
-                        hero_id=r.hero_id,
-                        description_uk=r.description_uk,
-                        stops=stops,
-                    )
-                )
-
-            return MapLayer(markers=markers, routes=routes)
+__all__ = ["EncyclopediaService", "MapService"]

@@ -248,6 +248,7 @@ places:
   - {id: marathon, qid: Q212150, place_kind: city}
   - {id: elis, qid: Q217667, place_kind: city}
   - {id: pherae, qid: Q1330631, place_kind: city}
+  - {id: cyzicus, qid: Q615449, place_kind: city}
 
   # --- Mountains
   - {id: olympus, qid: Q80344, place_kind: mountain}
@@ -303,6 +304,8 @@ places:
   - {id: lydia, qid: Q620765, place_kind: region}
   - {id: phrygia, qid: Q32579, place_kind: region}
   - {id: dardanelles, qid: Q6514, place_kind: region}
+  - {id: bosporus, qid: Q35958, place_kind: region}
+  - {id: strait_of_messina, qid: Q134705, place_kind: region}
 
   # --- Mythical places without a real location (certainty: none, "поза картою")
   - {id: underworld, qid: Q1521549, place_kind: region, certainty: none}

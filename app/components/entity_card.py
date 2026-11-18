@@ -2,7 +2,7 @@ import streamlit as st
 
 from app.components.family_tree import render_family_tree
 from app.components.mini_map import render_mini_map
-from app.components.navigation import ask_oracle, open_entity
+from app.components.navigation import ask_oracle, open_entity, show_on_map
 from delphi.encyclopedia.models import EntityCard, RelatedEntity
 from delphi.encyclopedia.vocab import (
     CERTAINTY,
@@ -94,6 +94,13 @@ def render_entity_card(card: EntityCard) -> None:
         on_click=ask_oracle,
         args=(f"Розкажи про {card.name_uk}: хто це і які міфи з {pronoun} пов'язані?",),
     )
+    if card.place:
+        st.button(
+            "🗺️ Показати на карті",
+            key=f"show_on_map_{card.id}",
+            on_click=show_on_map,
+            args=(card.id,),
+        )
     st.caption(f"Посилання на картку: `?entity={card.id}`")
 
 

@@ -3004,6 +3004,25 @@ entities:
   lon: 22.75385
   coord_source: pleiades
   pleiades_title: Pherai
+- id: cyzicus
+  qid: Q615449
+  type: place
+  sitelinks: 33
+  label_uk: Кізік
+  label_en: Cyzicus
+  label_la: Cyzicus
+  description_uk: давньогрецький поліс в історичній області Мізія у Малій Азії
+  description_en: ancient city of Mysia in modern-day Turkey
+  aliases_uk:
+  - Кізікос
+  aliases_en:
+  - Kyzikos
+  place_kind: city
+  pleiades_id: '511218'
+  lat: 40.38556
+  lon: 27.88319
+  coord_source: pleiades
+  pleiades_title: Cyzicus
 - id: olympus
   qid: Q80344
   type: place
@@ -3910,6 +3929,50 @@ entities:
   lon: 26.47687
   coord_source: pleiades
   pleiades_title: Hellespont (strait)
+- id: bosporus
+  qid: Q35958
+  type: place
+  sitelinks: 131
+  label_uk: Босфор
+  label_en: Bosporus Strait
+  label_la: Bosporus
+  description_uk: протока у Туреччині, що з'єднує Чорне та Мармурове моря
+  description_en: narrow strait in northwestern Turkey
+  aliases_uk:
+  - Босфорська протока
+  - Боспорська протока
+  aliases_en:
+  - Bosphorus
+  - Istanbul Strait
+  - Thracian Bosporus
+  - Bosporus Thracian
+  - Strait of Istanbul
+  place_kind: region
+  pleiades_id: '520977'
+  lat: 41.11486
+  lon: 29.06215
+  coord_source: pleiades
+  pleiades_title: Bosphorus
+- id: strait_of_messina
+  qid: Q134705
+  type: place
+  sitelinks: 71
+  label_uk: Мессинська протока
+  label_en: Strait of Messina
+  label_la: Siculum fretum
+  description_uk: null
+  description_en: strait between Sicily and Calabria
+  aliases_uk: []
+  aliases_en:
+  - Strait of Mesina
+  - Messina Strait
+  - Mesina Strait
+  place_kind: region
+  pleiades_id: '462494'
+  lat: 38.11676
+  lon: 15.59624
+  coord_source: pleiades
+  pleiades_title: Siculum Fretum
 - id: underworld
   qid: Q1521549
   type: place

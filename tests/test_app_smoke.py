@@ -88,6 +88,23 @@ def test_lineage_navigation_and_ask_oracle(seeded_default_db: Path):
     assert any("Кронос" in m.markdown[0].value for m in at.chat_message if m.markdown)
 
 
+def test_map_filters_and_show_on_map(seeded_default_db: Path):
+    at = _ok(_app().run())
+    _ok(at.sidebar.radio[0].set_value("Карта").run())
+    _ok(at.sidebar.selectbox(key="map_god").set_value("zeus").run())
+    _ok(at.sidebar.multiselect(key="map_kinds").set_value(["sanctuary"]).run())
+    assert any("Місць на карті" in c.value for c in at.caption)
+
+    # Place card -> "show on map" -> map tab with the place selected
+    at = _app()
+    at.query_params["entity"] = "delphi"
+    _ok(at.run())
+    _ok(_button(at, "show_on_map_delphi").click().run())
+    assert at.sidebar.radio[0].value == "Карта"
+    assert at.session_state["map_selected"] == "delphi"
+    assert any(md.value == "#### Дельфи" for md in at.markdown)
+
+
 def test_oracle_chat_roundtrip(seeded_default_db: Path):
     at = _ok(_app().run())
     _ok(at.chat_input[0].set_value("Хто такий Зевс?").run())

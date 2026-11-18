@@ -87,6 +87,7 @@ class MapMarker(BaseModel):
     summary_uk: str | None = None
     pleiades_id: int | None = None
     relation_label: str | None = None  # why this place is shown on an entity card
+    patrons: list[EntityRef] = Field(default_factory=list)  # gods worshipped here
 
 
 class EntityCard(BaseModel):
@@ -112,7 +113,7 @@ class EntityCard(BaseModel):
 
 class MapRouteStop(BaseModel):
     stop_number: int
-    entity_id: str
+    entity_id: str | None = None  # some stops (e.g. Lotus-eaters) have no encyclopedia card
     title: str
     lat: float
     lon: float
@@ -125,10 +126,29 @@ class MapRoute(BaseModel):
     id: str
     title_uk: str
     hero_id: str | None = None
+    myth_id: str | None = None
     description_uk: str | None = None
     stops: list[MapRouteStop] = Field(default_factory=list)
+
+    @property
+    def is_speculative(self) -> bool:
+        """True if any stop is only a traditional identification."""
+        return any(s.certainty != "high" for s in self.stops)
 
 
 class MapLayer(BaseModel):
     markers: list[MapMarker] = Field(default_factory=list)
     routes: list[MapRoute] = Field(default_factory=list)
+    off_map: list[EntityRef] = Field(default_factory=list)  # mythical places without location
+
+
+class FilterOption(BaseModel):
+    id: str
+    label_uk: str
+
+
+class MapFilterOptions(BaseModel):
+    place_kinds: list[FilterOption] = Field(default_factory=list)
+    gods: list[FilterOption] = Field(default_factory=list)  # gods with worshipped_at places
+    myths: list[FilterOption] = Field(default_factory=list)  # myths with mapped places
+    routes: list[FilterOption] = Field(default_factory=list)

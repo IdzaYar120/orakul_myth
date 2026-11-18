@@ -9,7 +9,13 @@ if str(_REPO_ROOT) not in sys.path:
 
 import streamlit as st  # noqa: E402
 
-from app.components.navigation import TABS, go_to_tab, open_entity  # noqa: E402
+from app.components.navigation import (  # noqa: E402
+    TAB_SLUGS,
+    TABS,
+    go_to_tab,
+    open_entity,
+    show_on_map,
+)
 from app.views.encyclopedia import render_encyclopedia_tab  # noqa: E402
 from app.views.map import render_map_tab  # noqa: E402
 from app.views.oracle import render_oracle_tab  # noqa: E402
@@ -39,10 +45,20 @@ def get_services():
 def main():
     encyclopedia_svc, map_svc, oracle_svc = get_services()
 
-    # Shareable links: ?entity=delphi opens that card on first load
-    if "entity" in st.query_params and "url_entity_handled" not in st.session_state:
-        st.session_state["url_entity_handled"] = True
-        open_entity(st.query_params["entity"])
+    # Shareable links, handled once per session:
+    #   ?entity=delphi          -> encyclopedia card
+    #   ?tab=map                -> map tab
+    #   ?entity=delphi&tab=map  -> map centred on the place
+    if "url_handled" not in st.session_state:
+        st.session_state["url_handled"] = True
+        entity = st.query_params.get("entity")
+        tab = TAB_SLUGS.get(st.query_params.get("tab", ""))
+        if entity and tab == "Карта":
+            show_on_map(entity)
+        elif entity:
+            open_entity(entity)
+        elif tab:
+            go_to_tab(tab)
 
     # Sidebar
     with st.sidebar:
@@ -71,7 +87,7 @@ def main():
         )
 
         st.divider()
-        st.caption("Версія: 0.1.0 (MVP Stage 1: енциклопедія)")
+        st.caption("Версія: 0.1.0 (MVP Stage 2: карта)")
 
     # Render selected tab
     if chosen_tab == "Оракул":
@@ -79,7 +95,7 @@ def main():
     elif chosen_tab == "Енциклопедія":
         render_encyclopedia_tab(encyclopedia_svc)
     elif chosen_tab == "Карта":
-        render_map_tab(map_svc)
+        render_map_tab(map_svc, encyclopedia_svc)
 
 
 if __name__ == "__main__":

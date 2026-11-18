@@ -3,6 +3,7 @@
 import streamlit as st
 
 TABS = ["Оракул", "Енциклопедія", "Карта"]
+TAB_SLUGS = {"oracle": "Оракул", "encyclopedia": "Енциклопедія", "map": "Карта"}
 
 
 def go_to_tab(tab: str) -> None:
@@ -25,3 +26,9 @@ def close_entity() -> None:
 def ask_oracle(question: str) -> None:
     st.session_state["pending_question"] = question
     go_to_tab("Оракул")
+
+
+def show_on_map(entity_id: str) -> None:
+    """Switch to the map centred on a place, with its card selected."""
+    st.session_state["map_focus"] = entity_id
+    go_to_tab("Карта")

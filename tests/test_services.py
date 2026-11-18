@@ -99,9 +99,44 @@ def test_map_service(seeded_session: Session):
     map_svc = MapService(session=seeded_session)
     layer = map_svc.get_map_layer()
     assert len(layer.markers) >= 60
-    assert any(m.entity_id == "delphi" for m in layer.markers)
+    delphi = next(m for m in layer.markers if m.entity_id == "delphi")
+    assert [p.id for p in delphi.patrons] == ["apollo"]
     assert not any(m.entity_id == "underworld" for m in layer.markers)
-    assert len(layer.routes) >= 1
+    assert "underworld" in {r.id for r in layer.off_map}
+    assert {r.id for r in layer.routes} == {"odysseus_wanderings", "argonauts_voyage"}
 
     sanctuaries = map_svc.get_map_layer(place_kind="sanctuary")
     assert sanctuaries.markers and all(m.place_kind == "sanctuary" for m in sanctuaries.markers)
+    two_kinds = map_svc.get_map_layer(place_kinds=["island", "mountain"])
+    assert {m.place_kind for m in two_kinds.markers} == {"island", "mountain"}
+
+
+def test_map_filters_by_god_and_myth(seeded_session: Session):
+    map_svc = MapService(session=seeded_session)
+    zeus = {m.entity_id for m in map_svc.get_map_layer(god_id="zeus").markers}
+    assert {"olympia", "dodona"} <= zeus and "delphi" not in zeus
+
+    fleece = map_svc.get_map_layer(myth_id="golden_fleece")
+    assert {"iolcus", "colchis", "lemnos"} <= {m.entity_id for m in fleece.markers}
+    assert [r.id for r in fleece.routes] == ["argonauts_voyage"]
+
+    assert map_svc.get_map_layer(route_ids=[]).routes == []
+
+
+def test_map_routes_and_options(seeded_session: Session):
+    map_svc = MapService(session=seeded_session)
+    odyssey = map_svc.get_map_layer(route_ids=["odysseus_wanderings"]).routes[0]
+    assert odyssey.stops[0].entity_id == "troy" and odyssey.stops[-1].entity_id == "ithaca"
+    assert odyssey.is_speculative
+    assert any(s.entity_id is None for s in odyssey.stops)  # Lotus-eaters etc.
+
+    options = map_svc.filter_options()
+    assert "zeus" in {g.id for g in options.gods}
+    assert "golden_fleece" in {m.id for m in options.myths}
+    assert [k.id for k in options.place_kinds][0] == "sanctuary"
+
+
+def test_nearest_place(seeded_session: Session):
+    map_svc = MapService(session=seeded_session)
+    assert map_svc.nearest_place(38.49, 22.50) == "delphi"
+    assert map_svc.nearest_place(0.0, 0.0) is None  # nothing within 30 km

@@ -113,3 +113,19 @@ def test_seed_syncs_with_yaml(tmp_path: Path, seeded_engine: Engine):
         assert [a.alias for a in session.exec(select(Alias)).all()] == ["Зевс"]
         # FTS index is rebuilt from the updated rows
         assert search_entities("Оновлений", session=session) == ["zeus"]
+
+
+def test_init_db_adds_missing_columns(tmp_path: Path):
+    """An older delphi.db without route.myth_id is upgraded in place."""
+    from sqlalchemy import create_engine, text
+
+    from delphi.db.repo import init_db
+
+    eng = create_engine(f"sqlite:///{tmp_path / 'old.db'}")
+    with eng.connect() as conn:
+        conn.execute(text("CREATE TABLE route (id VARCHAR PRIMARY KEY, title_uk VARCHAR)"))
+        conn.commit()
+    init_db(engine_override=eng)
+    with eng.connect() as conn:
+        cols = {row[1] for row in conn.execute(text("PRAGMA table_info(route)"))}
+    assert {"myth_id", "hero_id", "stops_json"} <= cols

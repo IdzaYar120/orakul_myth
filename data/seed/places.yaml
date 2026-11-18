@@ -625,6 +625,22 @@
     - {alias: Фери, lang: uk}
     - {alias: Pherae, lang: en}
     - {alias: Mint of Pherae, lang: en}
+- entity_id: cyzicus
+  name_uk: Кізік
+  name_en: Cyzicus
+  place_kind: city
+  lat: 40.38556
+  lon: 27.88319
+  certainty: high
+  pleiades_id: 511218
+  coord_source: pleiades
+  wikidata_id: Q615449
+  summary_uk: 'Місто на Пропонтиді, де аргонавти гостювали в царя Кізіка і ненавмисно вбили його в нічному бою.'
+  aliases:
+    - {alias: Кізік, lang: uk}
+    - {alias: Кізик, lang: uk}
+    - {alias: Cyzicus, lang: en}
+    - {alias: Kyzikos, lang: en}
 
 # --- mountain
 - entity_id: olympus
@@ -1453,6 +1469,38 @@
     - {alias: Dardanelles Strait, lang: en}
     - {alias: Çanakkale Strait, lang: en}
     - {alias: Hellespontus, lang: la}
+- entity_id: bosporus
+  name_uk: Боспор
+  name_en: Bosporus
+  place_kind: region
+  lat: 41.11486
+  lon: 29.06215
+  certainty: high
+  pleiades_id: 520977
+  coord_source: pleiades
+  wikidata_id: Q35958
+  summary_uk: 'Протока між Пропонтидою і Чорним морем; біля входу в неї аргонавти пройшли між Сімплегадами — скелями, що стуляються.'
+  aliases:
+    - {alias: Боспор, lang: uk}
+    - {alias: Босфор, lang: uk}
+    - {alias: Bosporus, lang: en}
+    - {alias: Bosphorus, lang: en}
+    - {alias: Thracian Bosporus, lang: en}
+- entity_id: strait_of_messina
+  name_uk: Мессинська протока
+  name_en: Strait of Messina
+  place_kind: region
+  lat: 38.11676
+  lon: 15.59624
+  certainty: high
+  pleiades_id: 462494
+  coord_source: pleiades
+  wikidata_id: Q134705
+  summary_uk: 'Протока між Сицилією та Італією, яку з античності ототожнювали з місцем, де чатують Скілла і Харібда.'
+  aliases:
+    - {alias: Мессинська протока, lang: uk}
+    - {alias: Strait of Messina, lang: en}
+    - {alias: Siculum fretum, lang: la}
 
 # --- mythical
 - entity_id: underworld
