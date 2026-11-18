@@ -1,20 +1,38 @@
+"""Download source texts into data/raw/ (gitignored)."""
+
 from pathlib import Path
 
-import yaml
+import httpx
 
 from delphi.config import settings
+from delphi.ingest.sources import Source
+
+USER_AGENT = (
+    "DelphiOracleBot/0.1 (https://github.com/IdzaYar120/orakul_myth; educational RAG project)"
+)
 
 
-def download_sources(sources_yaml: Path | None = None) -> None:
-    """Download ancient texts into data/raw/ according to sources.yaml."""
-    src_file = sources_yaml or (settings.data_dir / "sources.yaml")
-    if not src_file.exists():
-        raise FileNotFoundError(f"Файл конфігурації джерел не знайдено: {src_file}")
+def raw_dir() -> Path:
+    path = settings.data_dir / "raw"
+    path.mkdir(parents=True, exist_ok=True)
+    return path
 
-    with open(src_file, encoding="utf-8") as f:
-        data = yaml.safe_load(f) or {}
 
-    raw_dir = settings.data_dir / "raw"
-    raw_dir.mkdir(parents=True, exist_ok=True)
-
-    print(f"Завантаження {len(data.get('sources', []))} джерел у {raw_dir}...")
+def download_source(
+    source: Source, force: bool = False, client: httpx.Client | None = None
+) -> Path:
+    """Download one source unless it is already present; returns the local path."""
+    target = raw_dir() / source.raw_filename
+    if target.exists() and target.stat().st_size > 0 and not force:
+        return target
+    if not source.download_url:
+        raise ValueError(f"{source.id}: немає download_url у sources.yaml")
+    http = client or httpx.Client(
+        headers={"User-Agent": USER_AGENT}, timeout=120, follow_redirects=True
+    )
+    resp = http.get(source.download_url)
+    resp.raise_for_status()
+    tmp = target.with_suffix(target.suffix + ".part")
+    tmp.write_bytes(resp.content)
+    tmp.replace(target)
+    return target

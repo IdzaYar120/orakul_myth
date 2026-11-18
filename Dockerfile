@@ -12,19 +12,20 @@ COPY --from=ghcr.io/astral-sh/uv:0.11.21 /uv /uvx /bin/
 
 # 1. Dependencies only (cached layer while pyproject/uv.lock are unchanged)
 COPY pyproject.toml uv.lock ./
-RUN uv sync --frozen --no-install-project --no-dev
+RUN uv sync --frozen --no-install-project --no-dev --extra ml
 
 # 2. Project code (README.md is required by pyproject `readme`)
 COPY README.md ./
 COPY src/ src/
 COPY app/ app/
 COPY data/ data/
-RUN uv sync --frozen --no-dev
+RUN uv sync --frozen --no-dev --extra ml
 
 # Generated storage lives in volumes (see docker-compose.yml)
 RUN mkdir -p /app/storage /app/index
 ENV DB_PATH=/app/storage/delphi.db \
-    INDEX_DIR=/app/index
+    INDEX_DIR=/app/index \
+    HF_HOME=/app/hf_cache
 
 EXPOSE 8501
 

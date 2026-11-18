@@ -233,6 +233,7 @@
     - {alias: Dikteon Andron, lang: en}
     - {alias: Dictate Antron, lang: en}
     - {alias: Psychro Cave, lang: en}
+    - {alias: Dicte, lang: en}
 - entity_id: paphos
   name_uk: Пафос (Палепафос)
   name_en: Paphos

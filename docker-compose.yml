@@ -11,6 +11,8 @@ x-delphi: &delphi
   volumes:
     - delphi_storage:/app/storage # SQLite delphi.db
     - ./index:/app/index # Chroma + bm25.pkl
+    - ./data/raw:/app/data/raw # downloaded source texts
+    - hf_cache:/app/hf_cache # bge-m3 / reranker weights, downloaded once
 
 services:
   app:
@@ -40,4 +42,5 @@ services:
 
 volumes:
   delphi_storage:
+  hf_cache:
   ollama_data:

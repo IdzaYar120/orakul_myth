@@ -1,92 +1,122 @@
 import streamlit as st
 
 from app.components.citations import render_citations
-from app.components.navigation import open_entity
+from app.components.navigation import open_entity, show_on_map
+from delphi.config import settings
+from delphi.encyclopedia.service import EncyclopediaService
+from delphi.rag.llm import LLMConfigError
+from delphi.rag.models import Answer
 from delphi.rag.oracle import OracleService
 
+GREETING = (
+    "Вітаю тебе, мандрівнику. Я — Піфія, жриця Аполлона. "
+    "Запитай мене про богів, героїв та долі античного світу."
+)
+STYLE_LABELS = {"піфія": "🏛️ Піфія (образно)", "науковий": "📖 Науковий (стисло)"}
 
-def render_oracle_tab(oracle_service: OracleService):
+
+def render_oracle_tab(
+    oracle_service: OracleService, encyclopedia: EncyclopediaService | None = None
+):
     st.header("🔮 Дельфійський оракул")
-    st.caption("ШІ-чат, що відповідає на основі античних джерел із точними посиланнями.")
+    st.caption("Відповіді лише на основі античних текстів, з посиланнями на джерела.")
 
-    # Style configuration
-    col1, col2 = st.columns([1, 3])
-    with col1:
-        style = st.selectbox(
-            "Стиль відповіді:",
-            options=["піфія", "науковий"],
-            format_func=lambda s: "🏛️ Піфія (образно)" if s == "піфія" else "📖 Науковий (стисло)",
-        )
+    style = st.selectbox(
+        "Стиль відповіді:",
+        options=list(STYLE_LABELS),
+        format_func=lambda s: STYLE_LABELS.get(s, s),
+        key="oracle_style",
+    )
+    if not oracle_service.retriever.available:
+        st.warning("Індекс текстів ще не побудовано: запустіть `delphi ingest`.")
 
-    # Initialize message history in st.session_state
-    if "messages" not in st.session_state:
-        st.session_state["messages"] = [
-            {
-                "role": "assistant",
-                "text": (
-                    "Вітаю тебе, мандрівнику. Я — Піфія, жриця Аполлона. "
-                    "Запитай мене про богів, героїв та долі античного світу."
-                ),
-                "citations": [],
-                "entities": [],
-            }
-        ]
-
-    # Render message history
-    for msg_idx, msg in enumerate(st.session_state["messages"]):
+    messages: list[dict] = st.session_state.setdefault(
+        "messages", [{"role": "assistant", "text": GREETING}]
+    )
+    for idx, msg in enumerate(messages):
         with st.chat_message(msg["role"]):
-            st.markdown(msg["text"])
-            if msg.get("citations"):
-                render_citations(msg["citations"])
-            if msg.get("entities"):
-                cols = st.columns(len(msg["entities"]) + 1)
-                for i, eid in enumerate(msg["entities"]):
-                    with cols[i]:
-                        st.button(
-                            f"🔍 {eid}",
-                            key=f"chip_{msg_idx}_{eid}_{i}",
-                            on_click=open_entity,
-                            args=(eid,),
-                        )
+            _render_message(msg, idx, encyclopedia)
 
-    # Check for pending question (e.g. from encyclopedia)
-    prompt = None
-    if st.session_state.get("pending_question"):
-        prompt = st.session_state.pop("pending_question")
-    else:
-        prompt = st.chat_input("Поставити запитання Оракулу...")
+    prompt = st.session_state.pop("pending_question", None) or st.chat_input(
+        "Поставити запитання Оракулу...", max_chars=settings.max_question_chars
+    )
+    if not prompt:
+        return
 
-    if prompt:
-        # Append user query
-        st.session_state["messages"].append({"role": "user", "text": prompt})
-        with st.chat_message("user"):
-            st.markdown(prompt)
+    asked = sum(1 for m in messages if m["role"] == "user")
+    if asked >= settings.max_questions_per_session:
+        st.warning("Ліміт запитань на сесію вичерпано. Оновіть сторінку, щоб почати знову.")
+        return
+    prompt = prompt[: settings.max_question_chars]
 
-        # Generate response
-        with st.chat_message("assistant"):
-            with st.spinner("Піфія вдихає священні випари триножника..."):
-                answer = oracle_service.ask(prompt, style=style)
-                st.markdown(answer.text)
-                if answer.citations:
-                    render_citations(answer.citations)
+    history = [{"role": m["role"], "text": m["text"]} for m in messages[1:]]
+    messages.append({"role": "user", "text": prompt})
+    with st.chat_message("user"):
+        st.markdown(prompt)
 
-                if answer.entities:
-                    st.caption("Пов'язані сутності:")
-                    c_cols = st.columns(len(answer.entities) + 2)
-                    for i, eid in enumerate(answer.entities):
-                        with c_cols[i]:
-                            st.button(
-                                f"Картка {eid}",
-                                key=f"ans_chip_{eid}_{i}",
-                                on_click=open_entity,
-                                args=(eid,),
-                            )
+    with st.chat_message("assistant"):
+        with st.spinner("Піфія вдихає священні випари триножника..."):
+            prepared = oracle_service.prepare(prompt, history=history, style=style)
+        error = None
+        try:
+            text = st.write_stream(oracle_service.stream(prepared))
+        except LLMConfigError as exc:
+            text, error = "", str(exc)
+        answer = oracle_service.finalize(prepared, str(text or ""), error=error)
+        msg = _to_message(answer)
+        _render_extras(msg, len(messages), encyclopedia)
+    messages.append(msg)
 
-        st.session_state["messages"].append(
-            {
-                "role": "assistant",
-                "text": answer.text,
-                "citations": answer.citations,
-                "entities": answer.entities,
-            }
+
+def _to_message(answer: Answer) -> dict:
+    return {
+        "role": "assistant",
+        "text": answer.text,
+        "citations": answer.citations,
+        "entities": answer.entities,
+        "error": answer.error,
+    }
+
+
+def _render_message(msg: dict, idx: int, encyclopedia: EncyclopediaService | None) -> None:
+    if msg.get("text"):
+        st.markdown(msg["text"])
+    _render_extras(msg, idx, encyclopedia)
+
+
+def _render_extras(msg: dict, idx: int, encyclopedia: EncyclopediaService | None) -> None:
+    if msg.get("error"):
+        st.warning(
+            f"Піфія знайшла джерела, але не може відповісти: {msg['error']} "
+            "Нижче — знайдені уривки."
         )
+    if msg.get("citations"):
+        render_citations(msg["citations"], key=f"cit_{idx}")
+    if msg.get("entities"):
+        _entity_chips(msg["entities"], idx, encyclopedia)
+
+
+def _entity_chips(entity_ids: list[str], idx: int, encyclopedia: EncyclopediaService | None):
+    refs = []
+    for eid in entity_ids[:8]:
+        card = encyclopedia.get_entity_card(eid) if encyclopedia else None
+        refs.append((eid, card.name_uk if card else eid, bool(card and card.place)))
+    st.caption("Згадані в відповіді:")
+    cols = st.columns(min(len(refs), 4))
+    for i, (eid, name, mapped) in enumerate(refs):
+        with cols[i % len(cols)]:
+            st.button(
+                f"📖 {name}",
+                key=f"chip_{idx}_{eid}",
+                on_click=open_entity,
+                args=(eid,),
+                width="stretch",
+            )
+            if mapped:
+                st.button(
+                    "🗺️ на карті",
+                    key=f"chipmap_{idx}_{eid}",
+                    on_click=show_on_map,
+                    args=(eid,),
+                    width="stretch",
+                )
