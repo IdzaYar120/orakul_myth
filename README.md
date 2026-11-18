@@ -59,7 +59,8 @@
 
 - `uv run delphi seed` — синхронізувати SQLite (`delphi.db`) з `data/seed/*.yaml`, перебудувати FTS5-індекс.
 - `uv run delphi wikidata candidates|pull|draft` — імпорт сутностей з Wikidata і координат з Pleiades.
-- `uv run delphi ingest` — офлайн-інгест текстів (Chroma + BM25) — *етап 3*.
+- `uv run delphi ingest [--source ID]` — офлайн-інгест текстів (Chroma + BM25), ідемпотентний.
+- `uv run delphi check-refs` — перевірка посилань на джерела в родоводі за корпусом.
 - `uv run delphi ask "Хто виховував Ахілла?" --style піфія` — запитати Оракула з терміналу.
 - `uv run delphi eval` — оцінка на golden set (`data/eval/golden.yaml`) — *етап 4*.
 
@@ -88,6 +89,30 @@ uv run delphi wikidata draft               # дописати в data/seed/*.yam
 #   (зв'язки з data/wikidata/rejected.yaml, відхилені під час чистки, не пропонуються)
 uv run delphi seed                         # синхронізувати SQLite з YAML (додає, оновлює, видаляє)
 ```
+
+---
+
+## 🔮 Оракул (RAG)
+
+Корпус етапу 3 — Аполлодор («Бібліотека», пер. Frazer 1921) і Гесіод («Теогонія», «Роботи і дні»,
+пер. Evelyn-White 1914): 227 уривків. Тексти — TEI XML з Perseus Digital Library
+(переклади в суспільному надбанні, розмітка CC BY-SA 4.0; див. `data/sources.yaml`).
+
+```bash
+uv sync --extra dev --extra ml   # PyTorch, Chroma, sentence-transformers (кілька ГБ)
+uv run delphi ingest             # завантажити -> TEI -> чанки -> теги -> Chroma + BM25
+uv run delphi check-refs         # звірити source_ref родоводу з текстами
+uv run delphi ask "Хто виховував Ахілла?"
+```
+
+Як відповідає оракул: питання -> (переформулювання уточнення з історії) -> українські імена
+-> англійські (`Ахілла` -> `Achilles`) -> гібридний пошук (bge-m3 + BM25, Reciprocal Rank
+Fusion, буст уривків зі згаданими сутностями) -> реранкер bge-reranker-v2-m3 (поріг
+`MIN_RELEVANCE`: нижче — «Дим над триножником не дає відповіді») -> LLM лише за знайденими
+уривками з посиланнями `[1]` -> перевірка посилань, чіпи згаданих сутностей.
+
+LLM обирається в `.env` (`LLM_PROVIDER=openai|anthropic|ollama`, ключ — `OPENAI_API_KEY` тощо).
+Без ключа оракул усе одно показує знайдені уривки. Енциклопедія й карта працюють без LLM.
 
 ---
 
@@ -165,7 +190,7 @@ SQLite зберігається в томі `delphi_storage`, індекс — �
 | 0. Каркас | ✅ |
 | 1. Дані і енциклопедія | ✅ |
 | 2. Карта | ✅ |
-| 3. RAG-оракул | ⏳ |
+| 3. RAG-оракул | ✅ |
 | 4. Якість | ⏳ |
 | 5. Зв'язки і реліз | ⏳ |
 

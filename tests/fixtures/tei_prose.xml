@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title>Library</title>
+        <author>Apollodorus</author>
+      </titleStmt>
+    </fileDesc>
+  </teiHeader>
+  <text>
+    <body>
+      <div type="translation" xml:lang="eng" n="urn:cts:greekLit:tlg0548.tlg001.perseus-eng2">
+        <div type="textpart" subtype="book" n="1">
+          <div type="textpart" subtype="chapter" n="1">
+            <div type="textpart" subtype="section" n="1">
+              <p><milestone unit="para"/>Sky was the first who ruled over the whole world.<note anchored="true">According to Hesiod (<bibl n="Hes. Th. 126">Hes. Th. 126ff.</bibl>), Sky was a son of Earth.</note> And having wedded Earth, he begat first the Hundred-handed.</p>
+            </div>
+            <div type="textpart" subtype="section" n="2">
+              <p>After these, Earth bore him the Cyclopes. <pb n="5"/>But them Sky bound and cast into Tartarus.</p>
+            </div>
+            <div type="textpart" subtype="section" n="3">
+              <p>And again he begat children by Earth, to wit, the Titans as they are named: Ocean, Coeus, Hyperion, Crius, Iapetus, and, youngest of all, Cronus.</p>
+            </div>
+          </div>
+          <div type="textpart" subtype="chapter" n="4">
+            <div type="textpart" subtype="section" n="1">
+              <p>But Latona for her intrigue with Zeus was hunted by Hera over the whole earth, till she came to Delos and brought forth first Artemis, by the help of whose midwifery she afterwards gave birth to Apollo.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </body>
+  </text>
+</TEI>

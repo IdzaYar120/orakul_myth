@@ -1,7 +1,9 @@
 """Shared pytest fixtures.
 
-DB_PATH / INDEX_DIR are redirected to a temp dir *before* any `delphi` module is
-imported, so tests never read or create the developer's real `delphi.db`.
+Settings are overridden through environment variables (they win over a developer's .env)
+*before* any `delphi` module is imported:
+- DB_PATH / INDEX_DIR point to a temp dir: tests never touch the real delphi.db or index;
+- no model downloads (hashing embedder, reranker off) and no LLM/network calls (empty keys).
 """
 
 import os
@@ -12,6 +14,11 @@ from pathlib import Path
 _TMP = Path(tempfile.mkdtemp(prefix="delphi-tests-"))
 os.environ["DB_PATH"] = str(_TMP / "delphi.db")
 os.environ["INDEX_DIR"] = str(_TMP / "index")
+os.environ["EMBEDDING_MODEL"] = "hashing"
+os.environ["RERANK_ENABLED"] = "false"
+os.environ["LLM_PROVIDER"] = "openai"
+os.environ["OPENAI_API_KEY"] = ""
+os.environ["ANTHROPIC_API_KEY"] = ""
 
 import pytest  # noqa: E402
 from sqlalchemy import Engine  # noqa: E402

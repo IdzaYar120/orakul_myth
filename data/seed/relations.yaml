@@ -10,7 +10,7 @@
 - {src_id: achilles, rel: parent_of, dst_id: neoptolemus, source_ref: Hom. Il. 19.326}
 - {src_id: acrisius, rel: parent_of, dst_id: danae, source_ref: Wikidata}
 - {src_id: aeetes, rel: parent_of, dst_id: medea, source_ref: Hes. Theog. 961}
-- {src_id: aegeus, rel: parent_of, dst_id: theseus, source_ref: Apollod. 3.15.7}
+- {src_id: aegeus, rel: parent_of, dst_id: theseus, source_ref: Apollod. 3.16.1}
 - {src_id: aether, rel: parent_of, dst_id: dione, source_ref: Wikidata}
 - {src_id: agamemnon, rel: parent_of, dst_id: electra, source_ref: Wikidata}
 - {src_id: agamemnon, rel: parent_of, dst_id: iphigenia, source_ref: Wikidata}

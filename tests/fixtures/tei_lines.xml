@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+  <teiHeader>
+    <fileDesc>
+      <titleStmt>
+        <title>Theogony</title>
+        <author>Hesiod</author>
+      </titleStmt>
+    </fileDesc>
+  </teiHeader>
+  <text>
+    <body>
+      <div type="translation" xml:lang="eng" n="urn:cts:greekLit:tlg0020.tlg001.perseus-eng2">
+        <l n="116"><milestone unit="card" n="116"/>Verily at the first Chaos came to be, but next wide-bosomed Earth, the ever-sure foundation of all</l>
+        <l n="120">the deathless ones, and Eros (Love), fairest among the deathless gods.</l>
+        <l n="123">From Chaos came forth Erebus and black Night; but of Night were born Aether and Day,</l>
+        <l n="126">And Earth first bare starry Heaven, equal to herself, to cover her on every side.<note resp="Loeb">Or "Sky".</note> And she brought forth long hills.</l>
+        <l n="453">But Rhea was subject in love to Cronos and bare splendid children, Hestia, Demeter, and gold-shod Hera and strong Hades,</l>
+      </div>
+    </body>
+  </text>
+</TEI>

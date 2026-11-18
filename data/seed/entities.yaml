@@ -31,6 +31,7 @@
     - {alias: Gaea, lang: en}
     - {alias: Ge, lang: en}
     - {alias: Terra, lang: la}
+    - {alias: Earth, lang: en}
 - id: uranus
   type: god
   name_uk: Уран
@@ -45,6 +46,8 @@
     - {alias: Ouranos, lang: en}
     - {alias: Uranos, lang: en}
     - {alias: Caelus, lang: la}
+    - {alias: Sky, lang: en}
+    - {alias: Heaven, lang: en}
 - id: tartarus
   type: god
   name_uk: Тартар
@@ -74,6 +77,7 @@
     - {alias: Eros, lang: en}
     - {alias: Cupid, lang: en}
     - {alias: Cupido, lang: la}
+    - {alias: Love, lang: en}
 - id: nyx
   type: god
   name_uk: Нікс
@@ -87,6 +91,7 @@
     - {alias: Нюкта, lang: uk}
     - {alias: Nyx, lang: en}
     - {alias: Nox, lang: la}
+    - {alias: Night, lang: en}
 - id: erebus
   type: god
   name_uk: Ереб
@@ -100,6 +105,7 @@
     - {alias: Erebos, lang: en}
     - {alias: Erebus, lang: en}
     - {alias: Erebus, lang: la}
+    - {alias: Darkness, lang: en}
 - id: aether
   type: god
   name_uk: Ефір
@@ -112,6 +118,7 @@
     - {alias: Ефір, lang: uk}
     - {alias: Aether, lang: en}
     - {alias: Aether, lang: la}
+    - {alias: Ether, lang: en}
 - id: hemera
   type: god
   name_uk: Гемера
@@ -124,6 +131,7 @@
     - {alias: Гемера, lang: uk}
     - {alias: Hemera, lang: en}
     - {alias: Dies, lang: la}
+    - {alias: Day, lang: en}
 - id: pontus
   type: god
   name_uk: Понт
@@ -137,6 +145,7 @@
     - {alias: Pontus, lang: en}
     - {alias: Pontos, lang: en}
     - {alias: Pontus, lang: la}
+    - {alias: Sea, lang: en}
 - id: zeus
   type: god
   name_uk: Зевс
@@ -187,6 +196,8 @@
     - {alias: Poseidōn, lang: en}
     - {alias: Neptunus, lang: la}
     - {alias: Нептун, lang: uk}
+    - {alias: Earth-Shaker, lang: en}
+    - {alias: Dark-haired One, lang: en}
 - id: demeter
   type: god
   name_uk: Деметра
@@ -239,6 +250,7 @@
     - {alias: Pluto, lang: la}
     - {alias: Плутон, lang: uk}
     - {alias: Pluto, lang: en}
+    - {alias: Aidoneus, lang: en}
 - id: athena
   type: god
   name_uk: Афіна
@@ -258,6 +270,7 @@
     - {alias: Паллада, lang: uk}
     - {alias: Pallas, lang: en}
     - {alias: Athene, lang: en}
+    - {alias: Tritogeneia, lang: en}
 - id: apollo
   type: god
   name_uk: Аполлон
@@ -424,6 +437,7 @@
     - {alias: Helios, lang: en}
     - {alias: Helius, lang: en}
     - {alias: Sol, lang: la}
+    - {alias: Sun, lang: en}
 - id: selene
   type: god
   name_uk: Селена
@@ -465,6 +479,7 @@
     - {alias: Ніка, lang: uk}
     - {alias: Nike, lang: en}
     - {alias: Victoria, lang: la}
+    - {alias: Victory, lang: en}
 - id: eris
   type: god
   name_uk: Ерида
@@ -510,6 +525,7 @@
     - {alias: Танат, lang: uk}
     - {alias: Thanatos, lang: en}
     - {alias: Mors, lang: la}
+    - {alias: Death, lang: en}
 - id: hypnos
   type: god
   name_uk: Гіпнос
@@ -524,6 +540,7 @@
     - {alias: Гіпн, lang: uk}
     - {alias: Hypnos, lang: en}
     - {alias: Somnus, lang: la}
+    - {alias: Sleep, lang: en}
 - id: iris
   type: god
   name_uk: Ірида
@@ -698,6 +715,7 @@
     - {alias: Phobos, lang: en}
     - {alias: Timor, lang: en}
     - {alias: Timor, lang: la}
+    - {alias: Panic, lang: en}
 - id: deimos
   type: god
   name_uk: Деймос
@@ -711,6 +729,7 @@
     - {alias: Дейм, lang: uk}
     - {alias: Deimos, lang: en}
     - {alias: Formido, lang: la}
+    - {alias: Fear, lang: en}
 - id: circe
   type: god
   name_uk: Кірка
@@ -794,6 +813,9 @@
     - {alias: Moirae, lang: en}
     - {alias: Moîrai, lang: en}
     - {alias: Parcae, lang: la}
+    - {alias: Clotho, lang: en}
+    - {alias: Lachesis, lang: en}
+    - {alias: Atropos, lang: en}
 - id: erinyes
   type: god
   name_uk: Еринії
@@ -813,6 +835,10 @@
     - {alias: Semnae theae, lang: en}
     - {alias: Avenging Deities, lang: en}
     - {alias: Furiae, lang: la}
+    - {alias: Furies, lang: en}
+    - {alias: Alecto, lang: en}
+    - {alias: Tisiphone, lang: en}
+    - {alias: Megaera, lang: en}
 
 # --- Титани
 - id: cronus
@@ -859,6 +885,7 @@
     - {alias: Oceanus, lang: en}
     - {alias: Okeanos, lang: en}
     - {alias: Oceanus, lang: la}
+    - {alias: Ocean, lang: en}
 - id: tethys
   type: titan
   name_uk: Тефія
@@ -1062,6 +1089,7 @@
     - {alias: Тифон, lang: uk}
     - {alias: Typhon, lang: en}
     - {alias: Typhoeus, lang: en}
+    - {alias: Typhaon, lang: en}
 - id: echidna
   type: creature
   name_uk: Єхидна
@@ -1098,6 +1126,7 @@
   aliases:
     - {alias: Ортр, lang: uk}
     - {alias: Orthrus, lang: en}
+    - {alias: Orthus, lang: en}
 - id: hydra
   type: creature
   name_uk: Лернейська гідра
@@ -1257,6 +1286,9 @@
     - {alias: Cyclopes, lang: en}
     - {alias: cyclops, lang: en}
     - {alias: cyclopes, lang: la}
+    - {alias: Brontes, lang: en}
+    - {alias: Steropes, lang: en}
+    - {alias: Arges, lang: en}
 - id: hecatoncheires
   type: creature
   name_uk: Гекатонхейри
@@ -1271,6 +1303,11 @@
     - {alias: Centimanes, lang: en}
     - {alias: Hundred-Handers, lang: en}
     - {alias: Centimani, lang: la}
+    - {alias: Hundred-handed, lang: en}
+    - {alias: Cottus, lang: en}
+    - {alias: Briareus, lang: en}
+    - {alias: Briareos, lang: en}
+    - {alias: Gyes, lang: en}
 - id: scylla
   type: creature
   name_uk: Скілла

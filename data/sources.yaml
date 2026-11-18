@@ -1,83 +1,143 @@
-# Ancient text sources for the RAG corpus
-# Public domain only (Public Domain / CC0 / compliant copyright-free translations)
+# Ancient text sources for the RAG corpus.
+#
+# Licences (checked 2026-11-18 on the source files):
+# - translation_license: the English translations of 1912-1924 are in the public domain.
+# - encoding_license: the Perseus TEI XML files (markup, digitisation) are published under
+#   CC BY-SA 4.0 — attribution required, and data derived from them (chunks, the search
+#   index) must be shared under the same licence if published.
+#
+# ref_prefix is prepended to the structural reference of each chunk: "Apollod. 1.1.1",
+# "Hes. Theog. 453". `stage` = the plan stage in which the source is ingested.
+# Only sources with `enabled: true` are ingested by `delphi ingest`.
 
 sources:
   - id: apollodorus_library
-    author: Apollodorus (Pseudo-Apollodorus)
+    author: Apollodorus
     title: The Library
+    work_uk: Аполлодор, «Бібліотека»
     translator: J. G. Frazer
     year: 1921
-    license: Public Domain
+    ref_prefix: Apollod.
+    license: Public Domain translation; Perseus TEI CC BY-SA 4.0
+    translation_license: Public Domain
+    encoding_license: CC BY-SA 4.0 (Perseus Digital Library)
     url: "https://www.perseus.tufts.edu/hopper/text?doc=Perseus:text:1999.01.0022"
+    download_url: "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0548/tlg001/tlg0548.tlg001.perseus-eng2.xml"
     format: tei_xml
+    stage: 3
+    enabled: true
     notes: "Основа корпусу: системний довідник генеалогій і міфів"
 
   - id: hesiod_theogony
     author: Hesiod
     title: Theogony
+    work_uk: Гесіод, «Теогонія»
     translator: H. G. Evelyn-White
     year: 1914
-    license: Public Domain
+    ref_prefix: Hes. Theog.
+    license: Public Domain translation; Perseus TEI CC BY-SA 4.0
+    translation_license: Public Domain
+    encoding_license: CC BY-SA 4.0 (Perseus Digital Library)
     url: "https://www.perseus.tufts.edu/hopper/text?doc=Perseus:text:1999.01.0130"
+    download_url: "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0020/tlg001/tlg0020.tlg001.perseus-eng2.xml"
     format: tei_xml
+    stage: 3
+    enabled: true
     notes: "Походження світу і богів"
 
   - id: hesiod_works_and_days
     author: Hesiod
     title: Works and Days
+    work_uk: Гесіод, «Роботи і дні»
     translator: H. G. Evelyn-White
     year: 1914
-    license: Public Domain
+    ref_prefix: Hes. WD
+    license: Public Domain translation; Perseus TEI CC BY-SA 4.0
+    translation_license: Public Domain
+    encoding_license: CC BY-SA 4.0 (Perseus Digital Library)
     url: "https://www.perseus.tufts.edu/hopper/text?doc=Perseus:text:1999.01.0132"
+    download_url: "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0020/tlg002/tlg0020.tlg002.perseus-eng2.xml"
     format: tei_xml
+    stage: 3
+    enabled: true
     notes: "Міфи про Прометея, Пандору, віки людства"
 
   - id: homer_iliad
     author: Homer
     title: Iliad
+    work_uk: Гомер, «Іліада»
     translator: A. T. Murray
     year: 1924
-    license: Public Domain
+    ref_prefix: Hom. Il.
+    license: Public Domain translation; Perseus TEI CC BY-SA 4.0
+    translation_license: Public Domain
+    encoding_license: CC BY-SA 4.0 (Perseus Digital Library)
     url: "https://www.perseus.tufts.edu/hopper/text?doc=Perseus:text:1999.01.0134"
     format: tei_xml
+    stage: 4
+    enabled: false
     notes: "Троянська війна"
 
   - id: homer_odyssey
     author: Homer
     title: Odyssey
+    work_uk: Гомер, «Одіссея»
     translator: A. T. Murray
     year: 1919
-    license: Public Domain
+    ref_prefix: Hom. Od.
+    license: Public Domain translation; Perseus TEI CC BY-SA 4.0
+    translation_license: Public Domain
+    encoding_license: CC BY-SA 4.0 (Perseus Digital Library)
     url: "https://www.perseus.tufts.edu/hopper/text?doc=Perseus:text:1999.01.0136"
     format: tei_xml
+    stage: 4
+    enabled: false
     notes: "Мандри Одіссея"
 
   - id: homeric_hymns
     author: Homeric Hymns
     title: Homeric Hymns
+    work_uk: Гомерівські гімни
     translator: H. G. Evelyn-White
     year: 1914
-    license: Public Domain
+    ref_prefix: Hom. Hymn
+    license: Public Domain translation; Perseus TEI CC BY-SA 4.0
+    translation_license: Public Domain
+    encoding_license: CC BY-SA 4.0 (Perseus Digital Library)
     url: "https://www.perseus.tufts.edu/hopper/text?doc=Perseus:text:1999.01.0138"
     format: tei_xml
+    stage: 4
+    enabled: false
     notes: "Гімни богам (Деметра, Аполлон, Гермес)"
 
   - id: apollonius_argonautica
     author: Apollonius Rhodius
     title: Argonautica
+    work_uk: Аполлоній Родоський, «Аргонавтика»
     translator: R. C. Seaton
     year: 1912
-    license: Public Domain
+    ref_prefix: Ap. Rhod.
+    license: Public Domain (Project Gutenberg)
+    translation_license: Public Domain
+    encoding_license: Public Domain (Project Gutenberg plain text)
     url: "https://www.gutenberg.org/ebooks/830"
     format: gutenberg_text
-    notes: "Похід аргонавтів, маршрут для карти"
+    stage: 4
+    enabled: false
+    notes: "Похід аргонавтів, маршрут для карти; англійського TEI у Perseus немає"
 
   - id: pausanias_description_of_greece
     author: Pausanias
     title: Description of Greece
+    work_uk: Павсаній, «Опис Еллади»
     translator: W. H. S. Jones
     year: 1918
-    license: Public Domain
+    ref_prefix: Paus.
+    license: Public Domain translation; Perseus TEI CC BY-SA 4.0
+    translation_license: Public Domain
+    encoding_license: CC BY-SA 4.0 (Perseus Digital Library)
     url: "https://www.perseus.tufts.edu/hopper/text?doc=Perseus:text:1999.01.0160"
     format: tei_xml
+    stage: 4
+    enabled: false
     notes: "Географія, святилища і місцеві культи"

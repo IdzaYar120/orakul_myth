@@ -32,10 +32,30 @@ def seed():
 
 
 @app.command()
-def ingest():
-    """Download texts, chunk, tag entities, and build indexes."""
-    console.print("[bold cyan]Запуск офлайн-інгесту корпусів...[/bold cyan]")
-    console.print("[yellow]Етап офлайн-інгесту буде розгорнуто в Етапі 3.[/yellow]")
+def ingest(
+    source: list[str] = typer.Option(
+        None, "--source", "-s", help="id джерела з data/sources.yaml (можна кілька)"
+    ),
+    force_download: bool = typer.Option(False, help="Завантажити тексти заново"),
+):
+    """Download texts, parse TEI, chunk, tag entities and build Chroma + BM25 indexes."""
+    from delphi.ingest.pipeline import run_ingest
+
+    console.print("[bold cyan]Офлайн-інгест корпусу...[/bold cyan]")
+    reports, stats = run_ingest(
+        source_ids=source or None,
+        force_download=force_download,
+        progress=lambda msg: console.print(f"  [dim]{msg}[/dim]"),
+    )
+    for r in reports:
+        console.print(
+            f"  [green]{r.source_id}[/green]: {r.sections} розділів -> {r.chunks} чанків "
+            f"(~{r.avg_tokens} токенів), із сутностями: {r.tagged}"
+        )
+    console.print(
+        f"[bold green]Готово:[/bold green] {stats.passages} уривків, нових ембеддингів: "
+        f"{stats.embedded}, видалено застарілих: {stats.removed}. Індекс: {settings.index_dir}"
+    )
 
 
 @app.command()
@@ -45,16 +65,20 @@ def ask(
 ):
     """Ask the Oracle directly from the command line."""
     console.print(Panel(f"[bold cyan]Питання:[/bold cyan] {question} (стиль: {style})"))
-    oracle = OracleService()
-    ans = oracle.ask(question, style=style)
+    ans = OracleService().ask(question, style=style)
 
-    console.print(Panel(ans.text, title="Відповідь Піфії", border_style="magenta"))
+    if ans.error:
+        console.print(f"[yellow]{ans.error}[/yellow]")
+    if ans.text:
+        console.print(Panel(ans.text, title="Відповідь Піфії", border_style="magenta"))
 
     if ans.citations:
-        console.print("[bold]Джерела цитат:[/bold]")
+        console.print("[bold]Джерела:[/bold]")
         for c in ans.citations:
-            console.print(f"  [{c.num}] {c.author}, {c.work} ({c.ref})")
-
+            mark = "*" if c.cited else " "
+            console.print(f" {mark}[{c.num}] {c.ref} ({c.translator})")
+    if ans.invalid_citations:
+        console.print(f"[red]Неіснуючі посилання у відповіді: {ans.invalid_citations}[/red]")
     if ans.entities:
         console.print(f"[dim]Розпізнані сутності: {', '.join(ans.entities)}[/dim]")
 
@@ -64,6 +88,36 @@ def eval():
     """Run evaluation benchmarks against the golden set."""
     console.print("[bold blue]Запуск тестування на golden set...[/bold blue]")
     run_evaluation()
+
+
+@app.command("check-refs")
+def check_refs(
+    show_ok: bool = typer.Option(False, help="Показати й підтверджені посилання"),
+):
+    """Verify source_ref of seed relations against the ingested corpus."""
+    from collections import Counter
+
+    from sqlmodel import Session
+
+    from delphi.db.repo import engine
+    from delphi.eval.refs import check_relation_refs
+
+    with Session(engine) as session:
+        results = check_relation_refs(session)
+    counts = Counter(r.status for r in results)
+    labels = {
+        "ok": "[green]підтверджено[/green]",
+        "entity_missing": "[yellow]місце є, але сутність не згадано[/yellow]",
+        "ref_not_found": "[red]місце не знайдено[/red]",
+        "not_ingested": "[dim]джерело ще не в корпусі / Wikidata / manual[/dim]",
+    }
+    for status in ("ok", "entity_missing", "ref_not_found", "not_ingested"):
+        console.print(f"{labels[status]}: {counts.get(status, 0)}")
+    for r in results:
+        if r.status in ("entity_missing", "ref_not_found") or (show_ok and r.status == "ok"):
+            console.print(
+                f"  {r.status:15} {r.src_id} {r.rel} {r.dst_id} [{r.source_ref}] {r.detail}"
+            )
 
 
 wikidata_app = typer.Typer(help="Імпорт сутностей і місць з Wikidata + Pleiades (етап 1)")

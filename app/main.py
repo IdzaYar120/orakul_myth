@@ -87,11 +87,11 @@ def main():
         )
 
         st.divider()
-        st.caption("Версія: 0.1.0 (MVP Stage 2: карта)")
+        st.caption("Версія: 0.1.0 (MVP Stage 3: RAG-оракул)")
 
     # Render selected tab
     if chosen_tab == "Оракул":
-        render_oracle_tab(oracle_svc)
+        render_oracle_tab(oracle_svc, encyclopedia_svc)
     elif chosen_tab == "Енциклопедія":
         render_encyclopedia_tab(encyclopedia_svc)
     elif chosen_tab == "Карта":

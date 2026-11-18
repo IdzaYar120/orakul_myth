@@ -108,13 +108,19 @@ class Route(SQLModel, table=True):
 class Passage(SQLModel, table=True):
     __tablename__ = "passage"
 
-    id: str = Field(primary_key=True, index=True)  # hash(work + ref)
+    id: str = Field(primary_key=True, index=True)  # hash(source id + ref)
+    source_id: str | None = Field(default=None, index=True)  # id in data/sources.yaml
     work: str = Field(index=True)
     author: str = Field(index=True)
     translator: str
     ref: str = Field(index=True)
     text: str
     n_tokens: int = 0
+    notes_json: str | None = None  # translator's notes, kept apart from the ancient text
+
+    @property
+    def notes(self) -> list[str]:
+        return list(json.loads(self.notes_json)) if self.notes_json else []
 
 
 class PassageEntity(SQLModel, table=True):
