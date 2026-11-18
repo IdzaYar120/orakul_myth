@@ -11,5 +11,5 @@ class ParsedSection(BaseModel):
 
 
 def parse_tei_xml(file_path: Path) -> list[ParsedSection]:
-    """Парсинг TEI XML Perseus зі збереженням структури книга/розділ/параграф."""
+    """Parse Perseus TEI XML preserving book/chapter/paragraph structure."""
     return []

@@ -60,12 +60,12 @@ class EncyclopediaService:
             if not entity:
                 return None
 
-            # Аліаси
+            # Aliases
             aliases = [
                 a.alias for a in sess.exec(select(Alias).where(Alias.entity_id == entity_id)).all()
             ]
 
-            # Зв'язки
+            # Relationships
             relations_out: list[EntityRelationItem] = []
             rel_records = sess.exec(select(Relation).where(Relation.src_id == entity_id)).all()
             for r in rel_records:
@@ -80,7 +80,7 @@ class EncyclopediaService:
                     )
                 )
 
-            # Міфи
+            # Myths
             myths_list: list[dict[str, str]] = []
             myth_links = sess.exec(
                 select(MythEntity).where(MythEntity.entity_id == entity_id)

@@ -14,5 +14,5 @@ class Chunk(BaseModel):
 
 
 def chunk_sections(sections: list[ParsedSection], target_tokens: int = 400) -> list[Chunk]:
-    """Чанкінг по структурних одиницях тексту (300-600 токенів)."""
+    """Structure-based chunking of text units (300-600 tokens)."""
     return []

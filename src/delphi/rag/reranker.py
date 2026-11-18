@@ -4,8 +4,8 @@ from delphi.rag.retriever import RetrievedPassage
 
 class Reranker:
     """
-    Реранкер на базі cross-encoder (наприклад, BAAI/bge-reranker-v2-m3).
-    Відсікає результати з релевантністю нижче порога (min_relevance).
+    Cross-encoder reranker (e.g., BAAI/bge-reranker-v2-m3).
+    Filters out results with relevance below the threshold (min_relevance).
     """
 
     def __init__(self, model_name: str | None = None, min_relevance: float | None = None):
@@ -19,6 +19,6 @@ class Reranker:
         if not passages or not self.enabled:
             return passages[:top_k]
 
-        # Під час наступних етапів тут завантажується CrossEncoder
-        # Якщо скор найвищого уривка нижче порога, повертаємо порожній список
+        # CrossEncoder is loaded in subsequent stages
+        # If top score is below threshold, return empty list
         return passages[:top_k]

@@ -1,4 +1,4 @@
-"""Модуль RAG та сервіс Оракула."""
+"""RAG module and Oracle service."""
 
 from delphi.rag.models import Answer, Citation
 from delphi.rag.oracle import OracleService

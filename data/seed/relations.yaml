@@ -1,4 +1,4 @@
-# Родовід та зв'язки між сутностями
+# Lineage and entity relationships
 # rel: parent_of, spouse_of, sibling_of, killed, worshipped_at, born_at
 - src_id: zeus
   rel: parent_of

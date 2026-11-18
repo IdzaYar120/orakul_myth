@@ -10,8 +10,8 @@ from delphi.rag.retriever import HybridRetriever
 
 class OracleService:
     """
-    Головний сервіс RAG-чату «Дельфійський оракул».
-    Працює незалежно від Streamlit: використовується в UI, CLI та тестах.
+    Main service for the Delphi Oracle RAG chat.
+    Decoupled from Streamlit: used in UI, CLI, and automated tests.
     """
 
     def __init__(
@@ -33,9 +33,7 @@ class OracleService:
         history: list[dict[str, str]] | None = None,
         style: str = "піфія",
     ) -> Answer:
-        """
-        Обробляє запитання користувача та повертає структуровану відповідь з цитатами.
-        """
+        """Processes user question and returns structured Answer with source citations."""
         # 1. Entity linking + expansion
         entity_ids, expansion_terms = self.linker.extract_and_expand(question)
         expanded_query = f"{question} {' '.join(expansion_terms)}".strip()
@@ -54,7 +52,7 @@ class OracleService:
             top_k=settings.context_k,
         )
 
-        # 4. Якщо уривків немає або скор нижче порога
+        # 4. If no passages retrieved or score below threshold
         if not reranked_passages:
             refusal_text = (
                 "Дим над священним триножником розвіявся, і джерела мовчать про це. "
@@ -67,7 +65,7 @@ class OracleService:
                 grounded=False,
             )
 
-        # 5. Підготовка контексту цитат
+        # 5. Prepare citation context
         citations: list[Citation] = []
         context_blocks: list[str] = []
         for idx, p in enumerate(reranked_passages, 1):
@@ -91,8 +89,8 @@ class OracleService:
             context=context_str,
         )
 
-        # 6. Генерація відповіді
-        # Якщо API ключ відсутній або триває перевірка каркасу — повертаємо базовий текст
+        # 6. Response generation
+        # If API key is absent or testing skeleton, return baseline text
         answer_text = (
             f"Згідно зі свідченнями стародавніх текстів [{citations[0].num}], "
             f"воля богів відкривається тим, хто шукає знань."
@@ -111,7 +109,7 @@ class OracleService:
         history: list[dict[str, str]] | None = None,
         style: str = "піфія",
     ) -> Generator[str, None, Answer]:
-        """Стрімінг відповіді для відображення через st.write_stream."""
+        """Stream answer tokens for rendering via st.write_stream."""
         ans = self.ask(question, history, style)
         for word in ans.text.split(" "):
             yield word + " "

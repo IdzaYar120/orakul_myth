@@ -32,10 +32,10 @@ def test_seed_and_search(in_memory_engine):
         assert delphi_place is not None
         assert delphi_place.place_kind == "sanctuary"
 
-        # Тест пошуку FTS5
+        # FTS5 search test
         found = search_entities("Зевс", session=session)
         assert "zeus" in found
 
-        # Тест нечіткого пошуку RapidFuzz (опечатка)
+        # RapidFuzz fuzzy search test (typo tolerance)
         found_typo = search_entities("Зевсс", session=session)
         assert "zeus" in found_typo

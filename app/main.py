@@ -7,7 +7,7 @@ from delphi.db.repo import init_db
 from delphi.encyclopedia.service import EncyclopediaService, MapService
 from delphi.rag.oracle import OracleService
 
-# Налаштування сторінки Streamlit
+# Streamlit page setup
 st.set_page_config(
     page_title="Дельфійський оракул",
     page_icon="🔮",
@@ -18,7 +18,7 @@ st.set_page_config(
 
 @st.cache_resource
 def get_services():
-    """Створює сервіси та ініціалізує базу даних один раз."""
+    """Initializes database and caches service instances once."""
     init_db()
     encyclopedia_svc = EncyclopediaService()
     map_svc = MapService()
@@ -29,12 +29,12 @@ def get_services():
 def main():
     encyclopedia_svc, map_svc, oracle_svc = get_services()
 
-    # Обробка query params (?entity=...)
+    # Handle URL query params (?entity=...)
     query_params = st.query_params
     if "entity" in query_params and "selected_entity" not in st.session_state:
         st.session_state["selected_entity"] = query_params["entity"]
 
-    # Сайдбар
+    # Sidebar
     with st.sidebar:
         st.title("🏛️ Дельфи")
         st.markdown(
@@ -47,7 +47,7 @@ def main():
         )
         st.divider()
 
-        # Вибір активної вкладки
+        # Active tab selection
         tab_options = ["Оракул", "Енциклопедія", "Карта"]
         default_index = 0
         if "active_tab" in st.session_state and st.session_state["active_tab"] in tab_options:
@@ -64,7 +64,7 @@ def main():
         st.divider()
         st.caption("Версія: 0.1.0 (MVP Stage 0: Skeleton)")
 
-    # Відображення вибраного розділу
+    # Render selected tab
     if chosen_tab == "Оракул":
         render_oracle_tab(oracle_svc)
     elif chosen_tab == "Енциклопедія":

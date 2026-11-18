@@ -6,7 +6,7 @@ from delphi.config import settings
 
 
 def download_sources(sources_yaml: Path | None = None) -> None:
-    """Завантажує тексти античних авторів у data/raw/ згідно із sources.yaml."""
+    """Download ancient texts into data/raw/ according to sources.yaml."""
     src_file = sources_yaml or (settings.data_dir / "sources.yaml")
     if not src_file.exists():
         raise FileNotFoundError(f"Файл конфігурації джерел не знайдено: {src_file}")

@@ -26,7 +26,7 @@ def test_encyclopedia_service(seeded_engine):
         assert card.name_uk == "Аполлон"
         assert len(card.relations) > 0
 
-        # Пошук
+        # Search test
         search_res = svc.search("Аполлон")
         assert len(search_res) > 0
         assert search_res[0].id == "apollo"

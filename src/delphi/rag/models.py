@@ -13,5 +13,5 @@ class Citation(BaseModel):
 class Answer(BaseModel):
     text: str
     citations: list[Citation] = Field(default_factory=list)
-    entities: list[str] = Field(default_factory=list)  # entity_ids згадані у відповіді
+    entities: list[str] = Field(default_factory=list)  # entity_ids mentioned in the answer
     grounded: bool = True

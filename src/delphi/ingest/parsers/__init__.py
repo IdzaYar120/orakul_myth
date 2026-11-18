@@ -1,1 +1,1 @@
-"""Парсери форматів TEI XML та Project Gutenberg."""
+"""TEI XML and Project Gutenberg parsers."""

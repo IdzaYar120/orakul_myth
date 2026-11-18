@@ -2,5 +2,5 @@ from delphi.ingest.chunker import Chunk
 
 
 def build_indexes(chunks: list[Chunk]) -> None:
-    """Індексація чанків у Chroma та створення BM25 індексу."""
+    """Index chunks in Chroma vector store and create BM25 index."""
     pass

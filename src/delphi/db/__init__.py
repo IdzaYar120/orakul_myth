@@ -1,4 +1,4 @@
-"""Моделі бази даних SQLite."""
+"""SQLite database models."""
 
 from delphi.db.models import (
     Alias,

@@ -1,1 +1,1 @@
-"""Модуль завантаження та інгесту текстів."""
+"""Text ingestion and parsing module."""

@@ -1,4 +1,4 @@
-# Маршрути героїв для відображення на карті
+# Hero itineraries and journeys for map visualization
 - id: odysseus_wanderings
   title_uk: Мандри Одіссея (Троя — Ітака)
   hero_id: odysseus

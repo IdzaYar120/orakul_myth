@@ -1,4 +1,4 @@
-# Початкові сутності міфології для старту каркасу
+# Initial mythological entities for project skeleton
 - id: zeus
   type: god
   name_uk: Зевс

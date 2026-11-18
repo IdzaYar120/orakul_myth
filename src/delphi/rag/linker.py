@@ -8,7 +8,7 @@ from delphi.db.repo import engine
 
 
 class EntityLinker:
-    """Знаходить згадані у запитанні українські назви та додає англійські форми."""
+    """Detects Ukrainian entity names in questions and attaches English equivalents."""
 
     def __init__(self, session: Session | None = None):
         self._session = session
@@ -18,18 +18,18 @@ class EntityLinker:
 
     def extract_and_expand(self, question: str) -> tuple[list[str], list[str]]:
         """
-        Знаходить в питанні сутності.
-        Повертає:
+        Detects entities mentioned in the query.
+        Returns:
           (found_entity_ids, english_aliases_for_expansion)
         """
         session = self._get_session()
         try:
-            # Витягуємо всі аліаси
+            # Retrieve all aliases
             aliases = session.exec(select(Alias)).all()
             if not aliases:
                 return [], []
 
-            # Пошук слів у запитанні
+            # Extract words from the question
             words = re.findall(r"\b\w{3,}\b", question, flags=re.UNICODE)
             found_ids: set[str] = set()
 
@@ -47,7 +47,7 @@ class EntityLinker:
                 for matched_name, _, _ in matches:
                     found_ids.add(alias_map[matched_name])
 
-            # Для знайдених id шукаємо англійські аліаси
+            # Look up English/Latin aliases for expansion
             expansion_terms: list[str] = []
             for eid in found_ids:
                 en_aliases = session.exec(
@@ -64,7 +64,7 @@ class EntityLinker:
                 session.close()
 
     def get_glossary_for_entities(self, entity_ids: list[str]) -> str:
-        """Повертає рядок словника перекладу для промпту: Achilles -> Ахілл, Apollo -> Аполлон."""
+        """Returns name-translation mapping for the prompt: e.g. Achilles -> Ахілл."""
         if not entity_ids:
             return "Загальноприйняті норми українського правопису античних імен."
 

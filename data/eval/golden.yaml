@@ -1,5 +1,5 @@
-# Golden set для оцінки якості RAG (delphi eval)
-# Типи: factual, multi_hop, conflicting, negative (пастки)
+# Golden set for RAG evaluation (delphi eval)
+# Question types: factual, multi_hop, conflicting, negative (trap questions)
 
 questions:
   - id: q001

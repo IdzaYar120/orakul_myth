@@ -15,7 +15,7 @@ console = Console()
 
 @app.command()
 def seed():
-    """Ініціалізувати SQLite БД та заповнити початковими даними із seed-файлів."""
+    """Initialize SQLite database and populate with initial seed data."""
     console.print("[bold yellow]Ініціалізація бази даних та сідування...[/bold yellow]")
     counts = seed_database()
     console.print(
@@ -28,7 +28,7 @@ def seed():
 
 @app.command()
 def ingest():
-    """Завантажити тексти, розбити на чанки, позначити сутності та проіндексувати."""
+    """Download texts, chunk, tag entities, and build indexes."""
     console.print("[bold cyan]Запуск офлайн-інгесту корпусів...[/bold cyan]")
     console.print("[yellow]Етап офлайн-інгесту буде розгорнуто в Етапі 3.[/yellow]")
 
@@ -38,7 +38,7 @@ def ask(
     question: str = typer.Argument(..., help="Питання до Дельфійського оракула"),
     style: str = typer.Option("піфія", "--style", "-s", help="Стиль: 'піфія' або 'науковий'"),
 ):
-    """Поставити питання Оракулу прямо з термінала."""
+    """Ask the Oracle directly from the command line."""
     console.print(Panel(f"[bold cyan]Питання:[/bold cyan] {question} (стиль: {style})"))
     oracle = OracleService()
     ans = oracle.ask(question, style=style)
@@ -56,7 +56,7 @@ def ask(
 
 @app.command()
 def eval():
-    """Запустити оцінку точності відповідей на golden set."""
+    """Run evaluation benchmarks against the golden set."""
     console.print("[bold blue]Запуск тестування на golden set...[/bold blue]")
     run_evaluation()
 

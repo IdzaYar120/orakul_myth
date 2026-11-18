@@ -1,5 +1,5 @@
-# Джерела античних текстів для корпусу RAG
-# Тільки суспільне надбання (Public Domain / CCO / ліцензії без порушень авторського права)
+# Ancient text sources for the RAG corpus
+# Public domain only (Public Domain / CC0 / compliant copyright-free translations)
 
 sources:
   - id: apollodorus_library

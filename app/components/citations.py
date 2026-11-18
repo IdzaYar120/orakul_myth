@@ -4,7 +4,7 @@ from delphi.rag.models import Citation
 
 
 def render_citations(citations: list[Citation]):
-    """Відображає розгортаний список цитат-джерел під відповіддю оракула."""
+    """Renders expandable list of source citations below the oracle's answer."""
     if not citations:
         return
 

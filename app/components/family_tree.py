@@ -5,10 +5,7 @@ from delphi.encyclopedia.models import EntityRelationItem
 
 
 def render_family_tree(entity_name: str, relations: list[EntityRelationItem], height: int = 250):
-    """
-    Відображає міні-граф родоводу (батьки, діти, подружжя)
-    за допомогою pyvis / HTML компонента.
-    """
+    """Renders mini lineage graph (parents, children, spouses) using pyvis HTML component."""
     if not relations:
         st.info("Відомостей про родовід у джерелах наразі немає.")
         return
@@ -43,7 +40,7 @@ def render_family_tree(entity_name: str, relations: list[EntityRelationItem], he
         html_str = net.generate_html()
         components.html(html_str, height=height)
     except Exception:
-        # Fallback якщо pyvis не може згенерувати HTML
+        # Fallback if pyvis fails to generate HTML
         st.markdown("**Зв'язки родоводу:**")
         for r in relations:
             st.markdown(f"- *{r.rel}*: **{r.target_name_uk}** `[{r.source_ref}]`")

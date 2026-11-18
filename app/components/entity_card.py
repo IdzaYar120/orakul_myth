@@ -5,7 +5,7 @@ from delphi.encyclopedia.models import EntityCard
 
 
 def render_entity_card(card: EntityCard):
-    """Відображає детальну картку сутності."""
+    """Renders a detailed entity card."""
     st.subheader(f"{card.name_uk} ({card.name_en} / {card.name_lat or ''})")
 
     col1, col2 = st.columns([2, 1])
@@ -27,12 +27,12 @@ def render_entity_card(card: EntityCard):
                 f"[Wikidata ({card.wikidata_id})](https://www.wikidata.org/wiki/{card.wikidata_id})"
             )
 
-    # Граф родоводу
+    # Lineage graph
     if card.relations:
         st.markdown("##### 🌿 Родовід і зв'язки")
         render_family_tree(card.name_uk, card.relations)
 
-    # Пов'язані міфи
+    # Associated myths
     if card.myths:
         st.markdown("##### 🏛️ Пов'язані міфи")
         for m in card.myths:

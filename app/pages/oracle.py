@@ -8,7 +8,7 @@ def render_oracle_tab(oracle_service: OracleService):
     st.header("🔮 Дельфійський оракул")
     st.caption("ШІ-чат, що відповідає на основі античних джерел із точними посиланнями.")
 
-    # Налаштування стилю
+    # Style configuration
     col1, col2 = st.columns([1, 3])
     with col1:
         style = st.selectbox(
@@ -17,7 +17,7 @@ def render_oracle_tab(oracle_service: OracleService):
             format_func=lambda s: "🏛️ Піфія (образно)" if s == "піфія" else "📖 Науковий (стисло)",
         )
 
-    # Ініціалізація історії повідомлень у st.session_state
+    # Initialize message history in st.session_state
     if "messages" not in st.session_state:
         st.session_state["messages"] = [
             {
@@ -31,7 +31,7 @@ def render_oracle_tab(oracle_service: OracleService):
             }
         ]
 
-    # Відображення попередніх повідомлень
+    # Render message history
     for msg in st.session_state["messages"]:
         with st.chat_message(msg["role"]):
             st.markdown(msg["text"])
@@ -46,7 +46,7 @@ def render_oracle_tab(oracle_service: OracleService):
                             st.session_state["active_tab"] = "Енциклопедія"
                             st.rerun()
 
-    # Перевірка наявності відкладеного питання (наприклад, з енциклопедії)
+    # Check for pending question (e.g. from encyclopedia)
     prompt = None
     if st.session_state.get("pending_question"):
         prompt = st.session_state.pop("pending_question")
@@ -54,12 +54,12 @@ def render_oracle_tab(oracle_service: OracleService):
         prompt = st.chat_input("Поставити запитання Оракулу...")
 
     if prompt:
-        # Додаємо запитання користувача
+        # Append user query
         st.session_state["messages"].append({"role": "user", "text": prompt})
         with st.chat_message("user"):
             st.markdown(prompt)
 
-        # Отримуємо відповідь
+        # Generate response
         with st.chat_message("assistant"):
             with st.spinner("Піфія вдихає священні випари триножника..."):
                 answer = oracle_service.ask(prompt, style=style)

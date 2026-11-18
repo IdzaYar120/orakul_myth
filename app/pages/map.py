@@ -11,7 +11,7 @@ def render_map_tab(map_service: MapService):
 
     layer = map_service.get_map_layer()
 
-    # Створюємо Folium карту з центром в Егейському морі
+    # Create Folium map centered on the Aegean Sea
     m = folium.Map(
         location=[38.5, 24.0],
         zoom_start=6,
@@ -19,7 +19,7 @@ def render_map_tab(map_service: MapService):
         control_scale=True,
     )
 
-    # Кольори для типів місць
+    # Marker colors by place kind
     kind_colors = {
         "sanctuary": "purple",
         "city": "blue",
@@ -29,7 +29,7 @@ def render_map_tab(map_service: MapService):
         "region": "darkred",
     }
 
-    # Додаємо маркери
+    # Add place markers
     for marker in layer.markers:
         color = kind_colors.get(marker.place_kind, "blue")
         popup_html = f"""
@@ -43,7 +43,7 @@ def render_map_tab(map_service: MapService):
             icon=folium.Icon(color=color, icon="info-sign"),
         ).add_to(m)
 
-    # Додаємо маршрути
+    # Add hero itineraries
     for r in layer.routes:
         if len(r.stops) >= 2:
             coords = [[s.lat, s.lon] for s in r.stops]
@@ -71,6 +71,6 @@ def render_map_tab(map_service: MapService):
                 st.markdown(f"- **{r.title_uk}**")
                 st.caption(r.description_uk or "")
 
-        # Якщо клікнули на маркер
+        # Marker click handler
         if map_output and map_output.get("last_object_clicked"):
             st.info("Вибрано об'єкт на карті.")

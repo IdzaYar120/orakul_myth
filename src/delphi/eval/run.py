@@ -10,7 +10,7 @@ console = Console()
 
 
 def run_evaluation(golden_path: Path | None = None) -> None:
-    """Запуск оцінки якості на тестовому наборі golden set."""
+    """Run quality evaluation on the golden set benchmark."""
     path = golden_path or (settings.data_dir / "eval" / "golden.yaml")
     if not path.exists():
         console.print(f"[red]Файл golden set не знайдено: {path}[/red]")

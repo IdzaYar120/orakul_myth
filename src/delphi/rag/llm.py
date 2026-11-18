@@ -1,4 +1,5 @@
 from typing import cast
+
 from langchain_core.language_models.chat_models import BaseChatModel
 from pydantic import SecretStr
 
@@ -6,6 +7,7 @@ from delphi.config import settings
 
 
 def get_chat_model(temperature: float = 0.2) -> BaseChatModel:
+    """Factory creating an LLM chat instance matching the provider configured in .env."""
     provider = settings.llm_provider.lower()
 
     if provider == "openai":

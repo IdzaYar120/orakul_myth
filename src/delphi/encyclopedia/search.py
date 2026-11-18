@@ -6,10 +6,9 @@ from delphi.db.repo import engine
 
 
 def search_entities(query: str, session: Session | None = None) -> list[str]:
-    """
-    Пошук сутностей: спочатку через SQLite FTS5;
-    якщо порожньо — rapidfuzz по аліасах (для виправлення помилок або транслітерації).
-    Повертає список entity_id.
+    """Search entities: SQLite FTS5 first, then rapidfuzz on aliases as fallback.
+
+    Returns a list of matching entity_ids.
     """
     query = query.strip()
     if not query:
@@ -17,10 +16,10 @@ def search_entities(query: str, session: Session | None = None) -> list[str]:
 
     sess = session or Session(engine)
     try:
-        # 1. Спроба FTS5
-        # Екрануємо лапки для FTS5
+        # 1. Try SQLite FTS5
+        # Escape quotes for FTS5 syntax
         clean_q = query.replace('"', '""')
-        # Підтримка префіксного пошуку
+        # Enable prefix search
         fts_query = f'"{clean_q}"*'
         stmt = text("SELECT entity_id FROM entity_fts WHERE entity_fts MATCH :q LIMIT 20;")
         results = sess.connection().execute(stmt, parameters={"q": fts_query}).fetchall()
@@ -28,7 +27,7 @@ def search_entities(query: str, session: Session | None = None) -> list[str]:
         if ids:
             return ids
 
-        # 2. Якщо FTS5 нічого не дав — RapidFuzz по всіх аліасах
+        # 2. Fallback: RapidFuzz across all known aliases
         all_aliases = sess.exec(select(Alias)).all()
         if not all_aliases:
             return []

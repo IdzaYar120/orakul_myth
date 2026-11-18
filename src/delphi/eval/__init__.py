@@ -1,1 +1,1 @@
-"""Модуль оцінки якості RAG (golden set, ragas / LLM-суддя)."""
+"""RAG evaluation module (golden set, ragas / LLM judge)."""

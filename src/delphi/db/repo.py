@@ -35,7 +35,7 @@ def init_db(engine_override=None) -> None:
     eng = engine_override or engine
     SQLModel.metadata.create_all(eng)
 
-    # Ініціалізація SQLite FTS5 віртуальної таблиці для швидкого повнотекстового пошуку
+    # Initialize SQLite FTS5 virtual table for fast full-text search
     with eng.connect() as conn:
         conn.execute(
             text(
@@ -228,7 +228,7 @@ def seed_database(data_dir: Path | None = None, engine_override=None) -> dict[st
 
         session.commit()
 
-        # Оновлення FTS5 індексу
+        # Refresh FTS5 index
         _rebuild_fts5(session)
 
     return counts

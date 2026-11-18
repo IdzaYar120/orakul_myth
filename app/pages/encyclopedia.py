@@ -18,7 +18,7 @@ def render_encyclopedia_tab(service: EncyclopediaService):
             index=0,
         )
 
-    # Якщо користувач вибрав конкретну сутність (через клік або URL)
+    # If a specific entity is selected (via click or URL)
     selected_id = st.session_state.get("selected_entity")
 
     if search_query:
@@ -39,7 +39,7 @@ def render_encyclopedia_tab(service: EncyclopediaService):
         else:
             st.error(f"Сутність з ID '{selected_id}' не знайдена.")
     else:
-        # Показуємо список доступних сутностей
+        # Display available entities list
         actual_filter = None if type_filter == "всі" else type_filter
         entities = service.list_entities(entity_type=actual_filter)
         if not entities:
