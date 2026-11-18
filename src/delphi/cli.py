@@ -128,13 +128,14 @@ def wikidata_draft(
     seed_dir: Path | None = typer.Option(None, help="data/seed"),
 ):
     """Append entries missing from the seed YAML (existing entries are never modified)."""
-    from delphi.ingest.wikidata import append_yaml, default_dir, draft_entries
+    from delphi.ingest.wikidata import append_yaml, default_dir, draft_entries, load_rejected
 
     snap_path = snapshot or default_dir() / "snapshot.yaml"
     seed = seed_dir or settings.data_dir / "seed"
     with open(snap_path, encoding="utf-8") as f:
         snap = yaml.safe_load(f)
-    ents, places, rels = draft_entries(snap, seed)
+    rejected = load_rejected(default_dir() / "rejected.yaml")
+    ents, places, rels = draft_entries(snap, seed, rejected)
     header = "draft from Wikidata: перевірити назви, описи, source_ref"
     append_yaml(seed / "entities.yaml", ents, header)
     append_yaml(seed / "places.yaml", places, header)

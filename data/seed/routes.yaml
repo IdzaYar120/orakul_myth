@@ -1,22 +1,218 @@
-# Hero itineraries and journeys for map visualization
+# Hero itineraries for the map.
+# Stops follow the order of the narrative. Coordinates of mythical stops are *traditional
+# identifications* (ancient and modern guesses), not facts:
+#   certainty: high = real, known place; medium = ancient identification; low = speculative.
+# entity_id links a stop to an encyclopedia card (optional: some stops have no card).
+# source_ref: book.line of the narrative (Hom. Od. = Odyssey, Ap. Rhod. = Apollonius' Argonautica);
+#   line numbers are approximate pointers to the episode, to be checked against the corpus.
+
 - id: odysseus_wanderings
-  title_uk: Мандри Одіссея (Троя — Ітака)
+  title_uk: Мандри Одіссея
   hero_id: odysseus
-  description_uk: Традиційні ототожнення пунктів маршруту Одіссея від Трої до Ітаки.
+  myth_id: odysseus_homecoming
+  description_uk: >-
+    Десятирічне повернення Одіссея з Трої на Ітаку за «Одіссеєю». Більшість зупинок —
+    традиційні ототожнення, а не факт; сам Гомер розміщує частину мандрів поза відомим світом.
   stops:
     - stop_number: 1
       entity_id: troy
       title: Троя
-      lat: 39.9575
-      lon: 26.2389
+      lat: 39.95744
+      lon: 26.23852
       certainty: high
-      source_ref: "Hom. Od. 9.39"
-      description: "Відплиття ахейського флоту після зруйнування Трої"
+      source_ref: Hom. Od. 9.39
+      description: Відплиття від зруйнованої Трої.
     - stop_number: 2
+      entity_id: thrace
+      title: Ісмар, країна кіконів
+      lat: 40.98194
+      lon: 25.515
+      certainty: medium
+      source_ref: Hom. Od. 9.39
+      description: Набіг на місто кіконів Ісмар у Фракії і перші втрати.
+    - stop_number: 3
+      entity_id: null
+      title: Мис Малея
+      lat: 36.43806
+      lon: 23.19861
+      certainty: high
+      source_ref: Hom. Od. 9.80
+      description: Північний вітер біля Малеї зносить кораблі в невідоме море.
+    - stop_number: 4
+      entity_id: null
+      title: Країна лотофагів (Джерба?)
+      lat: 33.7837
+      lon: 10.8833
+      certainty: low
+      source_ref: Hom. Od. 9.84
+      description: Плоди лотосу змушують забути про повернення.
+    - stop_number: 5
+      entity_id: polyphemus
+      title: Острів кіклопів (Сицилія?)
+      lat: 37.5
+      lon: 15.1
+      certainty: low
+      source_ref: Hom. Od. 9.106
+      description: Печера Поліфема; Одіссей осліплює кіклопа і накликає гнів Посейдона.
+    - stop_number: 6
+      entity_id: null
+      title: Острів Еола (Ліпарі?)
+      lat: 38.46728
+      lon: 14.95544
+      certainty: low
+      source_ref: Hom. Od. 10.1
+      description: Еол дарує міх із вітрами, який супутники розв'язують біля самої Ітаки.
+    - stop_number: 7
+      entity_id: null
+      title: Лестригони (Формія?)
+      lat: 41.25639
+      lon: 13.60694
+      certainty: low
+      source_ref: Hom. Od. 10.80
+      description: Велетні-людожери нищать усі кораблі, крім корабля Одіссея.
+    - stop_number: 8
+      entity_id: aeaea
+      title: Ея, острів Кірки (мис Чирчео?)
+      lat: 41.23109
+      lon: 13.05553
+      certainty: low
+      source_ref: Hom. Od. 10.135
+      description: Кірка обертає супутників на свиней; Одіссей живе в неї рік.
+    - stop_number: 9
+      entity_id: sirens
+      title: Острів сирен (Лі Галлі?)
+      lat: 40.58103
+      lon: 14.43232
+      certainty: low
+      source_ref: Hom. Od. 12.165
+      description: Одіссей слухає спів сирен, прив'язаний до щогли.
+    - stop_number: 10
+      entity_id: strait_of_messina
+      title: Скілла і Харібда (Мессинська протока)
+      lat: 38.2458
+      lon: 15.6325
+      certainty: medium
+      source_ref: Hom. Od. 12.234
+      description: Між шестиголовою Скіллою і вирвою Харібдою гинуть шестеро супутників.
+    - stop_number: 11
+      entity_id: sicily
+      title: Трінакія, острів корів Геліоса (Сицилія?)
+      lat: 37.3
+      lon: 14.9
+      certainty: low
+      source_ref: Hom. Od. 12.260
+      description: Супутники з'їдають священних корів Геліоса; Зевс розбиває корабель.
+    - stop_number: 12
+      entity_id: ogygia
+      title: Огігія, острів Каліпсо (Гоцо?)
+      lat: 36.045
+      lon: 14.25889
+      certainty: low
+      source_ref: Hom. Od. 12.448
+      description: Сім років у німфи Каліпсо.
+    - stop_number: 13
+      entity_id: corfu
+      title: Схерія, країна феаків (Керкіра)
+      lat: 39.61997
+      lon: 19.86654
+      certainty: medium
+      source_ref: Hom. Od. 6.1
+      description: Навсікая знаходить Одіссея; феаки відвозять його додому.
+    - stop_number: 14
       entity_id: ithaca
       title: Ітака
-      lat: 38.4285
-      lon: 20.6765
+      lat: 38.40032
+      lon: 20.69281
       certainty: high
-      source_ref: "Hom. Od. 13.93"
-      description: "Повернення на рідну Ітаку за допомогою феаків"
+      source_ref: Hom. Od. 13.93
+      description: Повернення і помста женихам.
+
+- id: argonauts_voyage
+  title_uk: Похід аргонавтів
+  hero_id: jason
+  myth_id: golden_fleece
+  description_uk: >-
+    Шлях «Арго» до Колхіди за «Аргонавтикою» Аполлонія Родоського. Шлях до Колхіди
+    географічно впізнаваний; зворотний (через Істр і західні моря) — спірний, показано
+    скорочено.
+  stops:
+    - stop_number: 1
+      entity_id: iolcus
+      title: Іолк
+      lat: 39.3663
+      lon: 22.96886
+      certainty: high
+      source_ref: Ap. Rhod. 1.317
+      description: Відплиття «Арго» з гавані Пагаси біля Іолка.
+    - stop_number: 2
+      entity_id: lemnos
+      title: Лемнос
+      lat: 39.90502
+      lon: 25.22909
+      certainty: high
+      source_ref: Ap. Rhod. 1.609
+      description: Острів жінок на чолі з Гіпсипілою.
+    - stop_number: 3
+      entity_id: samothrace
+      title: Самотракія
+      lat: 40.45231
+      lon: 25.57624
+      certainty: high
+      source_ref: Ap. Rhod. 1.915
+      description: Посвячення в містерії за порадою Орфея.
+    - stop_number: 4
+      entity_id: dardanelles
+      title: Геллеспонт
+      lat: 40.21881
+      lon: 26.47687
+      certainty: high
+      source_ref: Ap. Rhod. 1.927
+      description: Прохід протокою, названою на честь Гелли.
+    - stop_number: 5
+      entity_id: cyzicus
+      title: Кізік
+      lat: 40.38556
+      lon: 27.88319
+      certainty: high
+      source_ref: Ap. Rhod. 1.936
+      description: Гостинність царя Кізіка і трагічний нічний бій.
+    - stop_number: 6
+      entity_id: bosporus
+      title: Боспор і Сімплегади
+      lat: 41.11486
+      lon: 29.06215
+      certainty: medium
+      source_ref: Ap. Rhod. 2.549
+      description: Проліт між скелями, що стуляються, слідом за голубкою.
+    - stop_number: 7
+      entity_id: colchis
+      title: Колхіда (гирло Фасіду)
+      lat: 42.15
+      lon: 41.67
+      certainty: medium
+      source_ref: Ap. Rhod. 2.1260
+      description: Прибуття до царства Еета; Медея допомагає здобути руно.
+    - stop_number: 8
+      entity_id: corfu
+      title: Дрепана, острів феаків (Керкіра)
+      lat: 39.61997
+      lon: 19.86654
+      certainty: low
+      source_ref: Ap. Rhod. 4.982
+      description: На зворотному шляху — весілля Ясона і Медеї в царя Алкіноя.
+    - stop_number: 9
+      entity_id: crete
+      title: Крит
+      lat: 35.20612
+      lon: 25.12506
+      certainty: medium
+      source_ref: Ap. Rhod. 4.1638
+      description: Медея долає мідного велетня Талоса.
+    - stop_number: 10
+      entity_id: iolcus
+      title: Повернення до Іолка
+      lat: 39.3663
+      lon: 22.96886
+      certainty: high
+      source_ref: Ap. Rhod. 4.1781
+      description: Кінець подорожі.

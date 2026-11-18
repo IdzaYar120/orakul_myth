@@ -17,6 +17,16 @@ OSM_ATTRIBUTION = (
 )
 PLEIADES_ATTRIBUTION = 'Places: <a href="https://pleiades.stoa.org/">Pleiades</a> (CC BY)'
 
+# Font Awesome 4 icon names (folium.Icon prefix="fa")
+KIND_ICONS = {
+    "sanctuary": "university",
+    "city": "building",
+    "mountain": "caret-up",
+    "island": "anchor",
+    "river": "tint",
+    "region": "flag",
+}
+
 KIND_COLORS = {
     "sanctuary": "purple",
     "city": "blue",
@@ -27,9 +37,7 @@ KIND_COLORS = {
 }
 
 
-def base_map(
-    location: tuple[float, float] = (38.0, 24.0), zoom: int = 6, layer_control: bool = False
-) -> folium.Map:
+def base_map(location: tuple[float, float] = (38.0, 24.0), zoom: int = 6) -> folium.Map:
     m = folium.Map(location=list(location), zoom_start=zoom, tiles=None, control_scale=True)
     folium.TileLayer(
         tiles=ESRI_LIGHT_GRAY_URL,
@@ -44,8 +52,8 @@ def base_map(
         max_zoom=19,
         show=False,
     ).add_to(m)
-    if layer_control:
-        folium.LayerControl(collapsed=True).add_to(m)
+    # A LayerControl must be passed to st_folium(layer_control=...), not added to the map:
+    # streamlit-folium fails with "Cannot read properties of undefined (reading 'setZIndex')".
     return m
 
 
@@ -59,7 +67,11 @@ def render_mini_map(markers: list[MapMarker], key: str, height: int = 280) -> No
         folium.Marker(
             location=[mk.lat, mk.lon],
             tooltip=f"{label} ({kind.lower()})",
-            icon=folium.Icon(color=KIND_COLORS.get(mk.place_kind, "blue"), icon="info-sign"),
+            icon=folium.Icon(
+                color=KIND_COLORS.get(mk.place_kind, "blue"),
+                icon=KIND_ICONS.get(mk.place_kind, "info"),
+                prefix="fa",
+            ),
         ).add_to(m)
     if len(markers) > 1:
         m.fit_bounds([[mk.lat, mk.lon] for mk in markers], padding=(30, 30), max_zoom=8)

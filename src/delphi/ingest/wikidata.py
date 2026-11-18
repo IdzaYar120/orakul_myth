@@ -353,10 +353,25 @@ def _draft_aliases(rec: dict[str, Any]) -> list[dict[str, str]]:
     return aliases
 
 
+def load_rejected(path: Path) -> set[tuple[str, str, str]]:
+    """Relations rejected during curation (data/wikidata/rejected.yaml), as (src, rel, dst)."""
+    if not path.exists():
+        return set()
+    with open(path, encoding="utf-8") as f:
+        data = yaml.safe_load(f) or {}
+    return {(r["src_id"], r["rel"], r["dst_id"]) for r in data.get("relations", [])}
+
+
 def draft_entries(
-    snapshot: dict[str, Any], seed_dir: Path
+    snapshot: dict[str, Any],
+    seed_dir: Path,
+    rejected: set[tuple[str, str, str]] | None = None,
 ) -> tuple[list[dict[str, Any]], list[dict[str, Any]], list[dict[str, Any]]]:
-    """New entities / places / relations that are not yet in the seed YAML."""
+    """New entities / places / relations that are not yet in the seed YAML.
+
+    Relations listed in ``rejected`` (curated out earlier) are never proposed again.
+    """
+    rejected = rejected or set()
     existing_entities = {e["id"] for e in _load_yaml_list(seed_dir / "entities.yaml")}
     existing_places = {p["entity_id"] for p in _load_yaml_list(seed_dir / "places.yaml")}
     existing_rel = {
@@ -415,6 +430,7 @@ def draft_entries(
         r
         for r in snapshot.get("relations", [])
         if (r["src_id"], r["rel"], r["dst_id"]) not in existing_rel
+        and (r["src_id"], r["rel"], r["dst_id"]) not in rejected
         # spouse_of is symmetric
         and not (r["rel"] == "spouse_of" and (r["dst_id"], r["rel"], r["src_id"]) in existing_rel)
     ]

@@ -142,19 +142,36 @@ def test_myths_valid(all_ids):
             assert ent.get("role", "participant") in MYTH_ROLES, f"{m['id']}: {ent}"
 
 
-def test_routes_reference_existing_ids(all_ids):
-    for r in _load("routes.yaml"):
+def test_routes_valid(all_ids):
+    routes = _load("routes.yaml")
+    myth_ids = {m["id"] for m in _load("myths.yaml")}
+    assert {"odysseus_wanderings", "argonauts_voyage"} <= {r["id"] for r in routes}
+    for r in routes:
         if r.get("hero_id"):
             assert r["hero_id"] in all_ids, r["id"]
+        if r.get("myth_id"):
+            assert r["myth_id"] in myth_ids, r["id"]
         stops = r.get("stops", [])
         assert len(stops) >= 2, f"{r['id']}: route needs at least 2 stops"
         numbers = [s["stop_number"] for s in stops]
-        assert numbers == sorted(numbers), f"{r['id']}: stops out of order"
+        assert numbers == list(range(1, len(stops) + 1)), f"{r['id']}: stop numbers"
         for s in stops:
-            assert s["entity_id"] in all_ids, f"{r['id']}: unknown stop {s['entity_id']}"
-            assert LAT_RANGE[0] <= s["lat"] <= LAT_RANGE[1]
-            assert LON_RANGE[0] <= s["lon"] <= LON_RANGE[1]
+            # entity_id is optional (e.g. the Lotus-eaters have no card)
+            if s.get("entity_id") is not None:
+                assert s["entity_id"] in all_ids, f"{r['id']}: unknown stop {s['entity_id']}"
+            assert s.get("title"), f"{r['id']}: stop {s['stop_number']} without title"
+            assert s.get("certainty", "high") in {"high", "medium", "low"}, s
+            assert LAT_RANGE[0] <= s["lat"] <= LAT_RANGE[1], s
+            assert LON_RANGE[0] <= s["lon"] <= LON_RANGE[1], s
             assert s.get("source_ref"), f"{r['id']}: stop without source_ref"
+
+
+def test_rejected_relations_stay_out_of_seed():
+    with open(DATA_DIR / "wikidata" / "rejected.yaml", encoding="utf-8") as f:
+        data = yaml.safe_load(f) or {}
+    rejected = {(r["src_id"], r["rel"], r["dst_id"]) for r in data["relations"]}
+    seeded = {(r["src_id"], r["rel"], r["dst_id"]) for r in _load("relations.yaml")}
+    assert not rejected & seeded
 
 
 def test_seed_matches_wikidata_selection(entities, places):

@@ -86,6 +86,7 @@ class Route(SQLModel, table=True):
     id: str = Field(primary_key=True, index=True)
     title_uk: str
     hero_id: str | None = Field(default=None, foreign_key="entity.id", index=True)
+    myth_id: str | None = Field(default=None, foreign_key="myth.id", index=True)
     description_uk: str | None = None
     stops_json: str = "[]"
 

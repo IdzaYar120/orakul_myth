@@ -284,6 +284,8 @@
     - {entity_id: iolcus, role: location}
     - {entity_id: lemnos, role: location}
     - {entity_id: dardanelles, role: location}
+    - {entity_id: cyzicus, role: location}
+    - {entity_id: bosporus, role: location}
     - {entity_id: colchis, role: location}
 
 - id: calydonian_hunt
@@ -443,6 +445,7 @@
     - {entity_id: underworld, role: location}
     - {entity_id: ogygia, role: location}
     - {entity_id: corfu, role: location}
+    - {entity_id: strait_of_messina, role: location}
     - {entity_id: sicily, role: location}
     - {entity_id: ithaca, role: location}
 

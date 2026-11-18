@@ -35,6 +35,7 @@ def get_session() -> Generator[Session, None, None]:
 def init_db(engine_override=None) -> None:
     eng = engine_override or engine
     SQLModel.metadata.create_all(eng)
+    _add_missing_columns(eng)
 
     # Initialize SQLite FTS5 virtual table for fast full-text search
     with eng.connect() as conn:
@@ -52,6 +53,37 @@ def init_db(engine_override=None) -> None:
             )
         )
         conn.commit()
+
+
+def _add_missing_columns(eng) -> None:
+    """Minimal migration: add columns that exist in the models but not in an older delphi.db
+    (create_all never alters existing tables). Nullable columns and NOT NULL columns with a
+    scalar default can be added in place; anything else needs a fresh `delphi seed` after
+    deleting delphi.db, which is cheap because the DB is generated from the seed YAML."""
+    with eng.connect() as conn:
+        for table in SQLModel.metadata.sorted_tables:
+            existing = {row[1] for row in conn.execute(text(f'PRAGMA table_info("{table.name}")'))}
+            if not existing:
+                continue
+            for column in table.columns:
+                if column.name in existing:
+                    continue
+                ddl = f'"{column.name}" {column.type.compile(dialect=eng.dialect)}'
+                if not column.nullable:
+                    default = getattr(column.default, "arg", None)
+                    if not isinstance(default, str | int | float | bool):
+                        continue  # cannot add safely; requires recreating the DB
+                    ddl += f" NOT NULL DEFAULT {_sql_literal(default)}"
+                conn.execute(text(f'ALTER TABLE "{table.name}" ADD COLUMN {ddl}'))
+        conn.commit()
+
+
+def _sql_literal(value: str | int | float | bool) -> str:
+    if isinstance(value, bool):
+        return str(int(value))
+    if isinstance(value, str):
+        return "'" + value.replace("'", "''") + "'"
+    return str(value)
 
 
 SeedCounts = dict[str, int]
@@ -169,6 +201,7 @@ def seed_database(data_dir: Path | None = None, engine_override=None) -> SeedCou
             r["id"]: {
                 "title_uk": r["title_uk"],
                 "hero_id": r.get("hero_id"),
+                "myth_id": r.get("myth_id"),
                 "description_uk": r.get("description_uk"),
                 "stops_json": json.dumps(r.get("stops", []), ensure_ascii=False),
             }
