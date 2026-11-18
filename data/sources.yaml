@@ -1,0 +1,83 @@
+# Джерела античних текстів для корпусу RAG
+# Тільки суспільне надбання (Public Domain / CCO / ліцензії без порушень авторського права)
+
+sources:
+  - id: apollodorus_library
+    author: Apollodorus (Pseudo-Apollodorus)
+    title: The Library
+    translator: J. G. Frazer
+    year: 1921
+    license: Public Domain
+    url: "https://www.perseus.tufts.edu/hopper/text?doc=Perseus:text:1999.01.0022"
+    format: tei_xml
+    notes: "Основа корпусу: системний довідник генеалогій і міфів"
+
+  - id: hesiod_theogony
+    author: Hesiod
+    title: Theogony
+    translator: H. G. Evelyn-White
+    year: 1914
+    license: Public Domain
+    url: "https://www.perseus.tufts.edu/hopper/text?doc=Perseus:text:1999.01.0130"
+    format: tei_xml
+    notes: "Походження світу і богів"
+
+  - id: hesiod_works_and_days
+    author: Hesiod
+    title: Works and Days
+    translator: H. G. Evelyn-White
+    year: 1914
+    license: Public Domain
+    url: "https://www.perseus.tufts.edu/hopper/text?doc=Perseus:text:1999.01.0132"
+    format: tei_xml
+    notes: "Міфи про Прометея, Пандору, віки людства"
+
+  - id: homer_iliad
+    author: Homer
+    title: Iliad
+    translator: A. T. Murray
+    year: 1924
+    license: Public Domain
+    url: "https://www.perseus.tufts.edu/hopper/text?doc=Perseus:text:1999.01.0134"
+    format: tei_xml
+    notes: "Троянська війна"
+
+  - id: homer_odyssey
+    author: Homer
+    title: Odyssey
+    translator: A. T. Murray
+    year: 1919
+    license: Public Domain
+    url: "https://www.perseus.tufts.edu/hopper/text?doc=Perseus:text:1999.01.0136"
+    format: tei_xml
+    notes: "Мандри Одіссея"
+
+  - id: homeric_hymns
+    author: Homeric Hymns
+    title: Homeric Hymns
+    translator: H. G. Evelyn-White
+    year: 1914
+    license: Public Domain
+    url: "https://www.perseus.tufts.edu/hopper/text?doc=Perseus:text:1999.01.0138"
+    format: tei_xml
+    notes: "Гімни богам (Деметра, Аполлон, Гермес)"
+
+  - id: apollonius_argonautica
+    author: Apollonius Rhodius
+    title: Argonautica
+    translator: R. C. Seaton
+    year: 1912
+    license: Public Domain
+    url: "https://www.gutenberg.org/ebooks/830"
+    format: gutenberg_text
+    notes: "Похід аргонавтів, маршрут для карти"
+
+  - id: pausanias_description_of_greece
+    author: Pausanias
+    title: Description of Greece
+    translator: W. H. S. Jones
+    year: 1918
+    license: Public Domain
+    url: "https://www.perseus.tufts.edu/hopper/text?doc=Perseus:text:1999.01.0160"
+    format: tei_xml
+    notes: "Географія, святилища і місцеві культи"

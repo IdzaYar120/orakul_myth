@@ -1,0 +1,24 @@
+# Сюжети міфів
+- id: theogony_reign_of_zeus
+  title_uk: Прихід Зевса до влади та Титаномахія
+  cycle: teogoniya
+  summary_uk: Зевс скидає Кроноса, визволяє братів і сестер, перемагає титанів та встановлює владу олімпійців.
+  entities:
+    - entity_id: zeus
+      role: protagonist
+    - entity_id: olympus
+      role: location
+
+- id: odysseus_homecoming
+  title_uk: Повернення Одіссея на Ітаку
+  cycle: trojan
+  summary_uk: Десятирічні мандри Одіссея після падіння Трої, випробування богами та повернення до Пенелопи на Ітаку.
+  entities:
+    - entity_id: odysseus
+      role: protagonist
+    - entity_id: troy
+      role: starting_point
+    - entity_id: ithaca
+      role: destination
+    - entity_id: athena
+      role: protector

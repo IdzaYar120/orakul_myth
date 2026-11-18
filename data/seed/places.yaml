@@ -1,0 +1,72 @@
+# Географічні місця для карти
+- entity_id: delphi
+  name_uk: Дельфи
+  name_en: Delphi
+  name_lat: Delphi
+  place_kind: sanctuary
+  lat: 38.4824
+  lon: 22.5010
+  certainty: high
+  pleiades_id: 540731
+  summary_uk: Головне святилище Аполлона на схилі гори Парнас, місцеперебування Дельфійського оракула (Піфії) та омфала.
+  aliases:
+    - alias: Дельфи
+      lang: uk
+    - alias: Delphi
+      lang: en
+    - alias: Піфо
+      lang: uk
+    - alias: Pytho
+      lang: en
+
+- entity_id: olympus
+  name_uk: Олімп
+  name_en: Mount Olympus
+  name_lat: Olympus
+  place_kind: mountain
+  lat: 40.0884
+  lon: 22.3586
+  certainty: high
+  pleiades_id: 491684
+  summary_uk: Найвища гора Греції, священна обитель дванадцяти олімпійських богів.
+  aliases:
+    - alias: Олімп
+      lang: uk
+    - alias: Olympus
+      lang: en
+
+- entity_id: ithaca
+  name_uk: Ітака
+  name_en: Ithaca
+  name_lat: Ithaca
+  place_kind: island
+  lat: 38.4285
+  lon: 20.6765
+  certainty: high
+  pleiades_id: 530907
+  summary_uk: Острів в Іонічному морі, батьківщина і царство хитромудрого Одіссея.
+  aliases:
+    - alias: Ітака
+      lang: uk
+    - alias: Ithaca
+      lang: en
+
+- entity_id: troy
+  name_uk: Троя (Іліон)
+  name_en: Troy (Ilion)
+  name_lat: Troia
+  place_kind: city
+  lat: 39.9575
+  lon: 26.2389
+  certainty: high
+  pleiades_id: 550595
+  summary_uk: Легендарне місто в Малій Азії, місце десятилітньої облоги Троянської війни.
+  aliases:
+    - alias: Троя
+      lang: uk
+    - alias: Troy
+      lang: en
+    - alias: Іліон
+      lang: uk
+    - alias: Ilium
+      lang: la

@@ -1,0 +1,28 @@
+# Golden set для оцінки якості RAG (delphi eval)
+# Типи: factual, multi_hop, conflicting, negative (пастки)
+
+questions:
+  - id: q001
+    question_uk: "Хто є батьком Аполлона згідно з міфами?"
+    type: factual
+    expected_entity_ids: ["apollo", "zeus"]
+    expected_refs: ["Hes. Theog. 918", "Apollod. 1.4.1"]
+    expected_facts:
+      - "Батько Аполлона — Зевс"
+      - "Мати — Лето (Латона)"
+
+  - id: q002
+    question_uk: "Де знаходилося головне святилище Аполлона і його оракул?"
+    type: factual
+    expected_entity_ids: ["apollo", "delphi"]
+    expected_refs: ["Hom. Hymn Apollo 388"]
+    expected_facts:
+      - "Святилище знаходилося у Дельфах біля гори Парнас"
+
+  - id: q003
+    question_uk: "Який номер мобільного телефону в Зевса?"
+    type: negative
+    expected_entity_ids: ["zeus"]
+    expected_refs: []
+    expected_facts: []
+    should_refuse: true

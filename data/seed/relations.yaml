@@ -1,0 +1,26 @@
+# Родовід та зв'язки між сутностями
+# rel: parent_of, spouse_of, sibling_of, killed, worshipped_at, born_at
+- src_id: zeus
+  rel: parent_of
+  dst_id: apollo
+  source_ref: "Hes. Theog. 918"
+
+- src_id: zeus
+  rel: parent_of
+  dst_id: athena
+  source_ref: "Hes. Theog. 886"
+
+- src_id: apollo
+  rel: worshipped_at
+  dst_id: delphi
+  source_ref: "Hom. Hymn Apollo 388"
+
+- src_id: zeus
+  rel: worshipped_at
+  dst_id: olympus
+  source_ref: "Hom. Il. 1.498"
+
+- src_id: odysseus
+  rel: born_at
+  dst_id: ithaca
+  source_ref: "Hom. Od. 9.19"

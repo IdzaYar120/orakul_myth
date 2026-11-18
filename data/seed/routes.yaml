@@ -1,0 +1,22 @@
+# Маршрути героїв для відображення на карті
+- id: odysseus_wanderings
+  title_uk: Мандри Одіссея (Троя — Ітака)
+  hero_id: odysseus
+  description_uk: Традиційні ототожнення пунктів маршруту Одіссея від Трої до Ітаки.
+  stops:
+    - stop_number: 1
+      entity_id: troy
+      title: Троя
+      lat: 39.9575
+      lon: 26.2389
+      certainty: high
+      source_ref: "Hom. Od. 9.39"
+      description: "Відплиття ахейського флоту після зруйнування Трої"
+    - stop_number: 2
+      entity_id: ithaca
+      title: Ітака
+      lat: 38.4285
+      lon: 20.6765
+      certainty: high
+      source_ref: "Hom. Od. 13.93"
+      description: "Повернення на рідну Ітаку за допомогою феаків"

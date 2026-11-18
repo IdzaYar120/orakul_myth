@@ -1,0 +1,109 @@
+# Початкові сутності міфології для старту каркасу
+- id: zeus
+  type: god
+  name_uk: Зевс
+  name_en: Zeus
+  name_lat: Jupiter
+  summary_uk: Верховний бог олімпійців, володар неба, грому та блискавок.
+  domain: Небо, грім, правосуддя, гостинність
+  symbols: ["блискавка", "орел", "дуб", "скіпетр"]
+  wikidata_id: Q34201
+  aliases:
+    - alias: Зевс
+      lang: uk
+    - alias: Zeus
+      lang: en
+    - alias: Юпітер
+      lang: uk
+    - alias: Jupiter
+      lang: la
+    - alias: Кронід
+      lang: uk
+    - alias: Cronides
+      lang: en
+
+- id: apollo
+  type: god
+  name_uk: Аполлон
+  name_en: Apollo
+  name_lat: Apollo
+  summary_uk: Бог світла, пророцтва, музики, поезії, зцілення та лучництва. Покровитель Дельфійського оракула.
+  domain: Світло, пророцтво, музика, зцілення
+  symbols: ["лавровий вінок", "ліра", "лук і стріли", "триножник"]
+  wikidata_id: Q37340
+  aliases:
+    - alias: Аполлон
+      lang: uk
+    - alias: Apollo
+      lang: en
+    - alias: Феб
+      lang: uk
+    - alias: Phoebus
+      lang: en
+    - alias: Піфій
+      lang: uk
+    - alias: Pythian
+      lang: en
+
+- id: athena
+  type: god
+  name_uk: Афіна
+  name_en: Athena
+  name_lat: Minerva
+  summary_uk: Богиня мудрості, військової стратегії, ремесел та покровителька Афін.
+  domain: Мудрість, справедлива війна, ремесла
+  symbols: ["сова", "оливкова гілка", "егіда", "шолом"]
+  wikidata_id: Q37122
+  aliases:
+    - alias: Афіна
+      lang: uk
+    - alias: Athena
+      lang: en
+    - alias: Мінерва
+      lang: uk
+    - alias: Minerva
+      lang: la
+    - alias: Паллада
+      lang: uk
+    - alias: Pallas
+      lang: en
+
+- id: odysseus
+  type: hero
+  name_uk: Одіссей
+  name_en: Odysseus
+  name_lat: Ulysses
+  summary_uk: Цар Ітаки, хитромудрий герой Троянської війни, головний персонаж «Одіссеї».
+  domain: Військова хитрість, мандри
+  symbols: ["лук Одіссея", "вітрильник"]
+  wikidata_id: Q131089
+  aliases:
+    - alias: Одіссей
+      lang: uk
+    - alias: Odysseus
+      lang: en
+    - alias: Улісс
+      lang: uk
+    - alias: Ulysses
+      lang: la
+
+- id: achilles
+  type: hero
+  name_uk: Ахілл
+  name_en: Achilles
+  name_lat: Achilles
+  summary_uk: Найвеличніший воїн ахейців у Троянській війні, син Пелея та Фетіди.
+  domain: Військова доблесть, слава
+  symbols: ["щит Ахілла", "спис"]
+  wikidata_id: Q41746
+  aliases:
+    - alias: Ахілл
+      lang: uk
+    - alias: Ахіллес
+      lang: uk
+    - alias: Achilles
+      lang: en
+    - alias: Пелід
+      lang: uk
+    - alias: Pelides
+      lang: en
