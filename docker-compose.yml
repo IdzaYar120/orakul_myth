@@ -1,26 +1,43 @@
+# Usage:
+#   docker compose run --rm ingest              # one-shot: seed SQLite (+ ingest texts from Stage 3)
+#   docker compose up app                       # Streamlit on http://localhost:8501
+#   docker compose --profile ollama up          # + local LLM (set LLM_PROVIDER=ollama in .env)
+x-delphi: &delphi
+  build: .
+  image: delphi-oracle:latest
+  env_file:
+    - path: .env
+      required: false
+  volumes:
+    - delphi_storage:/app/storage # SQLite delphi.db
+    - ./index:/app/index # Chroma + bm25.pkl
+
 services:
   app:
-    build: .
+    <<: *delphi
     ports:
       - "8501:8501"
     environment:
-      - DB_PATH=/app/delphi.db
-      - INDEX_DIR=/app/index
-      - LLM_PROVIDER=ollama
-      - OLLAMA_BASE_URL=http://ollama:11434
-    volumes:
-      - ./data:/app/data
-      - ./index:/app/index
-      - ./delphi.db:/app/delphi.db
-    depends_on:
-      - ollama
+      DB_PATH: /app/storage/delphi.db
+      INDEX_DIR: /app/index
+      OLLAMA_BASE_URL: http://ollama:11434
+
+  ingest:
+    <<: *delphi
+    profiles: ["ingest"]
+    environment:
+      DB_PATH: /app/storage/delphi.db
+      INDEX_DIR: /app/index
+    command: ["sh", "-c", "delphi seed && delphi ingest"]
 
   ollama:
     image: ollama/ollama:latest
+    profiles: ["ollama"]
     ports:
       - "11434:11434"
     volumes:
       - ollama_data:/root/.ollama
 
 volumes:
+  delphi_storage:
   ollama_data:

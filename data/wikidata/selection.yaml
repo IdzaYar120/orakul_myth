@@ -1,0 +1,313 @@
+# Hand-curated selection of encyclopedia entities (Stage 1).
+# Chosen from `delphi wikidata candidates` (ranked by Wikipedia sitelinks) + key
+# creatures/places/artifacts that are not in the candidate classes.
+#
+# `delphi wikidata pull`  -> data/wikidata/snapshot.yaml (labels, aliases, family, coords)
+# `delphi wikidata draft` -> appends entries missing from data/seed/*.yaml
+#
+# Entity types: god, titan, hero, mortal, creature, place, artifact
+# Place kinds: sanctuary, city, mountain, island, river, region
+# Places without coordinates (mythical) get certainty: none ("поза картою").
+
+entities:
+  # --- Primordial deities (Hes. Theog. 116-132)
+  - {id: chaos, qid: Q131090, type: god}
+  - {id: gaia, qid: Q93172, type: god}
+  - {id: uranus, qid: Q79999, type: god}
+  - {id: tartarus, qid: Q101322, type: god}
+  - {id: eros, qid: Q121973, type: god}
+  - {id: nyx, qid: Q131203, type: god}
+  - {id: erebus, qid: Q131122, type: god}
+  - {id: aether, qid: Q189175, type: god}
+  - {id: hemera, qid: Q192107, type: god}
+  - {id: pontus, qid: Q190563, type: god}
+
+  # --- Titans
+  - {id: cronus, qid: Q44204, type: titan}
+  - {id: rhea, qid: Q108419, type: titan}
+  - {id: oceanus, qid: Q161419, type: titan}
+  - {id: tethys, qid: Q184216, type: titan}
+  - {id: hyperion, qid: Q179209, type: titan}
+  - {id: theia, qid: Q184232, type: titan}
+  - {id: coeus, qid: Q182837, type: titan}
+  - {id: phoebe, qid: Q183281, type: titan}
+  - {id: crius, qid: Q192136, type: titan}
+  - {id: iapetus, qid: Q179543, type: titan}
+  - {id: themis, qid: Q159168, type: titan}
+  - {id: mnemosyne, qid: Q102884, type: titan}
+  - {id: prometheus, qid: Q83160, type: titan}
+  - {id: epimetheus, qid: Q41054, type: titan}
+  - {id: atlas, qid: Q130818, type: titan}
+  - {id: leto, qid: Q103107, type: titan}
+  - {id: metis, qid: Q190565, type: titan}
+
+  # --- Olympians
+  - {id: zeus, qid: Q34201, type: god}
+  - {id: hera, qid: Q38012, type: god}
+  - {id: poseidon, qid: Q41127, type: god}
+  - {id: demeter, qid: Q40730, type: god}
+  - {id: hestia, qid: Q41419, type: god}
+  - {id: hades, qid: Q41410, type: god}
+  - {id: athena, qid: Q37122, type: god}
+  - {id: apollo, qid: Q37340, type: god}
+  - {id: artemis, qid: Q39503, type: god}
+  - {id: ares, qid: Q40901, type: god}
+  - {id: aphrodite, qid: Q35500, type: god}
+  - {id: hephaestus, qid: Q44384, type: god}
+  - {id: hermes, qid: Q41484, type: god}
+  - {id: dionysus, qid: Q41680, type: god}
+
+  # --- Other gods and divine beings
+  - {id: persephone, qid: Q45967, type: god}
+  - {id: hecate, qid: Q131575, type: god}
+  - {id: helios, qid: Q134270, type: god}
+  - {id: selene, qid: Q131585, type: god}
+  - {id: eos, qid: Q178417, type: god}
+  - {id: nike, qid: Q165023, type: god}
+  - {id: eris, qid: Q140001, type: god}
+  - {id: nemesis, qid: Q185747, type: god}
+  - {id: thanatos, qid: Q199647, type: god}
+  - {id: hypnos, qid: Q189347, type: god}
+  - {id: iris, qid: Q184570, type: god}
+  - {id: hebe, qid: Q131125, type: god}
+  - {id: eileithyia, qid: Q94066, type: god}
+  - {id: asclepius, qid: Q83223, type: god}
+  - {id: pan, qid: Q132582, type: god}
+  - {id: amphitrite, qid: Q180222, type: god}
+  - {id: triton, qid: Q148030, type: god}
+  - {id: nereus, qid: Q189527, type: god}
+  - {id: thetis, qid: Q184437, type: god}
+  - {id: dione, qid: Q199923, type: god}
+  - {id: maia, qid: Q205233, type: god}
+  - {id: harmonia, qid: Q978079, type: god}
+  - {id: phobos, qid: Q105019, type: god}
+  - {id: deimos, qid: Q106240, type: god}
+  - {id: circe, qid: Q187602, type: god}
+  - {id: calypso, qid: Q48961, type: god}
+  - {id: charon, qid: Q6612, type: god}
+  - {id: muses, qid: Q66016, type: god}
+  - {id: moirai, qid: Q180287, type: god}
+  - {id: erinyes, qid: Q180262, type: god}
+
+  # --- Creatures
+  - {id: typhon, qid: Q180237, type: creature}
+  - {id: echidna, qid: Q185670, type: creature}
+  - {id: cerberus, qid: Q83496, type: creature}
+  - {id: orthrus, qid: Q336230, type: creature}
+  - {id: hydra, qid: Q170379, type: creature}
+  - {id: chimera, qid: Q182790, type: creature}
+  - {id: nemean_lion, qid: Q199438, type: creature}
+  - {id: medusa, qid: Q160730, type: creature}
+  - {id: graeae, qid: Q257768, type: creature}
+  - {id: pegasus, qid: Q162797, type: creature}
+  - {id: chrysaor, qid: Q320660, type: creature}
+  - {id: minotaur, qid: Q129866, type: creature}
+  - {id: python, qid: Q15721, type: creature}
+  - {id: sphinx, qid: Q151480, type: creature}
+  - {id: chiron, qid: Q183417, type: creature}
+  - {id: polyphemus, qid: Q193567, type: creature}
+  - {id: cyclopes, qid: Q128430, type: creature}
+  - {id: hecatoncheires, qid: Q175255, type: creature}
+  - {id: scylla, qid: Q193115, type: creature}
+  - {id: charybdis, qid: Q192082, type: creature}
+  - {id: sirens, qid: Q150986, type: creature}
+  - {id: harpies, qid: Q181360, type: creature}
+  - {id: ladon, qid: Q274600, type: creature}
+  - {id: geryon, qid: Q86805, type: creature}
+  - {id: erymanthian_boar, qid: Q334456, type: creature}
+  - {id: ceryneian_hind, qid: Q466882, type: creature}
+  - {id: stymphalian_birds, qid: Q236429, type: creature}
+  - {id: cretan_bull, qid: Q746198, type: creature}
+  - {id: talos, qid: Q657174, type: creature}
+  - {id: argus, qid: Q189821, type: creature}
+
+  # --- Heroes
+  - {id: heracles, qid: Q122248, type: hero}
+  - {id: perseus, qid: Q130832, type: hero}
+  - {id: theseus, qid: Q1320718, type: hero}
+  - {id: jason, qid: Q176758, type: hero}
+  - {id: bellerophon, qid: Q189872, type: hero}
+  - {id: cadmus, qid: Q27613, type: hero}
+  - {id: orpheus, qid: Q174353, type: hero}
+  - {id: atalanta, qid: Q190323, type: hero}
+  - {id: meleager, qid: Q321541, type: hero}
+  - {id: dioscuri, qid: Q190103, type: hero}
+  - {id: iolaus, qid: Q504076, type: hero}
+  - {id: pirithous, qid: Q502156, type: hero}
+  - {id: peleus, qid: Q178641, type: hero}
+  - {id: achilles, qid: Q41746, type: hero}
+  - {id: odysseus, qid: Q47231, type: hero}
+  - {id: hector, qid: Q159666, type: hero}
+  - {id: aeneas, qid: Q82732, type: hero}
+  - {id: patroclus, qid: Q186271, type: hero}
+  - {id: ajax, qid: Q172725, type: hero}
+  - {id: diomedes, qid: Q208256, type: hero}
+  - {id: agamemnon, qid: Q128176, type: hero}
+  - {id: menelaus, qid: Q171839, type: hero}
+  - {id: nestor, qid: Q193267, type: hero}
+  - {id: philoctetes, qid: Q212827, type: hero}
+  - {id: neoptolemus, qid: Q322639, type: hero}
+  - {id: telemachus, qid: Q192482, type: hero}
+  - {id: orestes, qid: Q192407, type: hero}
+  - {id: oedipus, qid: Q130890, type: hero}
+
+  # --- Mortals
+  - {id: helen, qid: Q164061, type: mortal}
+  - {id: paris, qid: Q167646, type: mortal}
+  - {id: priam, qid: Q170473, type: mortal}
+  - {id: hecuba, qid: Q193433, type: mortal}
+  - {id: andromache, qid: Q19376, type: mortal}
+  - {id: cassandra, qid: Q170779, type: mortal}
+  - {id: penelope, qid: Q165769, type: mortal}
+  - {id: laertes, qid: Q748296, type: mortal}
+  - {id: anticlea, qid: Q576170, type: mortal}
+  - {id: clytemnestra, qid: Q131157, type: mortal}
+  - {id: iphigenia, qid: Q192673, type: mortal}
+  - {id: electra, qid: Q131651, type: mortal}
+  - {id: aegisthus, qid: Q212091, type: mortal}
+  - {id: atreus, qid: Q192469, type: mortal}
+  - {id: tyndareus, qid: Q192946, type: mortal}
+  - {id: leda, qid: Q182019, type: mortal}
+  - {id: medea, qid: Q174278, type: mortal}
+  - {id: aeetes, qid: Q241971, type: mortal}
+  - {id: pelias, qid: Q182439, type: mortal}
+  - {id: ariadne, qid: Q184874, type: mortal}
+  - {id: minos, qid: Q23168, type: mortal}
+  - {id: pasiphae, qid: Q203236, type: mortal}
+  - {id: europa, qid: Q165170, type: mortal}
+  - {id: daedalus, qid: Q134756, type: mortal}
+  - {id: icarus, qid: Q34041, type: mortal}
+  - {id: aegeus, qid: Q191725, type: mortal}
+  - {id: phaedra, qid: Q212818, type: mortal}
+  - {id: hippolyta, qid: Q210303, type: mortal}
+  - {id: danae, qid: Q190582, type: mortal}
+  - {id: acrisius, qid: Q208017, type: mortal}
+  - {id: andromeda, qid: Q161582, type: mortal}
+  - {id: cassiopeia, qid: Q207681, type: mortal}
+  - {id: alcmene, qid: Q190543, type: mortal}
+  - {id: amphitryon, qid: Q206214, type: mortal}
+  - {id: eurystheus, qid: Q212087, type: mortal}
+  - {id: semele, qid: Q776139, type: mortal}
+  - {id: jocasta, qid: Q131445, type: mortal}
+  - {id: laius, qid: Q463898, type: mortal}
+  - {id: antigone, qid: Q131351, type: mortal}
+  - {id: tiresias, qid: Q656881, type: mortal}
+  - {id: pandora, qid: Q131346, type: mortal}
+  - {id: deucalion, qid: Q207715, type: mortal}
+  - {id: pyrrha, qid: Q622809, type: mortal}
+  - {id: sisyphus, qid: Q102561, type: mortal}
+  - {id: tantalus, qid: Q182101, type: mortal}
+  - {id: midas, qid: Q308398, type: mortal}
+  - {id: narcissus, qid: Q179256, type: mortal}
+  - {id: adonis, qid: Q163920, type: mortal}
+  - {id: ganymede, qid: Q131588, type: mortal}
+
+  # --- Artifacts
+  - {id: golden_fleece, qid: Q212262, type: artifact}
+  - {id: aegis, qid: Q190662, type: artifact}
+  - {id: argo, qid: Q317932, type: artifact}
+  - {id: trojan_horse, qid: Q50193, type: artifact}
+  - {id: pandoras_box, qid: Q937164, type: artifact}
+
+places:
+  # --- Sanctuaries
+  - {id: delphi, qid: Q75459, place_kind: sanctuary}
+  - {id: olympia, qid: Q38888, place_kind: sanctuary}
+  - {id: dodona, qid: Q382317, place_kind: sanctuary}
+  - {id: delos, qid: Q173148, place_kind: island}
+  - {id: eleusis, qid: Q11918833, place_kind: sanctuary}
+  - {id: epidaurus, qid: Q233576, place_kind: sanctuary}
+  - {id: didyma, qid: Q671358, place_kind: sanctuary}
+  - {id: dion, qid: Q990247, place_kind: sanctuary}
+  - {id: sounion, qid: Q1136637, place_kind: sanctuary}
+  - {id: heraion_samos, qid: Q841207, place_kind: sanctuary}
+  - {id: necromanteion, qid: Q12881666, place_kind: sanctuary}
+  - {id: taenarum, qid: Q849911, place_kind: sanctuary}
+  - {id: dictaean_cave, qid: Q1643807, place_kind: sanctuary}
+  - {id: paphos, qid: Q64433741, place_kind: sanctuary}
+  - {id: ephesus, qid: Q47611, place_kind: city}
+
+  # --- Cities
+  - {id: athens, qid: Q844930, place_kind: city}
+  - {id: sparta, qid: Q5690, place_kind: city}
+  - {id: thebes, qid: Q11225429, place_kind: city}
+  - {id: mycenae, qid: Q132564, place_kind: city}
+  - {id: tiryns, qid: Q217379, place_kind: city}
+  - {id: argos, qid: Q189901, place_kind: city, pleiades_id: 570106}
+  - {id: corinth, qid: Q1363688, place_kind: city}
+  - {id: troy, qid: Q22647, place_kind: city}
+  - {id: pylos, qid: Q7263152, place_kind: city}
+  - {id: knossos, qid: Q173527, place_kind: city}
+  - {id: iolcus, qid: Q662613, place_kind: city}
+  - {id: calydon, qid: Q750313, place_kind: city}
+  - {id: troezen, qid: Q581494, place_kind: city}
+  - {id: nemea, qid: Q748108, place_kind: sanctuary}
+  - {id: lerna, qid: Q1236078, place_kind: region}
+  - {id: megara, qid: Q184864, place_kind: city}
+  - {id: aulis, qid: Q4821780, place_kind: city}
+  - {id: marathon, qid: Q212150, place_kind: city}
+  - {id: elis, qid: Q217667, place_kind: city}
+  - {id: pherae, qid: Q1330631, place_kind: city}
+
+  # --- Mountains
+  - {id: olympus, qid: Q80344, place_kind: mountain}
+  - {id: parnassus, qid: Q105261, place_kind: mountain}
+  - {id: ida_crete, qid: Q83659, place_kind: mountain}
+  - {id: ida_troad, qid: Q1127771, place_kind: mountain}
+  - {id: helicon, qid: Q215516, place_kind: mountain}
+  - {id: pelion, qid: Q1334825, place_kind: mountain}
+  - {id: ossa, qid: Q1471677, place_kind: mountain}
+  - {id: othrys, qid: Q775676, place_kind: mountain}
+  - {id: cithaeron, qid: Q1147780, place_kind: mountain}
+  - {id: oeta, qid: Q132378, place_kind: mountain}
+  - {id: cyllene, qid: Q1232572, place_kind: mountain}
+  - {id: lycaeus, qid: Q1878690, place_kind: mountain}
+  - {id: erymanthus, qid: Q3555227, place_kind: mountain}
+  - {id: etna, qid: Q16990, place_kind: mountain}
+  - {id: caucasus, qid: Q5477, place_kind: mountain}
+
+  # --- Islands
+  - {id: crete, qid: Q34374, place_kind: island}
+  - {id: ithaca, qid: Q187471, place_kind: island}
+  - {id: corfu, qid: Q121378, place_kind: island}
+  - {id: naxos, qid: Q188527, place_kind: island}
+  - {id: lesbos, qid: Q128087, place_kind: island}
+  - {id: kythira, qid: Q207239, place_kind: island}
+  - {id: cyprus, qid: Q644636, place_kind: island}
+  - {id: lemnos, qid: Q192483, place_kind: island}
+  - {id: samothrace, qid: Q203175, place_kind: island}
+  - {id: rhodes, qid: Q43048, place_kind: island}
+  - {id: sicily, qid: Q1460, place_kind: island}
+  - {id: seriphos, qid: Q217214, place_kind: island}
+  - {id: tenedos, qid: Q211817, place_kind: island}
+  - {id: skyros, qid: Q208566, place_kind: island}
+  - {id: aegina, qid: Q191082, place_kind: island}
+  - {id: salamis, qid: Q202422, place_kind: island}
+  - {id: euboea, qid: Q173096, place_kind: island}
+
+  # --- Rivers and lakes
+  - {id: styx, qid: Q542758, place_kind: river}
+  - {id: acheron, qid: Q191087, place_kind: river}
+  - {id: alpheus, qid: Q941745, place_kind: river}
+  - {id: scamander, qid: Q2488636, place_kind: river}
+  - {id: stymphalia, qid: Q1251026, place_kind: river}
+
+  # --- Regions
+  - {id: colchis, qid: Q183150, place_kind: region}
+  - {id: attica, qid: Q122443, place_kind: region}
+  - {id: argolis, qid: Q12649101, place_kind: region}
+  - {id: laconia, qid: Q11931074, place_kind: region}
+  - {id: boeotia, qid: Q187570, place_kind: region}
+  - {id: phthia, qid: Q1232814, place_kind: region}
+  - {id: thrace, qid: Q41741, place_kind: region}
+  - {id: lydia, qid: Q620765, place_kind: region}
+  - {id: phrygia, qid: Q32579, place_kind: region}
+  - {id: dardanelles, qid: Q6514, place_kind: region}
+
+  # --- Mythical places without a real location (certainty: none, "поза картою")
+  - {id: underworld, qid: Q1521549, place_kind: region, certainty: none}
+  - {id: elysium, qid: Q157128, place_kind: region, certainty: none}
+  - {id: hesperides_garden, qid: Q3763922, place_kind: region, certainty: none}
+  - {id: hyperborea, qid: Q243333, place_kind: region, certainty: none}
+  - {id: aeaea, qid: Q403366, place_kind: island, certainty: none}
+  - {id: ogygia, qid: Q1232442, place_kind: island, certainty: none}

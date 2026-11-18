@@ -1,24 +1,493 @@
-# Myth plots and narrative cycles
-- id: theogony_reign_of_zeus
-  title_uk: Прихід Зевса до влади та Титаномахія
-  cycle: teogoniya
-  summary_uk: Зевс скидає Кроноса, визволяє братів і сестер, перемагає титанів та встановлює владу олімпійців.
+# Myth plots and narrative cycles.
+# cycle: theogony | olympians | heracles | perseus | theseus | argonauts | theban | trojan | other
+# role: protagonist | antagonist | helper | victim | participant | location | object
+
+# --- Theogony
+- id: creation
+  title_uk: Постання світу
+  cycle: theogony
+  summary_uk: Першим постав Хаос, за ним Гея, Тартар і Ерос; з Хаосу народилися Ереб і Нікта, а Гея породила Небо — Урана.
   entities:
-    - entity_id: zeus
-      role: protagonist
-    - entity_id: olympus
-      role: location
+    - {entity_id: chaos, role: protagonist}
+    - {entity_id: gaia, role: protagonist}
+    - {entity_id: tartarus, role: participant}
+    - {entity_id: eros, role: participant}
+    - {entity_id: erebus, role: participant}
+    - {entity_id: nyx, role: participant}
+    - {entity_id: uranus, role: participant}
+
+- id: castration_of_uranus
+  title_uk: Повалення Урана
+  cycle: theogony
+  summary_uk: Гея дала Кроносові серп, і він оскопив батька Урана; з крові народилися Еринії, а з піни біля Кітери й Кіпру — Афродіта.
+  entities:
+    - {entity_id: cronus, role: protagonist}
+    - {entity_id: uranus, role: victim}
+    - {entity_id: gaia, role: helper}
+    - {entity_id: erinyes, role: participant}
+    - {entity_id: aphrodite, role: participant}
+    - {entity_id: kythira, role: location}
+    - {entity_id: cyprus, role: location}
+
+- id: birth_of_zeus
+  title_uk: Народження Зевса
+  cycle: theogony
+  summary_uk: Кронос ковтав своїх дітей, боячись пророцтва; Рея народила Зевса на Криті, а чоловікові дала проковтнути загорнутий у пелюшки камінь.
+  entities:
+    - {entity_id: zeus, role: protagonist}
+    - {entity_id: rhea, role: helper}
+    - {entity_id: cronus, role: antagonist}
+    - {entity_id: gaia, role: helper}
+    - {entity_id: crete, role: location}
+    - {entity_id: dictaean_cave, role: location}
+
+- id: titanomachy
+  title_uk: Титаномахія
+  cycle: theogony
+  summary_uk: Десятирічна війна олімпійців з Олімпу проти титанів з Отрісу; з допомогою кіклопів і гекатонхейрів Зевс переміг і скинув титанів у Тартар.
+  entities:
+    - {entity_id: zeus, role: protagonist}
+    - {entity_id: cronus, role: antagonist}
+    - {entity_id: cyclopes, role: helper}
+    - {entity_id: hecatoncheires, role: helper}
+    - {entity_id: atlas, role: antagonist}
+    - {entity_id: tartarus, role: location}
+    - {entity_id: olympus, role: location}
+    - {entity_id: othrys, role: location}
+
+- id: typhonomachy
+  title_uk: Битва Зевса з Тифоном
+  cycle: theogony
+  summary_uk: Гея породила від Тартара Тифона, що кинув виклик Зевсові; громовержець переміг його блискавками і скинув у Тартар (за пізнішими авторами — під Етну).
+  entities:
+    - {entity_id: zeus, role: protagonist}
+    - {entity_id: typhon, role: antagonist}
+    - {entity_id: gaia, role: participant}
+    - {entity_id: etna, role: location}
+
+- id: prometheus_and_pandora
+  title_uk: Прометей і Пандора
+  cycle: theogony
+  summary_uk: Прометей ошукав Зевса під час жертвопринесення й викрав людям вогонь; Зевс прикув його до скелі, а людям послав Пандору з посудиною бід.
+  entities:
+    - {entity_id: prometheus, role: protagonist}
+    - {entity_id: zeus, role: antagonist}
+    - {entity_id: epimetheus, role: participant}
+    - {entity_id: pandora, role: participant}
+    - {entity_id: pandoras_box, role: object}
+    - {entity_id: hephaestus, role: participant}
+    - {entity_id: athena, role: participant}
+    - {entity_id: heracles, role: helper}
+    - {entity_id: caucasus, role: location}
+
+- id: deucalion_flood
+  title_uk: Потоп Девкаліона
+  cycle: theogony
+  summary_uk: Зевс наслав потоп на людей мідного віку; Девкаліон і Пірра врятувалися в скрині, пристали до Парнасу і відродили людство, кидаючи каміння через плече.
+  entities:
+    - {entity_id: deucalion, role: protagonist}
+    - {entity_id: pyrrha, role: protagonist}
+    - {entity_id: zeus, role: antagonist}
+    - {entity_id: prometheus, role: helper}
+    - {entity_id: parnassus, role: location}
+
+# --- Olympians
+- id: birth_of_athena
+  title_uk: Народження Афіни
+  cycle: olympians
+  summary_uk: Зевс проковтнув вагітну Метіду, щоб її син не скинув його; згодом Афіна в повному обладунку вийшла з голови батька.
+  entities:
+    - {entity_id: athena, role: protagonist}
+    - {entity_id: zeus, role: participant}
+    - {entity_id: metis, role: participant}
+    - {entity_id: hephaestus, role: helper}
+
+- id: birth_of_apollo
+  title_uk: Народження Аполлона та Артеміди
+  cycle: olympians
+  summary_uk: Переслідувана гнівом Гери, Лето ніде не могла народити, доки її не прийняв острів Делос.
+  entities:
+    - {entity_id: leto, role: protagonist}
+    - {entity_id: apollo, role: participant}
+    - {entity_id: artemis, role: participant}
+    - {entity_id: hera, role: antagonist}
+    - {entity_id: eileithyia, role: helper}
+    - {entity_id: delos, role: location}
+
+- id: apollo_python_delphi
+  title_uk: Аполлон, Піфон і заснування Дельф
+  cycle: olympians
+  summary_uk: Аполлон убив змія Піфона під Парнасом і заснував там свій оракул; жриця-пророчиця дістала ім'я Піфії.
+  entities:
+    - {entity_id: apollo, role: protagonist}
+    - {entity_id: python, role: antagonist}
+    - {entity_id: delphi, role: location}
+    - {entity_id: parnassus, role: location}
+
+- id: abduction_of_persephone
+  title_uk: Викрадення Персефони
+  cycle: olympians
+  summary_uk: Аїд з дозволу Зевса викрав Персефону; Деметра в горі шукала доньку, і земля перестала родити, доки Персефона не стала повертатися до матері на частину року.
+  entities:
+    - {entity_id: persephone, role: victim}
+    - {entity_id: hades, role: antagonist}
+    - {entity_id: demeter, role: protagonist}
+    - {entity_id: zeus, role: participant}
+    - {entity_id: hecate, role: helper}
+    - {entity_id: helios, role: helper}
+    - {entity_id: hermes, role: helper}
+    - {entity_id: eleusis, role: location}
+    - {entity_id: underworld, role: location}
+
+- id: hermes_cattle
+  title_uk: Гермес краде корів Аполлона
+  cycle: olympians
+  summary_uk: Новонароджений Гермес вибрався з колиски на Кіллені, викрав корів Аполлона і винайшов ліру, яку віддав братові на примирення.
+  entities:
+    - {entity_id: hermes, role: protagonist}
+    - {entity_id: apollo, role: participant}
+    - {entity_id: maia, role: participant}
+    - {entity_id: zeus, role: participant}
+    - {entity_id: cyllene, role: location}
+
+# --- Heracles
+- id: birth_of_heracles
+  title_uk: Народження Геракла
+  cycle: heracles
+  summary_uk: Зевс прийшов до Алкмени в подобі її чоловіка Амфітріона; Гера затримала пологи, щоб першим народився Еврістей і отримав владу над Гераклом.
+  entities:
+    - {entity_id: heracles, role: protagonist}
+    - {entity_id: zeus, role: participant}
+    - {entity_id: alcmene, role: participant}
+    - {entity_id: amphitryon, role: participant}
+    - {entity_id: hera, role: antagonist}
+    - {entity_id: eurystheus, role: antagonist}
+    - {entity_id: thebes, role: location}
+
+- id: labours_of_heracles
+  title_uk: Дванадцять подвигів Геракла
+  cycle: heracles
+  summary_uk: На службі в Еврістея Геракл убив Немейського лева і Лернейську гідру, піймав лань і вепра, вигнав Стимфалійських птахів, приборкав Критського бика, здобув пояс Іпполіти, корів Геріона, яблука Гесперид і вивів Цербера.
+  entities:
+    - {entity_id: heracles, role: protagonist}
+    - {entity_id: eurystheus, role: antagonist}
+    - {entity_id: iolaus, role: helper}
+    - {entity_id: athena, role: helper}
+    - {entity_id: nemean_lion, role: antagonist}
+    - {entity_id: hydra, role: antagonist}
+    - {entity_id: ceryneian_hind, role: participant}
+    - {entity_id: erymanthian_boar, role: participant}
+    - {entity_id: stymphalian_birds, role: antagonist}
+    - {entity_id: cretan_bull, role: participant}
+    - {entity_id: hippolyta, role: participant}
+    - {entity_id: geryon, role: antagonist}
+    - {entity_id: orthrus, role: antagonist}
+    - {entity_id: ladon, role: antagonist}
+    - {entity_id: atlas, role: helper}
+    - {entity_id: cerberus, role: participant}
+    - {entity_id: tiryns, role: location}
+    - {entity_id: nemea, role: location}
+    - {entity_id: lerna, role: location}
+    - {entity_id: erymanthus, role: location}
+    - {entity_id: stymphalia, role: location}
+    - {entity_id: elis, role: location}
+    - {entity_id: hesperides_garden, role: location}
+    - {entity_id: taenarum, role: location}
+    - {entity_id: underworld, role: location}
+
+- id: apotheosis_of_heracles
+  title_uk: Смерть і обожнення Геракла
+  cycle: heracles
+  summary_uk: Отруєний сорочкою, просякнутою кров'ю кентавра, Геракл зійшов на багаття на горі Ета, був узятий на Олімп і одружився з Гебою.
+  entities:
+    - {entity_id: heracles, role: protagonist}
+    - {entity_id: hebe, role: participant}
+    - {entity_id: philoctetes, role: helper}
+    - {entity_id: oeta, role: location}
+    - {entity_id: olympus, role: location}
+
+# --- Perseus
+- id: perseus_and_medusa
+  title_uk: Персей і Медуза
+  cycle: perseus
+  summary_uk: Акрісій кинув доньку Данаю з немовлям Персеєм у море в скрині; Персей виріс на Серіфі, а згодом з допомогою Афіни та Гермеса, вивідавши шлях у Граїй, відтяв голову Медузі, з тіла якої вийшли Пегас і Хрисаор.
+  entities:
+    - {entity_id: perseus, role: protagonist}
+    - {entity_id: medusa, role: antagonist}
+    - {entity_id: danae, role: participant}
+    - {entity_id: acrisius, role: antagonist}
+    - {entity_id: athena, role: helper}
+    - {entity_id: hermes, role: helper}
+    - {entity_id: graeae, role: participant}
+    - {entity_id: pegasus, role: participant}
+    - {entity_id: chrysaor, role: participant}
+    - {entity_id: argos, role: location}
+    - {entity_id: seriphos, role: location}
+
+- id: perseus_and_andromeda
+  title_uk: Персей і Андромеда
+  cycle: perseus
+  summary_uk: За похвальбу Кассіопеї Посейдон наслав на Ефіопію потвору; повертаючись із головою Медузи, Персей убив чудовисько, звільнив Андромеду і взяв її за дружину.
+  entities:
+    - {entity_id: perseus, role: protagonist}
+    - {entity_id: andromeda, role: victim}
+    - {entity_id: cassiopeia, role: participant}
+    - {entity_id: poseidon, role: antagonist}
+
+# --- Theseus
+- id: theseus_and_minotaur
+  title_uk: Тесей і Мінотавр
+  cycle: theseus
+  summary_uk: Тесей поплив на Крит серед юнаків, яких Афіни віддавали Мінотаврові; з ниткою Аріадни він убив чудовисько і вибрався з Лабіринту, але на Наксосі залишив царівну, а забувши змінити вітрило, спричинив загибель батька.
+  entities:
+    - {entity_id: theseus, role: protagonist}
+    - {entity_id: minotaur, role: antagonist}
+    - {entity_id: ariadne, role: helper}
+    - {entity_id: minos, role: antagonist}
+    - {entity_id: aegeus, role: participant}
+    - {entity_id: daedalus, role: participant}
+    - {entity_id: dionysus, role: participant}
+    - {entity_id: athens, role: location}
+    - {entity_id: knossos, role: location}
+    - {entity_id: naxos, role: location}
+
+- id: daedalus_and_icarus
+  title_uk: Дедал та Ікар
+  cycle: theseus
+  summary_uk: Ув'язнені Міносом, Дедал та Ікар утекли з Криту на крилах із пір'я і воску; Ікар піднявся надто високо, віск розтанув, і юнак упав у море.
+  entities:
+    - {entity_id: daedalus, role: protagonist}
+    - {entity_id: icarus, role: victim}
+    - {entity_id: minos, role: antagonist}
+    - {entity_id: crete, role: location}
+
+# --- Argonauts
+- id: golden_fleece
+  title_uk: Похід аргонавтів по Золоте руно
+  cycle: argonauts
+  summary_uk: Пелій послав Ясона по Золоте руно; на кораблі «Арго» герої пропливли повз Лемнос і Геллеспонт до Колхіди, де Медея допомогла Ясонові виконати завдання Еета і викрасти руно.
+  entities:
+    - {entity_id: jason, role: protagonist}
+    - {entity_id: medea, role: helper}
+    - {entity_id: aeetes, role: antagonist}
+    - {entity_id: pelias, role: antagonist}
+    - {entity_id: argo, role: object}
+    - {entity_id: golden_fleece, role: object}
+    - {entity_id: heracles, role: participant}
+    - {entity_id: orpheus, role: participant}
+    - {entity_id: dioscuri, role: participant}
+    - {entity_id: peleus, role: participant}
+    - {entity_id: harpies, role: antagonist}
+    - {entity_id: talos, role: antagonist}
+    - {entity_id: athena, role: helper}
+    - {entity_id: hera, role: helper}
+    - {entity_id: iolcus, role: location}
+    - {entity_id: lemnos, role: location}
+    - {entity_id: dardanelles, role: location}
+    - {entity_id: colchis, role: location}
+
+- id: calydonian_hunt
+  title_uk: Калідонське полювання
+  cycle: argonauts
+  summary_uk: Розгнівана Артеміда наслала на Калідон вепра; на полювання зібралися герої, Аталанта першою поранила звіра, а Мелеагр його добив.
+  entities:
+    - {entity_id: meleager, role: protagonist}
+    - {entity_id: atalanta, role: protagonist}
+    - {entity_id: artemis, role: antagonist}
+    - {entity_id: peleus, role: participant}
+    - {entity_id: dioscuri, role: participant}
+    - {entity_id: theseus, role: participant}
+    - {entity_id: jason, role: participant}
+    - {entity_id: calydon, role: location}
+
+# --- Theban cycle
+- id: founding_of_thebes
+  title_uk: Кадм і заснування Фів
+  cycle: theban
+  summary_uk: Шукаючи викрадену сестру Європу, Кадм за порадою Дельфійського оракула пішов за коровою, убив змія Ареса, посіяв його зуби і заснував Фіви, взявши за дружину Гармонію.
+  entities:
+    - {entity_id: cadmus, role: protagonist}
+    - {entity_id: europa, role: participant}
+    - {entity_id: harmonia, role: participant}
+    - {entity_id: ares, role: antagonist}
+    - {entity_id: athena, role: helper}
+    - {entity_id: delphi, role: location}
+    - {entity_id: thebes, role: location}
+
+- id: birth_of_dionysus
+  title_uk: Народження Діоніса
+  cycle: theban
+  summary_uk: Підмовлена Герою, Семела попросила Зевса з'явитися в справжній подобі й згоріла; Зевс доносив немовля Діоніса у своєму стегні.
+  entities:
+    - {entity_id: dionysus, role: protagonist}
+    - {entity_id: semele, role: victim}
+    - {entity_id: zeus, role: participant}
+    - {entity_id: hera, role: antagonist}
+    - {entity_id: thebes, role: location}
+
+- id: oedipus
+  title_uk: Едіп
+  cycle: theban
+  summary_uk: Покинутий немовлям на Кіфероні, Едіп виріс у Коринфі, дорогою до Фів убив батька Лаія, розгадав загадку Сфінкс і одружився з матір'ю Йокастою, а дізнавшись правду, осліпив себе.
+  entities:
+    - {entity_id: oedipus, role: protagonist}
+    - {entity_id: laius, role: victim}
+    - {entity_id: jocasta, role: participant}
+    - {entity_id: sphinx, role: antagonist}
+    - {entity_id: tiresias, role: participant}
+    - {entity_id: antigone, role: participant}
+    - {entity_id: delphi, role: location}
+    - {entity_id: cithaeron, role: location}
+    - {entity_id: corinth, role: location}
+    - {entity_id: thebes, role: location}
+
+# --- Trojan cycle
+- id: judgement_of_paris
+  title_uk: Суд Паріса
+  cycle: trojan
+  summary_uk: На весілля Пелея і Фетіди Ерида кинула золоте яблуко «найвродливішій»; на горі Іді Паріс присудив його Афродіті, яка пообіцяла йому Єлену.
+  entities:
+    - {entity_id: paris, role: protagonist}
+    - {entity_id: eris, role: antagonist}
+    - {entity_id: hera, role: participant}
+    - {entity_id: athena, role: participant}
+    - {entity_id: aphrodite, role: participant}
+    - {entity_id: hermes, role: participant}
+    - {entity_id: helen, role: participant}
+    - {entity_id: peleus, role: participant}
+    - {entity_id: thetis, role: participant}
+    - {entity_id: pelion, role: location}
+    - {entity_id: ida_troad, role: location}
+
+- id: trojan_war
+  title_uk: Троянська війна і гнів Ахілла
+  cycle: trojan
+  summary_uk: Ахейці зібралися в Авліді й десять років облягали Трою; «Іліада» оповідає про гнів Ахілла, загибель Патрокла і помсту Гекторові.
+  entities:
+    - {entity_id: achilles, role: protagonist}
+    - {entity_id: agamemnon, role: participant}
+    - {entity_id: menelaus, role: participant}
+    - {entity_id: hector, role: antagonist}
+    - {entity_id: patroclus, role: victim}
+    - {entity_id: priam, role: participant}
+    - {entity_id: ajax, role: participant}
+    - {entity_id: diomedes, role: participant}
+    - {entity_id: odysseus, role: participant}
+    - {entity_id: nestor, role: participant}
+    - {entity_id: helen, role: participant}
+    - {entity_id: paris, role: participant}
+    - {entity_id: andromache, role: participant}
+    - {entity_id: aeneas, role: participant}
+    - {entity_id: apollo, role: participant}
+    - {entity_id: athena, role: participant}
+    - {entity_id: thetis, role: helper}
+    - {entity_id: iphigenia, role: victim}
+    - {entity_id: artemis, role: participant}
+    - {entity_id: aulis, role: location}
+    - {entity_id: troy, role: location}
+    - {entity_id: scamander, role: location}
+
+- id: fall_of_troy
+  title_uk: Падіння Трої
+  cycle: trojan
+  summary_uk: За задумом Одіссея ахейці залишили дерев'яного коня і сховали флот за Тенедосом; уночі воїни вийшли з коня, і Трою було зруйновано, лише Еней урятувався.
+  entities:
+    - {entity_id: odysseus, role: protagonist}
+    - {entity_id: trojan_horse, role: object}
+    - {entity_id: neoptolemus, role: participant}
+    - {entity_id: philoctetes, role: participant}
+    - {entity_id: cassandra, role: victim}
+    - {entity_id: priam, role: victim}
+    - {entity_id: aeneas, role: participant}
+    - {entity_id: andromache, role: victim}
+    - {entity_id: troy, role: location}
+    - {entity_id: tenedos, role: location}
+
+- id: house_of_atreus
+  title_uk: Прокляття роду Атрея
+  cycle: trojan
+  summary_uk: Повернувшись із-під Трої, Агамемнон загинув від рук Клітемнестри та Егіста; Орест з допомогою Електри помстився і був переслідуваний Ериніями.
+  entities:
+    - {entity_id: agamemnon, role: victim}
+    - {entity_id: clytemnestra, role: antagonist}
+    - {entity_id: aegisthus, role: antagonist}
+    - {entity_id: orestes, role: protagonist}
+    - {entity_id: electra, role: helper}
+    - {entity_id: iphigenia, role: participant}
+    - {entity_id: atreus, role: participant}
+    - {entity_id: erinyes, role: antagonist}
+    - {entity_id: mycenae, role: location}
 
 - id: odysseus_homecoming
   title_uk: Повернення Одіссея на Ітаку
   cycle: trojan
-  summary_uk: Десятирічні мандри Одіссея після падіння Трої, випробування богами та повернення до Пенелопи на Ітаку.
+  summary_uk: Десять років мандрів Одіссея після падіння Трої — кіклоп, Кірка, Аїд, сирени, Скілла і Харібда, Каліпсо, феаки — і помста женихам Пенелопи на Ітаці.
   entities:
-    - entity_id: odysseus
-      role: protagonist
-    - entity_id: troy
-      role: starting_point
-    - entity_id: ithaca
-      role: destination
-    - entity_id: athena
-      role: protector
+    - {entity_id: odysseus, role: protagonist}
+    - {entity_id: penelope, role: participant}
+    - {entity_id: telemachus, role: participant}
+    - {entity_id: laertes, role: participant}
+    - {entity_id: athena, role: helper}
+    - {entity_id: poseidon, role: antagonist}
+    - {entity_id: polyphemus, role: antagonist}
+    - {entity_id: circe, role: participant}
+    - {entity_id: calypso, role: participant}
+    - {entity_id: sirens, role: antagonist}
+    - {entity_id: scylla, role: antagonist}
+    - {entity_id: charybdis, role: antagonist}
+    - {entity_id: tiresias, role: helper}
+    - {entity_id: anticlea, role: participant}
+    - {entity_id: helios, role: antagonist}
+    - {entity_id: troy, role: location}
+    - {entity_id: aeaea, role: location}
+    - {entity_id: underworld, role: location}
+    - {entity_id: ogygia, role: location}
+    - {entity_id: corfu, role: location}
+    - {entity_id: sicily, role: location}
+    - {entity_id: ithaca, role: location}
+
+# --- Other
+- id: orpheus_descent
+  title_uk: Орфей в Аїді
+  cycle: other
+  summary_uk: Співом Орфей зворушив Аїда і Персефону й отримав дозвіл вивести дружину з підземного світу, але озирнувся і втратив її навіки.
+  entities:
+    - {entity_id: orpheus, role: protagonist}
+    - {entity_id: hades, role: participant}
+    - {entity_id: persephone, role: participant}
+    - {entity_id: charon, role: participant}
+    - {entity_id: cerberus, role: participant}
+    - {entity_id: underworld, role: location}
+    - {entity_id: thrace, role: location}
+
+- id: punishments_in_hades
+  title_uk: Вічні кари в Аїді
+  cycle: other
+  summary_uk: Одіссей бачив у підземному світі Тантала, що не може дотягнутися до води й плодів, і Сізіфа, що вічно котить угору камінь.
+  entities:
+    - {entity_id: tantalus, role: victim}
+    - {entity_id: sisyphus, role: victim}
+    - {entity_id: odysseus, role: participant}
+    - {entity_id: underworld, role: location}
+    - {entity_id: tartarus, role: location}
+
+- id: midas_golden_touch
+  title_uk: Золотий дотик Мідаса
+  cycle: other
+  summary_uk: Діоніс виконав бажання Мідаса, і все, чого торкався цар, ставало золотом — навіть їжа; Мідас змив дар у річці Пактол.
+  entities:
+    - {entity_id: midas, role: protagonist}
+    - {entity_id: dionysus, role: participant}
+    - {entity_id: phrygia, role: location}
+    - {entity_id: lydia, role: location}
+
+- id: bellerophon_chimera
+  title_uk: Беллерофонт і Химера
+  cycle: other
+  summary_uk: Приборкавши з допомогою Афіни Пегаса, Беллерофонт з повітря вбив Химеру в Лікії.
+  entities:
+    - {entity_id: bellerophon, role: protagonist}
+    - {entity_id: pegasus, role: helper}
+    - {entity_id: chimera, role: antagonist}
+    - {entity_id: athena, role: helper}
+    - {entity_id: corinth, role: location}

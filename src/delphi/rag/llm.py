@@ -1,43 +1,47 @@
-from typing import cast
-
 from langchain_core.language_models.chat_models import BaseChatModel
 from pydantic import SecretStr
 
-from delphi.config import settings
+from delphi.config import Settings, settings
 
 
-def get_chat_model(temperature: float = 0.2) -> BaseChatModel:
+class LLMConfigError(ValueError):
+    """Raised when the configured LLM provider cannot be created (e.g. missing API key)."""
+
+
+def get_chat_model(temperature: float = 0.2, cfg: Settings | None = None) -> BaseChatModel:
     """Factory creating an LLM chat instance matching the provider configured in .env."""
-    provider = settings.llm_provider.lower()
+    cfg = cfg or settings
+    provider = cfg.llm_provider.lower()
 
     if provider == "openai":
+        if not cfg.openai_api_key:
+            raise LLMConfigError("OPENAI_API_KEY не задано в .env (LLM_PROVIDER=openai).")
         from langchain_openai import ChatOpenAI
 
         return ChatOpenAI(
-            model=settings.llm_model,
-            api_key=SecretStr(settings.openai_api_key or "sk-dummy"),
+            model=cfg.llm_model,
+            api_key=SecretStr(cfg.openai_api_key),
             temperature=temperature,
         )
     elif provider == "anthropic":
+        if not cfg.anthropic_api_key:
+            raise LLMConfigError("ANTHROPIC_API_KEY не задано в .env (LLM_PROVIDER=anthropic).")
         from langchain_anthropic import ChatAnthropic
 
         return ChatAnthropic(
-            model_name=settings.llm_model,
-            api_key=SecretStr(settings.anthropic_api_key or "dummy"),
+            model_name=cfg.llm_model,
+            api_key=SecretStr(cfg.anthropic_api_key),
             temperature=temperature,
             timeout=60.0,
             stop=None,
         )
     elif provider == "ollama":
-        from langchain_community.chat_models import ChatOllama
+        from langchain_ollama import ChatOllama
 
-        return cast(
-            BaseChatModel,
-            ChatOllama(
-                base_url=settings.ollama_base_url,
-                model=settings.llm_model,
-                temperature=temperature,
-            ),
+        return ChatOllama(
+            base_url=cfg.ollama_base_url,
+            model=cfg.llm_model,
+            temperature=temperature,
         )
     else:
-        raise ValueError(f"Невідомий LLM провайдер: {settings.llm_provider}")
+        raise LLMConfigError(f"Невідомий LLM провайдер: {cfg.llm_provider}")

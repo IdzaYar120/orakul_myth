@@ -1,6 +1,7 @@
 import streamlit as st
 
 from app.components.citations import render_citations
+from app.components.navigation import open_entity
 from delphi.rag.oracle import OracleService
 
 
@@ -32,7 +33,7 @@ def render_oracle_tab(oracle_service: OracleService):
         ]
 
     # Render message history
-    for msg in st.session_state["messages"]:
+    for msg_idx, msg in enumerate(st.session_state["messages"]):
         with st.chat_message(msg["role"]):
             st.markdown(msg["text"])
             if msg.get("citations"):
@@ -41,10 +42,12 @@ def render_oracle_tab(oracle_service: OracleService):
                 cols = st.columns(len(msg["entities"]) + 1)
                 for i, eid in enumerate(msg["entities"]):
                     with cols[i]:
-                        if st.button(f"🔍 {eid}", key=f"chip_{msg.get('id', '')}_{eid}_{i}"):
-                            st.session_state["selected_entity"] = eid
-                            st.session_state["active_tab"] = "Енциклопедія"
-                            st.rerun()
+                        st.button(
+                            f"🔍 {eid}",
+                            key=f"chip_{msg_idx}_{eid}_{i}",
+                            on_click=open_entity,
+                            args=(eid,),
+                        )
 
     # Check for pending question (e.g. from encyclopedia)
     prompt = None
@@ -72,10 +75,12 @@ def render_oracle_tab(oracle_service: OracleService):
                     c_cols = st.columns(len(answer.entities) + 2)
                     for i, eid in enumerate(answer.entities):
                         with c_cols[i]:
-                            if st.button(f"Картка {eid}", key=f"ans_chip_{eid}_{i}"):
-                                st.session_state["selected_entity"] = eid
-                                st.session_state["active_tab"] = "Енциклопедія"
-                                st.rerun()
+                            st.button(
+                                f"Картка {eid}",
+                                key=f"ans_chip_{eid}_{i}",
+                                on_click=open_entity,
+                                args=(eid,),
+                            )
 
         st.session_state["messages"].append(
             {

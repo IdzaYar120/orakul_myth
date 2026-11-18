@@ -1,72 +1,1536 @@
-# Geographic locations for the map
+# Geographic locations for the encyclopedia and the map (Stage 1).
+# Coordinates: Pleiades reprPoint (CC BY, https://pleiades.stoa.org) or Wikidata P625 (CC0).
+# certainty: high | medium | low; none = mythical place without a location ("поза картою").
+
+# --- sanctuary
 - entity_id: delphi
   name_uk: Дельфи
   name_en: Delphi
-  name_lat: Delphi
   place_kind: sanctuary
-  lat: 38.4824
-  lon: 22.5010
+  lat: 38.48229
+  lon: 22.50117
   certainty: high
-  pleiades_id: 540731
-  summary_uk: Головне святилище Аполлона на схилі гори Парнас, місцеперебування Дельфійського оракула (Піфії) та омфала.
+  pleiades_id: 540726
+  coord_source: pleiades
+  wikidata_id: Q75459
+  summary_uk: 'Головне святилище Аполлона на схилі Парнасу, осідок Піфії та «пупа землі» — омфала.'
   aliases:
-    - alias: Дельфи
-      lang: uk
-    - alias: Delphi
-      lang: en
-    - alias: Піфо
-      lang: uk
-    - alias: Pytho
-      lang: en
+    - {alias: Дельфи, lang: uk}
+    - {alias: Delphi, lang: en}
+    - {alias: Delphi (Samian Ware Discovery Site), lang: en}
+    - {alias: Ancient Delphi, lang: en}
+    - {alias: Mint of Delphi, lang: en}
+    - {alias: Delphi, lang: la}
+    - {alias: Піфо, lang: uk}
+    - {alias: Pytho, lang: en}
+- entity_id: olympia
+  name_uk: Олімпія
+  name_en: Olympia
+  place_kind: sanctuary
+  lat: 37.63868
+  lon: 21.63081
+  certainty: high
+  pleiades_id: 570531
+  coord_source: pleiades
+  wikidata_id: Q38888
+  summary_uk: 'Святилище Зевса в Еліді з храмом і статуєю роботи Фідія, місце Олімпійських ігор.'
+  aliases:
+    - {alias: Олімпія, lang: uk}
+    - {alias: Olympia, lang: en}
+    - {alias: 'Olympia, Greece', lang: en}
+    - {alias: Longanico, lang: en}
+    - {alias: Longavico, lang: en}
+    - {alias: Olympia Pissa, lang: en}
+    - {alias: Olimpia, lang: en}
+    - {alias: Olympia Pisa, lang: en}
+    - {alias: Lagganico Sauro, lang: en}
+    - {alias: Olympia, lang: la}
+- entity_id: dodona
+  name_uk: Додона
+  name_en: Dodona
+  place_kind: sanctuary
+  lat: 39.54644
+  lon: 20.78773
+  certainty: high
+  pleiades_id: 530843
+  coord_source: pleiades
+  wikidata_id: Q382317
+  summary_uk: 'Найдавніший оракул Греції в Епірі, де волю Зевса тлумачили за шелестом священного дуба.'
+  aliases:
+    - {alias: Додона, lang: uk}
+    - {alias: Dodona, lang: en}
+    - {alias: Dodona, lang: la}
 
+# --- island
+- entity_id: delos
+  name_uk: Делос
+  name_en: Delos
+  place_kind: island
+  lat: 37.39202
+  lon: 25.27024
+  certainty: high
+  pleiades_id: 599588
+  coord_source: pleiades
+  wikidata_id: Q173148
+  summary_uk: 'Острів у Кікладах, де Лето народила Аполлона; одне з найсвятіших місць Еллади.'
+  aliases:
+    - {alias: Делос, lang: uk}
+    - {alias: Ділос, lang: uk}
+    - {alias: Delos, lang: en}
+    - {alias: Mint of Delos, lang: en}
+    - {alias: Delos, lang: la}
+
+# --- sanctuary
+- entity_id: eleusis
+  name_uk: Елевсін
+  name_en: Eleusis
+  place_kind: sanctuary
+  lat: 38.0411
+  lon: 23.5374
+  certainty: high
+  pleiades_id: 579920
+  coord_source: pleiades
+  wikidata_id: Q11918833
+  summary_uk: 'Місто в Аттиці, осередок Елевсінських містерій Деметри та Персефони.'
+  aliases:
+    - {alias: Елевсін, lang: uk}
+    - {alias: Eleusis, lang: en}
+    - {alias: Mint of Eleusis, lang: en}
+- entity_id: epidaurus
+  name_uk: Епідавр
+  name_en: Epidaurus
+  place_kind: sanctuary
+  lat: 37.63346
+  lon: 23.16016
+  certainty: high
+  pleiades_id: 570228
+  coord_source: pleiades
+  wikidata_id: Q233576
+  summary_uk: 'Головне святилище Асклепія, куди приходили по зцілення.'
+  aliases:
+    - {alias: Епідавр, lang: uk}
+    - {alias: Epidaurus, lang: en}
+    - {alias: Epidauros, lang: en}
+    - {alias: Mint of Epidaurus, lang: en}
+    - {alias: Epidaurus, lang: la}
+- entity_id: didyma
+  name_uk: Дідіма
+  name_en: Didyma
+  place_kind: sanctuary
+  lat: 37.38497
+  lon: 27.25639
+  certainty: high
+  pleiades_id: 599593
+  coord_source: pleiades
+  wikidata_id: Q671358
+  summary_uk: Святилище й оракул Аполлона біля Мілета в Малій Азії.
+  aliases:
+    - {alias: Дідіма, lang: uk}
+    - {alias: Didyma, lang: en}
+    - {alias: Didim, lang: en}
+    - {alias: Didyma, lang: la}
+- entity_id: dion
+  name_uk: Діон
+  name_en: Dion
+  place_kind: sanctuary
+  lat: 40.17194
+  lon: 22.4825
+  certainty: high
+  coord_source: wikidata
+  wikidata_id: Q990247
+  summary_uk: 'Священне місто македонців біля підніжжя Олімпу, присвячене Зевсу.'
+  aliases:
+    - {alias: Діон, lang: uk}
+    - {alias: Dion, lang: en}
+    - {alias: Dium, lang: la}
+- entity_id: sounion
+  name_uk: Суніон
+  name_en: Sounion
+  place_kind: sanctuary
+  lat: 37.65011
+  lon: 24.02628
+  certainty: high
+  pleiades_id: 580108
+  coord_source: pleiades
+  wikidata_id: Q1136637
+  summary_uk: Мис на півдні Аттики з храмом Посейдона над морем.
+  aliases:
+    - {alias: Суніон, lang: uk}
+    - {alias: Суніо, lang: uk}
+    - {alias: Суній, lang: uk}
+    - {alias: Sounion, lang: en}
+    - {alias: Sunium, lang: en}
+    - {alias: 'Sounion,archaeological site', lang: en}
+    - {alias: Sunium, lang: la}
+- entity_id: heraion_samos
+  name_uk: Герайон Самоський
+  name_en: Heraion of Samos
+  place_kind: sanctuary
+  lat: 37.67197
+  lon: 26.88592
+  certainty: high
+  pleiades_id: 599641
+  coord_source: pleiades
+  wikidata_id: Q841207
+  summary_uk: 'Велике святилище Гери на Самосі, яку за переказом народили саме тут.'
+  aliases:
+    - {alias: Герайон Самоський, lang: uk}
+    - {alias: Герайон на острові Самос, lang: uk}
+    - {alias: Самоський герайон, lang: uk}
+    - {alias: Храм Гери на острові Самос, lang: uk}
+    - {alias: Heraion of Samos, lang: en}
+    - {alias: Heraeum of Samos, lang: en}
+    - {alias: Heraeum, lang: la}
+- entity_id: necromanteion
+  name_uk: Некромантейон
+  name_en: Necromanteion of Acheron
+  place_kind: sanctuary
+  lat: 39.23619
+  lon: 20.5342
+  certainty: high
+  pleiades_id: 531011
+  coord_source: pleiades
+  wikidata_id: Q12881666
+  summary_uk: 'Оракул мертвих біля річки Ахеронт в Епірі, що вважався входом до Аїду.'
+  aliases:
+    - {alias: Некромантейон, lang: uk}
+    - {alias: Necromanteion of Acheron, lang: en}
+    - {alias: Nekromanteion of Acheron, lang: en}
+    - {alias: Nekromanteion of Mesopotamos, lang: en}
+- entity_id: taenarum
+  name_uk: Тенар
+  name_en: Taenarum
+  place_kind: sanctuary
+  lat: 36.38549
+  lon: 22.48314
+  certainty: high
+  pleiades_id: 570703
+  coord_source: pleiades
+  wikidata_id: Q849911
+  summary_uk: 'Південний мис Пелопоннесу з печерою, крізь яку, за переказом, Геракл виволік Цербера.'
+  aliases:
+    - {alias: Тенар, lang: uk}
+    - {alias: Матапан, lang: uk}
+    - {alias: Taenarum, lang: en}
+    - {alias: Cape Matapan, lang: en}
+    - {alias: Cape Tenaro, lang: en}
+    - {alias: Cape Tainaro, lang: en}
+    - {alias: Tainaron, lang: en}
+    - {alias: Taenarum, lang: la}
+- entity_id: dictaean_cave
+  name_uk: Діктейська печера
+  name_en: Dikteon Andron
+  place_kind: sanctuary
+  lat: 35.1647
+  lon: 25.45
+  certainty: high
+  pleiades_id: 589675
+  coord_source: pleiades
+  wikidata_id: Q1643807
+  summary_uk: 'Печера на Криті, де, за переказом, Рея сховала новонародженого Зевса.'
+  aliases:
+    - {alias: Діктейська печера, lang: uk}
+    - {alias: Dikteon Andron, lang: en}
+    - {alias: Dictate Antron, lang: en}
+    - {alias: Psychro Cave, lang: en}
+- entity_id: paphos
+  name_uk: Пафос (Палепафос)
+  name_en: Paphos
+  place_kind: sanctuary
+  lat: 34.70533
+  lon: 32.57909
+  certainty: high
+  pleiades_id: 707596
+  coord_source: pleiades
+  wikidata_id: Q64433741
+  summary_uk: 'Святилище Афродіти на Кіпрі неподалік місця, де богиня вийшла з моря.'
+  aliases:
+    - {alias: Пафос (Палепафос), lang: uk}
+    - {alias: Paphos, lang: en}
+
+# --- city
+- entity_id: ephesus
+  name_uk: Ефес
+  name_en: Ephesus
+  place_kind: city
+  lat: 37.94016
+  lon: 27.3424
+  certainty: high
+  pleiades_id: 599612
+  coord_source: pleiades
+  wikidata_id: Q47611
+  summary_uk: Іонійське місто з храмом Артеміди — одним із семи чудес світу.
+  aliases:
+    - {alias: Ефес, lang: uk}
+    - {alias: Ephesus, lang: en}
+    - {alias: Efes, lang: en}
+    - {alias: Ephesos, lang: en}
+    - {alias: Mint of Ephesus, lang: en}
+    - {alias: Ephesus, lang: la}
+- entity_id: athens
+  name_uk: Афіни
+  name_en: Athens
+  place_kind: city
+  lat: 37.97165
+  lon: 23.72395
+  certainty: high
+  pleiades_id: 579885
+  coord_source: pleiades
+  wikidata_id: Q844930
+  summary_uk: 'Головне місто Аттики, за яке сперечалися Афіна і Посейдон; Афіна перемогла, подарувавши оливу.'
+  aliases:
+    - {alias: Афіни, lang: uk}
+    - {alias: Стародавні Афіни, lang: uk}
+    - {alias: Стародавні Атени, lang: uk}
+    - {alias: Класичні Афіни, lang: uk}
+    - {alias: Athens, lang: en}
+    - {alias: Classical Athens, lang: en}
+    - {alias: Ancient Athens, lang: en}
+    - {alias: Athens (Samian Ware Discovery Site), lang: en}
+    - {alias: Athenae antiquae, lang: la}
+- entity_id: sparta
+  name_uk: Спарта
+  name_en: Sparta
+  place_kind: city
+  lat: 37.08178
+  lon: 22.42467
+  certainty: high
+  pleiades_id: 570685
+  coord_source: pleiades
+  wikidata_id: Q5690
+  summary_uk: 'Столиця Лаконії, царство Тіндарея і Менелая.'
+  aliases:
+    - {alias: Спарта, lang: uk}
+    - {alias: Sparta, lang: en}
+    - {alias: Lacedaemon, lang: en}
+    - {alias: Lacedemon, lang: en}
+    - {alias: Mint of Lacedaemon, lang: en}
+    - {alias: Sparta, lang: la}
+- entity_id: thebes
+  name_uk: Фіви
+  name_en: Thebes
+  place_kind: city
+  lat: 38.31995
+  lon: 23.31765
+  certainty: high
+  pleiades_id: 541138
+  coord_source: pleiades
+  wikidata_id: Q11225429
+  summary_uk: 'Головне місто Беотії, засноване Кадмом; місце дії міфів про Едіпа і Семелу.'
+  aliases:
+    - {alias: Фіви, lang: uk}
+    - {alias: Thebes, lang: en}
+    - {alias: Mint of Thebes, lang: en}
+- entity_id: mycenae
+  name_uk: Мікени
+  name_en: Mycenae
+  place_kind: city
+  lat: 37.72754
+  lon: 22.75383
+  certainty: high
+  pleiades_id: 570491
+  coord_source: pleiades
+  wikidata_id: Q132564
+  summary_uk: '«Багате золотом» місто в Арголіді, царство Атрея й Агамемнона.'
+  aliases:
+    - {alias: Мікени, lang: uk}
+    - {alias: Mycenae, lang: en}
+    - {alias: Mykenai, lang: en}
+    - {alias: archaeological site of Mycenae, lang: en}
+    - {alias: Mycenæ, lang: en}
+    - {alias: Mycenae, lang: la}
+- entity_id: tiryns
+  name_uk: Тиринф
+  name_en: Tiryns
+  place_kind: city
+  lat: 37.59928
+  lon: 22.79999
+  certainty: high
+  pleiades_id: 570740
+  coord_source: pleiades
+  wikidata_id: Q217379
+  summary_uk: 'Фортеця з циклопічними мурами в Арголіді, пов''язана з Гераклом і Еврістеєм.'
+  aliases:
+    - {alias: Тиринф, lang: uk}
+    - {alias: Тіринф, lang: uk}
+    - {alias: Тірінф, lang: uk}
+    - {alias: Tiryns, lang: en}
+    - {alias: archaeological site of Tiryns, lang: en}
+    - {alias: Mint of Tiryns, lang: en}
+    - {alias: Tiryns, lang: la}
+- entity_id: argos
+  name_uk: Аргос
+  name_en: Argos
+  place_kind: city
+  lat: 37.63088
+  lon: 22.72044
+  certainty: high
+  pleiades_id: 570106
+  coord_source: pleiades
+  wikidata_id: Q189901
+  summary_uk: 'Давнє місто в Арголіді, царство Акрісія та Діомеда, улюблене місто Гери.'
+  aliases:
+    - {alias: Аргос, lang: uk}
+    - {alias: Арґос, lang: uk}
+    - {alias: Аргівяни, lang: uk}
+    - {alias: Аргивяни, lang: uk}
+    - {alias: Argos, lang: en}
+    - {alias: Argos, lang: la}
+- entity_id: corinth
+  name_uk: Коринф
+  name_en: Corinth
+  place_kind: city
+  lat: 37.90564
+  lon: 22.87861
+  certainty: high
+  pleiades_id: 570182
+  coord_source: pleiades
+  wikidata_id: Q1363688
+  summary_uk: 'Місто на перешийку між Пелопоннесом і материковою Грецією, царство Сізіфа.'
+  aliases:
+    - {alias: Коринф, lang: uk}
+    - {alias: Стародавній Коринф, lang: uk}
+    - {alias: Corinth, lang: en}
+    - {alias: Ancient Corinth, lang: en}
+    - {alias: ancient Korinthos, lang: en}
+    - {alias: Korinthos, lang: en}
+- entity_id: troy
+  name_uk: Троя (Іліон)
+  name_en: Troy
+  place_kind: city
+  lat: 39.95744
+  lon: 26.23852
+  certainty: high
+  pleiades_id: 550595
+  coord_source: pleiades
+  wikidata_id: Q22647
+  summary_uk: 'Місто в Троаді на північному заході Малої Азії, десять років обложене ахейцями.'
+  aliases:
+    - {alias: Троя (Іліон), lang: uk}
+    - {alias: Троя, lang: uk}
+    - {alias: Іліон, lang: uk}
+    - {alias: Троада, lang: uk}
+    - {alias: Troy, lang: en}
+    - {alias: Ancient Troy, lang: en}
+    - {alias: City of Troy, lang: en}
+    - {alias: Ilion, lang: en}
+    - {alias: Ilium, lang: en}
+    - {alias: Teukroi, lang: en}
+    - {alias: Mint of Ilium, lang: en}
+    - {alias: Ilium, lang: la}
+- entity_id: pylos
+  name_uk: Пілос
+  name_en: Pylos
+  place_kind: city
+  lat: 36.95203
+  lon: 21.65989
+  certainty: high
+  pleiades_id: 570640
+  coord_source: pleiades
+  wikidata_id: Q7263152
+  summary_uk: '«Піщаний» Пілос у Мессенії, царство мудрого Нестора.'
+  aliases:
+    - {alias: Пілос, lang: uk}
+    - {alias: Наварин, lang: uk}
+    - {alias: Pylos, lang: en}
+    - {alias: Navarino, lang: en}
+    - {alias: Pylos, lang: la}
+- entity_id: knossos
+  name_uk: Кносс
+  name_en: Knossos
+  place_kind: city
+  lat: 35.29785
+  lon: 25.16311
+  certainty: high
+  pleiades_id: 589872
+  coord_source: pleiades
+  wikidata_id: Q173527
+  summary_uk: 'Головне місто Криту, палац царя Міноса і Лабіринт.'
+  aliases:
+    - {alias: Кносс, lang: uk}
+    - {alias: Кнос, lang: uk}
+    - {alias: Кноссос, lang: uk}
+    - {alias: Археологічний заповідник Кносса, lang: uk}
+    - {alias: Кноссі, lang: uk}
+    - {alias: Knossos, lang: en}
+    - {alias: Cnossus, lang: en}
+    - {alias: Mint of Cnossus, lang: en}
+    - {alias: Cnossus, lang: la}
+- entity_id: iolcus
+  name_uk: Іолк
+  name_en: Iolcos
+  place_kind: city
+  lat: 39.3663
+  lon: 22.96886
+  certainty: high
+  pleiades_id: 540837
+  coord_source: pleiades
+  wikidata_id: Q662613
+  summary_uk: 'Місто у Фессалії, звідки вирушив корабель «Арго».'
+  aliases:
+    - {alias: Іолк, lang: uk}
+    - {alias: Iolcos, lang: en}
+    - {alias: Iolcus, lang: en}
+    - {alias: Iolkos, lang: en}
+    - {alias: Mint of Iolkos, lang: en}
+    - {alias: Iolcus, lang: la}
+- entity_id: calydon
+  name_uk: Калідон
+  name_en: Calydon
+  place_kind: city
+  lat: 38.37293
+  lon: 21.53318
+  certainty: high
+  pleiades_id: 540699
+  coord_source: pleiades
+  wikidata_id: Q750313
+  summary_uk: 'Місто в Етолії, де відбулося полювання на Калідонського вепра.'
+  aliases:
+    - {alias: Калідон, lang: uk}
+    - {alias: Calydon, lang: en}
+    - {alias: Kalydona, lang: en}
+    - {alias: Calydon, lang: la}
+- entity_id: troezen
+  name_uk: Тройзен
+  name_en: Troezen
+  place_kind: city
+  lat: 37.50311
+  lon: 23.34849
+  certainty: high
+  pleiades_id: 570756
+  coord_source: pleiades
+  wikidata_id: Q581494
+  summary_uk: 'Місто в Арголіді, батьківщина Тесея.'
+  aliases:
+    - {alias: Тройзен, lang: uk}
+    - {alias: Troezen, lang: en}
+    - {alias: Damalas, lang: en}
+    - {alias: Troizen, lang: en}
+    - {alias: Mint of Troezen, lang: en}
+    - {alias: Troezen, lang: la}
+
+# --- sanctuary
+- entity_id: nemea
+  name_uk: Немея
+  name_en: Nemea
+  place_kind: sanctuary
+  lat: 37.80906
+  lon: 22.71068
+  certainty: high
+  pleiades_id: 570504
+  coord_source: pleiades
+  wikidata_id: Q748108
+  summary_uk: 'Долина в Арголіді, де Геракл задушив Немейського лева; місце Немейських ігор.'
+  aliases:
+    - {alias: Немея, lang: uk}
+    - {alias: Nemea, lang: en}
+    - {alias: Sanctuary of Nemean Zeus, lang: en}
+    - {alias: Ancient Nemea, lang: en}
+    - {alias: Nemea, lang: la}
+
+# --- region
+- entity_id: lerna
+  name_uk: Лерна
+  name_en: Lerna
+  place_kind: region
+  lat: 37.55109
+  lon: 22.71843
+  certainty: high
+  pleiades_id: 570424
+  coord_source: pleiades
+  wikidata_id: Q1236078
+  summary_uk: 'Болотисте джерело біля Аргоса, лігво Лернейської гідри.'
+  aliases:
+    - {alias: Лерна, lang: uk}
+    - {alias: Lerna, lang: en}
+    - {alias: Lerni, lang: en}
+    - {alias: Lerna, lang: la}
+
+# --- city
+- entity_id: megara
+  name_uk: Мегара
+  name_en: Megara
+  place_kind: city
+  lat: 37.98508
+  lon: 23.34016
+  certainty: high
+  pleiades_id: 570468
+  coord_source: pleiades
+  wikidata_id: Q184864
+  summary_uk: Місто між Аттикою і Коринфом.
+  aliases:
+    - {alias: Мегара, lang: uk}
+    - {alias: Мегари, lang: uk}
+    - {alias: Megara, lang: en}
+    - {alias: Megara, lang: la}
+- entity_id: aulis
+  name_uk: Авліда
+  name_en: Aulis
+  place_kind: city
+  lat: 38.43026
+  lon: 23.59365
+  certainty: high
+  pleiades_id: 579889
+  coord_source: pleiades
+  wikidata_id: Q4821780
+  summary_uk: 'Беотійська гавань, де зібрався ахейський флот і мала бути принесена в жертву Іфігенія.'
+  aliases:
+    - {alias: Авліда, lang: uk}
+    - {alias: Aulis, lang: en}
+    - {alias: Aulis, lang: la}
+- entity_id: marathon
+  name_uk: Марафон
+  name_en: Marathon
+  place_kind: city
+  lat: 38.14655
+  lon: 23.97015
+  certainty: high
+  pleiades_id: 580021
+  coord_source: pleiades
+  wikidata_id: Q212150
+  summary_uk: 'Рівнина в Аттиці, де Тесей приборкав Марафонського (Критського) бика.'
+  aliases:
+    - {alias: Марафон, lang: uk}
+    - {alias: Маратон, lang: uk}
+    - {alias: Marathon, lang: en}
+    - {alias: Marathon, lang: la}
+- entity_id: elis
+  name_uk: Еліда
+  name_en: Elis
+  place_kind: city
+  lat: 37.89127
+  lon: 21.37436
+  certainty: high
+  pleiades_id: 570220
+  coord_source: pleiades
+  wikidata_id: Q217667
+  summary_uk: 'Місто й область на заході Пелопоннесу, царство Авгія.'
+  aliases:
+    - {alias: Еліда, lang: uk}
+    - {alias: Elis, lang: en}
+    - {alias: Mint of Elis, lang: en}
+    - {alias: Elis, lang: la}
+- entity_id: pherae
+  name_uk: Фери
+  name_en: Pherae
+  place_kind: city
+  lat: 39.37904
+  lon: 22.75385
+  certainty: high
+  pleiades_id: 541044
+  coord_source: pleiades
+  wikidata_id: Q1330631
+  summary_uk: 'Фессалійське місто, царство Адмета і Алкести.'
+  aliases:
+    - {alias: Фери, lang: uk}
+    - {alias: Pherae, lang: en}
+    - {alias: Mint of Pherae, lang: en}
+
+# --- mountain
 - entity_id: olympus
   name_uk: Олімп
   name_en: Mount Olympus
-  name_lat: Olympus
   place_kind: mountain
-  lat: 40.0884
-  lon: 22.3586
+  lat: 40.08556
+  lon: 22.35861
   certainty: high
-  pleiades_id: 491684
-  summary_uk: Найвища гора Греції, священна обитель дванадцяти олімпійських богів.
+  pleiades_id: 491677
+  coord_source: pleiades
+  wikidata_id: Q80344
+  summary_uk: 'Найвища гора Греції, обитель олімпійських богів.'
   aliases:
-    - alias: Олімп
-      lang: uk
-    - alias: Olympus
-      lang: en
+    - {alias: Олімп, lang: uk}
+    - {alias: Пантеон, lang: uk}
+    - {alias: Mount Olympus, lang: en}
+    - {alias: Oros Olympos, lang: en}
+    - {alias: Olympus, lang: en}
+    - {alias: Olympus, lang: la}
+- entity_id: parnassus
+  name_uk: Парнас
+  name_en: Mount Parnassus
+  place_kind: mountain
+  lat: 38.53516
+  lon: 22.62206
+  certainty: high
+  pleiades_id: 541012
+  coord_source: pleiades
+  wikidata_id: Q105261
+  summary_uk: 'Гора над Дельфами, присвячена Аполлону і Музам; на ній зупинився ковчег Девкаліона.'
+  aliases:
+    - {alias: Парнас, lang: uk}
+    - {alias: Mount Parnassus, lang: en}
+    - {alias: Parnassus, lang: en}
+    - {alias: Parnassos, lang: en}
+    - {alias: Parnasos, lang: en}
+    - {alias: Parnass, lang: en}
+    - {alias: Parnassus, lang: la}
+- entity_id: ida_crete
+  name_uk: Іда (Крит)
+  name_en: Mount Ida (Crete)
+  place_kind: mountain
+  lat: 35.22631
+  lon: 24.7708
+  certainty: high
+  pleiades_id: 589816
+  coord_source: pleiades
+  wikidata_id: Q83659
+  summary_uk: 'Найвища гора Криту, пов''язана з дитинством Зевса.'
+  aliases:
+    - {alias: Іда (Крит), lang: uk}
+    - {alias: Іда, lang: uk}
+    - {alias: Псилоретіс, lang: uk}
+    - {alias: Mount Ida (Crete), lang: en}
+    - {alias: Psiloritis, lang: en}
+- entity_id: ida_troad
+  name_uk: Іда (Троада)
+  name_en: Mount Ida (Troad)
+  place_kind: mountain
+  lat: 39.69274
+  lon: 26.81918
+  certainty: high
+  pleiades_id: 550592
+  coord_source: pleiades
+  wikidata_id: Q1127771
+  summary_uk: 'Гора над Троєю, де Паріс судив богинь і звідки боги спостерігали за війною.'
+  aliases:
+    - {alias: Іда (Троада), lang: uk}
+    - {alias: Каз, lang: uk}
+    - {alias: Mount Ida (Troad), lang: en}
+- entity_id: helicon
+  name_uk: Гелікон
+  name_en: Mount Helicon
+  place_kind: mountain
+  lat: 38.35278
+  lon: 22.8225
+  certainty: high
+  pleiades_id: 540808
+  coord_source: pleiades
+  wikidata_id: Q215516
+  summary_uk: 'Гора в Беотії, священна для Муз; біля неї пас отару Гесіод.'
+  aliases:
+    - {alias: Гелікон, lang: uk}
+    - {alias: Mount Helicon, lang: en}
+    - {alias: Helicon, lang: en}
+    - {alias: Helicon, lang: la}
+- entity_id: pelion
+  name_uk: Пеліон
+  name_en: Pelion
+  place_kind: mountain
+  lat: 39.40822
+  lon: 23.06653
+  certainty: high
+  pleiades_id: 541021
+  coord_source: pleiades
+  wikidata_id: Q1334825
+  summary_uk: 'Лісиста гора у Фессалії, оселя кентавра Хірона; тут святкували весілля Пелея і Фетіди.'
+  aliases:
+    - {alias: Пеліон, lang: uk}
+    - {alias: Pelion, lang: en}
+    - {alias: Pelion, lang: la}
+- entity_id: ossa
+  name_uk: Осса
+  name_en: Mount Ossa
+  place_kind: mountain
+  lat: 39.79578
+  lon: 22.6852
+  certainty: high
+  pleiades_id: 540993
+  coord_source: pleiades
+  wikidata_id: Q1471677
+  summary_uk: 'Гора у Фессалії, яку велетні Алоади нагромаджували на Олімп, щоб дістатися неба.'
+  aliases:
+    - {alias: Осса, lang: uk}
+    - {alias: Mount Ossa, lang: en}
+    - {alias: 'Mount Ossa, Greece', lang: en}
+    - {alias: Ossa, lang: en}
+    - {alias: Kissavos, lang: en}
+    - {alias: Ossa, lang: la}
+- entity_id: othrys
+  name_uk: Отріс
+  name_en: Mount Othrys
+  place_kind: mountain
+  lat: 39.01694
+  lon: 22.70972
+  certainty: high
+  pleiades_id: 540994
+  coord_source: pleiades
+  wikidata_id: Q775676
+  summary_uk: 'Гора у Фессалії, твердиня титанів під час Титаномахії.'
+  aliases:
+    - {alias: Отріс, lang: uk}
+    - {alias: Mount Othrys, lang: en}
+    - {alias: Othrys, lang: en}
+    - {alias: Orthrys, lang: en}
+    - {alias: Othrys, lang: la}
+- entity_id: cithaeron
+  name_uk: Кіферон
+  name_en: Cithaeron
+  place_kind: mountain
+  lat: 38.1842
+  lon: 23.24919
+  certainty: high
+  pleiades_id: 540714
+  coord_source: pleiades
+  wikidata_id: Q1147780
+  summary_uk: 'Гірський хребет між Аттикою і Беотією, де залишили немовля Едіпа.'
+  aliases:
+    - {alias: Кіферон, lang: uk}
+    - {alias: Кіферон (гора), lang: uk}
+    - {alias: Cithaeron, lang: en}
+    - {alias: Kithairon, lang: en}
+    - {alias: Cithaeron, lang: la}
+- entity_id: oeta
+  name_uk: Ета
+  name_en: Mount Oeta
+  place_kind: mountain
+  lat: 38.80438
+  lon: 22.26921
+  certainty: high
+  pleiades_id: 540968
+  coord_source: pleiades
+  wikidata_id: Q132378
+  summary_uk: 'Гора, на якій Геракл зійшов на погребальне багаття і вознісся до богів.'
+  aliases:
+    - {alias: Ета, lang: uk}
+    - {alias: Mount Oeta, lang: en}
+    - {alias: Oeta, lang: la}
+- entity_id: cyllene
+  name_uk: Кіллена
+  name_en: Mount Cyllene
+  place_kind: mountain
+  lat: 37.93972
+  lon: 22.39693
+  certainty: high
+  pleiades_id: 570391
+  coord_source: pleiades
+  wikidata_id: Q1232572
+  summary_uk: 'Гора в Аркадії, де Майя народила Гермеса.'
+  aliases:
+    - {alias: Кіллена, lang: uk}
+    - {alias: Mount Cyllene, lang: en}
+    - {alias: Mount Kyllini, lang: en}
+    - {alias: Ziria, lang: en}
+    - {alias: Cyllene, lang: en}
+    - {alias: Cyllene mons, lang: la}
+- entity_id: lycaeus
+  name_uk: Лікей
+  name_en: Mount Lycaeus
+  place_kind: mountain
+  lat: 37.45694
+  lon: 21.975
+  certainty: high
+  pleiades_id: 570441
+  coord_source: pleiades
+  wikidata_id: Q1878690
+  summary_uk: Гора в Аркадії з вівтарем Зевса Лікейського; за одним із переказів — місце народження Зевса.
+  aliases:
+    - {alias: Лікей, lang: uk}
+    - {alias: Mount Lycaeus, lang: en}
+    - {alias: Mount Lykaion, lang: en}
+    - {alias: Lycaeus, lang: la}
+- entity_id: erymanthus
+  name_uk: Еримант
+  name_en: Erymanthos
+  place_kind: mountain
+  lat: 37.61749
+  lon: 21.79487
+  certainty: medium
+  pleiades_id: 570237
+  coord_source: pleiades
+  wikidata_id: Q3555227
+  summary_uk: 'Гірський край у Аркадії, де жив Еримантський вепр (координати — за однойменною річкою в Pleiades).'
+  aliases:
+    - {alias: Еримант, lang: uk}
+    - {alias: Erymanthos, lang: en}
+- entity_id: etna
+  name_uk: Етна
+  name_en: Mount Etna
+  place_kind: mountain
+  lat: 37.75723
+  lon: 14.9846
+  certainty: high
+  pleiades_id: 462077
+  coord_source: pleiades
+  wikidata_id: Q16990
+  summary_uk: 'Вулкан на Сицилії, під яким Зевс, за переказом, придавив Тифона; кузня Гефеста.'
+  aliases:
+    - {alias: Етна, lang: uk}
+    - {alias: Mount Etna, lang: en}
+    - {alias: Mount Aetna, lang: en}
+    - {alias: Aetna, lang: en}
+    - {alias: Etna, lang: en}
+    - {alias: Èttena, lang: en}
+    - {alias: Èttina, lang: en}
+    - {alias: Aetna, lang: la}
+- entity_id: caucasus
+  name_uk: Кавказ
+  name_en: Caucasus
+  place_kind: mountain
+  lat: 42.3898
+  lon: 44.79414
+  certainty: high
+  pleiades_id: 863766
+  coord_source: pleiades
+  wikidata_id: Q5477
+  summary_uk: 'Гори на краю відомого світу, де був прикутий Прометей.'
+  aliases:
+    - {alias: Кавказ, lang: uk}
+    - {alias: Кавказькі гори, lang: uk}
+    - {alias: Caucasus, lang: en}
+    - {alias: Caucasus Mountains, lang: en}
+    - {alias: Caucasus, lang: la}
 
+# --- island
+- entity_id: crete
+  name_uk: Крит
+  name_en: Crete
+  place_kind: island
+  lat: 35.20612
+  lon: 25.12506
+  certainty: high
+  pleiades_id: 589748
+  coord_source: pleiades
+  wikidata_id: Q34374
+  summary_uk: 'Великий острів на півдні Егейського моря, батьківщина Зевса за переказом і царство Міноса.'
+  aliases:
+    - {alias: Крит, lang: uk}
+    - {alias: Периферія Крит, lang: uk}
+    - {alias: Crete, lang: en}
+    - {alias: Candia, lang: en}
+    - {alias: Creta, lang: la}
 - entity_id: ithaca
   name_uk: Ітака
   name_en: Ithaca
-  name_lat: Ithaca
   place_kind: island
-  lat: 38.4285
-  lon: 20.6765
+  lat: 38.40032
+  lon: 20.69281
   certainty: high
-  pleiades_id: 530907
-  summary_uk: Острів в Іонічному морі, батьківщина і царство хитромудрого Одіссея.
+  pleiades_id: 530906
+  coord_source: pleiades
+  wikidata_id: Q187471
+  summary_uk: 'Острів в Іонічному морі, батьківщина і царство Одіссея.'
   aliases:
-    - alias: Ітака
-      lang: uk
-    - alias: Ithaca
-      lang: en
+    - {alias: Ітака, lang: uk}
+    - {alias: Ithaca, lang: en}
+    - {alias: Ithaki, lang: en}
+    - {alias: Ithaca, lang: la}
+- entity_id: corfu
+  name_uk: Керкіра
+  name_en: Corfu
+  place_kind: island
+  lat: 39.61997
+  lon: 19.86654
+  certainty: high
+  pleiades_id: 530835
+  coord_source: pleiades
+  wikidata_id: Q121378
+  summary_uk: 'Острів в Іонічному морі, який з античності ототожнювали зі Схерією — країною феаків з «Одіссеї».'
+  aliases:
+    - {alias: Керкіра, lang: uk}
+    - {alias: Корфу, lang: uk}
+    - {alias: Corfu, lang: en}
+    - {alias: Korfu, lang: en}
+    - {alias: Kerkira, lang: en}
+    - {alias: Corcyra, lang: en}
+    - {alias: Kerkyra, lang: en}
+    - {alias: 'Corfu, Korfu, Kerkira', lang: en}
+    - {alias: Corcyra, lang: la}
+    - {alias: Схерія, lang: uk}
+    - {alias: Scheria, lang: en}
+- entity_id: naxos
+  name_uk: Наксос
+  name_en: Naxos Island
+  place_kind: island
+  lat: 37.05819
+  lon: 25.48193
+  certainty: high
+  pleiades_id: 599822
+  coord_source: pleiades
+  wikidata_id: Q188527
+  summary_uk: 'Острів у Кікладах, де Тесей залишив Аріадну і де її знайшов Діоніс.'
+  aliases:
+    - {alias: Наксос, lang: uk}
+    - {alias: Naxos Island, lang: en}
+    - {alias: Naxos, lang: en}
+    - {alias: Naxos, lang: la}
+- entity_id: lesbos
+  name_uk: Лесбос
+  name_en: Lesbos
+  place_kind: island
+  lat: 39.17746
+  lon: 26.23748
+  certainty: high
+  pleiades_id: 550696
+  coord_source: pleiades
+  wikidata_id: Q128087
+  summary_uk: 'Острів біля узбережжя Малої Азії, куди, за переказом, хвилі принесли голову Орфея.'
+  aliases:
+    - {alias: Лесбос, lang: uk}
+    - {alias: Lesbos, lang: en}
+    - {alias: Lesvos, lang: en}
+    - {alias: Mytilini, lang: en}
+    - {alias: Mytilene, lang: en}
+    - {alias: Lesbos, lang: la}
+- entity_id: kythira
+  name_uk: Кітера
+  name_en: Kythira
+  place_kind: island
+  lat: 36.24011
+  lon: 22.98287
+  certainty: high
+  pleiades_id: 570186
+  coord_source: pleiades
+  wikidata_id: Q207239
+  summary_uk: 'Острів біля Пелопоннесу, до якого першим підпливла Афродіта після народження з піни.'
+  aliases:
+    - {alias: Кітера, lang: uk}
+    - {alias: Кіфера, lang: uk}
+    - {alias: Кітіра, lang: uk}
+    - {alias: Kythira, lang: en}
+    - {alias: Cythera, lang: en}
+    - {alias: Cerigo, lang: en}
+    - {alias: Kithera, lang: en}
+    - {alias: Cherigo, lang: en}
+    - {alias: Isle of Cherigo, lang: en}
+    - {alias: Cythera, lang: la}
+- entity_id: cyprus
+  name_uk: Кіпр
+  name_en: Cyprus
+  place_kind: island
+  lat: 34.99544
+  lon: 33.22247
+  certainty: high
+  pleiades_id: 707498
+  coord_source: pleiades
+  wikidata_id: Q644636
+  summary_uk: 'Острів, де вийшла на берег Афродіта Кіпріда.'
+  aliases:
+    - {alias: Кіпр, lang: uk}
+    - {alias: Cyprus, lang: en}
+    - {alias: Island of Cyprus, lang: en}
+    - {alias: Cyprus (island), lang: en}
+    - {alias: Yadnana, lang: en}
+- entity_id: lemnos
+  name_uk: Лемнос
+  name_en: Lemnos
+  place_kind: island
+  lat: 39.90502
+  lon: 25.22909
+  certainty: high
+  pleiades_id: 550693
+  coord_source: pleiades
+  wikidata_id: Q192483
+  summary_uk: 'Острів, на який упав скинутий з Олімпу Гефест; перша зупинка аргонавтів.'
+  aliases:
+    - {alias: Лемнос, lang: uk}
+    - {alias: Лімнос, lang: uk}
+    - {alias: Lemnos, lang: en}
+    - {alias: Limnos, lang: en}
+    - {alias: Lemnos, lang: la}
+- entity_id: samothrace
+  name_uk: Самотракі
+  name_en: Samothrace
+  place_kind: island
+  lat: 40.45231
+  lon: 25.57624
+  certainty: high
+  pleiades_id: 501597
+  coord_source: pleiades
+  wikidata_id: Q203175
+  summary_uk: Острів на півночі Егейського моря зі святилищем Великих богів.
+  aliases:
+    - {alias: Самотракі, lang: uk}
+    - {alias: Самотракія, lang: uk}
+    - {alias: Самофракія, lang: uk}
+    - {alias: Samothrace, lang: en}
+    - {alias: Samothraki, lang: en}
+    - {alias: Samothracia, lang: la}
+- entity_id: rhodes
+  name_uk: Родос
+  name_en: Rhodes
+  place_kind: island
+  lat: 36.17911
+  lon: 27.97208
+  certainty: high
+  pleiades_id: 590031
+  coord_source: pleiades
+  wikidata_id: Q43048
+  summary_uk: 'Острів, що піднявся з моря і став уділом Геліоса.'
+  aliases:
+    - {alias: Родос, lang: uk}
+    - {alias: Rhodes, lang: en}
+    - {alias: Rhodos, lang: en}
+    - {alias: Rodos, lang: en}
+    - {alias: Rodou, lang: en}
+    - {alias: Ρόδος, lang: en}
+    - {alias: Rhodus, lang: la}
+- entity_id: sicily
+  name_uk: Сицилія
+  name_en: Sicily
+  place_kind: island
+  lat: 37.59253
+  lon: 14.04652
+  certainty: high
+  pleiades_id: 462492
+  coord_source: pleiades
+  wikidata_id: Q1460
+  summary_uk: 'Великий острів, з яким античність ототожнювала Трінакію, острів корів Геліоса.'
+  aliases:
+    - {alias: Сицилія, lang: uk}
+    - {alias: Sicily, lang: en}
+    - {alias: Sicilia, lang: la}
+- entity_id: seriphos
+  name_uk: Серіфос
+  name_en: Serifos
+  place_kind: island
+  lat: 37.15608
+  lon: 24.4824
+  certainty: high
+  pleiades_id: 590044
+  coord_source: pleiades
+  wikidata_id: Q217214
+  summary_uk: 'Острів у Кікладах, куди хвилі принесли скриню з Данаєю та немовлям Персеєм.'
+  aliases:
+    - {alias: Серіфос, lang: uk}
+    - {alias: Serifos, lang: en}
+    - {alias: Seriphus, lang: en}
+    - {alias: Seriphos, lang: en}
+    - {alias: Mint of Seriphos, lang: en}
+    - {alias: Seriphus, lang: la}
+- entity_id: tenedos
+  name_uk: Тенедос
+  name_en: Bozcaada
+  place_kind: island
+  lat: 39.82059
+  lon: 26.03532
+  certainty: high
+  pleiades_id: 550912
+  coord_source: pleiades
+  wikidata_id: Q211817
+  summary_uk: 'Острів навпроти Трої, за яким сховався ахейський флот, залишивши дерев''яного коня.'
+  aliases:
+    - {alias: Тенедос, lang: uk}
+    - {alias: Бозджаада, lang: uk}
+    - {alias: Bozcaada, lang: en}
+    - {alias: Tenedos, lang: en}
+    - {alias: Ténedos, lang: en}
+    - {alias: Tênedos, lang: en}
+    - {alias: Mint of Tenedos, lang: en}
+    - {alias: Tenedos, lang: la}
+- entity_id: skyros
+  name_uk: Скірос
+  name_en: Scyros
+  place_kind: island
+  lat: 38.86083
+  lon: 24.54993
+  certainty: high
+  pleiades_id: 541093
+  coord_source: pleiades
+  wikidata_id: Q208566
+  summary_uk: 'Острів, де юного Ахілла ховали серед доньок царя Лікомеда.'
+  aliases:
+    - {alias: Скірос, lang: uk}
+    - {alias: Scyros, lang: en}
+    - {alias: Mint of Scyros, lang: en}
+    - {alias: Scyrus, lang: la}
+- entity_id: aegina
+  name_uk: Егіна
+  name_en: Aegina
+  place_kind: island
+  lat: 37.73456
+  lon: 23.4893
+  certainty: high
+  pleiades_id: 579844
+  coord_source: pleiades
+  wikidata_id: Q191082
+  summary_uk: 'Острів у Саронічній затоці, батьківщина Еака — діда Ахілла.'
+  aliases:
+    - {alias: Егіна, lang: uk}
+    - {alias: Енопія, lang: uk}
+    - {alias: Aegina, lang: en}
+    - {alias: Egina, lang: en}
+    - {alias: Aigina, lang: en}
+    - {alias: Ægina, lang: en}
+    - {alias: Aegina, lang: la}
+- entity_id: salamis
+  name_uk: Саламін
+  name_en: Salamis Island
+  place_kind: island
+  lat: 37.94267
+  lon: 23.48434
+  certainty: high
+  pleiades_id: 580101
+  coord_source: pleiades
+  wikidata_id: Q202422
+  summary_uk: 'Острів біля Аттики, батьківщина Аякса Теламоніда.'
+  aliases:
+    - {alias: Саламін, lang: uk}
+    - {alias: Тримифунт, lang: uk}
+    - {alias: Salamis Island, lang: en}
+    - {alias: Salamis, lang: en}
+    - {alias: Mint of Salamis, lang: en}
+    - {alias: Salamis, lang: la}
+- entity_id: euboea
+  name_uk: Евбея
+  name_en: Euboea
+  place_kind: island
+  lat: 38.53
+  lon: 23.87
+  certainty: high
+  pleiades_id: 540775
+  coord_source: pleiades
+  wikidata_id: Q173096
+  summary_uk: Великий острів уздовж узбережжя Беотії та Аттики.
+  aliases:
+    - {alias: Евбея, lang: uk}
+    - {alias: Евія, lang: uk}
+    - {alias: Еввія, lang: uk}
+    - {alias: Euboea, lang: en}
+    - {alias: Évvia, lang: en}
+    - {alias: Évvoia, lang: en}
+    - {alias: Evvia, lang: en}
+    - {alias: Evvoia, lang: en}
+    - {alias: Negroponte, lang: en}
+    - {alias: Euboea, lang: la}
 
-- entity_id: troy
-  name_uk: Троя (Іліон)
-  name_en: Troy (Ilion)
-  name_lat: Troia
-  place_kind: city
-  lat: 39.9575
-  lon: 26.2389
-  certainty: high
-  pleiades_id: 550595
-  summary_uk: Легендарне місто в Малій Азії, місце десятилітньої облоги Троянської війни.
+# --- river
+- entity_id: styx
+  name_uk: Стікс
+  name_en: Styx
+  place_kind: river
+  lat: 38.25
+  lon: 22.25
+  certainty: medium
+  pleiades_id: 570698
+  coord_source: pleiades
+  wikidata_id: Q542758
+  summary_uk: 'Ріка в Аркадії, яку ототожнювали з підземною рікою Стікс, якою клялися боги.'
   aliases:
-    - alias: Троя
-      lang: uk
-    - alias: Troy
-      lang: en
-    - alias: Іліон
-      lang: uk
-    - alias: Ilium
-      lang: la
+    - {alias: Стікс, lang: uk}
+    - {alias: Styx, lang: en}
+    - {alias: Styx, lang: la}
+- entity_id: acheron
+  name_uk: Ахеронт
+  name_en: Acheron
+  place_kind: river
+  lat: 39.23582
+  lon: 20.47948
+  certainty: high
+  pleiades_id: 530769
+  coord_source: pleiades
+  wikidata_id: Q191087
+  summary_uk: 'Ріка в Епірі, яку вважали однією з рік підземного світу.'
+  aliases:
+    - {alias: Ахеронт, lang: uk}
+    - {alias: Ахерон, lang: uk}
+    - {alias: Acheron, lang: en}
+    - {alias: Acheron, lang: la}
+- entity_id: alpheus
+  name_uk: Алфей
+  name_en: Alpheus
+  place_kind: river
+  lat: 37.6128
+  lon: 21.4514
+  certainty: high
+  coord_source: wikidata
+  wikidata_id: Q941745
+  summary_uk: 'Найбільша ріка Пелопоннесу, що тече повз Олімпію; Геракл спрямував її на стайні Авгія.'
+  aliases:
+    - {alias: Алфей, lang: uk}
+    - {alias: Alpheus, lang: en}
+    - {alias: Alfeios, lang: en}
+    - {alias: Alpheus, lang: la}
+- entity_id: scamander
+  name_uk: Скамандр
+  name_en: Scamander
+  place_kind: river
+  lat: 39.82871
+  lon: 26.47842
+  certainty: high
+  pleiades_id: 550871
+  coord_source: pleiades
+  wikidata_id: Q2488636
+  summary_uk: 'Ріка на троянській рівнині, чий бог бився з Ахіллом.'
+  aliases:
+    - {alias: Скамандр, lang: uk}
+    - {alias: Карамендерес, lang: uk}
+    - {alias: Scamander, lang: en}
+    - {alias: Karamenderes River, lang: en}
+    - {alias: Scamandrus, lang: la}
+    - {alias: Ксанф, lang: uk}
+    - {alias: Xanthus, lang: en}
+- entity_id: stymphalia
+  name_uk: Стимфалійське озеро
+  name_en: Lake Stymphalia
+  place_kind: river
+  lat: 37.85534
+  lon: 22.46492
+  certainty: high
+  pleiades_id: 324369908
+  coord_source: pleiades
+  wikidata_id: Q1251026
+  summary_uk: 'Озеро в Аркадії, лігво Стимфалійських птахів.'
+  aliases:
+    - {alias: Стимфалійське озеро, lang: uk}
+    - {alias: Стимфалія, lang: uk}
+    - {alias: Lake Stymphalia, lang: en}
+    - {alias: Lacus Stymphalis, lang: la}
+
+# --- region
+- entity_id: colchis
+  name_uk: Колхіда
+  name_en: Colchis
+  place_kind: region
+  lat: 42.20176
+  lon: 42.45407
+  certainty: high
+  pleiades_id: 863770
+  coord_source: pleiades
+  wikidata_id: Q183150
+  summary_uk: 'Країна на східному березі Чорного моря, царство Еета, де зберігалося Золоте руно.'
+  aliases:
+    - {alias: Колхіда, lang: uk}
+    - {alias: Колхида, lang: uk}
+    - {alias: Colchis, lang: en}
+    - {alias: Egrisi, lang: en}
+    - {alias: Egrisi Kingdom, lang: en}
+    - {alias: Kingdom of Egrisi, lang: en}
+    - {alias: Kolchis, lang: en}
+    - {alias: Kolkhida, lang: en}
+    - {alias: Kolxida, lang: en}
+    - {alias: Kolxeti, lang: en}
+    - {alias: Kingdom of Colchis, lang: en}
+    - {alias: Colchis, lang: la}
+- entity_id: attica
+  name_uk: Аттика
+  name_en: Attica
+  place_kind: region
+  lat: 38.03333
+  lon: 23.65
+  certainty: high
+  pleiades_id: 579888
+  coord_source: pleiades
+  wikidata_id: Q122443
+  summary_uk: Область навколо Афін.
+  aliases:
+    - {alias: Аттика, lang: uk}
+    - {alias: Аттіка, lang: uk}
+    - {alias: Мопсопія, lang: uk}
+    - {alias: Attica, lang: en}
+    - {alias: Attica, lang: la}
+- entity_id: argolis
+  name_uk: Арголіда
+  name_en: Argolis
+  place_kind: region
+  lat: 37.62633
+  lon: 22.92569
+  certainty: high
+  pleiades_id: 570104
+  coord_source: pleiades
+  wikidata_id: Q12649101
+  summary_uk: 'Область на північному сході Пелопоннесу з Аргосом, Мікенами і Тиринфом.'
+  aliases:
+    - {alias: Арголіда, lang: uk}
+    - {alias: Argolis, lang: en}
+    - {alias: Argolida, lang: en}
+    - {alias: Argolis, lang: la}
+- entity_id: laconia
+  name_uk: Лаконія
+  name_en: Laconia
+  place_kind: region
+  lat: 37.04573
+  lon: 22.66035
+  certainty: high
+  pleiades_id: 570406
+  coord_source: pleiades
+  wikidata_id: Q11931074
+  summary_uk: Область на південному сході Пелопоннесу зі столицею Спартою.
+  aliases:
+    - {alias: Лаконія, lang: uk}
+    - {alias: Laconia, lang: en}
+    - {alias: Laconica, lang: en}
+    - {alias: Ancient Laconia, lang: en}
+    - {alias: Laconia, lang: la}
+- entity_id: boeotia
+  name_uk: Беотія
+  name_en: Boeotia
+  place_kind: region
+  lat: 38.3169
+  lon: 23.13492
+  certainty: high
+  pleiades_id: 540689
+  coord_source: pleiades
+  wikidata_id: Q187570
+  summary_uk: Область у Середній Греції зі столицею Фівами.
+  aliases:
+    - {alias: Беотія, lang: uk}
+    - {alias: Беотійці, lang: uk}
+    - {alias: Boeotia, lang: en}
+    - {alias: Boeotia, lang: la}
+- entity_id: phthia
+  name_uk: Фтія
+  name_en: Phthia
+  place_kind: region
+  lat: 39.32171
+  lon: 22.37825
+  certainty: high
+  pleiades_id: 541052
+  coord_source: pleiades
+  wikidata_id: Q1232814
+  summary_uk: 'Область у південній Фессалії, батьківщина Ахілла і його мирмідонців.'
+  aliases:
+    - {alias: Фтія, lang: uk}
+    - {alias: Phthia, lang: en}
+    - {alias: Phthiotis, lang: la}
+- entity_id: thrace
+  name_uk: Фракія
+  name_en: Thrace
+  place_kind: region
+  lat: 41.51783
+  lon: 26.96241
+  certainty: high
+  pleiades_id: 501638
+  coord_source: pleiades
+  wikidata_id: Q41741
+  summary_uk: 'Край на північ від Егейського моря, батьківщина Орфея.'
+  aliases:
+    - {alias: Фракія, lang: uk}
+    - {alias: Тракія, lang: uk}
+    - {alias: Thrace, lang: en}
+    - {alias: Ancient Thrace and Ancient Thracians, lang: en}
+    - {alias: Thracia, lang: la}
+- entity_id: lydia
+  name_uk: Лідія
+  name_en: Lydia
+  place_kind: region
+  lat: 38.58652
+  lon: 28.74613
+  certainty: high
+  pleiades_id: 550701
+  coord_source: pleiades
+  wikidata_id: Q620765
+  summary_uk: 'Країна в Малій Азії, царство Тантала.'
+  aliases:
+    - {alias: Лідія, lang: uk}
+    - {alias: Лідійське царство, lang: uk}
+    - {alias: Lydia, lang: en}
+    - {alias: Kingdom of Lydia, lang: en}
+    - {alias: Lydia, lang: la}
+- entity_id: phrygia
+  name_uk: Фригія
+  name_en: Phrygia
+  place_kind: region
+  lat: 38.39976
+  lon: 35.35672
+  certainty: high
+  pleiades_id: 907036116
+  coord_source: pleiades
+  wikidata_id: Q32579
+  summary_uk: 'Країна в Малій Азії, царство Мідаса.'
+  aliases:
+    - {alias: Фригія, lang: uk}
+    - {alias: Фригійці, lang: uk}
+    - {alias: Phrygia, lang: en}
+    - {alias: Frýgie, lang: en}
+    - {alias: Phrygia, lang: la}
+- entity_id: dardanelles
+  name_uk: Геллеспонт
+  name_en: Hellespont
+  place_kind: region
+  lat: 40.21881
+  lon: 26.47687
+  certainty: high
+  pleiades_id: 501434
+  coord_source: pleiades
+  wikidata_id: Q6514
+  summary_uk: 'Протока між Європою та Азією, названа на честь Гелли, що впала сюди з золотого барана.'
+  aliases:
+    - {alias: Геллеспонт, lang: uk}
+    - {alias: Дарданели, lang: uk}
+    - {alias: Hellespont, lang: en}
+    - {alias: Dardanelles, lang: en}
+    - {alias: Hellespontos, lang: en}
+    - {alias: Dardanelles Strait, lang: en}
+    - {alias: Çanakkale Strait, lang: en}
+    - {alias: Hellespontus, lang: la}
+
+# --- mythical
+- entity_id: underworld
+  name_uk: Аїд (підземне царство)
+  name_en: Underworld
+  place_kind: region
+  certainty: none
+  pleiades_id: 853874840
+  wikidata_id: Q1521549
+  summary_uk: 'Царство мертвих під землею, яким правлять Аїд і Персефона.'
+  aliases:
+    - {alias: Аїд (підземне царство), lang: uk}
+    - {alias: грецьке потойбіччя, lang: uk}
+    - {alias: Underworld, lang: en}
+    - {alias: Greek underworld, lang: en}
+- entity_id: elysium
+  name_uk: Елісій
+  name_en: Elysium
+  place_kind: region
+  certainty: none
+  wikidata_id: Q157128
+  summary_uk: 'Блаженні поля на краю землі, куди потрапляють улюбленці богів.'
+  aliases:
+    - {alias: Елісій, lang: uk}
+    - {alias: Елізіум, lang: uk}
+    - {alias: Елізій, lang: uk}
+    - {alias: Elysium, lang: en}
+    - {alias: Elysian Fields, lang: en}
+    - {alias: Elysion, lang: en}
+    - {alias: Elysian Plain, lang: en}
+    - {alias: Elysium, lang: la}
+- entity_id: hesperides_garden
+  name_uk: Сад Гесперид
+  name_en: Garden of the Hesperides
+  place_kind: region
+  certainty: none
+  pleiades_id: 278614
+  wikidata_id: Q3763922
+  summary_uk: 'Сад на крайньому заході, де німфи Гесперіди й змій Ладон стерегли золоті яблука.'
+  aliases:
+    - {alias: Сад Гесперид, lang: uk}
+    - {alias: Garden of the Hesperides, lang: en}
+- entity_id: hyperborea
+  name_uk: Гіперборея
+  name_en: Hyperborea
+  place_kind: region
+  certainty: none
+  wikidata_id: Q243333
+  summary_uk: 'Блаженна країна «за Бореєм» на крайній півночі, куди Аполлон відлітав на зиму.'
+  aliases:
+    - {alias: Гіперборея, lang: uk}
+    - {alias: Hyperborea, lang: en}
+    - {alias: Hyperboreoi, lang: en}
+    - {alias: Hyperborea, lang: la}
+- entity_id: aeaea
+  name_uk: Еея
+  name_en: Aeaea
+  place_kind: island
+  certainty: none
+  pleiades_id: 621604967
+  wikidata_id: Q403366
+  summary_uk: 'Острів чарівниці Кірки, де Одіссей прожив рік.'
+  aliases:
+    - {alias: Еея, lang: uk}
+    - {alias: Ея, lang: uk}
+    - {alias: Aeaea, lang: en}
+    - {alias: Aiaia, lang: en}
+    - {alias: Circe's isle, lang: en}
+    - {alias: Island of Circe, lang: en}
+    - {alias: Aeaea, lang: la}
+- entity_id: ogygia
+  name_uk: Огігія
+  name_en: Ogygia
+  place_kind: island
+  certainty: none
+  wikidata_id: Q1232442
+  summary_uk: 'Острів німфи Каліпсо, де Одіссей провів сім років.'
+  aliases:
+    - {alias: Огігія, lang: uk}
+    - {alias: Ogygia, lang: en}
+    - {alias: Ogygia, lang: la}

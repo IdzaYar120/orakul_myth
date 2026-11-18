@@ -1,10 +1,14 @@
 import re
+from collections.abc import Callable
 
 from rapidfuzz import fuzz, process
 from sqlmodel import Session, col, select
 
 from delphi.db.models import Alias, Entity
 from delphi.db.repo import engine
+
+# Explicit Callable type: see the note in delphi.encyclopedia.search.
+_RATIO: Callable[..., float] = fuzz.ratio
 
 
 class EntityLinker:
@@ -40,7 +44,7 @@ class EntityLinker:
                 matches = process.extract(
                     word.lower(),
                     all_alias_names,
-                    scorer=fuzz.ratio,
+                    scorer=_RATIO,
                     limit=2,
                     score_cutoff=80,
                 )

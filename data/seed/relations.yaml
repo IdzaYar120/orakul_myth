@@ -1,26 +1,371 @@
-# Lineage and entity relationships
-# rel: parent_of, spouse_of, sibling_of, killed, worshipped_at, born_at
-- src_id: zeus
-  rel: parent_of
-  dst_id: apollo
-  source_ref: "Hes. Theog. 918"
+# Lineage and entity relationships.
+# rel: parent_of | spouse_of | sibling_of | worshipped_at | born_at | ruled | killed
+# source_ref: ancient text reference (Hes. Theog. = Hesiod's Theogony, Hes. WD = Works and Days,
+#   Hom. Il./Od. = Iliad/Odyssey, Hom. Hymn = Homeric Hymns, Apollod. = Apollodorus' Library).
+#   "Wikidata" = imported claim, "manual" = curator's knowledge; both are shown in the UI
+#   as not yet checked against a primary source.
+# Variants of a myth are separate rows with their own source_ref (e.g. Aphrodite's parents).
 
-- src_id: zeus
-  rel: parent_of
-  dst_id: athena
-  source_ref: "Hes. Theog. 886"
+# --- Батьки й діти (src — батько/мати dst)
+- {src_id: achilles, rel: parent_of, dst_id: neoptolemus, source_ref: Hom. Il. 19.326}
+- {src_id: acrisius, rel: parent_of, dst_id: danae, source_ref: Wikidata}
+- {src_id: aeetes, rel: parent_of, dst_id: medea, source_ref: Hes. Theog. 961}
+- {src_id: aegeus, rel: parent_of, dst_id: theseus, source_ref: Apollod. 3.15.7}
+- {src_id: aether, rel: parent_of, dst_id: dione, source_ref: Wikidata}
+- {src_id: agamemnon, rel: parent_of, dst_id: electra, source_ref: Wikidata}
+- {src_id: agamemnon, rel: parent_of, dst_id: iphigenia, source_ref: Wikidata}
+- {src_id: agamemnon, rel: parent_of, dst_id: orestes, source_ref: Wikidata}
+- {src_id: alcmene, rel: parent_of, dst_id: heracles, source_ref: Hes. Theog. 943}
+- {src_id: amphitrite, rel: parent_of, dst_id: triton, source_ref: Hes. Theog. 930}
+- {src_id: amphitryon, rel: parent_of, dst_id: heracles, source_ref: Apollod. 2.4.8}
+- {src_id: anticlea, rel: parent_of, dst_id: odysseus, source_ref: Hom. Od. 11.85}
+- {src_id: aphrodite, rel: parent_of, dst_id: aeneas, source_ref: Hom. Il. 2.820}
+- {src_id: aphrodite, rel: parent_of, dst_id: deimos, source_ref: Hes. Theog. 933}
+- {src_id: aphrodite, rel: parent_of, dst_id: eros, source_ref: Wikidata}
+- {src_id: aphrodite, rel: parent_of, dst_id: harmonia, source_ref: Hes. Theog. 933}
+- {src_id: aphrodite, rel: parent_of, dst_id: phobos, source_ref: Hes. Theog. 933}
+- {src_id: apollo, rel: parent_of, dst_id: asclepius, source_ref: Wikidata}
+- {src_id: apollo, rel: parent_of, dst_id: orpheus, source_ref: Wikidata}
+- {src_id: ares, rel: parent_of, dst_id: deimos, source_ref: Hes. Theog. 933}
+- {src_id: ares, rel: parent_of, dst_id: harmonia, source_ref: Hes. Theog. 933}
+- {src_id: ares, rel: parent_of, dst_id: hippolyta, source_ref: Wikidata}
+- {src_id: ares, rel: parent_of, dst_id: meleager, source_ref: Wikidata}
+- {src_id: ares, rel: parent_of, dst_id: phobos, source_ref: Hes. Theog. 933}
+- {src_id: atlas, rel: parent_of, dst_id: calypso, source_ref: Hom. Od. 1.52}
+- {src_id: atlas, rel: parent_of, dst_id: maia, source_ref: Wikidata}
+- {src_id: atreus, rel: parent_of, dst_id: agamemnon, source_ref: Hom. Il. 1.7}
+- {src_id: atreus, rel: parent_of, dst_id: menelaus, source_ref: Wikidata}
+- {src_id: cadmus, rel: parent_of, dst_id: semele, source_ref: Hes. Theog. 975}
+- {src_id: cassiopeia, rel: parent_of, dst_id: andromeda, source_ref: Apollod. 2.4.3}
+- {src_id: chaos, rel: parent_of, dst_id: erebus, source_ref: Hes. Theog. 123}
+- {src_id: chaos, rel: parent_of, dst_id: nyx, source_ref: Hes. Theog. 123}
+- {src_id: chrysaor, rel: parent_of, dst_id: echidna, source_ref: Wikidata}
+- {src_id: chrysaor, rel: parent_of, dst_id: geryon, source_ref: Hes. Theog. 287}
+- {src_id: clytemnestra, rel: parent_of, dst_id: electra, source_ref: Wikidata}
+- {src_id: clytemnestra, rel: parent_of, dst_id: iphigenia, source_ref: Wikidata}
+- {src_id: clytemnestra, rel: parent_of, dst_id: orestes, source_ref: Wikidata}
+- {src_id: coeus, rel: parent_of, dst_id: leto, source_ref: Hes. Theog. 404}
+- {src_id: cretan_bull, rel: parent_of, dst_id: minotaur, source_ref: Apollod. 3.1.4}
+- {src_id: cronus, rel: parent_of, dst_id: chiron, source_ref: Wikidata}
+- {src_id: cronus, rel: parent_of, dst_id: demeter, source_ref: Hes. Theog. 453}
+- {src_id: cronus, rel: parent_of, dst_id: hades, source_ref: Hes. Theog. 453}
+- {src_id: cronus, rel: parent_of, dst_id: hera, source_ref: Hes. Theog. 453}
+- {src_id: cronus, rel: parent_of, dst_id: hestia, source_ref: Hes. Theog. 453}
+- {src_id: cronus, rel: parent_of, dst_id: poseidon, source_ref: Hes. Theog. 453}
+- {src_id: cronus, rel: parent_of, dst_id: zeus, source_ref: Hes. Theog. 453}
+- {src_id: daedalus, rel: parent_of, dst_id: icarus, source_ref: Wikidata}
+- {src_id: danae, rel: parent_of, dst_id: perseus, source_ref: Apollod. 2.4.1}
+- {src_id: demeter, rel: parent_of, dst_id: persephone, source_ref: Hes. Theog. 912}
+- {src_id: dione, rel: parent_of, dst_id: aphrodite, source_ref: Hom. Il. 5.370}
+- {src_id: echidna, rel: parent_of, dst_id: cerberus, source_ref: Hes. Theog. 311}
+- {src_id: echidna, rel: parent_of, dst_id: chimera, source_ref: Wikidata}
+- {src_id: echidna, rel: parent_of, dst_id: hydra, source_ref: Hes. Theog. 313}
+- {src_id: echidna, rel: parent_of, dst_id: ladon, source_ref: Wikidata}
+- {src_id: echidna, rel: parent_of, dst_id: nemean_lion, source_ref: Wikidata}
+- {src_id: echidna, rel: parent_of, dst_id: orthrus, source_ref: Hes. Theog. 309}
+- {src_id: echidna, rel: parent_of, dst_id: sphinx, source_ref: Wikidata}
+- {src_id: epimetheus, rel: parent_of, dst_id: pyrrha, source_ref: Apollod. 1.7.2}
+- {src_id: erebus, rel: parent_of, dst_id: aether, source_ref: Hes. Theog. 124}
+- {src_id: erebus, rel: parent_of, dst_id: charon, source_ref: Wikidata}
+- {src_id: erebus, rel: parent_of, dst_id: eris, source_ref: Wikidata}
+- {src_id: erebus, rel: parent_of, dst_id: hemera, source_ref: Hes. Theog. 124}
+- {src_id: erebus, rel: parent_of, dst_id: hypnos, source_ref: Wikidata}
+- {src_id: erebus, rel: parent_of, dst_id: nemesis, source_ref: Wikidata}
+- {src_id: erebus, rel: parent_of, dst_id: thanatos, source_ref: Wikidata}
+- {src_id: europa, rel: parent_of, dst_id: minos, source_ref: Apollod. 3.1.1}
+- {src_id: gaia, rel: parent_of, dst_id: charybdis, source_ref: Wikidata}
+- {src_id: gaia, rel: parent_of, dst_id: coeus, source_ref: Hes. Theog. 133}
+- {src_id: gaia, rel: parent_of, dst_id: crius, source_ref: Hes. Theog. 133}
+- {src_id: gaia, rel: parent_of, dst_id: cronus, source_ref: Hes. Theog. 133}
+- {src_id: gaia, rel: parent_of, dst_id: cyclopes, source_ref: Hes. Theog. 139}
+- {src_id: gaia, rel: parent_of, dst_id: dione, source_ref: Wikidata}
+- {src_id: gaia, rel: parent_of, dst_id: echidna, source_ref: Wikidata}
+- {src_id: gaia, rel: parent_of, dst_id: erinyes, source_ref: Hes. Theog. 185}
+- {src_id: gaia, rel: parent_of, dst_id: hecatoncheires, source_ref: Hes. Theog. 147}
+- {src_id: gaia, rel: parent_of, dst_id: hyperion, source_ref: Hes. Theog. 133}
+- {src_id: gaia, rel: parent_of, dst_id: iapetus, source_ref: Hes. Theog. 133}
+- {src_id: gaia, rel: parent_of, dst_id: mnemosyne, source_ref: Hes. Theog. 133}
+- {src_id: gaia, rel: parent_of, dst_id: nereus, source_ref: Hes. Theog. 233}
+- {src_id: gaia, rel: parent_of, dst_id: oceanus, source_ref: Hes. Theog. 133}
+- {src_id: gaia, rel: parent_of, dst_id: phoebe, source_ref: Hes. Theog. 133}
+- {src_id: gaia, rel: parent_of, dst_id: pontus, source_ref: Hes. Theog. 132}
+- {src_id: gaia, rel: parent_of, dst_id: python, source_ref: Wikidata}
+- {src_id: gaia, rel: parent_of, dst_id: rhea, source_ref: Hes. Theog. 133}
+- {src_id: gaia, rel: parent_of, dst_id: tethys, source_ref: Hes. Theog. 133}
+- {src_id: gaia, rel: parent_of, dst_id: theia, source_ref: Hes. Theog. 133}
+- {src_id: gaia, rel: parent_of, dst_id: themis, source_ref: Hes. Theog. 133}
+- {src_id: gaia, rel: parent_of, dst_id: typhon, source_ref: Hes. Theog. 821}
+- {src_id: gaia, rel: parent_of, dst_id: uranus, source_ref: Hes. Theog. 126}
+- {src_id: harmonia, rel: parent_of, dst_id: semele, source_ref: Hes. Theog. 975}
+- {src_id: hecuba, rel: parent_of, dst_id: cassandra, source_ref: Apollod. 3.12.5}
+- {src_id: hecuba, rel: parent_of, dst_id: hector, source_ref: Apollod. 3.12.5}
+- {src_id: hecuba, rel: parent_of, dst_id: paris, source_ref: Apollod. 3.12.5}
+- {src_id: helios, rel: parent_of, dst_id: aeetes, source_ref: Hes. Theog. 957}
+- {src_id: helios, rel: parent_of, dst_id: circe, source_ref: Hes. Theog. 956}
+- {src_id: helios, rel: parent_of, dst_id: pasiphae, source_ref: Apollod. 3.1.2}
+- {src_id: hera, rel: parent_of, dst_id: ares, source_ref: Hes. Theog. 922}
+- {src_id: hera, rel: parent_of, dst_id: eileithyia, source_ref: Hes. Theog. 922}
+- {src_id: hera, rel: parent_of, dst_id: hebe, source_ref: Hes. Theog. 922}
+- {src_id: hera, rel: parent_of, dst_id: hephaestus, source_ref: Hes. Theog. 927}
+- {src_id: hermes, rel: parent_of, dst_id: pan, source_ref: Wikidata}
+- {src_id: hyperion, rel: parent_of, dst_id: eos, source_ref: Hes. Theog. 371}
+- {src_id: hyperion, rel: parent_of, dst_id: helios, source_ref: Hes. Theog. 371}
+- {src_id: hyperion, rel: parent_of, dst_id: selene, source_ref: Hes. Theog. 371}
+- {src_id: iapetus, rel: parent_of, dst_id: atlas, source_ref: Hes. Theog. 507}
+- {src_id: iapetus, rel: parent_of, dst_id: epimetheus, source_ref: Hes. Theog. 507}
+- {src_id: iapetus, rel: parent_of, dst_id: prometheus, source_ref: Hes. Theog. 507}
+- {src_id: jocasta, rel: parent_of, dst_id: antigone, source_ref: Wikidata}
+- {src_id: jocasta, rel: parent_of, dst_id: oedipus, source_ref: Apollod. 3.5.7}
+- {src_id: laertes, rel: parent_of, dst_id: odysseus, source_ref: Wikidata}
+- {src_id: laius, rel: parent_of, dst_id: oedipus, source_ref: Apollod. 3.5.7}
+- {src_id: leda, rel: parent_of, dst_id: clytemnestra, source_ref: Wikidata}
+- {src_id: leda, rel: parent_of, dst_id: dioscuri, source_ref: Apollod. 3.10.7}
+- {src_id: leda, rel: parent_of, dst_id: helen, source_ref: Apollod. 3.10.7}
+- {src_id: leto, rel: parent_of, dst_id: apollo, source_ref: Hes. Theog. 918}
+- {src_id: leto, rel: parent_of, dst_id: artemis, source_ref: Hes. Theog. 918}
+- {src_id: maia, rel: parent_of, dst_id: hermes, source_ref: Hes. Theog. 938}
+- {src_id: medusa, rel: parent_of, dst_id: chrysaor, source_ref: Hes. Theog. 280}
+- {src_id: medusa, rel: parent_of, dst_id: pegasus, source_ref: Hes. Theog. 280}
+- {src_id: metis, rel: parent_of, dst_id: athena, source_ref: Hes. Theog. 886}
+- {src_id: minos, rel: parent_of, dst_id: ariadne, source_ref: Apollod. 3.1.2}
+- {src_id: minos, rel: parent_of, dst_id: phaedra, source_ref: Apollod. 3.1.2}
+- {src_id: mnemosyne, rel: parent_of, dst_id: muses, source_ref: Hes. Theog. 915}
+- {src_id: nemesis, rel: parent_of, dst_id: helen, source_ref: Wikidata}
+- {src_id: nereus, rel: parent_of, dst_id: amphitrite, source_ref: Hes. Theog. 243}
+- {src_id: nereus, rel: parent_of, dst_id: calypso, source_ref: Wikidata}
+- {src_id: nereus, rel: parent_of, dst_id: thetis, source_ref: Hes. Theog. 244}
+- {src_id: nyx, rel: parent_of, dst_id: aether, source_ref: Hes. Theog. 124}
+- {src_id: nyx, rel: parent_of, dst_id: charon, source_ref: Wikidata}
+- {src_id: nyx, rel: parent_of, dst_id: erinyes, source_ref: Wikidata}
+- {src_id: nyx, rel: parent_of, dst_id: eris, source_ref: Hes. Theog. 225}
+- {src_id: nyx, rel: parent_of, dst_id: hemera, source_ref: Hes. Theog. 124}
+- {src_id: nyx, rel: parent_of, dst_id: hypnos, source_ref: Hes. Theog. 212}
+- {src_id: nyx, rel: parent_of, dst_id: moirai, source_ref: Hes. Theog. 217}
+- {src_id: nyx, rel: parent_of, dst_id: nemesis, source_ref: Hes. Theog. 223}
+- {src_id: nyx, rel: parent_of, dst_id: thanatos, source_ref: Hes. Theog. 212}
+- {src_id: oceanus, rel: parent_of, dst_id: amphitrite, source_ref: Wikidata}
+- {src_id: oceanus, rel: parent_of, dst_id: calypso, source_ref: Hes. Theog. 359}
+- {src_id: oceanus, rel: parent_of, dst_id: dione, source_ref: Hes. Theog. 353}
+- {src_id: oceanus, rel: parent_of, dst_id: metis, source_ref: Hes. Theog. 358}
+- {src_id: oceanus, rel: parent_of, dst_id: styx, source_ref: Hes. Theog. 361}
+- {src_id: odysseus, rel: parent_of, dst_id: telemachus, source_ref: Wikidata}
+- {src_id: oedipus, rel: parent_of, dst_id: antigone, source_ref: Wikidata}
+- {src_id: orthrus, rel: parent_of, dst_id: nemean_lion, source_ref: Hes. Theog. 327}
+- {src_id: orthrus, rel: parent_of, dst_id: sphinx, source_ref: Hes. Theog. 326}
+- {src_id: pandora, rel: parent_of, dst_id: pyrrha, source_ref: Apollod. 1.7.2}
+- {src_id: pasiphae, rel: parent_of, dst_id: ariadne, source_ref: Apollod. 3.1.2}
+- {src_id: pasiphae, rel: parent_of, dst_id: minotaur, source_ref: Apollod. 3.1.4}
+- {src_id: pasiphae, rel: parent_of, dst_id: phaedra, source_ref: Apollod. 3.1.2}
+- {src_id: peleus, rel: parent_of, dst_id: achilles, source_ref: Apollod. 3.13.6}
+- {src_id: penelope, rel: parent_of, dst_id: telemachus, source_ref: Wikidata}
+- {src_id: phoebe, rel: parent_of, dst_id: leto, source_ref: Hes. Theog. 404}
+- {src_id: pontus, rel: parent_of, dst_id: nereus, source_ref: Hes. Theog. 233}
+- {src_id: poseidon, rel: parent_of, dst_id: bellerophon, source_ref: Wikidata}
+- {src_id: poseidon, rel: parent_of, dst_id: charybdis, source_ref: Wikidata}
+- {src_id: poseidon, rel: parent_of, dst_id: chrysaor, source_ref: Hes. Theog. 278}
+- {src_id: poseidon, rel: parent_of, dst_id: pegasus, source_ref: Hes. Theog. 278}
+- {src_id: poseidon, rel: parent_of, dst_id: pelias, source_ref: Hom. Od. 11.254}
+- {src_id: poseidon, rel: parent_of, dst_id: polyphemus, source_ref: Hom. Od. 1.68}
+- {src_id: poseidon, rel: parent_of, dst_id: theseus, source_ref: Wikidata}
+- {src_id: poseidon, rel: parent_of, dst_id: triton, source_ref: Hes. Theog. 930}
+- {src_id: priam, rel: parent_of, dst_id: cassandra, source_ref: Apollod. 3.12.5}
+- {src_id: priam, rel: parent_of, dst_id: hector, source_ref: Apollod. 3.12.5}
+- {src_id: priam, rel: parent_of, dst_id: paris, source_ref: Apollod. 3.12.5}
+- {src_id: prometheus, rel: parent_of, dst_id: deucalion, source_ref: Apollod. 1.7.2}
+- {src_id: rhea, rel: parent_of, dst_id: demeter, source_ref: Hes. Theog. 453}
+- {src_id: rhea, rel: parent_of, dst_id: hades, source_ref: Hes. Theog. 453}
+- {src_id: rhea, rel: parent_of, dst_id: hera, source_ref: Hes. Theog. 453}
+- {src_id: rhea, rel: parent_of, dst_id: hestia, source_ref: Hes. Theog. 453}
+- {src_id: rhea, rel: parent_of, dst_id: poseidon, source_ref: Hes. Theog. 453}
+- {src_id: rhea, rel: parent_of, dst_id: zeus, source_ref: Hes. Theog. 453}
+- {src_id: semele, rel: parent_of, dst_id: dionysus, source_ref: Hes. Theog. 940}
+- {src_id: styx, rel: parent_of, dst_id: nike, source_ref: Hes. Theog. 384}
+- {src_id: tartarus, rel: parent_of, dst_id: echidna, source_ref: Wikidata}
+- {src_id: tartarus, rel: parent_of, dst_id: typhon, source_ref: Hes. Theog. 821}
+- {src_id: tethys, rel: parent_of, dst_id: amphitrite, source_ref: Wikidata}
+- {src_id: tethys, rel: parent_of, dst_id: calypso, source_ref: Hes. Theog. 359}
+- {src_id: tethys, rel: parent_of, dst_id: dione, source_ref: Hes. Theog. 353}
+- {src_id: tethys, rel: parent_of, dst_id: metis, source_ref: Hes. Theog. 358}
+- {src_id: tethys, rel: parent_of, dst_id: styx, source_ref: Hes. Theog. 361}
+- {src_id: theia, rel: parent_of, dst_id: eos, source_ref: Hes. Theog. 371}
+- {src_id: theia, rel: parent_of, dst_id: helios, source_ref: Hes. Theog. 371}
+- {src_id: theia, rel: parent_of, dst_id: selene, source_ref: Hes. Theog. 371}
+- {src_id: themis, rel: parent_of, dst_id: prometheus, source_ref: Wikidata}
+- {src_id: thetis, rel: parent_of, dst_id: achilles, source_ref: Apollod. 3.13.6}
+- {src_id: tyndareus, rel: parent_of, dst_id: clytemnestra, source_ref: Wikidata}
+- {src_id: typhon, rel: parent_of, dst_id: cerberus, source_ref: Hes. Theog. 311}
+- {src_id: typhon, rel: parent_of, dst_id: chimera, source_ref: Wikidata}
+- {src_id: typhon, rel: parent_of, dst_id: hydra, source_ref: Hes. Theog. 313}
+- {src_id: typhon, rel: parent_of, dst_id: ladon, source_ref: Wikidata}
+- {src_id: typhon, rel: parent_of, dst_id: nemean_lion, source_ref: Wikidata}
+- {src_id: typhon, rel: parent_of, dst_id: orthrus, source_ref: Hes. Theog. 309}
+- {src_id: typhon, rel: parent_of, dst_id: sphinx, source_ref: Wikidata}
+- {src_id: uranus, rel: parent_of, dst_id: aphrodite, source_ref: Hes. Theog. 188}
+- {src_id: uranus, rel: parent_of, dst_id: coeus, source_ref: Hes. Theog. 133}
+- {src_id: uranus, rel: parent_of, dst_id: crius, source_ref: Hes. Theog. 133}
+- {src_id: uranus, rel: parent_of, dst_id: cronus, source_ref: Hes. Theog. 133}
+- {src_id: uranus, rel: parent_of, dst_id: cyclopes, source_ref: Hes. Theog. 139}
+- {src_id: uranus, rel: parent_of, dst_id: dione, source_ref: Wikidata}
+- {src_id: uranus, rel: parent_of, dst_id: erinyes, source_ref: Hes. Theog. 185}
+- {src_id: uranus, rel: parent_of, dst_id: hecatoncheires, source_ref: Hes. Theog. 147}
+- {src_id: uranus, rel: parent_of, dst_id: hyperion, source_ref: Hes. Theog. 133}
+- {src_id: uranus, rel: parent_of, dst_id: iapetus, source_ref: Hes. Theog. 133}
+- {src_id: uranus, rel: parent_of, dst_id: mnemosyne, source_ref: Hes. Theog. 133}
+- {src_id: uranus, rel: parent_of, dst_id: oceanus, source_ref: Hes. Theog. 133}
+- {src_id: uranus, rel: parent_of, dst_id: phoebe, source_ref: Hes. Theog. 133}
+- {src_id: uranus, rel: parent_of, dst_id: rhea, source_ref: Hes. Theog. 133}
+- {src_id: uranus, rel: parent_of, dst_id: tethys, source_ref: Hes. Theog. 133}
+- {src_id: uranus, rel: parent_of, dst_id: theia, source_ref: Hes. Theog. 133}
+- {src_id: uranus, rel: parent_of, dst_id: themis, source_ref: Hes. Theog. 133}
+- {src_id: zeus, rel: parent_of, dst_id: aphrodite, source_ref: Hom. Il. 5.370}
+- {src_id: zeus, rel: parent_of, dst_id: apollo, source_ref: Hes. Theog. 918}
+- {src_id: zeus, rel: parent_of, dst_id: ares, source_ref: Hes. Theog. 922}
+- {src_id: zeus, rel: parent_of, dst_id: artemis, source_ref: Hes. Theog. 918}
+- {src_id: zeus, rel: parent_of, dst_id: athena, source_ref: Hes. Theog. 924}
+- {src_id: zeus, rel: parent_of, dst_id: dionysus, source_ref: Hes. Theog. 940}
+- {src_id: zeus, rel: parent_of, dst_id: dioscuri, source_ref: Apollod. 3.10.7}
+- {src_id: zeus, rel: parent_of, dst_id: eileithyia, source_ref: Hes. Theog. 922}
+- {src_id: zeus, rel: parent_of, dst_id: hebe, source_ref: Hes. Theog. 922}
+- {src_id: zeus, rel: parent_of, dst_id: helen, source_ref: Apollod. 3.10.7}
+- {src_id: zeus, rel: parent_of, dst_id: hephaestus, source_ref: Wikidata}
+- {src_id: zeus, rel: parent_of, dst_id: heracles, source_ref: Hes. Theog. 943}
+- {src_id: zeus, rel: parent_of, dst_id: hermes, source_ref: Hes. Theog. 938}
+- {src_id: zeus, rel: parent_of, dst_id: minos, source_ref: Apollod. 3.1.1}
+- {src_id: zeus, rel: parent_of, dst_id: muses, source_ref: Hes. Theog. 915}
+- {src_id: zeus, rel: parent_of, dst_id: pan, source_ref: Wikidata}
+- {src_id: zeus, rel: parent_of, dst_id: persephone, source_ref: Hes. Theog. 912}
+- {src_id: zeus, rel: parent_of, dst_id: perseus, source_ref: Apollod. 2.4.1}
+- {src_id: zeus, rel: parent_of, dst_id: pirithous, source_ref: Hom. Il. 14.317}
+- {src_id: zeus, rel: parent_of, dst_id: tantalus, source_ref: Wikidata}
 
-- src_id: apollo
-  rel: worshipped_at
-  dst_id: delphi
-  source_ref: "Hom. Hymn Apollo 388"
+# --- Подружжя (симетричний зв'язок, зберігається один раз)
+- {src_id: aegeus, rel: spouse_of, dst_id: medea, source_ref: Wikidata}
+- {src_id: aether, rel: spouse_of, dst_id: hemera, source_ref: Wikidata}
+- {src_id: agamemnon, rel: spouse_of, dst_id: clytemnestra, source_ref: Wikidata}
+- {src_id: alcmene, rel: spouse_of, dst_id: amphitryon, source_ref: Apollod. 2.4.6}
+- {src_id: amphitrite, rel: spouse_of, dst_id: poseidon, source_ref: Hes. Theog. 930}
+- {src_id: andromache, rel: spouse_of, dst_id: hector, source_ref: Hom. Il. 6.395}
+- {src_id: andromache, rel: spouse_of, dst_id: neoptolemus, source_ref: Wikidata}
+- {src_id: andromeda, rel: spouse_of, dst_id: perseus, source_ref: Apollod. 2.4.3}
+- {src_id: anticlea, rel: spouse_of, dst_id: laertes, source_ref: Wikidata}
+- {src_id: aphrodite, rel: spouse_of, dst_id: ares, source_ref: Wikidata}
+- {src_id: aphrodite, rel: spouse_of, dst_id: hephaestus, source_ref: Hom. Od. 8.268}
+- {src_id: ariadne, rel: spouse_of, dst_id: dionysus, source_ref: Hes. Theog. 947}
+- {src_id: cadmus, rel: spouse_of, dst_id: harmonia, source_ref: Hes. Theog. 975}
+- {src_id: coeus, rel: spouse_of, dst_id: phoebe, source_ref: Hes. Theog. 404}
+- {src_id: cronus, rel: spouse_of, dst_id: rhea, source_ref: Hes. Theog. 453}
+- {src_id: deucalion, rel: spouse_of, dst_id: pyrrha, source_ref: Apollod. 1.7.2}
+- {src_id: echidna, rel: spouse_of, dst_id: typhon, source_ref: Hes. Theog. 306}
+- {src_id: epimetheus, rel: spouse_of, dst_id: pandora, source_ref: Hes. WD 84}
+- {src_id: erebus, rel: spouse_of, dst_id: nyx, source_ref: Hes. Theog. 125}
+- {src_id: gaia, rel: spouse_of, dst_id: tartarus, source_ref: Hes. Theog. 821}
+- {src_id: gaia, rel: spouse_of, dst_id: uranus, source_ref: Hes. Theog. 133}
+- {src_id: hades, rel: spouse_of, dst_id: persephone, source_ref: Hes. Theog. 913}
+- {src_id: hebe, rel: spouse_of, dst_id: heracles, source_ref: Hes. Theog. 950}
+- {src_id: hecuba, rel: spouse_of, dst_id: priam, source_ref: Wikidata}
+- {src_id: helen, rel: spouse_of, dst_id: menelaus, source_ref: Wikidata}
+- {src_id: helen, rel: spouse_of, dst_id: paris, source_ref: Wikidata}
+- {src_id: hera, rel: spouse_of, dst_id: zeus, source_ref: Hes. Theog. 921}
+- {src_id: hippolyta, rel: spouse_of, dst_id: theseus, source_ref: Wikidata}
+- {src_id: hyperion, rel: spouse_of, dst_id: theia, source_ref: Hes. Theog. 371}
+- {src_id: jason, rel: spouse_of, dst_id: medea, source_ref: Wikidata}
+- {src_id: jocasta, rel: spouse_of, dst_id: laius, source_ref: Apollod. 3.5.7}
+- {src_id: jocasta, rel: spouse_of, dst_id: oedipus, source_ref: Apollod. 3.5.8}
+- {src_id: leda, rel: spouse_of, dst_id: tyndareus, source_ref: Wikidata}
+- {src_id: metis, rel: spouse_of, dst_id: zeus, source_ref: Hes. Theog. 886}
+- {src_id: minos, rel: spouse_of, dst_id: pasiphae, source_ref: Apollod. 3.1.2}
+- {src_id: oceanus, rel: spouse_of, dst_id: tethys, source_ref: Hes. Theog. 337}
+- {src_id: odysseus, rel: spouse_of, dst_id: penelope, source_ref: Wikidata}
+- {src_id: peleus, rel: spouse_of, dst_id: thetis, source_ref: Apollod. 3.13.5}
+- {src_id: phaedra, rel: spouse_of, dst_id: theseus, source_ref: Wikidata}
+- {src_id: themis, rel: spouse_of, dst_id: zeus, source_ref: Hes. Theog. 901}
 
-- src_id: zeus
-  rel: worshipped_at
-  dst_id: olympus
-  source_ref: "Hom. Il. 1.498"
+# --- Культ у місці
+- {src_id: aphrodite, rel: worshipped_at, dst_id: paphos, source_ref: Hom. Od. 8.362}
+- {src_id: apollo, rel: worshipped_at, dst_id: delphi, source_ref: Hom. Hymn Apollo 388}
+- {src_id: apollo, rel: worshipped_at, dst_id: didyma, source_ref: manual}
+- {src_id: artemis, rel: worshipped_at, dst_id: ephesus, source_ref: manual}
+- {src_id: asclepius, rel: worshipped_at, dst_id: epidaurus, source_ref: manual}
+- {src_id: athena, rel: worshipped_at, dst_id: athens, source_ref: manual}
+- {src_id: demeter, rel: worshipped_at, dst_id: eleusis, source_ref: manual}
+- {src_id: dione, rel: worshipped_at, dst_id: dodona, source_ref: manual}
+- {src_id: hades, rel: worshipped_at, dst_id: necromanteion, source_ref: manual}
+- {src_id: hephaestus, rel: worshipped_at, dst_id: lemnos, source_ref: Hom. Il. 1.593}
+- {src_id: hera, rel: worshipped_at, dst_id: argos, source_ref: Hom. Il. 4.52}
+- {src_id: hera, rel: worshipped_at, dst_id: heraion_samos, source_ref: manual}
+- {src_id: muses, rel: worshipped_at, dst_id: helicon, source_ref: Hes. Theog. 1}
+- {src_id: pan, rel: worshipped_at, dst_id: lycaeus, source_ref: manual}
+- {src_id: persephone, rel: worshipped_at, dst_id: eleusis, source_ref: manual}
+- {src_id: poseidon, rel: worshipped_at, dst_id: sounion, source_ref: manual}
+- {src_id: poseidon, rel: worshipped_at, dst_id: taenarum, source_ref: manual}
+- {src_id: zeus, rel: worshipped_at, dst_id: dion, source_ref: manual}
+- {src_id: zeus, rel: worshipped_at, dst_id: dodona, source_ref: Hom. Il. 16.233}
+- {src_id: zeus, rel: worshipped_at, dst_id: lycaeus, source_ref: manual}
+- {src_id: zeus, rel: worshipped_at, dst_id: olympia, source_ref: manual}
+- {src_id: zeus, rel: worshipped_at, dst_id: olympus, source_ref: Hom. Il. 1.498}
 
-- src_id: odysseus
-  rel: born_at
-  dst_id: ithaca
-  source_ref: "Hom. Od. 9.19"
+# --- Місце народження
+- {src_id: achilles, rel: born_at, dst_id: phthia, source_ref: manual}
+- {src_id: ajax, rel: born_at, dst_id: salamis, source_ref: Hom. Il. 2.557}
+- {src_id: aphrodite, rel: born_at, dst_id: cyprus, source_ref: Hes. Theog. 199}
+- {src_id: aphrodite, rel: born_at, dst_id: kythira, source_ref: Hes. Theog. 192}
+- {src_id: apollo, rel: born_at, dst_id: delos, source_ref: Hom. Hymn 3.16}
+- {src_id: artemis, rel: born_at, dst_id: delos, source_ref: manual}
+- {src_id: dionysus, rel: born_at, dst_id: thebes, source_ref: manual}
+- {src_id: helen, rel: born_at, dst_id: sparta, source_ref: manual}
+- {src_id: heracles, rel: born_at, dst_id: thebes, source_ref: manual}
+- {src_id: hermes, rel: born_at, dst_id: cyllene, source_ref: Hom. Hymn 4.2}
+- {src_id: odysseus, rel: born_at, dst_id: ithaca, source_ref: Hom. Od. 9.19}
+- {src_id: orpheus, rel: born_at, dst_id: thrace, source_ref: manual}
+- {src_id: perseus, rel: born_at, dst_id: argos, source_ref: manual}
+- {src_id: theseus, rel: born_at, dst_id: troezen, source_ref: manual}
+- {src_id: zeus, rel: born_at, dst_id: dictaean_cave, source_ref: Apollod. 1.1.6}
+
+# --- Правління
+- {src_id: acrisius, rel: ruled, dst_id: argos, source_ref: manual}
+- {src_id: aeetes, rel: ruled, dst_id: colchis, source_ref: manual}
+- {src_id: aegeus, rel: ruled, dst_id: athens, source_ref: manual}
+- {src_id: agamemnon, rel: ruled, dst_id: mycenae, source_ref: Hom. Il. 2.569}
+- {src_id: atreus, rel: ruled, dst_id: mycenae, source_ref: manual}
+- {src_id: cadmus, rel: ruled, dst_id: thebes, source_ref: manual}
+- {src_id: diomedes, rel: ruled, dst_id: argos, source_ref: Hom. Il. 2.559}
+- {src_id: eurystheus, rel: ruled, dst_id: mycenae, source_ref: manual}
+- {src_id: hades, rel: ruled, dst_id: underworld, source_ref: Hom. Il. 15.188}
+- {src_id: laertes, rel: ruled, dst_id: ithaca, source_ref: manual}
+- {src_id: laius, rel: ruled, dst_id: thebes, source_ref: manual}
+- {src_id: menelaus, rel: ruled, dst_id: sparta, source_ref: Hom. Il. 2.581}
+- {src_id: midas, rel: ruled, dst_id: phrygia, source_ref: manual}
+- {src_id: minos, rel: ruled, dst_id: knossos, source_ref: Hom. Od. 19.178}
+- {src_id: nestor, rel: ruled, dst_id: pylos, source_ref: Hom. Il. 2.591}
+- {src_id: odysseus, rel: ruled, dst_id: ithaca, source_ref: Hom. Il. 2.631}
+- {src_id: oedipus, rel: ruled, dst_id: thebes, source_ref: manual}
+- {src_id: peleus, rel: ruled, dst_id: phthia, source_ref: manual}
+- {src_id: pelias, rel: ruled, dst_id: iolcus, source_ref: manual}
+- {src_id: priam, rel: ruled, dst_id: troy, source_ref: manual}
+- {src_id: sisyphus, rel: ruled, dst_id: corinth, source_ref: manual}
+- {src_id: tantalus, rel: ruled, dst_id: lydia, source_ref: manual}
+- {src_id: theseus, rel: ruled, dst_id: athens, source_ref: manual}
+- {src_id: tyndareus, rel: ruled, dst_id: sparta, source_ref: manual}
+
+# --- Убивства і перемоги
+- {src_id: achilles, rel: killed, dst_id: hector, source_ref: Hom. Il. 22.361}
+- {src_id: aegisthus, rel: killed, dst_id: agamemnon, source_ref: Hom. Od. 11.409}
+- {src_id: apollo, rel: killed, dst_id: python, source_ref: Hom. Hymn 3.300}
+- {src_id: bellerophon, rel: killed, dst_id: chimera, source_ref: Hom. Il. 6.179}
+- {src_id: clytemnestra, rel: killed, dst_id: agamemnon, source_ref: Hom. Od. 11.409}
+- {src_id: hector, rel: killed, dst_id: patroclus, source_ref: Hom. Il. 16.818}
+- {src_id: heracles, rel: killed, dst_id: geryon, source_ref: Apollod. 2.5.10}
+- {src_id: heracles, rel: killed, dst_id: hydra, source_ref: Apollod. 2.5.2}
+- {src_id: heracles, rel: killed, dst_id: nemean_lion, source_ref: Apollod. 2.5.1}
+- {src_id: heracles, rel: killed, dst_id: orthrus, source_ref: Apollod. 2.5.10}
+- {src_id: heracles, rel: killed, dst_id: stymphalian_birds, source_ref: Apollod. 2.5.6}
+- {src_id: hermes, rel: killed, dst_id: argus, source_ref: manual}
+- {src_id: neoptolemus, rel: killed, dst_id: priam, source_ref: manual}
+- {src_id: oedipus, rel: killed, dst_id: laius, source_ref: Apollod. 3.5.7}
+- {src_id: orestes, rel: killed, dst_id: aegisthus, source_ref: Hom. Od. 1.298}
+- {src_id: orestes, rel: killed, dst_id: clytemnestra, source_ref: manual}
+- {src_id: paris, rel: killed, dst_id: achilles, source_ref: manual}
+- {src_id: perseus, rel: killed, dst_id: acrisius, source_ref: Apollod. 2.4.4}
+- {src_id: perseus, rel: killed, dst_id: medusa, source_ref: Apollod. 2.4.2}
+- {src_id: theseus, rel: killed, dst_id: minotaur, source_ref: manual}
+- {src_id: zeus, rel: killed, dst_id: typhon, source_ref: manual}
