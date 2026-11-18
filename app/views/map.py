@@ -2,6 +2,7 @@ import folium
 import streamlit as st
 from streamlit_folium import st_folium
 
+from app.components.mini_map import KIND_COLORS, base_map
 from delphi.encyclopedia.service import MapService
 
 
@@ -10,24 +11,8 @@ def render_map_tab(map_service: MapService):
     st.caption("Інтерактивна карта святилищ, міст, гір та маршрутів античних героїв.")
 
     layer = map_service.get_map_layer()
-
-    # Create Folium map centered on the Aegean Sea
-    m = folium.Map(
-        location=[38.5, 24.0],
-        zoom_start=6,
-        tiles="CartoDB positron",
-        control_scale=True,
-    )
-
-    # Marker colors by place kind
-    kind_colors = {
-        "sanctuary": "purple",
-        "city": "blue",
-        "mountain": "green",
-        "island": "orange",
-        "river": "cadetblue",
-        "region": "darkred",
-    }
+    m = base_map(layer_control=True)  # centred on the Aegean Sea
+    kind_colors = KIND_COLORS
 
     # Add place markers
     for marker in layer.markers:

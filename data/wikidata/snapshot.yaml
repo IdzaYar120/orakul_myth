@@ -1,0 +1,5306 @@
+license: Wikidata CC0; coordinates from Pleiades (CC BY) where available
+entities:
+- id: chaos
+  qid: Q131090
+  type: god
+  sitelinks: 66
+  label_uk: Хаос
+  label_en: Chaos
+  label_la: Chaos
+  description_uk: null
+  description_en: Greek primordial deity
+  aliases_uk: []
+  aliases_en: []
+- id: gaia
+  qid: Q93172
+  type: god
+  sitelinks: 84
+  label_uk: Гея
+  label_en: Gaia
+  label_la: Gaea
+  description_uk: древньогрецька богиня Землі, мати богів і чудовиськ
+  description_en: Greek primordial deity, the personification of the Earth
+  aliases_uk: []
+  aliases_en:
+  - Gaea
+  - Ge
+- id: uranus
+  qid: Q79999
+  type: god
+  sitelinks: 90
+  label_uk: Уран
+  label_en: Uranus
+  label_la: Uranus
+  description_uk: null
+  description_en: primordial Greek deity, god of the Sky; one of the Greek primordial deities
+  aliases_uk: []
+  aliases_en:
+  - Ouranos
+  - Uranos
+- id: tartarus
+  qid: Q101322
+  type: god
+  sitelinks: 72
+  label_uk: Тартар
+  label_en: Tartarus
+  label_la: Tartarus
+  description_uk: null
+  description_en: deep abyss, place of punishment, in ancient Greek mythology
+  aliases_uk: []
+  aliases_en:
+  - Tartaros
+- id: eros
+  qid: Q121973
+  type: god
+  sitelinks: 94
+  label_uk: Ерос
+  label_en: Eros
+  label_la: Eros
+  description_uk: null
+  description_en: Greek god of love and sex
+  aliases_uk:
+  - Ерот
+  - Ероти
+  aliases_en:
+  - Cupid
+- id: nyx
+  qid: Q131203
+  type: god
+  sitelinks: 74
+  label_uk: Нікс
+  label_en: Nyx
+  label_la: null
+  description_uk: древньогрецька богиня ночі, першопричина світу, сестра смерті
+  description_en: Greek goddess of the night
+  aliases_uk:
+  - Нюкта
+  aliases_en: []
+- id: erebus
+  qid: Q131122
+  type: god
+  sitelinks: 59
+  label_uk: Ереб
+  label_en: Erebos
+  label_la: Erebus
+  description_uk: null
+  description_en: primordial deity in Greek mythology
+  aliases_uk: []
+  aliases_en:
+  - Erebus
+- id: aether
+  qid: Q189175
+  type: god
+  sitelinks: 59
+  label_uk: Ефір
+  label_en: Aether
+  label_la: Aether
+  description_uk: null
+  description_en: primordial Greek deity, personification of the upper air
+  aliases_uk: []
+  aliases_en: []
+- id: hemera
+  qid: Q192107
+  type: god
+  sitelinks: 56
+  label_uk: Гемера
+  label_en: Hemera
+  label_la: null
+  description_uk: древньогрецька богиня дня
+  description_en: ancient Greek goddess of the day
+  aliases_uk: []
+  aliases_en: []
+- id: pontus
+  qid: Q190563
+  type: god
+  sitelinks: 62
+  label_uk: Понт
+  label_en: Pontus
+  label_la: Pontus
+  description_uk: null
+  description_en: sea god of Greek mythology
+  aliases_uk: []
+  aliases_en:
+  - Pontos
+- id: cronus
+  qid: Q44204
+  type: titan
+  sitelinks: 95
+  label_uk: Кронос
+  label_en: Cronus
+  label_la: Cronus
+  description_uk: одне з найдавніших грецьких божеств
+  description_en: ruler of the Titans in Greek mythology
+  aliases_uk:
+  - Крон
+  aliases_en:
+  - Cronos
+  - Kronos
+- id: rhea
+  qid: Q108419
+  type: titan
+  sitelinks: 81
+  label_uk: Рея
+  label_en: Rhea
+  label_la: Rhea
+  description_uk: древньогрецька богиня-мати з покоління титанів; богиня родючості
+  description_en: female Titan in Greek mythology, mother of Zeus and mother of Hera
+  aliases_uk: []
+  aliases_en:
+  - Rheia
+- id: oceanus
+  qid: Q161419
+  type: titan
+  sitelinks: 79
+  label_uk: Океан
+  label_en: Oceanus
+  label_la: Oceanus
+  description_uk: null
+  description_en: ancient Greek god of the earth-encircling river, Oceanos
+  aliases_uk:
+  - Окіян
+  aliases_en:
+  - Okeanos
+- id: tethys
+  qid: Q184216
+  type: titan
+  sitelinks: 66
+  label_uk: Тетія
+  label_en: Tethys
+  label_la: Tethys
+  description_uk: древньогрецька мати богів, покровителька водної стихії
+  description_en: ancient Greek mythological figure; mother of the river gods and the Oceanids
+  aliases_uk:
+  - Тефіда
+  aliases_en:
+  - Parthenope
+- id: hyperion
+  qid: Q179209
+  type: titan
+  sitelinks: 63
+  label_uk: Гіперіон
+  label_en: Hyperion
+  label_la: Hyperion
+  description_uk: null
+  description_en: Titan in Greek mythology
+  aliases_uk: []
+  aliases_en: []
+- id: theia
+  qid: Q184232
+  type: titan
+  sitelinks: 64
+  label_uk: Тея
+  label_en: Theia
+  label_la: null
+  description_uk: давньогрецька богиня зору
+  description_en: female Titan in Greek mythology; mother of Helios, Selene and Eos
+  aliases_uk: []
+  aliases_en:
+  - Basileia
+- id: coeus
+  qid: Q182837
+  type: titan
+  sitelinks: 59
+  label_uk: Кей
+  label_en: Coeus
+  label_la: null
+  description_uk: null
+  description_en: Titan in Greek mythology, one of the twelve titans
+  aliases_uk:
+  - Кой
+  aliases_en:
+  - Polus
+  - Polos
+- id: phoebe
+  qid: Q183281
+  type: titan
+  sitelinks: 63
+  label_uk: Феба
+  label_en: Phoebe
+  label_la: Phoebe
+  description_uk: титанісса в грецькій міфології
+  description_en: titaness in Greek mythology
+  aliases_uk: []
+  aliases_en: []
+- id: crius
+  qid: Q192136
+  type: titan
+  sitelinks: 58
+  label_uk: Крій
+  label_en: Kreios
+  label_la: null
+  description_uk: null
+  description_en: Titan in Greek mythology, name that means ram
+  aliases_uk: []
+  aliases_en:
+  - Crius
+  - Krios
+- id: iapetus
+  qid: Q179543
+  type: titan
+  sitelinks: 62
+  label_uk: Япет
+  label_en: Iapetos
+  label_la: Iapetus
+  description_uk: null
+  description_en: Titan in Greek mythology
+  aliases_uk: []
+  aliases_en:
+  - Iapetus
+- id: themis
+  qid: Q159168
+  type: titan
+  sitelinks: 76
+  label_uk: Феміда
+  label_en: Themis
+  label_la: Themis
+  description_uk: давньогрецька богиня права, закону і справедливості
+  description_en: in ancient Greek mythology, a titaness, the personification of divine order, fairness,
+    law, natural law, and custom, whose symbols are the scales of justice
+  aliases_uk:
+  - Теміда
+  - Теміс
+  aliases_en: []
+- id: mnemosyne
+  qid: Q102884
+  type: titan
+  sitelinks: 69
+  label_uk: Мнемосіна
+  label_en: Mnemosyne
+  label_la: Mnemosyne
+  description_uk: давньогрецька богиня пам'яті, мати дев'ятьох муз
+  description_en: personification of memory in Greek mythology, mother of the nine muses
+  aliases_uk:
+  - Мнемозіна
+  - Мнемозина
+  aliases_en:
+  - Mnemosynë
+- id: prometheus
+  qid: Q83160
+  type: titan
+  sitelinks: 100
+  label_uk: Прометей
+  label_en: Prometheus
+  label_la: Prometheus
+  description_uk: у грецькій міфології вищий і добрий син титана Япета й німфи Клімени Фетіди
+  description_en: Titan, culture hero, and trickster figure in Greek mythology who defied the gods; son
+    of Iapetus
+  aliases_uk:
+  - Промифій
+  aliases_en: []
+- id: epimetheus
+  qid: Q41054
+  type: titan
+  sitelinks: 61
+  label_uk: Епіметей
+  label_en: Epimetheus
+  label_la: Epimetheus
+  description_uk: null
+  description_en: mythological figure
+  aliases_uk: []
+  aliases_en: []
+- id: atlas
+  qid: Q130818
+  type: titan
+  sitelinks: 86
+  label_uk: Атлант
+  label_en: Atlas
+  label_la: Atlas
+  description_uk: null
+  description_en: deity in Greek mythology
+  aliases_uk:
+  - Атланти
+  - Атлас
+  aliases_en: []
+- id: leto
+  qid: Q103107
+  type: titan
+  sitelinks: 67
+  label_uk: Лето
+  label_en: Leto
+  label_la: Latona
+  description_uk: null
+  description_en: Greek mythological figure and mother of Apollo and Artemis
+  aliases_uk:
+  - Латона
+  aliases_en: []
+- id: metis
+  qid: Q190565
+  type: titan
+  sitelinks: 57
+  label_uk: Метіда
+  label_en: Metis
+  label_la: Metis
+  description_uk: null
+  description_en: Oceanid of Greek mythology, goddess of wisdom, daughter of Oceanid and Tethys
+  aliases_uk: []
+  aliases_en: []
+- id: zeus
+  qid: Q34201
+  type: god
+  sitelinks: 145
+  label_uk: Зевс
+  label_en: Zeus
+  label_la: Zeus
+  description_uk: грецький верховний бог, бог грому і блискавок
+  description_en: Greek god of the sky and king of the gods
+  aliases_uk:
+  - Юпітер
+  aliases_en:
+  - Jupiter
+  - Dias
+  - Jove
+- id: hera
+  qid: Q38012
+  type: god
+  sitelinks: 106
+  label_uk: Гера
+  label_en: Hera
+  label_la: Hera
+  description_uk: верховна древньогрецька богиня
+  description_en: Greek goddess, wife and sister of Zeus
+  aliases_uk: []
+  aliases_en: []
+- id: poseidon
+  qid: Q41127
+  type: god
+  sitelinks: 110
+  label_uk: Посейдон
+  label_en: Poseidon
+  label_la: Posidon
+  description_uk: божество з грецької міфології
+  description_en: one of the twelve Olympians presiding over the sea, storms, earthquakes and horses
+  aliases_uk: []
+  aliases_en:
+  - Posidon
+  - Poseidōn
+- id: demeter
+  qid: Q40730
+  type: god
+  sitelinks: 103
+  label_uk: Деметра
+  label_en: Demeter
+  label_la: Demeter
+  description_uk: давньогрецька богиня землі та родючості, хліборобства та шлюбу
+  description_en: Greek goddess of the harvest, grains, and agriculture
+  aliases_uk:
+  - Матір Део
+  aliases_en:
+  - Dêmêtêr
+  - Deo
+- id: hestia
+  qid: Q41419
+  type: god
+  sitelinks: 96
+  label_uk: Гестія
+  label_en: Hestia
+  label_la: Hestia
+  description_uk: давньогрецька богиня вогню, кулінарії та пекарства
+  description_en: Greek goddess of the hearth and the home
+  aliases_uk: []
+  aliases_en:
+  - ΕΣΤΙΑ
+  - Εστία
+  - Histia, Vesta
+- id: hades
+  qid: Q41410
+  type: god
+  sitelinks: 105
+  label_uk: Аїд
+  label_en: Hades
+  label_la: Hades
+  description_uk: бог підземного світу давногрецької міфології
+  description_en: god of the underworld in Greek mythology
+  aliases_uk:
+  - Гадес
+  - Аїдоней
+  aliases_en:
+  - Pluton
+  - Plouton
+- id: athena
+  qid: Q37122
+  type: god
+  sitelinks: 126
+  label_uk: Афіна
+  label_en: Athena
+  label_la: Athena
+  description_uk: давньогрецька богиня мудрості та війни
+  description_en: goddess of wisdom and war in ancient Greek religion and mythology
+  aliases_uk:
+  - Атена
+  aliases_en:
+  - Athina
+- id: apollo
+  qid: Q37340
+  type: god
+  sitelinks: 125
+  label_uk: Аполлон
+  label_en: Apollo
+  label_la: Apollo
+  description_uk: олімпійський бог та покровитель музики
+  description_en: god in Greek and later Roman mythology
+  aliases_uk:
+  - Аполон
+  - Аполлон Дельфійський
+  aliases_en:
+  - Phoebus
+  - Apollōn
+  - Apellōn
+  - Apeilōn
+  - Aploun
+  - Apollon
+- id: artemis
+  qid: Q39503
+  type: god
+  sitelinks: 113
+  label_uk: Артеміда
+  label_en: Artemis
+  label_la: Artemis
+  description_uk: давньогрецька богиня мисливства та дикої природи
+  description_en: goddess of the hunt and the wild in ancient Greek religion and mythology
+  aliases_uk: []
+  aliases_en: []
+- id: ares
+  qid: Q40901
+  type: god
+  sitelinks: 105
+  label_uk: Арес
+  label_en: Ares
+  label_la: Ares
+  description_uk: null
+  description_en: Greek god of war and combat
+  aliases_uk:
+  - Арей
+  - Еніалій
+  - Ares
+  aliases_en: []
+- id: aphrodite
+  qid: Q35500
+  type: god
+  sitelinks: 125
+  label_uk: Афродіта
+  label_en: Aphrodite
+  label_la: Aphrodite
+  description_uk: давньогрецька верховна богиня вроди та любові, цариця німф і грацій
+  description_en: Greek goddess of love, beauty, pleasure, and procreation
+  aliases_uk:
+  - Афродита
+  aliases_en:
+  - Cytherea
+  - Erycina
+- id: hephaestus
+  qid: Q44384
+  type: god
+  sitelinks: 97
+  label_uk: Гефест
+  label_en: Hephaestus
+  label_la: Hephaestus
+  description_uk: давньогрецький бог вогню та ковальства
+  description_en: Greek god of blacksmiths
+  aliases_uk:
+  - Ήφαιστος
+  - Hephaistos
+  aliases_en:
+  - Hephaestos
+- id: hermes
+  qid: Q41484
+  type: god
+  sitelinks: 109
+  label_uk: Гермес
+  label_en: Hermes
+  label_la: Hermes
+  description_uk: null
+  description_en: Olympian god in Greek religion and mythology; the emissary and messenger of the gods;
+    the god of trade, heraldry, merchants, commerce, roads, thieves, trickery, sports, travelers, and
+    athletes; the son of Zeus and the Pleiad Maia
+  aliases_uk: []
+  aliases_en: []
+- id: dionysus
+  qid: Q41680
+  type: god
+  sitelinks: 104
+  label_uk: Діоніс
+  label_en: Dionysus
+  label_la: null
+  description_uk: null
+  description_en: ancient Greek god of winemaking and wine
+  aliases_uk:
+  - Вакх
+  - Діонис
+  - Бахус
+  aliases_en: []
+- id: persephone
+  qid: Q45967
+  type: god
+  sitelinks: 87
+  label_uk: Персефона
+  label_en: Persephone
+  label_la: Persephone
+  description_uk: грецька богиня весни
+  description_en: Greek goddess of the seasons and the queen of the underworld; married with Hades
+  aliases_uk:
+  - Кора
+  aliases_en:
+  - Kore
+- id: hecate
+  qid: Q131575
+  type: god
+  sitelinks: 70
+  label_uk: Геката
+  label_en: Hecate
+  label_la: Hecate
+  description_uk: древньогрецька богиня чаклунства і перехресть
+  description_en: Greek goddess
+  aliases_uk: []
+  aliases_en:
+  - Hecat
+  - Hekate
+- id: helios
+  qid: Q134270
+  type: god
+  sitelinks: 78
+  label_uk: Геліос
+  label_en: Helios
+  label_la: Helius
+  description_uk: null
+  description_en: Greek god and personification of the Sun
+  aliases_uk:
+  - Титан
+  aliases_en:
+  - Helius
+- id: selene
+  qid: Q131585
+  type: god
+  sitelinks: 79
+  label_uk: Селена
+  label_en: Selene
+  label_la: Selene
+  description_uk: богиня Місяця в грецькій міфології
+  description_en: ancient Greek goddess and personification of the Moon, daughter of Hyperion and Theia
+  aliases_uk: []
+  aliases_en: []
+- id: eos
+  qid: Q178417
+  type: god
+  sitelinks: 73
+  label_uk: Еос
+  label_en: Eos
+  label_la: Eos
+  description_uk: null
+  description_en: Greek goddess of the dawn
+  aliases_uk: []
+  aliases_en:
+  - Rhododactylos
+  - Erigeneia
+- id: nike
+  qid: Q165023
+  type: god
+  sitelinks: 71
+  label_uk: Ніке
+  label_en: Nike
+  label_la: Nice
+  description_uk: null
+  description_en: goddess of victory in Greek mythology
+  aliases_uk:
+  - Ніка
+  aliases_en: []
+- id: eris
+  qid: Q140001
+  type: god
+  sitelinks: 63
+  label_uk: Ерида
+  label_en: Eris
+  label_la: Eris
+  description_uk: null
+  description_en: Greek goddess of discord
+  aliases_uk:
+  - Еріда
+  aliases_en:
+  - Strife
+  - Goddess of Discord
+- id: nemesis
+  qid: Q185747
+  type: god
+  sitelinks: 62
+  label_uk: Немесіда
+  label_en: Nemesis
+  label_la: Nemesis
+  description_uk: древньогрецька богиня людської долі і порядку, уособлення кари богів
+  description_en: goddess of Greek mythology
+  aliases_uk:
+  - Немезида
+  - Немезіда
+  aliases_en:
+  - Rhamnousia
+  - Rhamnusia
+- id: thanatos
+  qid: Q199647
+  type: god
+  sitelinks: 60
+  label_uk: Танатос
+  label_en: Thanatos
+  label_la: Thanatos
+  description_uk: null
+  description_en: personification of death in Greek mythology
+  aliases_uk:
+  - Танат
+  aliases_en: []
+- id: hypnos
+  qid: Q189347
+  type: god
+  sitelinks: 53
+  label_uk: Гіпнос
+  label_en: Hypnos
+  label_la: Hypnus
+  description_uk: давньогрецький бог сну
+  description_en: personification of sleep in Greek mythology
+  aliases_uk:
+  - Гіпн
+  aliases_en: []
+- id: iris
+  qid: Q184570
+  type: god
+  sitelinks: 60
+  label_uk: Ірида
+  label_en: Iris
+  label_la: Iris
+  description_uk: null
+  description_en: the personification of the rainbow in ancient Greek religion and mythology
+  aliases_uk:
+  - Іріда
+  aliases_en: []
+- id: hebe
+  qid: Q131125
+  type: god
+  sitelinks: 66
+  label_uk: Геба
+  label_en: Hebe
+  label_la: null
+  description_uk: древньогрецька богиня юності
+  description_en: ancient Greek goddess of youth
+  aliases_uk: []
+  aliases_en: []
+- id: eileithyia
+  qid: Q94066
+  type: god
+  sitelinks: 48
+  label_uk: Ілітія
+  label_en: Eileithyia
+  label_la: Ilithyia
+  description_uk: null
+  description_en: Greek goddess of childbirth and midwifery
+  aliases_uk:
+  - Ейлейфія
+  - Іліфія
+  - Ейлейтія
+  aliases_en:
+  - Ilithyia
+  - Eilithyia
+  - Ilithia
+- id: asclepius
+  qid: Q83223
+  type: god
+  sitelinks: 84
+  label_uk: Асклепій
+  label_en: Asclepius
+  label_la: Aesculapius
+  description_uk: античний Грецький бог медицини
+  description_en: Greek god of medicine
+  aliases_uk: []
+  aliases_en:
+  - Aesculapius
+  - Asklēpiós
+  - Ἀσκληπιός
+  - Æsculapius
+- id: pan
+  qid: Q132582
+  type: god
+  sitelinks: 69
+  label_uk: Пан
+  label_en: Pan
+  label_la: Pan
+  description_uk: null
+  description_en: Greek god of the mountain wilds, shepherds, flocks, rustic music, fertility, spring,
+    and theatrical criticism, with the hindquarters, legs, and horns of a goat
+  aliases_uk: []
+  aliases_en: []
+- id: amphitrite
+  qid: Q180222
+  type: god
+  sitelinks: 65
+  label_uk: Амфітріта
+  label_en: Amphitrite
+  label_la: Amphitrite
+  description_uk: догрецька морська богиня, давньогрецька морська німфа
+  description_en: Oceanid or Nereid of Greek mythology
+  aliases_uk: []
+  aliases_en: []
+- id: triton
+  qid: Q148030
+  type: god
+  sitelinks: 64
+  label_uk: Тритон
+  label_en: Triton
+  label_la: Triton
+  description_uk: давньогрецький бог, вісник глибин
+  description_en: Greek god, messenger of the sea
+  aliases_uk: []
+  aliases_en: []
+- id: nereus
+  qid: Q189527
+  type: god
+  sitelinks: 53
+  label_uk: Нерей
+  label_en: Nereus
+  label_la: Nereus
+  description_uk: null
+  description_en: sea god of Greek mythology
+  aliases_uk: []
+  aliases_en: []
+- id: thetis
+  qid: Q184437
+  type: god
+  sitelinks: 54
+  label_uk: Фетіда
+  label_en: Thetis
+  label_la: Thetis
+  description_uk: давньогрецька німфа, персонажка міфу про аргонавтів
+  description_en: Nereid of Greek mythology
+  aliases_uk:
+  - Тетіда
+  aliases_en: []
+- id: dione
+  qid: Q199923
+  type: god
+  sitelinks: 48
+  label_uk: Діона
+  label_en: Dione
+  label_la: null
+  description_uk: null
+  description_en: Greek goddess, mother of Aphrodite
+  aliases_uk: []
+  aliases_en: []
+- id: maia
+  qid: Q205233
+  type: god
+  sitelinks: 50
+  label_uk: Майя
+  label_en: Maia
+  label_la: Maia
+  description_uk: німфа з античної міфології
+  description_en: Pleiad and mother of Hermes
+  aliases_uk: []
+  aliases_en: []
+- id: harmonia
+  qid: Q978079
+  type: god
+  sitelinks: 53
+  label_uk: Гармонія
+  label_en: Harmonia
+  label_la: Harmonia
+  description_uk: грецька богиня гармонії і злагоди
+  description_en: ancient Greek goddess of harmony and concord, spouse of Cadmus; her opposite is Eris
+  aliases_uk: []
+  aliases_en:
+  - Harmony
+- id: phobos
+  qid: Q105019
+  type: god
+  sitelinks: 52
+  label_uk: Фоб
+  label_en: Phobos
+  label_la: null
+  description_uk: null
+  description_en: personification of fear in Greek mythology
+  aliases_uk: []
+  aliases_en:
+  - Timor
+- id: deimos
+  qid: Q106240
+  type: god
+  sitelinks: 47
+  label_uk: Дейм
+  label_en: Deimos
+  label_la: null
+  description_uk: null
+  description_en: personal god of dread and terror in Greek mythology
+  aliases_uk:
+  - Деймос
+  aliases_en: []
+- id: circe
+  qid: Q187602
+  type: god
+  sitelinks: 70
+  label_uk: Кірка
+  label_en: Circe
+  label_la: Circe
+  description_uk: null
+  description_en: enchantress-goddess in Greek mythology
+  aliases_uk:
+  - Цірцея
+  - Цирцея
+  aliases_en:
+  - Kírkê
+  - Κίρκη
+  - Circé
+  - Kirke
+- id: calypso
+  qid: Q48961
+  type: god
+  sitelinks: 57
+  label_uk: Каліпсо
+  label_en: Calypso
+  label_la: Calypso
+  description_uk: null
+  description_en: Oceanid of Greek mythology
+  aliases_uk: []
+  aliases_en: []
+- id: charon
+  qid: Q6612
+  type: god
+  sitelinks: 67
+  label_uk: Харон
+  label_en: Charon
+  label_la: Charon
+  description_uk: null
+  description_en: ferryman of Hades in Greek-Roman mythology
+  aliases_uk: []
+  aliases_en:
+  - Kharon
+  - Charon (mythology)
+- id: muses
+  qid: Q66016
+  type: god
+  sitelinks: 101
+  label_uk: Музи
+  label_en: Muse
+  label_la: Musae
+  description_uk: давньогрецькі богині-покровительки мистецтв і наук
+  description_en: goddess of the inspiration of literature, science and the arts
+  aliases_uk:
+  - Аоніди
+  - Муси
+  - Муза
+  aliases_en:
+  - Muses
+  - Nine Muses
+- id: moirai
+  qid: Q180287
+  type: god
+  sitelinks: 63
+  label_uk: Мойри
+  label_en: Moirai
+  label_la: Moerae
+  description_uk: давньогрецькі богині долі і призначення
+  description_en: personifications of fate in Greek mythology
+  aliases_uk:
+  - Мойра
+  aliases_en:
+  - The Fates
+  - Fates
+  - Moerae
+  - Mœræ
+  - Moirae
+  - Moîrai
+- id: erinyes
+  qid: Q180262
+  type: god
+  sitelinks: 64
+  label_uk: Еринії
+  label_en: Erinyes
+  label_la: Erinyes
+  description_uk: В давньогрецькій міфології богині помсти
+  description_en: three mythical avenging deities
+  aliases_uk:
+  - Евменіди
+  - Ерінії
+  aliases_en:
+  - Eumenides
+  - Erinnyes
+  - Semnae theae
+  - Avenging Deities
+- id: typhon
+  qid: Q180237
+  type: creature
+  sitelinks: 62
+  label_uk: Тифон
+  label_en: Typhon
+  label_la: Typhon
+  description_uk: null
+  description_en: deadly monster of Greek mythology
+  aliases_uk: []
+  aliases_en:
+  - Typhoeus
+- id: echidna
+  qid: Q185670
+  type: creature
+  sitelinks: 61
+  label_uk: Єхидна
+  label_en: Echidna
+  label_la: Echidna
+  description_uk: античне чудовисько, мати міфічних істот
+  description_en: ancient Greek mythological monster, the mother of monsters
+  aliases_uk: []
+  aliases_en:
+  - Mother of Monsters
+- id: cerberus
+  qid: Q83496
+  type: creature
+  sitelinks: 85
+  label_uk: Цербер
+  label_en: Cerberus
+  label_la: Cerberus
+  description_uk: null
+  description_en: three-headed dog that guards the underworld in Greek mythology
+  aliases_uk:
+  - Кербер
+  aliases_en:
+  - Hound of Hades
+  - Cerberos
+- id: orthrus
+  qid: Q336230
+  type: creature
+  sitelinks: 39
+  label_uk: Ортр
+  label_en: Orthrus
+  label_la: Orthrus
+  description_uk: null
+  description_en: mythical dog of Geryon
+  aliases_uk: []
+  aliases_en: []
+- id: hydra
+  qid: Q170379
+  type: creature
+  sitelinks: 72
+  label_uk: Лернейська гідра
+  label_en: Hydra
+  label_la: Hydra
+  description_uk: null
+  description_en: ancient serpent-like chthonic water monster, with reptilian traits, that possessed many
+    heads, in Greek mythology
+  aliases_uk:
+  - Гідра
+  aliases_en:
+  - Lernaean Hydra
+  - Lernean Hydra
+  - The Lernean Hydra
+  - Lernæan Hydra
+- id: chimera
+  qid: Q182790
+  type: creature
+  sitelinks: 76
+  label_uk: Химера
+  label_en: chimera
+  label_la: Chimaera
+  description_uk: null
+  description_en: mythical or fictional animal with parts taken from various animals
+  aliases_uk: []
+  aliases_en:
+  - chimæra
+  - chimaera
+- id: nemean_lion
+  qid: Q199438
+  type: creature
+  sitelinks: 59
+  label_uk: Немейський лев
+  label_en: Nemean lion
+  label_la: Leo Nemeaeus
+  description_uk: null
+  description_en: the lion killed by Hercules
+  aliases_uk: []
+  aliases_en: []
+- id: medusa
+  qid: Q160730
+  type: creature
+  sitelinks: 90
+  label_uk: Медуза
+  label_en: Medusa
+  label_la: Medusa
+  description_uk: чудовисько з давньогрецької міфології
+  description_en: in Greek mythology, one of the three Gorgons, described as a woman with snakes in place
+    of hair, beheaded by Perseus
+  aliases_uk:
+  - Медуза Горгона
+  - Горгона Медуза
+  aliases_en: []
+- id: graeae
+  qid: Q257768
+  type: creature
+  sitelinks: 40
+  label_uk: Граї
+  label_en: Graeae
+  label_la: null
+  description_uk: null
+  description_en: three mythical sisters in Greek myth
+  aliases_uk: []
+  aliases_en:
+  - Graiae
+  - Graiæ
+  - Grææ
+  - Graeæ
+- id: pegasus
+  qid: Q162797
+  type: creature
+  sitelinks: 89
+  label_uk: Пегас
+  label_en: Pegasus
+  label_la: Pegasus
+  description_uk: крилатий кінь давньогрецької мітології
+  description_en: mythological creature in Greek mythology
+  aliases_uk: []
+  aliases_en: []
+- id: chrysaor
+  qid: Q320660
+  type: creature
+  sitelinks: 44
+  label_uk: Хрісаор
+  label_en: Chrysaor
+  label_la: Chrysaor
+  description_uk: null
+  description_en: mythical character
+  aliases_uk: []
+  aliases_en: []
+- id: minotaur
+  qid: Q129866
+  type: creature
+  sitelinks: 82
+  label_uk: Мінотавр
+  label_en: Minotaur
+  label_la: Minotaurus
+  description_uk: створіння у грецькій міфології
+  description_en: creature of Greek mythology with the head and tail of a bull and the body of a man
+  aliases_uk: []
+  aliases_en: []
+- id: python
+  qid: Q15721
+  type: creature
+  sitelinks: 49
+  label_uk: Піфон
+  label_en: Python
+  label_la: Python
+  description_uk: null
+  description_en: dragon of Delphi killed by the god Apollo
+  aliases_uk: []
+  aliases_en: []
+- id: sphinx
+  qid: Q151480
+  type: creature
+  sitelinks: 99
+  label_uk: Сфінкс
+  label_en: sphinx
+  label_la: Sphinx
+  description_uk: null
+  description_en: mythological creature with the head of a human and the body of a lion
+  aliases_uk: []
+  aliases_en: []
+- id: chiron
+  qid: Q183417
+  type: creature
+  sitelinks: 59
+  label_uk: Хірон
+  label_en: Chiron
+  label_la: Chiro
+  description_uk: міфічний кентавр
+  description_en: centaur, figure from Greek mythology
+  aliases_uk:
+  - Хейрон
+  aliases_en:
+  - Cheiron
+- id: polyphemus
+  qid: Q193567
+  type: creature
+  sitelinks: 53
+  label_uk: Поліфем
+  label_en: Polyphemus
+  label_la: Polyphemus
+  description_uk: null
+  description_en: giant son of Poseidon and Thoosa in Greek mythology
+  aliases_uk: []
+  aliases_en: []
+- id: cyclopes
+  qid: Q128430
+  type: creature
+  sitelinks: 83
+  label_uk: кіклопи
+  label_en: cyclops
+  label_la: cyclopes
+  description_uk: null
+  description_en: member of a primordial race of giants in Greek mythology and later Roman mythology
+  aliases_uk:
+  - Циклопи
+  - Кіклоп
+  aliases_en:
+  - Cyclopes
+- id: hecatoncheires
+  qid: Q175255
+  type: creature
+  sitelinks: 54
+  label_uk: гекатонхейри
+  label_en: Hecatoncheires
+  label_la: Centimani
+  description_uk: null
+  description_en: ancient Greek mythological giants with 50 heads and 100 arms
+  aliases_uk: []
+  aliases_en:
+  - Centimanes
+  - Hundred-Handers
+- id: scylla
+  qid: Q193115
+  type: creature
+  sitelinks: 58
+  label_uk: Скілла
+  label_en: Scylla
+  label_la: Scylla
+  description_uk: null
+  description_en: nymph transformed into a sea monster by Circe in Greek mythology
+  aliases_uk:
+  - Сцилла
+  - Сцілла
+  aliases_en: []
+- id: charybdis
+  qid: Q192082
+  type: creature
+  sitelinks: 56
+  label_uk: Харібда
+  label_en: Charybdis
+  label_la: Charybdis
+  description_uk: null
+  description_en: figure in Greek mythology transformed in a sea monster by Zeus
+  aliases_uk: []
+  aliases_en:
+  - Kharybdis
+- id: sirens
+  qid: Q150986
+  type: creature
+  sitelinks: 67
+  label_uk: сирена
+  label_en: siren
+  label_la: Sirenes
+  description_uk: міфологічні істоти з божественним співом
+  description_en: creatures half bird and half woman who lured sailors by the sweetness of her song
+  aliases_uk:
+  - сирени
+  aliases_en:
+  - Sirens
+  - siren song
+- id: harpies
+  qid: Q181360
+  type: creature
+  sitelinks: 63
+  label_uk: гарпії
+  label_en: harpies
+  label_la: Harpyiae
+  description_uk: null
+  description_en: half-human and half-bird personification of storm winds from Greek and Roman mythology
+    generally depicted as birds with the heads of maidens
+  aliases_uk:
+  - гарпія
+  aliases_en:
+  - The Harpies
+  - Harpies
+  - harpy
+- id: ladon
+  qid: Q274600
+  type: creature
+  sitelinks: 43
+  label_uk: Ладон (дракон)
+  label_en: Ladon
+  label_la: Ladon
+  description_uk: null
+  description_en: Greek mythological serpent
+  aliases_uk: []
+  aliases_en:
+  - Hesperian Dragon
+  - Drakôn Hesperios
+- id: geryon
+  qid: Q86805
+  type: creature
+  sitelinks: 42
+  label_uk: Геріон
+  label_en: Geryon
+  label_la: Geryon
+  description_uk: null
+  description_en: mythical king of far western Mediterranean
+  aliases_uk: []
+  aliases_en:
+  - Geryones
+- id: erymanthian_boar
+  qid: Q334456
+  type: creature
+  sitelinks: 38
+  label_uk: Ерімантський вепр
+  label_en: Erymanthian Boar
+  label_la: null
+  description_uk: null
+  description_en: mythological boar
+  aliases_uk: []
+  aliases_en: []
+- id: ceryneian_hind
+  qid: Q466882
+  type: creature
+  sitelinks: 40
+  label_uk: Керинейська лань
+  label_en: Ceryneian Hind
+  label_la: null
+  description_uk: null
+  description_en: animal from Greek mythology
+  aliases_uk: []
+  aliases_en:
+  - Cerynitis
+- id: stymphalian_birds
+  qid: Q236429
+  type: creature
+  sitelinks: 44
+  label_uk: стімфалійські птахи
+  label_en: Stymphalian birds
+  label_la: Aves Stymphalides
+  description_uk: null
+  description_en: demonic birds of Greek mythology, killed by Heracles
+  aliases_uk: []
+  aliases_en: []
+- id: cretan_bull
+  qid: Q746198
+  type: creature
+  sitelinks: 40
+  label_uk: Крітський бик
+  label_en: Cretan Bull
+  label_la: null
+  description_uk: null
+  description_en: bull in Greek mythology
+  aliases_uk:
+  - Марафонський бик
+  aliases_en:
+  - Marathonian bull
+- id: talos
+  qid: Q657174
+  type: creature
+  sitelinks: 39
+  label_uk: Тал
+  label_en: Talos
+  label_la: null
+  description_uk: персонаж з давньогрецьких міфів
+  description_en: mythological bronze automaton guarding Crete
+  aliases_uk:
+  - Талос
+  aliases_en:
+  - Talus
+- id: argus
+  qid: Q189821
+  type: creature
+  sitelinks: 52
+  label_uk: Аргос
+  label_en: Argus Panoptes
+  label_la: Argus (gigas)
+  description_uk: null
+  description_en: giant with hundred eyes in Greek mythology
+  aliases_uk: []
+  aliases_en:
+  - Argos
+  - Panoptes
+  - Argus
+- id: heracles
+  qid: Q122248
+  type: hero
+  sitelinks: 99
+  label_uk: Геракл
+  label_en: Heracles
+  label_la: Hercules
+  description_uk: міфічний герой, син бога Зевса і Алкмени
+  description_en: divine hero in Greek mythology, son of Zeus and Alcmene
+  aliases_uk:
+  - Геркулес
+  aliases_en:
+  - Alcaeus
+  - Alcides
+  - Hercules
+  - Herakles
+- id: perseus
+  qid: Q130832
+  type: hero
+  sitelinks: 87
+  label_uk: Персей
+  label_en: Perseus
+  label_la: Perseus
+  description_uk: null
+  description_en: legendary Greek hero and founder of Mycenae, demigod son of Zeus and Danae; famous for
+    beheading the Gorgon Medusa
+  aliases_uk: []
+  aliases_en: []
+- id: theseus
+  qid: Q1320718
+  type: hero
+  sitelinks: 84
+  label_uk: Тесей
+  label_en: Theseus
+  label_la: Theseus
+  description_uk: null
+  description_en: legendary king of Athens, son of Aegeus and Aethra; famous for slaying the Minotaur
+  aliases_uk:
+  - Тезей
+  - Тезій
+  aliases_en: []
+- id: jason
+  qid: Q176758
+  type: hero
+  sitelinks: 73
+  label_uk: Ясон
+  label_en: Jason
+  label_la: Iason
+  description_uk: null
+  description_en: Greek mythological hero, son of Aeson
+  aliases_uk:
+  - Язон
+  - Іасон
+  aliases_en:
+  - Iason
+- id: bellerophon
+  qid: Q189872
+  type: hero
+  sitelinks: 56
+  label_uk: Беллерофонт
+  label_en: Bellerophon
+  label_la: Bellerophon
+  description_uk: null
+  description_en: Hero in Greek myth who rode Pegasus and killed the Chimera
+  aliases_uk:
+  - Гіппоной
+  aliases_en:
+  - Bellerophontes
+  - Hipponous
+- id: cadmus
+  qid: Q27613
+  type: hero
+  sitelinks: 60
+  label_uk: Кадм
+  label_en: Cadmus
+  label_la: Cadmus
+  description_uk: null
+  description_en: mythological founder of Thebes, son of Agenor
+  aliases_uk: []
+  aliases_en:
+  - Kadmos
+  - Cadmos
+- id: orpheus
+  qid: Q174353
+  type: hero
+  sitelinks: 74
+  label_uk: Орфей
+  label_en: Orpheus
+  label_la: Orpheus
+  description_uk: напівміфічний уславлений співець і поет, персонаж давньогрецької міфології
+  description_en: legendary musician, poet, and prophet in ancient Greek religion and myth
+  aliases_uk: []
+  aliases_en: []
+- id: atalanta
+  qid: Q190323
+  type: hero
+  sitelinks: 58
+  label_uk: Аталанта
+  label_en: Atalanta
+  label_la: Atalanta
+  description_uk: персонажка грецької міфології
+  description_en: Greek mythological character, the only female Argonaut
+  aliases_uk:
+  - Атланта
+  aliases_en: []
+- id: meleager
+  qid: Q321541
+  type: hero
+  sitelinks: 45
+  label_uk: Мелеагр
+  label_en: Meleager
+  label_la: Meleager
+  description_uk: син калідонського владаря Ойнея та Алтеї в грецькій міфології
+  description_en: son of Oeneus in Greek mythology, king of Calydon
+  aliases_uk: []
+  aliases_en: []
+- id: dioscuri
+  qid: Q190103
+  type: hero
+  sitelinks: 67
+  label_uk: Діоскури
+  label_en: Castor and Pollux
+  label_la: Castor et Pollux
+  description_uk: null
+  description_en: Greek mythical siblings
+  aliases_uk: []
+  aliases_en:
+  - Gemini
+  - Dioscuri
+  - Diskouri brothers
+  - Pollux and Castor
+  - Kastor and Pollux
+  - Tyndaridai
+- id: iolaus
+  qid: Q504076
+  type: hero
+  sitelinks: 35
+  label_uk: Іолай
+  label_en: Iolaos
+  label_la: Iolaus
+  description_uk: null
+  description_en: nephew of Heracles in Greek mythology
+  aliases_uk: []
+  aliases_en:
+  - Iolaus
+  - Sapphire
+- id: pirithous
+  qid: Q502156
+  type: hero
+  sitelinks: 39
+  label_uk: Пейрітой
+  label_en: Pirithous
+  label_la: Pirithous
+  description_uk: null
+  description_en: son of Ixion in Greek mythology
+  aliases_uk:
+  - Піріфой
+  aliases_en:
+  - Perithous
+- id: peleus
+  qid: Q178641
+  type: hero
+  sitelinks: 56
+  label_uk: Пелей
+  label_en: Peleus
+  label_la: Peleus
+  description_uk: null
+  description_en: son of Aeacus in Greek mythology
+  aliases_uk: []
+  aliases_en: []
+- id: achilles
+  qid: Q41746
+  type: hero
+  sitelinks: 110
+  label_uk: Ахіллес
+  label_en: Achilles
+  label_la: Achilles
+  description_uk: герой троянської війни в міфології
+  description_en: Greek mythological hero of the Trojan War
+  aliases_uk:
+  - Ахіл
+  - Ахілл
+  aliases_en:
+  - Peleiades
+  - Pelides
+- id: odysseus
+  qid: Q47231
+  type: hero
+  sitelinks: 100
+  label_uk: Одіссей
+  label_en: Odysseus
+  label_la: Ulixes
+  description_uk: легендарний давньогрецький цар Ітаки
+  description_en: legendary Greek king of Ithaca
+  aliases_uk:
+  - Одиссей
+  - Одісей
+  - Одисей
+  aliases_en:
+  - Ulysses
+- id: hector
+  qid: Q159666
+  type: hero
+  sitelinks: 73
+  label_uk: Гектор
+  label_en: Hector
+  label_la: Hector
+  description_uk: null
+  description_en: prince of Troy in Greek mythology
+  aliases_uk: []
+  aliases_en: []
+- id: aeneas
+  qid: Q82732
+  type: hero
+  sitelinks: 88
+  label_uk: Еней
+  label_en: Aeneas
+  label_la: Aeneas
+  description_uk: null
+  description_en: Trojan hero, son of Anchises and Aphrodite
+  aliases_uk: []
+  aliases_en:
+  - Æneas
+  - Eneas Ysgwyddwyn
+- id: patroclus
+  qid: Q186271
+  type: hero
+  sitelinks: 59
+  label_uk: Патрокл
+  label_en: Patroclus
+  label_la: Patroclus
+  description_uk: null
+  description_en: son of Menoetius in Greek mythology, a greek hero of the Trojan war
+  aliases_uk: []
+  aliases_en: []
+- id: ajax
+  qid: Q172725
+  type: hero
+  sitelinks: 61
+  label_uk: Аякс Теламонід
+  label_en: Ajax the Great
+  label_la: Aiax maior
+  description_uk: null
+  description_en: son of Telamon in Greek mythology
+  aliases_uk:
+  - Еант
+  - Аякс
+  - Аянт
+  aliases_en:
+  - Aias of Salamis
+  - Telamonian Ajax
+  - Ajax son of Telamon
+  - Aias
+  - Ajax
+- id: diomedes
+  qid: Q208256
+  type: hero
+  sitelinks: 50
+  label_uk: Діомед
+  label_en: Diomedes
+  label_la: Diomedes
+  description_uk: null
+  description_en: hero son of Tydeus in Greek mythology, king of Argos
+  aliases_uk: []
+  aliases_en:
+  - Tydeiades
+  - Tydeides
+- id: agamemnon
+  qid: Q128176
+  type: hero
+  sitelinks: 91
+  label_uk: Агамемнон
+  label_en: Agamemnon
+  label_la: Agamemnon
+  description_uk: null
+  description_en: son of Atreus in Greek mythology
+  aliases_uk: []
+  aliases_en: []
+- id: menelaus
+  qid: Q171839
+  type: hero
+  sitelinks: 71
+  label_uk: Менелай
+  label_en: Menelaus
+  label_la: Menelaus
+  description_uk: null
+  description_en: mythical king of Sparta, husband of Helen of Troy
+  aliases_uk: []
+  aliases_en: []
+- id: nestor
+  qid: Q193267
+  type: hero
+  sitelinks: 50
+  label_uk: Нестор
+  label_en: Nestor
+  label_la: Nestor
+  description_uk: null
+  description_en: wise ruler of Pylos in Greek mythology, son of Neleus
+  aliases_uk: []
+  aliases_en: []
+- id: philoctetes
+  qid: Q212827
+  type: hero
+  sitelinks: 46
+  label_uk: Філоктет
+  label_en: Philoctetes
+  label_la: Philoctetes
+  description_uk: персонаж грецької міфології
+  description_en: mythological character
+  aliases_uk:
+  - Філоклет
+  aliases_en:
+  - Philocretes
+- id: neoptolemus
+  qid: Q322639
+  type: hero
+  sitelinks: 45
+  label_uk: Неоптолем
+  label_en: Neoptolemus
+  label_la: Neoptolemus
+  description_uk: null
+  description_en: son of Achilles
+  aliases_uk:
+  - Пірр
+  aliases_en:
+  - Pyrrhus
+  - Pyrrus
+  - Pyrros
+- id: telemachus
+  qid: Q192482
+  type: hero
+  sitelinks: 64
+  label_uk: Телемах
+  label_en: Telemachus
+  label_la: Telemachus
+  description_uk: null
+  description_en: in Greek mythology, the son of Odysseus and Penelope, a character from Homer's "Odyssey"
+  aliases_uk:
+  - Телемак
+  aliases_en: []
+- id: orestes
+  qid: Q192407
+  type: hero
+  sitelinks: 54
+  label_uk: Орест
+  label_en: Orestes
+  label_la: Orestes
+  description_uk: null
+  description_en: son of Agamemnon in Greek mythology
+  aliases_uk: []
+  aliases_en: []
+- id: oedipus
+  qid: Q130890
+  type: hero
+  sitelinks: 82
+  label_uk: Едіп
+  label_en: Oedipus
+  label_la: Oedipus
+  description_uk: null
+  description_en: mythical Greek king of Thebes
+  aliases_uk:
+  - Едип
+  aliases_en: []
+- id: helen
+  qid: Q164061
+  type: mortal
+  sitelinks: 95
+  label_uk: Єлена Троянська
+  label_en: Helen of Troy
+  label_la: Helena
+  description_uk: null
+  description_en: daughter of Zeus in Greek mythology
+  aliases_uk:
+  - Гелена Троянська
+  - Єлена Прекрасна
+  - Єлена
+  aliases_en:
+  - Helen of Sparta
+  - Helen
+  - Helen of Argos
+- id: paris
+  qid: Q167646
+  type: mortal
+  sitelinks: 73
+  label_uk: Паріс
+  label_en: Paris
+  label_la: Paris
+  description_uk: null
+  description_en: mythological son of Priam, king of Troy
+  aliases_uk:
+  - Суд Паріса
+  aliases_en:
+  - Alexander
+  - Alexandros
+- id: priam
+  qid: Q170473
+  type: mortal
+  sitelinks: 67
+  label_uk: Пріам
+  label_en: Priam
+  label_la: Priamus
+  description_uk: null
+  description_en: the legendary and last king of Troy during the Trojan war; son of Laomedon
+  aliases_uk:
+  - Подарк
+  aliases_en: []
+- id: hecuba
+  qid: Q193433
+  type: mortal
+  sitelinks: 54
+  label_uk: Гекаба
+  label_en: Hecuba
+  label_la: Hecuba
+  description_uk: null
+  description_en: spouse of king Priam
+  aliases_uk:
+  - Гекуба
+  aliases_en:
+  - Hekuba
+- id: andromache
+  qid: Q19376
+  type: mortal
+  sitelinks: 52
+  label_uk: Андромаха
+  label_en: Andromache
+  label_la: Andromache
+  description_uk: персонажка давньогрецьких міфів
+  description_en: wife of Hector in Greek mythology
+  aliases_uk: []
+  aliases_en: []
+- id: cassandra
+  qid: Q170779
+  type: mortal
+  sitelinks: 70
+  label_uk: Кассандра
+  label_en: Cassandra
+  label_la: Cassandra
+  description_uk: легендарна давньогрецька провісниця
+  description_en: mythological prophetess and princess of Troy
+  aliases_uk:
+  - Касандра
+  aliases_en: []
+- id: penelope
+  qid: Q165769
+  type: mortal
+  sitelinks: 68
+  label_uk: Пенелопа
+  label_en: Penelope
+  label_la: Penelope
+  description_uk: null
+  description_en: wife of Odysseus in Greek mythology
+  aliases_uk: []
+  aliases_en: []
+- id: laertes
+  qid: Q748296
+  type: mortal
+  sitelinks: 36
+  label_uk: Лаерт
+  label_en: Laertes
+  label_la: Laertes
+  description_uk: null
+  description_en: legendary king of Ithaca
+  aliases_uk: []
+  aliases_en: []
+- id: anticlea
+  qid: Q576170
+  type: mortal
+  sitelinks: 33
+  label_uk: Антіклея
+  label_en: Anticlea
+  label_la: Anticlea
+  description_uk: мати Одіссея
+  description_en: mother of Odysseus
+  aliases_uk: []
+  aliases_en:
+  - Anticleia
+- id: clytemnestra
+  qid: Q131157
+  type: mortal
+  sitelinks: 61
+  label_uk: Клітемнестра
+  label_en: Clytemnestra
+  label_la: Clytaemnestra
+  description_uk: null
+  description_en: daughter of Tyndareus in Greek mythology
+  aliases_uk: []
+  aliases_en:
+  - Clytaemnestra
+  - Klytemnestra
+  - Clytaemestra
+- id: iphigenia
+  qid: Q192673
+  type: mortal
+  sitelinks: 57
+  label_uk: Іфігенія
+  label_en: Iphigenia
+  label_la: Iphigenia
+  description_uk: null
+  description_en: daughter of Agamemnon in Greek mythology
+  aliases_uk: []
+  aliases_en: []
+- id: electra
+  qid: Q131651
+  type: mortal
+  sitelinks: 66
+  label_uk: Електра
+  label_en: Electra
+  label_la: Electra
+  description_uk: дочка Агамемнона й Клітемнестри, сестра Іфігенії та Ореста у давньогрецькій міфології
+  description_en: daughter of Agamemnon
+  aliases_uk: []
+  aliases_en:
+  - Elektra
+- id: aegisthus
+  qid: Q212091
+  type: mortal
+  sitelinks: 45
+  label_uk: Егіст
+  label_en: Aegisthus
+  label_la: Aegisthus
+  description_uk: null
+  description_en: son of Thyestes in Greek mythology
+  aliases_uk:
+  - Егісф
+  aliases_en:
+  - Aegisthos
+  - Ægisthus
+- id: atreus
+  qid: Q192469
+  type: mortal
+  sitelinks: 51
+  label_uk: Атрей
+  label_en: Atreus
+  label_la: Atreus
+  description_uk: null
+  description_en: king of Mycenae, father of Agamemnon
+  aliases_uk: []
+  aliases_en: []
+- id: tyndareus
+  qid: Q192946
+  type: mortal
+  sitelinks: 49
+  label_uk: Тіндарей
+  label_en: Tyndareus
+  label_la: Tyndareus
+  description_uk: цар Спарти
+  description_en: King of Sparta
+  aliases_uk:
+  - Тіндар
+  aliases_en: []
+- id: leda
+  qid: Q182019
+  type: mortal
+  sitelinks: 57
+  label_uk: Леда
+  label_en: Leda
+  label_la: Leda
+  description_uk: null
+  description_en: daughter of Thestius in Greek mythology
+  aliases_uk: []
+  aliases_en: []
+- id: medea
+  qid: Q174278
+  type: mortal
+  sitelinks: 73
+  label_uk: Медея
+  label_en: Medea
+  label_la: Medea
+  description_uk: персонажка давньогрецької міфології
+  description_en: daughter of King Aeëtes of Colchis in Greek mythology
+  aliases_uk: []
+  aliases_en: []
+- id: aeetes
+  qid: Q241971
+  type: mortal
+  sitelinks: 42
+  label_uk: Еет
+  label_en: Aeëtes
+  label_la: Aeetes
+  description_uk: null
+  description_en: son of Helios in Greek mythology
+  aliases_uk: []
+  aliases_en:
+  - Aeetis
+  - Æetis
+  - Aeetes
+  - Æetes
+- id: pelias
+  qid: Q182439
+  type: mortal
+  sitelinks: 43
+  label_uk: Пелій
+  label_en: Pelias
+  label_la: Pelias
+  description_uk: null
+  description_en: mythical king of Iolcus, and son of Poseidon who sent Jason on the quest for the Golden
+    Fleece
+  aliases_uk: []
+  aliases_en: []
+- id: ariadne
+  qid: Q184874
+  type: mortal
+  sitelinks: 65
+  label_uk: Аріадна
+  label_en: Ariadne
+  label_la: Ariadne
+  description_uk: персонажка давньогрецької міфології
+  description_en: the daughter of Minos in Greek mythology
+  aliases_uk:
+  - Нитка Аріадни
+  - Аріаднина Нитка
+  aliases_en:
+  - Ariane
+- id: minos
+  qid: Q23168
+  type: mortal
+  sitelinks: 78
+  label_uk: Мінос
+  label_en: Minos
+  label_la: Minos
+  description_uk: null
+  description_en: Greek mythology character, son of Zeus and Europa, king of Crete
+  aliases_uk: []
+  aliases_en:
+  - Minos II
+- id: pasiphae
+  qid: Q203236
+  type: mortal
+  sitelinks: 52
+  label_uk: Пасіфая
+  label_en: Pasiphaë
+  label_la: Pasiphaë
+  description_uk: null
+  description_en: daughter of Perse and Helios, the Sun in Greek mythology, queen of Crete
+  aliases_uk: []
+  aliases_en: []
+- id: europa
+  qid: Q165170
+  type: mortal
+  sitelinks: 80
+  label_uk: Європа
+  label_en: Europa
+  label_la: Europa
+  description_uk: null
+  description_en: Phoenician character in Greek mythology, daughter of Agenor
+  aliases_uk:
+  - Европа
+  aliases_en:
+  - Europe
+  - Evropa
+- id: daedalus
+  qid: Q134756
+  type: mortal
+  sitelinks: 70
+  label_uk: Дедал
+  label_en: Daedalus
+  label_la: Daedalus
+  description_uk: null
+  description_en: son of Metion in Greek mythology
+  aliases_uk: []
+  aliases_en: []
+- id: icarus
+  qid: Q34041
+  type: mortal
+  sitelinks: 75
+  label_uk: Ікар
+  label_en: Icarus
+  label_la: Icarus
+  description_uk: null
+  description_en: Greek mythological figure, son of Daedalus
+  aliases_uk: []
+  aliases_en:
+  - Ikarus
+  - Icaros
+  - Ikaros
+- id: aegeus
+  qid: Q191725
+  type: mortal
+  sitelinks: 52
+  label_uk: Егей
+  label_en: Aegeus
+  label_la: Aegeus
+  description_uk: персонаж древньогрецької міфології
+  description_en: mythical king of Athens
+  aliases_uk: []
+  aliases_en:
+  - Ægeus
+- id: phaedra
+  qid: Q212818
+  type: mortal
+  sitelinks: 42
+  label_uk: Федра
+  label_en: Phaedra
+  label_la: Phaedra
+  description_uk: древньогрецька принцеса, персонажка трагедії
+  description_en: wife of Theseus in Greek mythology
+  aliases_uk: []
+  aliases_en: []
+- id: hippolyta
+  qid: Q210303
+  type: mortal
+  sitelinks: 48
+  label_uk: Іпполіта
+  label_en: Hippolyta
+  label_la: Hippolyta
+  description_uk: цариця амазонок у древньогрецькій міфології
+  description_en: queen of the Amazons in Greek mythology
+  aliases_uk:
+  - Гіпполіта
+  aliases_en:
+  - Hippolytë
+- id: danae
+  qid: Q190582
+  type: mortal
+  sitelinks: 56
+  label_uk: Даная
+  label_en: Danaë
+  label_la: Danaë
+  description_uk: null
+  description_en: daughter of Acrisius of Argos and Queen Eurydice, mother of Perseus, in Greek mythology
+  aliases_uk: []
+  aliases_en: []
+- id: acrisius
+  qid: Q208017
+  type: mortal
+  sitelinks: 44
+  label_uk: Акрісій
+  label_en: Acrisius
+  label_la: Acrisius
+  description_uk: null
+  description_en: Greek mythical king of Argos
+  aliases_uk: []
+  aliases_en:
+  - Akrisios
+- id: andromeda
+  qid: Q161582
+  type: mortal
+  sitelinks: 74
+  label_uk: Андромеда
+  label_en: Andromeda
+  label_la: Andromeda
+  description_uk: у грецькій міфології дочка ефіопського царя Кефея та Кассіопеї
+  description_en: Ethiopian princess in Greek mythology
+  aliases_uk: []
+  aliases_en: []
+- id: cassiopeia
+  qid: Q207681
+  type: mortal
+  sitelinks: 43
+  label_uk: Кассіопея
+  label_en: Cassiopeia
+  label_la: null
+  description_uk: null
+  description_en: figure in Greek mythology; queen of Aethiopia and wife of king Cepheus
+  aliases_uk: []
+  aliases_en:
+  - Cassiope
+  - Cassiepeia
+  - Cassiopea
+  - Cassiepea
+- id: alcmene
+  qid: Q190543
+  type: mortal
+  sitelinks: 53
+  label_uk: Алкмена
+  label_en: Alkmene
+  label_la: Alcmene
+  description_uk: null
+  description_en: mother of Heracles
+  aliases_uk: []
+  aliases_en:
+  - Alcmene
+  - Alcmena
+- id: amphitryon
+  qid: Q206214
+  type: mortal
+  sitelinks: 42
+  label_uk: Амфітріон
+  label_en: Amphitryon
+  label_la: Amphitruo
+  description_uk: null
+  description_en: figure in Greek mythology, husband of Alcmene
+  aliases_uk: []
+  aliases_en: []
+- id: eurystheus
+  qid: Q212087
+  type: mortal
+  sitelinks: 45
+  label_uk: Еврістей
+  label_en: Eurystheus
+  label_la: Eurystheus (mythologia)
+  description_uk: null
+  description_en: king of Mycenae in Greek mythology
+  aliases_uk:
+  - Еврісфей
+  aliases_en: []
+- id: semele
+  qid: Q776139
+  type: mortal
+  sitelinks: 52
+  label_uk: Семела
+  label_en: Semele
+  label_la: Semele
+  description_uk: персонаж давньогрецької міфології
+  description_en: mother of Dionysus in Greek mythology
+  aliases_uk: []
+  aliases_en: []
+- id: jocasta
+  qid: Q131445
+  type: mortal
+  sitelinks: 48
+  label_uk: Епікаста
+  label_en: Jocasta
+  label_la: Iocasta
+  description_uk: грецька міфологічна королева Феба
+  description_en: mythological queen of Thebes
+  aliases_uk:
+  - Іокаста
+  aliases_en:
+  - Epicaste
+  - Iokasta
+  - Iokaste
+  - Jocaste
+  - Iocaste
+- id: laius
+  qid: Q463898
+  type: mortal
+  sitelinks: 39
+  label_uk: Лай
+  label_en: Laius
+  label_la: Laius
+  description_uk: міфічний цар Фів
+  description_en: mythological king of Thebes, father of Oedipus
+  aliases_uk: []
+  aliases_en: []
+- id: antigone
+  qid: Q131351
+  type: mortal
+  sitelinks: 61
+  label_uk: Антігона
+  label_en: Antigone
+  label_la: Antigone
+  description_uk: персонажка давньогрецької міфології
+  description_en: mythical daughter of Oedipus and Jocasta
+  aliases_uk: []
+  aliases_en: []
+- id: tiresias
+  qid: Q656881
+  type: mortal
+  sitelinks: 46
+  label_uk: Тіресій
+  label_en: Tiresias
+  label_la: Tiresias
+  description_uk: null
+  description_en: blind prophet of Apollo
+  aliases_uk:
+  - Тиресій
+  aliases_en:
+  - Teiresias
+- id: pandora
+  qid: Q131346
+  type: mortal
+  sitelinks: 76
+  label_uk: Пандора
+  label_en: Pandora
+  label_la: Pandora
+  description_uk: міфологічна персонажка
+  description_en: mythological figure, first human woman created by Hephaestus
+  aliases_uk: []
+  aliases_en:
+  - Anesidora
+- id: deucalion
+  qid: Q207715
+  type: mortal
+  sitelinks: 41
+  label_uk: Девкаліон
+  label_en: Deucalion
+  label_la: Deucalion
+  description_uk: null
+  description_en: son of Prometheus in Greek mythology
+  aliases_uk: []
+  aliases_en: []
+- id: pyrrha
+  qid: Q622809
+  type: mortal
+  sitelinks: 36
+  label_uk: Пірра
+  label_en: Pyrrha
+  label_la: Pyrrha
+  description_uk: null
+  description_en: daughter of Epimetheus and Pandora in Greek mythology
+  aliases_uk: []
+  aliases_en: []
+- id: sisyphus
+  qid: Q102561
+  type: mortal
+  sitelinks: 82
+  label_uk: Сізіф
+  label_en: Sisyphus
+  label_la: Sisyphus
+  description_uk: в давньогрецькій міфології творець і цар Коринфа
+  description_en: king of Ephyra in Greek mythology
+  aliases_uk:
+  - Сізіфів труд
+  - Сісіф
+  - Сізіфова праця
+  aliases_en:
+  - Sisyphos
+- id: tantalus
+  qid: Q182101
+  type: mortal
+  sitelinks: 54
+  label_uk: Тантал
+  label_en: Tantalus
+  label_la: Tantalus
+  description_uk: null
+  description_en: son of Zeus in Greek mythology
+  aliases_uk:
+  - Танталові муки
+  aliases_en: []
+- id: midas
+  qid: Q308398
+  type: mortal
+  sitelinks: 62
+  label_uk: Мідас
+  label_en: Midas
+  label_la: Midas
+  description_uk: null
+  description_en: king with the power to turn whatever he touches to gold
+  aliases_uk: []
+  aliases_en:
+  - Mita
+  - Midacritus
+- id: narcissus
+  qid: Q179256
+  type: mortal
+  sitelinks: 80
+  label_uk: Нарцис
+  label_en: Narcissus
+  label_la: Narcissus
+  description_uk: null
+  description_en: hunter in Greek mythology
+  aliases_uk:
+  - Наркіс
+  aliases_en: []
+- id: adonis
+  qid: Q163920
+  type: mortal
+  sitelinks: 69
+  label_uk: Адоніс
+  label_en: Adonis
+  label_la: Adonis
+  description_uk: близькосхідний, грецький та римський бог краси
+  description_en: Greek god of beauty and desire
+  aliases_uk: []
+  aliases_en: []
+- id: ganymede
+  qid: Q131588
+  type: mortal
+  sitelinks: 70
+  label_uk: Ганімед
+  label_en: Ganymede
+  label_la: Ganymedes
+  description_uk: Персонаж давньогрецької міфології
+  description_en: son of Tros in Greek mythology
+  aliases_uk: []
+  aliases_en:
+  - Ganymedes
+- id: golden_fleece
+  qid: Q212262
+  type: artifact
+  sitelinks: 56
+  label_uk: Золоте руно
+  label_en: Golden Fleece
+  label_la: Vellus aureum
+  description_uk: null
+  description_en: fleece of the gold-haired winged ram in Greek mythology
+  aliases_uk: []
+  aliases_en: []
+- id: aegis
+  qid: Q190662
+  type: artifact
+  sitelinks: 49
+  label_uk: егіда
+  label_en: aegis
+  label_la: aegis
+  description_uk: null
+  description_en: in the Hellenistic world, a shield, buckler, breastplate or bib of Athena and Zeus bearing
+    the head of Medusa/Gorgo (gorgoneion) that became a cult object associated with kings
+  aliases_uk: []
+  aliases_en: []
+- id: argo
+  qid: Q317932
+  type: artifact
+  sitelinks: 38
+  label_uk: Арго
+  label_en: Argo
+  label_la: Argo
+  description_uk: Легендарний корабель аргонавтів
+  description_en: ship of Jason and the Argonauts in Greek mythology
+  aliases_uk: []
+  aliases_en: []
+- id: trojan_horse
+  qid: Q50193
+  type: artifact
+  sitelinks: 88
+  label_uk: Троянський кінь
+  label_en: Trojan Horse
+  label_la: Equus Troianus
+  description_uk: null
+  description_en: tale from Trojan War, a wooden horse used by the Greeks during the Trojan war
+  aliases_uk: []
+  aliases_en:
+  - The Trojan Horse
+- id: pandoras_box
+  qid: Q937164
+  type: artifact
+  sitelinks: 47
+  label_uk: Скринька Пандори
+  label_en: Pandora's box
+  label_la: null
+  description_uk: null
+  description_en: mythic artifact
+  aliases_uk: []
+  aliases_en: []
+- id: delphi
+  qid: Q75459
+  type: place
+  sitelinks: 88
+  label_uk: Дельфи
+  label_en: Delphi
+  label_la: Delphi
+  description_uk: Давньогрецьке місто
+  description_en: ancient town in Fokida, Greece
+  aliases_uk: []
+  aliases_en:
+  - Delphi (Samian Ware Discovery Site)
+  - Ancient Delphi
+  - ancient Delphi
+  - Mint of Delphi
+  place_kind: sanctuary
+  pleiades_id: '540726'
+  lat: 38.48229
+  lon: 22.50117
+  coord_source: pleiades
+  pleiades_title: Delphi
+- id: olympia
+  qid: Q38888
+  type: place
+  sitelinks: 90
+  label_uk: Олімпія
+  label_en: Olympia
+  label_la: Olympia
+  description_uk: давньогрецьке поселення в Еліді
+  description_en: town on the Peloponnese peninsula in Greece, site of the ancient Olympic Games
+  aliases_uk: []
+  aliases_en:
+  - Olympia, Greece
+  - Longanico
+  - Longavico
+  - Olympia Pissa
+  - Olimpia
+  - Olympia Pisa
+  - Lagganico Sauro
+  place_kind: sanctuary
+  pleiades_id: '570531'
+  lat: 37.63868
+  lon: 21.63081
+  coord_source: pleiades
+  pleiades_title: Olympia
+- id: dodona
+  qid: Q382317
+  type: place
+  sitelinks: 37
+  label_uk: Додона
+  label_en: Dodona
+  label_la: Dodona
+  description_uk: null
+  description_en: ancient Greek sanctuary and oracle
+  aliases_uk: []
+  aliases_en: []
+  place_kind: sanctuary
+  pleiades_id: '530843'
+  lat: 39.54644
+  lon: 20.78773
+  coord_source: pleiades
+  pleiades_title: Dodona (Epirus)
+- id: delos
+  qid: Q173148
+  type: place
+  sitelinks: 80
+  label_uk: Делос
+  label_en: Delos
+  label_la: Delos
+  description_uk: острів
+  description_en: island in Greece with famous Apollo sanctuary
+  aliases_uk:
+  - Ділос
+  aliases_en:
+  - Mint of Delos
+  place_kind: island
+  pleiades_id: '599588'
+  lat: 37.39202
+  lon: 25.27024
+  coord_source: pleiades
+  pleiades_title: Delos (island)
+- id: eleusis
+  qid: Q11918833
+  type: place
+  sitelinks: 5
+  label_uk: null
+  label_en: Eleusis
+  label_la: null
+  description_uk: null
+  description_en: ancient Athenian deme
+  aliases_uk: []
+  aliases_en:
+  - Mint of Eleusis
+  place_kind: sanctuary
+  pleiades_id: '579920'
+  lat: 38.0411
+  lon: 23.5374
+  coord_source: pleiades
+  pleiades_title: Eleusis
+- id: epidaurus
+  qid: Q233576
+  type: place
+  sitelinks: 60
+  label_uk: Епідавр
+  label_en: Epidaurus
+  label_la: Epidaurus
+  description_uk: стародавнє місто Греції
+  description_en: ancient city in Argolis, Greece
+  aliases_uk: []
+  aliases_en:
+  - Epidauros
+  - Mint of Epidaurus
+  place_kind: sanctuary
+  pleiades_id: '570228'
+  lat: 37.63346
+  lon: 23.16016
+  coord_source: pleiades
+  pleiades_title: Epidauros
+- id: didyma
+  qid: Q671358
+  type: place
+  sitelinks: 30
+  label_uk: Дідіма
+  label_en: Didyma
+  label_la: Didyma
+  description_uk: null
+  description_en: human settlement and ancient sanctuary
+  aliases_uk: []
+  aliases_en:
+  - Didim
+  place_kind: sanctuary
+  pleiades_id: '599593'
+  lat: 37.38497
+  lon: 27.25639
+  coord_source: pleiades
+  pleiades_title: Didyma/Branchidai/Ioustinianopolis
+- id: dion
+  qid: Q990247
+  type: place
+  sitelinks: 25
+  label_uk: Діон
+  label_en: Dion
+  label_la: Dium
+  description_uk: село в Греції
+  description_en: village in Greece
+  aliases_uk: []
+  aliases_en: []
+  place_kind: sanctuary
+  pleiades_id: null
+  lat: 40.17194
+  lon: 22.4825
+  coord_source: wikidata
+- id: sounion
+  qid: Q1136637
+  type: place
+  sitelinks: 33
+  label_uk: Суніон
+  label_en: Sounion
+  label_la: Sunium
+  description_uk: null
+  description_en: cape and archaeological site in Lavreotiki municipality, Attica, Greece
+  aliases_uk:
+  - Суніо
+  - Суній
+  aliases_en:
+  - Sunium
+  - Sounion,archaeological site
+  place_kind: sanctuary
+  pleiades_id: '580108'
+  lat: 37.65011
+  lon: 24.02628
+  coord_source: pleiades
+  pleiades_title: 'Sounion (Attica: cape)'
+- id: heraion_samos
+  qid: Q841207
+  type: place
+  sitelinks: 37
+  label_uk: Герайон на острові Самос
+  label_en: Heraion of Samos
+  label_la: Heraeum
+  description_uk: населений пункт у Греції
+  description_en: ancient sanctuary of Hera on Samos
+  aliases_uk:
+  - Самоський герайон
+  - Храм Гери на острові Самос
+  aliases_en:
+  - Heraeum of Samos
+  place_kind: sanctuary
+  pleiades_id: '599641'
+  lat: 37.67197
+  lon: 26.88592
+  coord_source: pleiades
+  pleiades_title: Heraion
+- id: necromanteion
+  qid: Q12881666
+  type: place
+  sitelinks: 13
+  label_uk: null
+  label_en: Nekromanteion of Acheron
+  label_la: null
+  description_uk: null
+  description_en: archaeological site in Greece
+  aliases_uk: []
+  aliases_en:
+  - Nekromanteion of Mesopotamos
+  place_kind: sanctuary
+  pleiades_id: '531011'
+  lat: 39.23619
+  lon: 20.5342
+  coord_source: pleiades
+  pleiades_title: Nekromanteion
+- id: taenarum
+  qid: Q849911
+  type: place
+  sitelinks: 38
+  label_uk: Матапан
+  label_en: Cape Matapan
+  label_la: Taenarum
+  description_uk: null
+  description_en: cape at south tip of Greece, ancient Taenarum
+  aliases_uk: []
+  aliases_en:
+  - Cape Tenaro
+  - Cape Tainaro
+  - Taenarum
+  - Tainaron
+  place_kind: sanctuary
+  pleiades_id: '570703'
+  lat: 36.38549
+  lon: 22.48314
+  coord_source: pleiades
+  pleiades_title: Tainaron (promontory)
+- id: dictaean_cave
+  qid: Q1643807
+  type: place
+  sitelinks: 23
+  label_uk: Діктейська печера
+  label_en: Dikteon Andron
+  label_la: null
+  description_uk: null
+  description_en: cave near Psychro village, Crete, Greece
+  aliases_uk: []
+  aliases_en:
+  - Dictate Antron
+  - Psychro Cave
+  place_kind: sanctuary
+  pleiades_id: '589675'
+  lat: 35.1647
+  lon: 25.45
+  coord_source: pleiades
+  pleiades_title: Aigaion Antron
+- id: paphos
+  qid: Q64433741
+  type: place
+  sitelinks: 0
+  label_uk: null
+  label_en: Paphos
+  label_la: null
+  description_uk: null
+  description_en: World Heritage site in Cyprus
+  aliases_uk: []
+  aliases_en: []
+  place_kind: sanctuary
+  pleiades_id: '707596'
+  lat: 34.70533
+  lon: 32.57909
+  coord_source: pleiades
+  pleiades_title: (Palai)Paphos
+- id: ephesus
+  qid: Q47611
+  type: place
+  sitelinks: 97
+  label_uk: Ефес
+  label_en: Ephesus
+  label_la: Ephesus
+  description_uk: null
+  description_en: ancient Greek city in Anatolia
+  aliases_uk: []
+  aliases_en:
+  - Efes
+  - Ephesos
+  - ephesus
+  - Mint of Ephesus
+  place_kind: city
+  pleiades_id: '599612'
+  lat: 37.94016
+  lon: 27.3424
+  coord_source: pleiades
+  pleiades_title: Ephesus/Arsinoe(ia)
+- id: athens
+  qid: Q844930
+  type: place
+  sitelinks: 55
+  label_uk: Стародавні Афіни
+  label_en: Classical Athens
+  label_la: Athenae antiquae
+  description_uk: null
+  description_en: city-state in ancient Greece
+  aliases_uk:
+  - Стародавні Атени
+  - Класичні Афіни
+  aliases_en:
+  - Ancient Athens
+  - Athens
+  - Athens (Samian Ware Discovery Site)
+  place_kind: city
+  pleiades_id: '579885'
+  lat: 37.97165
+  lon: 23.72395
+  coord_source: pleiades
+  pleiades_title: Athenae
+- id: sparta
+  qid: Q5690
+  type: place
+  sitelinks: 109
+  label_uk: Спарта
+  label_en: Sparta
+  label_la: Sparta
+  description_uk: давньогрецький поліс
+  description_en: city and city-state in ancient Greece
+  aliases_uk: []
+  aliases_en:
+  - Lacedaemon
+  - Lacedemon
+  - Mint of Lacedaemon
+  place_kind: city
+  pleiades_id: '570685'
+  lat: 37.08178
+  lon: 22.42467
+  coord_source: pleiades
+  pleiades_title: Sparta
+- id: thebes
+  qid: Q11225429
+  type: place
+  sitelinks: 9
+  label_uk: Фіви
+  label_en: Thebes
+  label_la: null
+  description_uk: давньогрецьке місто в області Беотія
+  description_en: ancient Greek city-state
+  aliases_uk: []
+  aliases_en:
+  - Mint of Thebes
+  place_kind: city
+  pleiades_id: '541138'
+  lat: 38.31995
+  lon: 23.31765
+  coord_source: pleiades
+  pleiades_title: Thebai/Thebae
+- id: mycenae
+  qid: Q132564
+  type: place
+  sitelinks: 91
+  label_uk: Мікени
+  label_en: Mycenae
+  label_la: Mycenae
+  description_uk: null
+  description_en: ancient city, now an archaeological site in Argolis, Greece
+  aliases_uk: []
+  aliases_en:
+  - Mykenai
+  - archaeological site of Mycenae
+  - Mycenæ
+  place_kind: city
+  pleiades_id: '570491'
+  lat: 37.72754
+  lon: 22.75383
+  coord_source: pleiades
+  pleiades_title: Mycenae
+- id: tiryns
+  qid: Q217379
+  type: place
+  sitelinks: 55
+  label_uk: Тиринф
+  label_en: Tiryns
+  label_la: Tiryns
+  description_uk: null
+  description_en: ancient city and archaeological site in Argolis, Greece
+  aliases_uk:
+  - Тіринф
+  - Тірінф
+  aliases_en:
+  - archaeological site of Tiryns
+  - Mint of Tiryns
+  place_kind: city
+  pleiades_id: '570740'
+  lat: 37.59928
+  lon: 22.79999
+  coord_source: pleiades
+  pleiades_title: Tiryns
+- id: argos
+  qid: Q189901
+  type: place
+  sitelinks: 78
+  label_uk: Арґос
+  label_en: null
+  label_la: Argos
+  description_uk: місто в Греції
+  description_en: city in Argolis, Peloponnese, Greece
+  aliases_uk:
+  - Аргівяни
+  - Аргивяни
+  aliases_en: []
+  place_kind: city
+  pleiades_id: '570106'
+  lat: 37.63088
+  lon: 22.72044
+  coord_source: pleiades
+  pleiades_title: Argos
+- id: corinth
+  qid: Q1363688
+  type: place
+  sitelinks: 42
+  label_uk: Стародавній Коринф
+  label_en: Ancient Corinth
+  label_la: null
+  description_uk: null
+  description_en: city-state in ancient Greece
+  aliases_uk: []
+  aliases_en:
+  - ancient Corinth
+  - ancient Korinthos
+  - Corinth
+  - Korinthos
+  place_kind: city
+  pleiades_id: '570182'
+  lat: 37.90564
+  lon: 22.87861
+  coord_source: pleiades
+  pleiades_title: Corinthus/Korinthos
+- id: troy
+  qid: Q22647
+  type: place
+  sitelinks: 123
+  label_uk: Троя
+  label_en: Troy
+  label_la: Ilium
+  description_uk: null
+  description_en: ancient Homeric-era city in northwest Asia Minor; it is known as the setting for the
+    Greek myth of the Trojan war
+  aliases_uk:
+  - Іліон
+  - Троада
+  aliases_en:
+  - Ancient Troy
+  - City of Troy
+  - Ilion
+  - Ilium
+  - Teukroi
+  - Mint of Ilium
+  place_kind: city
+  pleiades_id: '550595'
+  lat: 39.95744
+  lon: 26.23852
+  coord_source: pleiades
+  pleiades_title: Ilium/Troia
+- id: pylos
+  qid: Q7263152
+  type: place
+  sitelinks: 62
+  label_uk: Пілос
+  label_en: Pylos
+  label_la: Pylos
+  description_uk: null
+  description_en: town in Messenia, Peloponnese, Greece
+  aliases_uk:
+  - Наварин
+  aliases_en:
+  - Navarino
+  place_kind: city
+  pleiades_id: '570640'
+  lat: 36.95203
+  lon: 21.65989
+  coord_source: pleiades
+  pleiades_title: Pylos/Koryphasion
+- id: knossos
+  qid: Q173527
+  type: place
+  sitelinks: 71
+  label_uk: Кносс
+  label_en: Knossos
+  label_la: Cnossus
+  description_uk: null
+  description_en: ancient Minoan through Roman administrative center and city
+  aliases_uk:
+  - Кнос
+  - Кноссос
+  - Археологічний заповідник Кносса
+  - Кноссі
+  aliases_en:
+  - Cnossus
+  - Mint of Cnossus
+  place_kind: city
+  pleiades_id: '589872'
+  lat: 35.29785
+  lon: 25.16311
+  coord_source: pleiades
+  pleiades_title: Knosos/Col. Iulia Nobilis Cnosos
+- id: iolcus
+  qid: Q662613
+  type: place
+  sitelinks: 29
+  label_uk: Іолк
+  label_en: Iolcos
+  label_la: Iolcus
+  description_uk: null
+  description_en: ancient city of Magnesia, Greece
+  aliases_uk: []
+  aliases_en:
+  - Iolcus
+  - Iolkos
+  - Mint of Iolkos
+  place_kind: city
+  pleiades_id: '540837'
+  lat: 39.3663
+  lon: 22.96886
+  coord_source: pleiades
+  pleiades_title: Iolkos
+- id: calydon
+  qid: Q750313
+  type: place
+  sitelinks: 29
+  label_uk: Калідон
+  label_en: Calydon
+  label_la: Calydon
+  description_uk: null
+  description_en: ancient Greek city in Aetolia
+  aliases_uk: []
+  aliases_en:
+  - Kalydona
+  place_kind: city
+  pleiades_id: '540699'
+  lat: 38.37293
+  lon: 21.53318
+  coord_source: pleiades
+  pleiades_title: Calydon
+- id: troezen
+  qid: Q581494
+  type: place
+  sitelinks: 27
+  label_uk: Тройзен
+  label_en: Troezen
+  label_la: Troezen
+  description_uk: null
+  description_en: modern village and ancient town in Greece
+  aliases_uk: []
+  aliases_en:
+  - Damalas
+  - Troizen
+  - Mint of Troezen
+  place_kind: city
+  pleiades_id: '570756'
+  lat: 37.50311
+  lon: 23.34849
+  coord_source: pleiades
+  pleiades_title: Troizen
+- id: nemea
+  qid: Q748108
+  type: place
+  sitelinks: 36
+  label_uk: Немея
+  label_en: Nemea
+  label_la: Nemea
+  description_uk: null
+  description_en: ancient sanctuary of Zeus in Corinthia, Greece
+  aliases_uk: []
+  aliases_en:
+  - Sanctuary of Nemean Zeus
+  - Ancient Nemea
+  place_kind: sanctuary
+  pleiades_id: '570504'
+  lat: 37.80906
+  lon: 22.71068
+  coord_source: pleiades
+  pleiades_title: Nemea
+- id: lerna
+  qid: Q1236078
+  type: place
+  sitelinks: 21
+  label_uk: null
+  label_en: Lerna
+  label_la: Lerna
+  description_uk: null
+  description_en: archaeological site in Argolis, Greece
+  aliases_uk: []
+  aliases_en:
+  - Lerni
+  place_kind: region
+  pleiades_id: '570424'
+  lat: 37.55109
+  lon: 22.71843
+  coord_source: pleiades
+  pleiades_title: Lerna
+- id: megara
+  qid: Q184864
+  type: place
+  sitelinks: 58
+  label_uk: Мегара
+  label_en: Megara
+  label_la: Megara
+  description_uk: null
+  description_en: city in western Attica, Greece
+  aliases_uk:
+  - Мегари
+  aliases_en: []
+  place_kind: city
+  pleiades_id: '570468'
+  lat: 37.98508
+  lon: 23.34016
+  coord_source: pleiades
+  pleiades_title: Megara
+- id: aulis
+  qid: Q4821780
+  type: place
+  sitelinks: 24
+  label_uk: null
+  label_en: Aulis
+  label_la: Aulis
+  description_uk: null
+  description_en: ancient Greek port and sanctuary
+  aliases_uk: []
+  aliases_en: []
+  place_kind: city
+  pleiades_id: '579889'
+  lat: 38.43026
+  lon: 23.59365
+  coord_source: pleiades
+  pleiades_title: Aulis
+- id: marathon
+  qid: Q212150
+  type: place
+  sitelinks: 52
+  label_uk: Марафон
+  label_en: Marathon
+  label_la: Marathon
+  description_uk: містечко в Греції
+  description_en: modern town in Attica, Greece
+  aliases_uk:
+  - Маратон
+  aliases_en: []
+  place_kind: city
+  pleiades_id: '580021'
+  lat: 38.14655
+  lon: 23.97015
+  coord_source: pleiades
+  pleiades_title: Marathon
+- id: elis
+  qid: Q217667
+  type: place
+  sitelinks: 37
+  label_uk: Еліда
+  label_en: Elis
+  label_la: Elis
+  description_uk: null
+  description_en: ancient city-state, capital city of the district of Elis
+  aliases_uk: []
+  aliases_en:
+  - Mint of Elis
+  place_kind: city
+  pleiades_id: '570220'
+  lat: 37.89127
+  lon: 21.37436
+  coord_source: pleiades
+  pleiades_title: Elis (city)
+- id: pherae
+  qid: Q1330631
+  type: place
+  sitelinks: 22
+  label_uk: Фери
+  label_en: Pherae
+  label_la: null
+  description_uk: null
+  description_en: ancient city of Thessaly
+  aliases_uk: []
+  aliases_en:
+  - Mint of Pherae
+  place_kind: city
+  pleiades_id: '541044'
+  lat: 39.37904
+  lon: 22.75385
+  coord_source: pleiades
+  pleiades_title: Pherai
+- id: olympus
+  qid: Q80344
+  type: place
+  sitelinks: 110
+  label_uk: Олімп
+  label_en: Mount Olympus
+  label_la: Olympus
+  description_uk: гірський масив у Греції
+  description_en: mountain in Elassona municipality, Greece
+  aliases_uk:
+  - Пантеон
+  aliases_en:
+  - Oros Olympos
+  - Olympus
+  place_kind: mountain
+  pleiades_id: '491677'
+  lat: 40.08556
+  lon: 22.35861
+  coord_source: pleiades
+  pleiades_title: Olympos (mountain in Greece)
+- id: parnassus
+  qid: Q105261
+  type: place
+  sitelinks: 66
+  label_uk: Парнас
+  label_en: Mount Parnassus
+  label_la: Parnassus
+  description_uk: гора в Греції
+  description_en: mountain in Phthiotis Regional Unit, Greece
+  aliases_uk: []
+  aliases_en:
+  - Parnassus
+  - Parnassos
+  - Parnasos
+  - Parnass
+  place_kind: mountain
+  pleiades_id: '541012'
+  lat: 38.53516
+  lon: 22.62206
+  coord_source: pleiades
+  pleiades_title: Parnassus (mountain)
+- id: ida_crete
+  qid: Q83659
+  type: place
+  sitelinks: 41
+  label_uk: Іда
+  label_en: Mount Ida
+  label_la: Ida
+  description_uk: null
+  description_en: highest mountain on Crete
+  aliases_uk:
+  - Псилоретіс
+  aliases_en:
+  - Psiloritis
+  - Ida
+  place_kind: mountain
+  pleiades_id: '589816'
+  lat: 35.22631
+  lon: 24.7708
+  coord_source: pleiades
+  pleiades_title: Ida(ion) M.
+- id: ida_troad
+  qid: Q1127771
+  type: place
+  sitelinks: 36
+  label_uk: Каз
+  label_en: Mount Ida
+  label_la: Ida
+  description_uk: гірський хребет
+  description_en: mountain in Turkey
+  aliases_uk: []
+  aliases_en:
+  - Ida
+  place_kind: mountain
+  pleiades_id: '550592'
+  lat: 39.69274
+  lon: 26.81918
+  coord_source: pleiades
+  pleiades_title: Ida (mountain)
+- id: helicon
+  qid: Q215516
+  type: place
+  sitelinks: 42
+  label_uk: Гелікон
+  label_en: Mount Helicon
+  label_la: Helicon
+  description_uk: гора в Греції
+  description_en: mountain in Livadia municipality, Greece
+  aliases_uk: []
+  aliases_en:
+  - Helicon
+  place_kind: mountain
+  pleiades_id: '540808'
+  lat: 38.35278
+  lon: 22.8225
+  coord_source: pleiades
+  pleiades_title: Helicon (mountain)
+- id: pelion
+  qid: Q1334825
+  type: place
+  sitelinks: 35
+  label_uk: Пеліон
+  label_en: Pelion
+  label_la: Pelion
+  description_uk: null
+  description_en: mountain at the southeastern part of Thessaly in central Greece
+  aliases_uk: []
+  aliases_en: []
+  place_kind: mountain
+  pleiades_id: '541021'
+  lat: 39.40822
+  lon: 23.06653
+  coord_source: pleiades
+  pleiades_title: Pelion (mountain)
+- id: ossa
+  qid: Q1471677
+  type: place
+  sitelinks: 32
+  label_uk: Осса
+  label_en: Mount Ossa
+  label_la: Ossa
+  description_uk: гора в Греції
+  description_en: mountain in Tempi municipality, Greece
+  aliases_uk: []
+  aliases_en:
+  - Mount Ossa, Greece
+  - Ossa
+  - Kissavos
+  place_kind: mountain
+  pleiades_id: '540993'
+  lat: 39.79578
+  lon: 22.6852
+  coord_source: pleiades
+  pleiades_title: Ossa (mountain)
+- id: othrys
+  qid: Q775676
+  type: place
+  sitelinks: 27
+  label_uk: Отріс
+  label_en: Mount Othrys
+  label_la: Othrys
+  description_uk: гірський хребет
+  description_en: mountain range in Greece, between Thessaly and Central Greece
+  aliases_uk: []
+  aliases_en:
+  - Othrys
+  - Orthrys
+  place_kind: mountain
+  pleiades_id: '540994'
+  lat: 39.01694
+  lon: 22.70972
+  coord_source: pleiades
+  pleiades_title: Othrys (mountain)
+- id: cithaeron
+  qid: Q1147780
+  type: place
+  sitelinks: 31
+  label_uk: Кіферон (гора)
+  label_en: Kithairon
+  label_la: Cithaeron
+  description_uk: гірський хребет
+  description_en: mountain range between West Attica and Boeotia, Greece
+  aliases_uk: []
+  aliases_en: []
+  place_kind: mountain
+  pleiades_id: '540714'
+  lat: 38.1842
+  lon: 23.24919
+  coord_source: pleiades
+  pleiades_title: Cithaeron (mountain)
+- id: oeta
+  qid: Q132378
+  type: place
+  sitelinks: 26
+  label_uk: Ета
+  label_en: Mount Oeta
+  label_la: Oeta
+  description_uk: гора
+  description_en: mountain in Lamia municipality, Greece
+  aliases_uk: []
+  aliases_en: []
+  place_kind: mountain
+  pleiades_id: '540968'
+  lat: 38.80438
+  lon: 22.26921
+  coord_source: pleiades
+  pleiades_title: Oeta (mountain)
+- id: cyllene
+  qid: Q1232572
+  type: place
+  sitelinks: 27
+  label_uk: null
+  label_en: Mount Kyllini
+  label_la: Cyllene mons
+  description_uk: гора
+  description_en: mountain in Corinthia Regional Unit, Greece
+  aliases_uk: []
+  aliases_en:
+  - Ziria
+  - Cyllene
+  place_kind: mountain
+  pleiades_id: '570391'
+  lat: 37.93972
+  lon: 22.39693
+  coord_source: pleiades
+  pleiades_title: Kyllene (mountain)
+- id: lycaeus
+  qid: Q1878690
+  type: place
+  sitelinks: 19
+  label_uk: null
+  label_en: Mount Lykaion
+  label_la: Lycaeus
+  description_uk: гора в Греції
+  description_en: mountain in Megalopoli municipality, Greece
+  aliases_uk: []
+  aliases_en: []
+  place_kind: mountain
+  pleiades_id: '570441'
+  lat: 37.45694
+  lon: 21.975
+  coord_source: pleiades
+  pleiades_title: Lykaion (mountain)
+- id: erymanthus
+  qid: Q3555227
+  type: place
+  sitelinks: 13
+  label_uk: null
+  label_en: Erymanthos
+  label_la: null
+  description_uk: null
+  description_en: river in Peloponnese, Greece
+  aliases_uk: []
+  aliases_en: []
+  place_kind: mountain
+  pleiades_id: '570237'
+  lat: 37.61749
+  lon: 21.79487
+  coord_source: pleiades
+  pleiades_title: Erymanthos (river)
+- id: etna
+  qid: Q16990
+  type: place
+  sitelinks: 125
+  label_uk: Етна
+  label_en: Mount Etna
+  label_la: Aetna
+  description_uk: Стратовулкан в Італії
+  description_en: active stratovolcano on the east coast of Sicily, Italy
+  aliases_uk: []
+  aliases_en:
+  - Mount Aetna
+  - Aetna
+  - Etna
+  - Èttena
+  - Èttina
+  place_kind: mountain
+  pleiades_id: '462077'
+  lat: 37.75723
+  lon: 14.9846
+  coord_source: pleiades
+  pleiades_title: Aetna (mountain)
+- id: caucasus
+  qid: Q5477
+  type: place
+  sitelinks: 117
+  label_uk: Кавказькі гори
+  label_en: Caucasus Mountains
+  label_la: Caucasus
+  description_uk: гірська система на Кавказі
+  description_en: mountain system spanning Eastern Europe and Western Asia
+  aliases_uk: []
+  aliases_en:
+  - Caucasus
+  place_kind: mountain
+  pleiades_id: '863766'
+  lat: 42.3898
+  lon: 44.79414
+  coord_source: pleiades
+  pleiades_title: Caucasus (mountain range)
+- id: crete
+  qid: Q34374
+  type: place
+  sitelinks: 158
+  label_uk: Крит
+  label_en: Crete
+  label_la: Creta
+  description_uk: грецький острів у Середземному морі
+  description_en: island of Greece
+  aliases_uk:
+  - Периферія Крит
+  aliases_en:
+  - Candia
+  place_kind: island
+  pleiades_id: '589748'
+  lat: 35.20612
+  lon: 25.12506
+  coord_source: pleiades
+  pleiades_title: Creta (island)
+- id: ithaca
+  qid: Q187471
+  type: place
+  sitelinks: 76
+  label_uk: Ітака
+  label_en: Ithaca
+  label_la: Ithaca
+  description_uk: Грецький острів в Іонічному морі
+  description_en: Greek island in the Ionian Sea
+  aliases_uk: []
+  aliases_en:
+  - Ithaki
+  place_kind: island
+  pleiades_id: '530906'
+  lat: 38.40032
+  lon: 20.69281
+  coord_source: pleiades
+  pleiades_title: Ithaca (island)
+- id: corfu
+  qid: Q121378
+  type: place
+  sitelinks: 100
+  label_uk: Керкіра
+  label_en: Corfu
+  label_la: Corcyra
+  description_uk: грецький острів (один з Іонічних островів)
+  description_en: Greek island in the Ionian Sea
+  aliases_uk:
+  - Корфу
+  aliases_en:
+  - Korfu
+  - Kerkira
+  - Corcyra
+  - Kerkyra
+  - Corfu, Korfu, Kerkira
+  place_kind: island
+  pleiades_id: '530835'
+  lat: 39.61997
+  lon: 19.86654
+  coord_source: pleiades
+  pleiades_title: Corcyra (island)
+- id: naxos
+  qid: Q188527
+  type: place
+  sitelinks: 80
+  label_uk: Наксос
+  label_en: Naxos Island
+  label_la: Naxos
+  description_uk: Грецький острів в Егейському морі
+  description_en: Greek island in the Aegean Sea
+  aliases_uk: []
+  aliases_en:
+  - Naxos
+  place_kind: island
+  pleiades_id: '599822'
+  lat: 37.05819
+  lon: 25.48193
+  coord_source: pleiades
+  pleiades_title: Naxos (island)
+- id: lesbos
+  qid: Q128087
+  type: place
+  sitelinks: 94
+  label_uk: Лесбос
+  label_en: Lesbos
+  label_la: Lesbos
+  description_uk: Грецький острів в Егейському морі
+  description_en: Greek island located in the northeastern Aegean Sea
+  aliases_uk: []
+  aliases_en:
+  - Lesvos
+  - Mytilini
+  - Mytilene
+  place_kind: island
+  pleiades_id: '550696'
+  lat: 39.17746
+  lon: 26.23748
+  coord_source: pleiades
+  pleiades_title: Lesbos (island)
+- id: kythira
+  qid: Q207239
+  type: place
+  sitelinks: 56
+  label_uk: Кітера
+  label_en: Kythira
+  label_la: Cythera
+  description_uk: Грецький острів в Іонічному морі
+  description_en: Greek island in the Ionian Sea
+  aliases_uk:
+  - Кіфера
+  - Кітіра
+  aliases_en:
+  - Cythera
+  - Cerigo
+  - Kithera
+  - Cherigo
+  - Isle of Cherigo
+  place_kind: island
+  pleiades_id: '570186'
+  lat: 36.24011
+  lon: 22.98287
+  coord_source: pleiades
+  pleiades_title: Cythera (island)
+- id: cyprus
+  qid: Q644636
+  type: place
+  sitelinks: 65
+  label_uk: Кіпр
+  label_en: Cyprus
+  label_la: null
+  description_uk: острів у Середземному морі
+  description_en: island in the Eastern Basin of the Mediterranean Sea
+  aliases_uk: []
+  aliases_en:
+  - Island of Cyprus
+  - Cyprus (island)
+  - Yadnana
+  place_kind: island
+  pleiades_id: '707498'
+  lat: 34.99544
+  lon: 33.22247
+  coord_source: pleiades
+  pleiades_title: Cyprus (island)
+- id: lemnos
+  qid: Q192483
+  type: place
+  sitelinks: 68
+  label_uk: Лемнос
+  label_en: Lemnos
+  label_la: Lemnos
+  description_uk: Грецький острів в Егейському морі
+  description_en: island of Greece
+  aliases_uk:
+  - Лімнос
+  aliases_en:
+  - Limnos
+  place_kind: island
+  pleiades_id: '550693'
+  lat: 39.90502
+  lon: 25.22909
+  coord_source: pleiades
+  pleiades_title: Lemnos (island)
+- id: samothrace
+  qid: Q203175
+  type: place
+  sitelinks: 62
+  label_uk: Самотракі
+  label_en: Samothrace
+  label_la: Samothracia
+  description_uk: Грецький острів в Егейському морі
+  description_en: island in the north Aegean
+  aliases_uk:
+  - Самотракія
+  - Самофракія
+  aliases_en:
+  - Samothraki
+  place_kind: island
+  pleiades_id: '501597'
+  lat: 40.45231
+  lon: 25.57624
+  coord_source: pleiades
+  pleiades_title: Samothrace (island)
+- id: rhodes
+  qid: Q43048
+  type: place
+  sitelinks: 116
+  label_uk: Родос
+  label_en: Rhodes
+  label_la: Rhodus
+  description_uk: Грецький острів в Егейському морі, в архіпелазі Додеканес
+  description_en: island in Aegean sea, Greece
+  aliases_uk: []
+  aliases_en:
+  - Rhodos
+  - Rodos
+  - Rodou
+  - Ρόδος
+  place_kind: island
+  pleiades_id: '590031'
+  lat: 36.17911
+  lon: 27.97208
+  coord_source: pleiades
+  pleiades_title: Rhodos (island)
+- id: sicily
+  qid: Q1460
+  type: place
+  sitelinks: 195
+  label_uk: Сицилія
+  label_en: Sicily
+  label_la: Sicilia
+  description_uk: острів і автономний регіон Італії
+  description_en: region of Italy (for the island in the Mediterranean Q4951156)
+  aliases_uk: []
+  aliases_en: []
+  place_kind: island
+  pleiades_id: '462492'
+  lat: 37.59253
+  lon: 14.04652
+  coord_source: pleiades
+  pleiades_title: Sicilia (island)
+- id: seriphos
+  qid: Q217214
+  type: place
+  sitelinks: 52
+  label_uk: Серіфос
+  label_en: Serifos
+  label_la: Seriphus
+  description_uk: Грецький острів в Егейському морі
+  description_en: Greek island
+  aliases_uk: []
+  aliases_en:
+  - Seriphus
+  - Seriphos
+  - Mint of Seriphos
+  place_kind: island
+  pleiades_id: '590044'
+  lat: 37.15608
+  lon: 24.4824
+  coord_source: pleiades
+  pleiades_title: Seriphos (island)
+- id: tenedos
+  qid: Q211817
+  type: place
+  sitelinks: 50
+  label_uk: Тенедос
+  label_en: Bozcaada
+  label_la: Tenedos
+  description_uk: острів
+  description_en: island off the northwestern coast of Turkey
+  aliases_uk:
+  - Бозджаада
+  aliases_en:
+  - Tenedos
+  - Ténedos
+  - Tênedos
+  - Mint of Tenedos
+  place_kind: island
+  pleiades_id: '550912'
+  lat: 39.82059
+  lon: 26.03532
+  coord_source: pleiades
+  pleiades_title: Tenedos (island)
+- id: skyros
+  qid: Q208566
+  type: place
+  sitelinks: 56
+  label_uk: Скірос
+  label_en: Scyros
+  label_la: Scyrus
+  description_uk: Грецький острів в Егейському морі
+  description_en: Greek island in the Aegean Sea
+  aliases_uk: []
+  aliases_en:
+  - Mint of Scyros
+  place_kind: island
+  pleiades_id: '541093'
+  lat: 38.86083
+  lon: 24.54993
+  coord_source: pleiades
+  pleiades_title: Scyrus (island)
+- id: aegina
+  qid: Q191082
+  type: place
+  sitelinks: 69
+  label_uk: Егіна
+  label_en: Aegina
+  label_la: Aegina
+  description_uk: Грецький острів в Егейському морі
+  description_en: Greek island of the Saronic Gulf
+  aliases_uk:
+  - Енопія
+  aliases_en:
+  - Egina
+  - Aigina
+  - Ægina
+  place_kind: island
+  pleiades_id: '579844'
+  lat: 37.73456
+  lon: 23.4893
+  coord_source: pleiades
+  pleiades_title: Aegina (island)
+- id: salamis
+  qid: Q202422
+  type: place
+  sitelinks: 64
+  label_uk: Саламін
+  label_en: Salamis Island
+  label_la: Salamis
+  description_uk: Грецький острів в Егейському морі
+  description_en: island in the Saronic Gulf near Piraeus, Greece
+  aliases_uk:
+  - Тримифунт
+  aliases_en:
+  - Salamis
+  - Mint of Salamis
+  place_kind: island
+  pleiades_id: '580101'
+  lat: 37.94267
+  lon: 23.48434
+  coord_source: pleiades
+  pleiades_title: Salamis (island)
+- id: euboea
+  qid: Q173096
+  type: place
+  sitelinks: 78
+  label_uk: Евбея
+  label_en: Euboea
+  label_la: Euboea
+  description_uk: острів в Егейському морі
+  description_en: Greek island
+  aliases_uk:
+  - Евія
+  - Еввія
+  aliases_en:
+  - Évvia
+  - Évvoia
+  - Evvia
+  - Evvoia
+  - Negroponte
+  place_kind: island
+  pleiades_id: '540775'
+  lat: 38.53
+  lon: 23.87
+  coord_source: pleiades
+  pleiades_title: Euboea (island)
+- id: styx
+  qid: Q542758
+  type: place
+  sitelinks: 66
+  label_uk: Стікс
+  label_en: Styx
+  label_la: Styx
+  description_uk: null
+  description_en: Greek divinity of the river Styx
+  aliases_uk: []
+  aliases_en: []
+  place_kind: river
+  pleiades_id: '570698'
+  lat: 38.25
+  lon: 22.25
+  coord_source: pleiades
+  pleiades_title: Styx (river)
+- id: acheron
+  qid: Q191087
+  type: place
+  sitelinks: 55
+  label_uk: Ахеронт
+  label_en: Acheron
+  label_la: Acheron
+  description_uk: null
+  description_en: river of northwest Greece
+  aliases_uk:
+  - Ахерон
+  aliases_en: []
+  place_kind: river
+  pleiades_id: '530769'
+  lat: 39.23582
+  lon: 20.47948
+  coord_source: pleiades
+  pleiades_title: Acheron (river)
+- id: alpheus
+  qid: Q941745
+  type: place
+  sitelinks: 33
+  label_uk: Алфей
+  label_en: Alfeios
+  label_la: Alpheus
+  description_uk: null
+  description_en: river in the Peloponnese, Greece
+  aliases_uk: []
+  aliases_en:
+  - Alpheus
+  place_kind: river
+  pleiades_id: null
+  lat: 37.6128
+  lon: 21.4514
+  coord_source: wikidata
+- id: scamander
+  qid: Q2488636
+  type: place
+  sitelinks: 17
+  label_uk: Карамендерес
+  label_en: Karamenderes River
+  label_la: Scamandrus
+  description_uk: річка в Туреччині
+  description_en: river in Çanakkale, northwestern Turkey
+  aliases_uk: []
+  aliases_en: []
+  place_kind: river
+  pleiades_id: '550871'
+  lat: 39.82871
+  lon: 26.47842
+  coord_source: pleiades
+  pleiades_title: Scamander (river)
+- id: stymphalia
+  qid: Q1251026
+  type: place
+  sitelinks: 19
+  label_uk: Стимфалія
+  label_en: Lake Stymphalia
+  label_la: Lacus Stymphalis
+  description_uk: null
+  description_en: lake in Peloponnese, Greece
+  aliases_uk:
+  - Стимфалійське озеро
+  aliases_en: []
+  place_kind: river
+  pleiades_id: '324369908'
+  lat: 37.85534
+  lon: 22.46492
+  coord_source: pleiades
+  pleiades_title: Lake Stymphalia
+- id: colchis
+  qid: Q183150
+  type: place
+  sitelinks: 63
+  label_uk: Колхіда
+  label_en: Colchis
+  label_la: Colchis
+  description_uk: null
+  description_en: historical polity and region of Antiquity
+  aliases_uk:
+  - Колхида
+  aliases_en:
+  - Egrisi
+  - Egrisi Kingdom
+  - Kingdom of Egrisi
+  - Kolchis
+  - Kolkhida
+  - Kolxida
+  - Kolxeti
+  - Kingdom of Colchis
+  place_kind: region
+  pleiades_id: '863770'
+  lat: 42.20176
+  lon: 42.45407
+  coord_source: pleiades
+  pleiades_title: Colchis/Lazike (region)
+- id: attica
+  qid: Q122443
+  type: place
+  sitelinks: 82
+  label_uk: Аттика
+  label_en: Attica
+  label_la: Attica
+  description_uk: історична область у Стародавній Греції
+  description_en: historical region of Greece, including the city of Athens
+  aliases_uk:
+  - Аттіка
+  - Мопсопія
+  aliases_en: []
+  place_kind: region
+  pleiades_id: '579888'
+  lat: 38.03333
+  lon: 23.65
+  coord_source: pleiades
+  pleiades_title: Attica
+- id: argolis
+  qid: Q12649101
+  type: place
+  sitelinks: 6
+  label_uk: null
+  label_en: Argolis
+  label_la: Argolis
+  description_uk: null
+  description_en: historical region of ancient Greece
+  aliases_uk: []
+  aliases_en:
+  - Argolida
+  place_kind: region
+  pleiades_id: '570104'
+  lat: 37.62633
+  lon: 22.92569
+  coord_source: pleiades
+  pleiades_title: Argolis
+- id: laconia
+  qid: Q11931074
+  type: place
+  sitelinks: 9
+  label_uk: null
+  label_en: Laconia
+  label_la: Laconia
+  description_uk: null
+  description_en: historical region of ancient Greece
+  aliases_uk: []
+  aliases_en:
+  - Laconica
+  - Ancient Laconia
+  place_kind: region
+  pleiades_id: '570406'
+  lat: 37.04573
+  lon: 22.66035
+  coord_source: pleiades
+  pleiades_title: Lacedaemon/Laconia
+- id: boeotia
+  qid: Q187570
+  type: place
+  sitelinks: 18
+  label_uk: Беотія
+  label_en: Boeotia
+  label_la: Boeotia
+  description_uk: історичний регіон у Давній Греції
+  description_en: historical region in Central Greece
+  aliases_uk:
+  - Беотійці
+  aliases_en: []
+  place_kind: region
+  pleiades_id: '540689'
+  lat: 38.3169
+  lon: 23.13492
+  coord_source: pleiades
+  pleiades_title: Boeotia
+- id: phthia
+  qid: Q1232814
+  type: place
+  sitelinks: 21
+  label_uk: Фтія
+  label_en: Phthia
+  label_la: Phthiotis
+  description_uk: у грецькій міфології місто чи район у стародавній Фессалії
+  description_en: in Greek mythology city or district in ancient Thessaly
+  aliases_uk: []
+  aliases_en: []
+  place_kind: region
+  pleiades_id: '541052'
+  lat: 39.32171
+  lon: 22.37825
+  coord_source: pleiades
+  pleiades_title: Phthiotis
+- id: thrace
+  qid: Q41741
+  type: place
+  sitelinks: 101
+  label_uk: Фракія
+  label_en: Thrace
+  label_la: Thracia
+  description_uk: історична область, країна, яка займала частину нинішнього Балканського півострова
+  description_en: geographical and historical region in Southeast Europe
+  aliases_uk:
+  - Тракія
+  aliases_en:
+  - Ancient Thrace and Ancient Thracians
+  place_kind: region
+  pleiades_id: '501638'
+  lat: 41.51783
+  lon: 26.96241
+  coord_source: pleiades
+  pleiades_title: Thracia
+- id: lydia
+  qid: Q620765
+  type: place
+  sitelinks: 86
+  label_uk: Лідія
+  label_en: Lydia
+  label_la: Lydia
+  description_uk: стародавня держава на заході Малої Азії зі столицею у місті Сарди
+  description_en: Iron Age kingdom and then province in Asia Minor (1200–546 BC)
+  aliases_uk:
+  - Лідійське царство
+  aliases_en:
+  - Kingdom of Lydia
+  place_kind: region
+  pleiades_id: '550701'
+  lat: 38.58652
+  lon: 28.74613
+  coord_source: pleiades
+  pleiades_title: Lydia/Maionia (region)
+- id: phrygia
+  qid: Q32579
+  type: place
+  sitelinks: 77
+  label_uk: Фригія
+  label_en: Phrygia
+  label_la: Phrygia
+  description_uk: null
+  description_en: ancient kingdom in Asia Minor
+  aliases_uk:
+  - Фригійці
+  aliases_en:
+  - Frýgie
+  place_kind: region
+  pleiades_id: '907036116'
+  lat: 38.39976
+  lon: 35.35672
+  coord_source: pleiades
+  pleiades_title: Phrygia (kingdom)
+- id: dardanelles
+  qid: Q6514
+  type: place
+  sitelinks: 108
+  label_uk: Дарданели
+  label_en: Dardanelles
+  label_la: Hellespontus
+  description_uk: null
+  description_en: strait in northwestern Turkey
+  aliases_uk: []
+  aliases_en:
+  - Hellespont
+  - Hellespontos
+  - Dardanelles Strait
+  - Çanakkale Strait
+  place_kind: region
+  pleiades_id: '501434'
+  lat: 40.21881
+  lon: 26.47687
+  coord_source: pleiades
+  pleiades_title: Hellespont (strait)
+- id: underworld
+  qid: Q1521549
+  type: place
+  sitelinks: 40
+  label_uk: потойбічний світ у давньогрецькій міфології
+  label_en: Greek underworld
+  label_la: null
+  description_uk: null
+  description_en: location in Greek mythology
+  aliases_uk:
+  - грецьке потойбіччя
+  aliases_en:
+  - Underworld
+  - Hades
+  place_kind: region
+  pleiades_id: '853874840'
+  certainty: none
+- id: elysium
+  qid: Q157128
+  type: place
+  sitelinks: 49
+  label_uk: Елісій
+  label_en: Elysium
+  label_la: Elysium
+  description_uk: null
+  description_en: afterworld for good souls in Greek mythology
+  aliases_uk:
+  - Елізіум
+  - Елізій
+  aliases_en:
+  - Elysian Fields
+  - Elysion
+  - Elysian Plain
+  place_kind: region
+  pleiades_id: null
+  certainty: none
+- id: hesperides_garden
+  qid: Q3763922
+  type: place
+  sitelinks: 6
+  label_uk: null
+  label_en: Garden of the Hesperides
+  label_la: null
+  description_uk: null
+  description_en: Greek legendary place
+  aliases_uk: []
+  aliases_en: []
+  place_kind: region
+  pleiades_id: '278614'
+  certainty: none
+- id: hyperborea
+  qid: Q243333
+  type: place
+  sitelinks: 36
+  label_uk: Гіперборея
+  label_en: Hyperborea
+  label_la: Hyperborea
+  description_uk: null
+  description_en: area north of Thrace in Greek mythology
+  aliases_uk: []
+  aliases_en:
+  - Hyperboreoi
+  place_kind: region
+  pleiades_id: null
+  certainty: none
+- id: aeaea
+  qid: Q403366
+  type: place
+  sitelinks: 26
+  label_uk: Еея
+  label_en: Aeaea
+  label_la: Aeaea
+  description_uk: null
+  description_en: island of Circe in Greek mythology
+  aliases_uk:
+  - Ея
+  aliases_en:
+  - Aiaia
+  - Circe's isle
+  - Island of Circe
+  place_kind: island
+  pleiades_id: '621604967'
+  certainty: none
+- id: ogygia
+  qid: Q1232442
+  type: place
+  sitelinks: 26
+  label_uk: Огігія
+  label_en: Ogygia
+  label_la: Ogygia
+  description_uk: null
+  description_en: fictional island mentioned in Homer's Odyssey, as the home of the nymph Calypso
+  aliases_uk: []
+  aliases_en: []
+  place_kind: island
+  pleiades_id: null
+  certainty: none
+relations:
+- src_id: chaos
+  rel: parent_of
+  dst_id: gaia
+  source_ref: Wikidata
+- src_id: chaos
+  rel: parent_of
+  dst_id: eros
+  source_ref: Wikidata
+- src_id: chaos
+  rel: parent_of
+  dst_id: tartarus
+  source_ref: Wikidata
+- src_id: chaos
+  rel: parent_of
+  dst_id: erebus
+  source_ref: Wikidata
+- src_id: chaos
+  rel: parent_of
+  dst_id: nyx
+  source_ref: Wikidata
+- src_id: chaos
+  rel: parent_of
+  dst_id: uranus
+  source_ref: Wikidata
+- src_id: aether
+  rel: parent_of
+  dst_id: gaia
+  source_ref: Wikidata
+- src_id: hemera
+  rel: parent_of
+  dst_id: gaia
+  source_ref: Wikidata
+- src_id: gaia
+  rel: parent_of
+  dst_id: cronus
+  source_ref: Wikidata
+- src_id: gaia
+  rel: parent_of
+  dst_id: uranus
+  source_ref: Wikidata
+- src_id: gaia
+  rel: parent_of
+  dst_id: rhea
+  source_ref: Wikidata
+- src_id: gaia
+  rel: parent_of
+  dst_id: oceanus
+  source_ref: Wikidata
+- src_id: gaia
+  rel: parent_of
+  dst_id: typhon
+  source_ref: Wikidata
+- src_id: gaia
+  rel: parent_of
+  dst_id: tethys
+  source_ref: Wikidata
+- src_id: gaia
+  rel: parent_of
+  dst_id: nereus
+  source_ref: Wikidata
+- src_id: gaia
+  rel: parent_of
+  dst_id: crius
+  source_ref: Wikidata
+- src_id: gaia
+  rel: parent_of
+  dst_id: theia
+  source_ref: Wikidata
+- src_id: gaia
+  rel: parent_of
+  dst_id: phoebe
+  source_ref: Wikidata
+- src_id: gaia
+  rel: parent_of
+  dst_id: coeus
+  source_ref: Wikidata
+- src_id: gaia
+  rel: parent_of
+  dst_id: iapetus
+  source_ref: Wikidata
+- src_id: gaia
+  rel: parent_of
+  dst_id: hyperion
+  source_ref: Wikidata
+- src_id: gaia
+  rel: parent_of
+  dst_id: themis
+  source_ref: Wikidata
+- src_id: gaia
+  rel: parent_of
+  dst_id: mnemosyne
+  source_ref: Wikidata
+- src_id: gaia
+  rel: parent_of
+  dst_id: pontus
+  source_ref: Wikidata
+- src_id: gaia
+  rel: parent_of
+  dst_id: dione
+  source_ref: Wikidata
+- src_id: gaia
+  rel: parent_of
+  dst_id: echidna
+  source_ref: Wikidata
+- src_id: gaia
+  rel: parent_of
+  dst_id: charybdis
+  source_ref: Wikidata
+- src_id: gaia
+  rel: parent_of
+  dst_id: aphrodite
+  source_ref: Wikidata
+- src_id: gaia
+  rel: parent_of
+  dst_id: erinyes
+  source_ref: Wikidata
+- src_id: gaia
+  rel: spouse_of
+  dst_id: uranus
+  source_ref: Wikidata
+- src_id: gaia
+  rel: spouse_of
+  dst_id: tartarus
+  source_ref: Wikidata
+- src_id: aether
+  rel: parent_of
+  dst_id: uranus
+  source_ref: Wikidata
+- src_id: hemera
+  rel: parent_of
+  dst_id: uranus
+  source_ref: Wikidata
+- src_id: uranus
+  rel: parent_of
+  dst_id: aphrodite
+  source_ref: Wikidata
+- src_id: uranus
+  rel: parent_of
+  dst_id: oceanus
+  source_ref: Wikidata
+- src_id: uranus
+  rel: parent_of
+  dst_id: coeus
+  source_ref: Wikidata
+- src_id: uranus
+  rel: parent_of
+  dst_id: crius
+  source_ref: Wikidata
+- src_id: uranus
+  rel: parent_of
+  dst_id: hyperion
+  source_ref: Wikidata
+- src_id: uranus
+  rel: parent_of
+  dst_id: iapetus
+  source_ref: Wikidata
+- src_id: uranus
+  rel: parent_of
+  dst_id: cronus
+  source_ref: Wikidata
+- src_id: uranus
+  rel: parent_of
+  dst_id: phoebe
+  source_ref: Wikidata
+- src_id: uranus
+  rel: parent_of
+  dst_id: mnemosyne
+  source_ref: Wikidata
+- src_id: uranus
+  rel: parent_of
+  dst_id: rhea
+  source_ref: Wikidata
+- src_id: uranus
+  rel: parent_of
+  dst_id: themis
+  source_ref: Wikidata
+- src_id: uranus
+  rel: parent_of
+  dst_id: tethys
+  source_ref: Wikidata
+- src_id: uranus
+  rel: parent_of
+  dst_id: theia
+  source_ref: Wikidata
+- src_id: uranus
+  rel: parent_of
+  dst_id: dione
+  source_ref: Wikidata
+- src_id: uranus
+  rel: parent_of
+  dst_id: cyclopes
+  source_ref: Wikidata
+- src_id: uranus
+  rel: parent_of
+  dst_id: hecatoncheires
+  source_ref: Wikidata
+- src_id: uranus
+  rel: parent_of
+  dst_id: erinyes
+  source_ref: Wikidata
+- src_id: tartarus
+  rel: parent_of
+  dst_id: typhon
+  source_ref: Wikidata
+- src_id: tartarus
+  rel: parent_of
+  dst_id: echidna
+  source_ref: Wikidata
+- src_id: ares
+  rel: parent_of
+  dst_id: eros
+  source_ref: Wikidata
+- src_id: aether
+  rel: parent_of
+  dst_id: eros
+  source_ref: Wikidata
+- src_id: erebus
+  rel: parent_of
+  dst_id: eros
+  source_ref: Wikidata
+- src_id: aphrodite
+  rel: parent_of
+  dst_id: eros
+  source_ref: Wikidata
+- src_id: iris
+  rel: parent_of
+  dst_id: eros
+  source_ref: Wikidata
+- src_id: eris
+  rel: parent_of
+  dst_id: eros
+  source_ref: Wikidata
+- src_id: nyx
+  rel: parent_of
+  dst_id: eros
+  source_ref: Wikidata
+- src_id: nyx
+  rel: parent_of
+  dst_id: nemesis
+  source_ref: Wikidata
+- src_id: nyx
+  rel: parent_of
+  dst_id: charon
+  source_ref: Wikidata
+- src_id: nyx
+  rel: parent_of
+  dst_id: hemera
+  source_ref: Wikidata
+- src_id: nyx
+  rel: parent_of
+  dst_id: eris
+  source_ref: Wikidata
+- src_id: nyx
+  rel: parent_of
+  dst_id: hypnos
+  source_ref: Wikidata
+- src_id: nyx
+  rel: parent_of
+  dst_id: thanatos
+  source_ref: Wikidata
+- src_id: nyx
+  rel: parent_of
+  dst_id: aether
+  source_ref: Wikidata
+- src_id: nyx
+  rel: parent_of
+  dst_id: erinyes
+  source_ref: Wikidata
+- src_id: nyx
+  rel: parent_of
+  dst_id: moirai
+  source_ref: Wikidata
+- src_id: erebus
+  rel: spouse_of
+  dst_id: nyx
+  source_ref: Wikidata
+- src_id: erebus
+  rel: parent_of
+  dst_id: nemesis
+  source_ref: Wikidata
+- src_id: erebus
+  rel: parent_of
+  dst_id: charon
+  source_ref: Wikidata
+- src_id: erebus
+  rel: parent_of
+  dst_id: hemera
+  source_ref: Wikidata
+- src_id: erebus
+  rel: parent_of
+  dst_id: eris
+  source_ref: Wikidata
+- src_id: erebus
+  rel: parent_of
+  dst_id: hypnos
+  source_ref: Wikidata
+- src_id: erebus
+  rel: parent_of
+  dst_id: thanatos
+  source_ref: Wikidata
+- src_id: erebus
+  rel: parent_of
+  dst_id: aether
+  source_ref: Wikidata
+- src_id: aether
+  rel: parent_of
+  dst_id: dione
+  source_ref: Wikidata
+- src_id: aether
+  rel: spouse_of
+  dst_id: hemera
+  source_ref: Wikidata
+- src_id: pontus
+  rel: parent_of
+  dst_id: nereus
+  source_ref: Wikidata
+- src_id: cronus
+  rel: parent_of
+  dst_id: zeus
+  source_ref: Wikidata
+- src_id: cronus
+  rel: parent_of
+  dst_id: hestia
+  source_ref: Wikidata
+- src_id: cronus
+  rel: parent_of
+  dst_id: hades
+  source_ref: Wikidata
+- src_id: cronus
+  rel: parent_of
+  dst_id: poseidon
+  source_ref: Wikidata
+- src_id: cronus
+  rel: parent_of
+  dst_id: demeter
+  source_ref: Wikidata
+- src_id: cronus
+  rel: parent_of
+  dst_id: hera
+  source_ref: Wikidata
+- src_id: cronus
+  rel: parent_of
+  dst_id: chiron
+  source_ref: Wikidata
+- src_id: cronus
+  rel: parent_of
+  dst_id: erinyes
+  source_ref: Wikidata
+- src_id: cronus
+  rel: parent_of
+  dst_id: moirai
+  source_ref: Wikidata
+- src_id: cronus
+  rel: parent_of
+  dst_id: crius
+  source_ref: Wikidata
+- src_id: cronus
+  rel: spouse_of
+  dst_id: rhea
+  source_ref: Wikidata
+- src_id: rhea
+  rel: parent_of
+  dst_id: zeus
+  source_ref: Wikidata
+- src_id: rhea
+  rel: parent_of
+  dst_id: hera
+  source_ref: Wikidata
+- src_id: rhea
+  rel: parent_of
+  dst_id: demeter
+  source_ref: Wikidata
+- src_id: rhea
+  rel: parent_of
+  dst_id: poseidon
+  source_ref: Wikidata
+- src_id: rhea
+  rel: parent_of
+  dst_id: hades
+  source_ref: Wikidata
+- src_id: rhea
+  rel: parent_of
+  dst_id: hestia
+  source_ref: Wikidata
+- src_id: oceanus
+  rel: parent_of
+  dst_id: nemesis
+  source_ref: Wikidata
+- src_id: oceanus
+  rel: parent_of
+  dst_id: calypso
+  source_ref: Wikidata
+- src_id: oceanus
+  rel: parent_of
+  dst_id: amphitrite
+  source_ref: Wikidata
+- src_id: oceanus
+  rel: parent_of
+  dst_id: metis
+  source_ref: Wikidata
+- src_id: oceanus
+  rel: parent_of
+  dst_id: styx
+  source_ref: Wikidata
+- src_id: oceanus
+  rel: parent_of
+  dst_id: dione
+  source_ref: Wikidata
+- src_id: oceanus
+  rel: spouse_of
+  dst_id: tethys
+  source_ref: Wikidata
+- src_id: tethys
+  rel: parent_of
+  dst_id: amphitrite
+  source_ref: Wikidata
+- src_id: tethys
+  rel: parent_of
+  dst_id: nemesis
+  source_ref: Wikidata
+- src_id: tethys
+  rel: parent_of
+  dst_id: metis
+  source_ref: Wikidata
+- src_id: tethys
+  rel: parent_of
+  dst_id: calypso
+  source_ref: Wikidata
+- src_id: tethys
+  rel: parent_of
+  dst_id: styx
+  source_ref: Wikidata
+- src_id: tethys
+  rel: parent_of
+  dst_id: nereus
+  source_ref: Wikidata
+- src_id: tethys
+  rel: parent_of
+  dst_id: dione
+  source_ref: Wikidata
+- src_id: hyperion
+  rel: parent_of
+  dst_id: helios
+  source_ref: Wikidata
+- src_id: hyperion
+  rel: parent_of
+  dst_id: eos
+  source_ref: Wikidata
+- src_id: hyperion
+  rel: parent_of
+  dst_id: selene
+  source_ref: Wikidata
+- src_id: hyperion
+  rel: spouse_of
+  dst_id: theia
+  source_ref: Wikidata
+- src_id: theia
+  rel: parent_of
+  dst_id: helios
+  source_ref: Wikidata
+- src_id: theia
+  rel: parent_of
+  dst_id: eos
+  source_ref: Wikidata
+- src_id: theia
+  rel: parent_of
+  dst_id: selene
+  source_ref: Wikidata
+- src_id: coeus
+  rel: parent_of
+  dst_id: leto
+  source_ref: Wikidata
+- src_id: coeus
+  rel: spouse_of
+  dst_id: phoebe
+  source_ref: Wikidata
+- src_id: phoebe
+  rel: parent_of
+  dst_id: leto
+  source_ref: Wikidata
+- src_id: iapetus
+  rel: parent_of
+  dst_id: atlas
+  source_ref: Wikidata
+- src_id: iapetus
+  rel: parent_of
+  dst_id: epimetheus
+  source_ref: Wikidata
+- src_id: iapetus
+  rel: parent_of
+  dst_id: prometheus
+  source_ref: Wikidata
+- src_id: themis
+  rel: parent_of
+  dst_id: epimetheus
+  source_ref: Wikidata
+- src_id: themis
+  rel: parent_of
+  dst_id: prometheus
+  source_ref: Wikidata
+- src_id: themis
+  rel: spouse_of
+  dst_id: zeus
+  source_ref: Wikidata
+- src_id: zeus
+  rel: parent_of
+  dst_id: mnemosyne
+  source_ref: Wikidata
+- src_id: prometheus
+  rel: parent_of
+  dst_id: deucalion
+  source_ref: Wikidata
+- src_id: epimetheus
+  rel: parent_of
+  dst_id: pyrrha
+  source_ref: Wikidata
+- src_id: epimetheus
+  rel: spouse_of
+  dst_id: pandora
+  source_ref: Wikidata
+- src_id: atlas
+  rel: parent_of
+  dst_id: maia
+  source_ref: Wikidata
+- src_id: atlas
+  rel: parent_of
+  dst_id: calypso
+  source_ref: Wikidata
+- src_id: leto
+  rel: parent_of
+  dst_id: apollo
+  source_ref: Wikidata
+- src_id: leto
+  rel: parent_of
+  dst_id: artemis
+  source_ref: Wikidata
+- src_id: metis
+  rel: parent_of
+  dst_id: athena
+  source_ref: Wikidata
+- src_id: metis
+  rel: spouse_of
+  dst_id: zeus
+  source_ref: Wikidata
+- src_id: zeus
+  rel: parent_of
+  dst_id: ares
+  source_ref: Wikidata
+- src_id: zeus
+  rel: parent_of
+  dst_id: aphrodite
+  source_ref: Wikidata
+- src_id: zeus
+  rel: parent_of
+  dst_id: apollo
+  source_ref: Wikidata
+- src_id: zeus
+  rel: parent_of
+  dst_id: hephaestus
+  source_ref: Wikidata
+- src_id: zeus
+  rel: parent_of
+  dst_id: artemis
+  source_ref: Wikidata
+- src_id: zeus
+  rel: parent_of
+  dst_id: hermes
+  source_ref: Wikidata
+- src_id: zeus
+  rel: parent_of
+  dst_id: persephone
+  source_ref: Wikidata
+- src_id: zeus
+  rel: parent_of
+  dst_id: dionysus
+  source_ref: Wikidata
+- src_id: zeus
+  rel: parent_of
+  dst_id: helen
+  source_ref: Wikidata
+- src_id: zeus
+  rel: parent_of
+  dst_id: minos
+  source_ref: Wikidata
+- src_id: zeus
+  rel: parent_of
+  dst_id: eileithyia
+  source_ref: Wikidata
+- src_id: zeus
+  rel: parent_of
+  dst_id: hebe
+  source_ref: Wikidata
+- src_id: zeus
+  rel: parent_of
+  dst_id: heracles
+  source_ref: Wikidata
+- src_id: zeus
+  rel: parent_of
+  dst_id: perseus
+  source_ref: Wikidata
+- src_id: zeus
+  rel: parent_of
+  dst_id: tantalus
+  source_ref: Wikidata
+- src_id: zeus
+  rel: parent_of
+  dst_id: pirithous
+  source_ref: Wikidata
+- src_id: zeus
+  rel: parent_of
+  dst_id: harmonia
+  source_ref: Wikidata
+- src_id: zeus
+  rel: parent_of
+  dst_id: hecate
+  source_ref: Wikidata
+- src_id: zeus
+  rel: parent_of
+  dst_id: pan
+  source_ref: Wikidata
+- src_id: zeus
+  rel: parent_of
+  dst_id: eris
+  source_ref: Wikidata
+- src_id: zeus
+  rel: parent_of
+  dst_id: dioscuri
+  source_ref: Wikidata
+- src_id: zeus
+  rel: parent_of
+  dst_id: athena
+  source_ref: Wikidata
+- src_id: hera
+  rel: spouse_of
+  dst_id: zeus
+  source_ref: Wikidata
+- src_id: hera
+  rel: parent_of
+  dst_id: ares
+  source_ref: Wikidata
+- src_id: hera
+  rel: parent_of
+  dst_id: eileithyia
+  source_ref: Wikidata
+- src_id: hera
+  rel: parent_of
+  dst_id: hebe
+  source_ref: Wikidata
+- src_id: hera
+  rel: parent_of
+  dst_id: hephaestus
+  source_ref: Wikidata
+- src_id: hera
+  rel: parent_of
+  dst_id: eris
+  source_ref: Wikidata
+- src_id: hera
+  rel: parent_of
+  dst_id: hecate
+  source_ref: Wikidata
+- src_id: poseidon
+  rel: parent_of
+  dst_id: polyphemus
+  source_ref: Wikidata
+- src_id: poseidon
+  rel: parent_of
+  dst_id: triton
+  source_ref: Wikidata
+- src_id: poseidon
+  rel: parent_of
+  dst_id: pelias
+  source_ref: Wikidata
+- src_id: poseidon
+  rel: parent_of
+  dst_id: theseus
+  source_ref: Wikidata
+- src_id: poseidon
+  rel: parent_of
+  dst_id: bellerophon
+  source_ref: Wikidata
+- src_id: poseidon
+  rel: parent_of
+  dst_id: charybdis
+  source_ref: Wikidata
+- src_id: poseidon
+  rel: parent_of
+  dst_id: chrysaor
+  source_ref: Wikidata
+- src_id: poseidon
+  rel: parent_of
+  dst_id: pegasus
+  source_ref: Wikidata
+- src_id: amphitrite
+  rel: spouse_of
+  dst_id: poseidon
+  source_ref: Wikidata
+- src_id: demeter
+  rel: parent_of
+  dst_id: persephone
+  source_ref: Wikidata
+- src_id: demeter
+  rel: parent_of
+  dst_id: hecate
+  source_ref: Wikidata
+- src_id: hades
+  rel: spouse_of
+  dst_id: persephone
+  source_ref: Wikidata
+- src_id: apollo
+  rel: parent_of
+  dst_id: asclepius
+  source_ref: Wikidata
+- src_id: apollo
+  rel: parent_of
+  dst_id: orpheus
+  source_ref: Wikidata
+- src_id: ares
+  rel: parent_of
+  dst_id: deimos
+  source_ref: Wikidata
+- src_id: ares
+  rel: parent_of
+  dst_id: phobos
+  source_ref: Wikidata
+- src_id: ares
+  rel: parent_of
+  dst_id: harmonia
+  source_ref: Wikidata
+- src_id: ares
+  rel: parent_of
+  dst_id: hippolyta
+  source_ref: Wikidata
+- src_id: ares
+  rel: parent_of
+  dst_id: meleager
+  source_ref: Wikidata
+- src_id: aphrodite
+  rel: spouse_of
+  dst_id: ares
+  source_ref: Wikidata
+- src_id: dione
+  rel: parent_of
+  dst_id: aphrodite
+  source_ref: Wikidata
+- src_id: aphrodite
+  rel: parent_of
+  dst_id: deimos
+  source_ref: Wikidata
+- src_id: aphrodite
+  rel: parent_of
+  dst_id: phobos
+  source_ref: Wikidata
+- src_id: aphrodite
+  rel: parent_of
+  dst_id: harmonia
+  source_ref: Wikidata
+- src_id: aphrodite
+  rel: parent_of
+  dst_id: aeneas
+  source_ref: Wikidata
+- src_id: aphrodite
+  rel: spouse_of
+  dst_id: hephaestus
+  source_ref: Wikidata
+- src_id: maia
+  rel: parent_of
+  dst_id: hermes
+  source_ref: Wikidata
+- src_id: hermes
+  rel: parent_of
+  dst_id: pan
+  source_ref: Wikidata
+- src_id: semele
+  rel: parent_of
+  dst_id: dionysus
+  source_ref: Wikidata
+- src_id: demeter
+  rel: parent_of
+  dst_id: dionysus
+  source_ref: Wikidata
+- src_id: ariadne
+  rel: spouse_of
+  dst_id: dionysus
+  source_ref: Wikidata
+- src_id: styx
+  rel: parent_of
+  dst_id: persephone
+  source_ref: Wikidata
+- src_id: hecate
+  rel: parent_of
+  dst_id: medea
+  source_ref: Wikidata
+- src_id: hecate
+  rel: parent_of
+  dst_id: circe
+  source_ref: Wikidata
+- src_id: hecate
+  rel: parent_of
+  dst_id: scylla
+  source_ref: Wikidata
+- src_id: helios
+  rel: parent_of
+  dst_id: aeetes
+  source_ref: Wikidata
+- src_id: helios
+  rel: parent_of
+  dst_id: circe
+  source_ref: Wikidata
+- src_id: helios
+  rel: parent_of
+  dst_id: pasiphae
+  source_ref: Wikidata
+- src_id: selene
+  rel: parent_of
+  dst_id: nemean_lion
+  source_ref: Wikidata
+- src_id: selene
+  rel: parent_of
+  dst_id: narcissus
+  source_ref: Wikidata
+- src_id: styx
+  rel: parent_of
+  dst_id: nike
+  source_ref: Wikidata
+- src_id: nemesis
+  rel: parent_of
+  dst_id: helen
+  source_ref: Wikidata
+- src_id: hebe
+  rel: spouse_of
+  dst_id: heracles
+  source_ref: Wikidata
+- src_id: nereus
+  rel: parent_of
+  dst_id: amphitrite
+  source_ref: Wikidata
+- src_id: amphitrite
+  rel: parent_of
+  dst_id: triton
+  source_ref: Wikidata
+- src_id: nereus
+  rel: parent_of
+  dst_id: thetis
+  source_ref: Wikidata
+- src_id: nereus
+  rel: parent_of
+  dst_id: calypso
+  source_ref: Wikidata
+- src_id: thetis
+  rel: parent_of
+  dst_id: achilles
+  source_ref: Wikidata
+- src_id: peleus
+  rel: spouse_of
+  dst_id: thetis
+  source_ref: Wikidata
+- src_id: poseidon
+  rel: spouse_of
+  dst_id: thetis
+  source_ref: Wikidata
+- src_id: dione
+  rel: parent_of
+  dst_id: dionysus
+  source_ref: Wikidata
+- src_id: harmonia
+  rel: parent_of
+  dst_id: semele
+  source_ref: Wikidata
+- src_id: cadmus
+  rel: spouse_of
+  dst_id: harmonia
+  source_ref: Wikidata
+- src_id: aeetes
+  rel: parent_of
+  dst_id: circe
+  source_ref: Wikidata
+- src_id: circe
+  rel: spouse_of
+  dst_id: telemachus
+  source_ref: Wikidata
+- src_id: zeus
+  rel: parent_of
+  dst_id: muses
+  source_ref: Wikidata
+- src_id: mnemosyne
+  rel: parent_of
+  dst_id: muses
+  source_ref: Wikidata
+- src_id: typhon
+  rel: parent_of
+  dst_id: sphinx
+  source_ref: Wikidata
+- src_id: typhon
+  rel: parent_of
+  dst_id: orthrus
+  source_ref: Wikidata
+- src_id: typhon
+  rel: parent_of
+  dst_id: cerberus
+  source_ref: Wikidata
+- src_id: typhon
+  rel: parent_of
+  dst_id: hydra
+  source_ref: Wikidata
+- src_id: typhon
+  rel: parent_of
+  dst_id: chimera
+  source_ref: Wikidata
+- src_id: typhon
+  rel: parent_of
+  dst_id: ladon
+  source_ref: Wikidata
+- src_id: typhon
+  rel: parent_of
+  dst_id: nemean_lion
+  source_ref: Wikidata
+- src_id: typhon
+  rel: parent_of
+  dst_id: scylla
+  source_ref: Wikidata
+- src_id: echidna
+  rel: spouse_of
+  dst_id: typhon
+  source_ref: Wikidata
+- src_id: chrysaor
+  rel: parent_of
+  dst_id: echidna
+  source_ref: Wikidata
+- src_id: styx
+  rel: parent_of
+  dst_id: echidna
+  source_ref: Wikidata
+- src_id: echidna
+  rel: parent_of
+  dst_id: sphinx
+  source_ref: Wikidata
+- src_id: echidna
+  rel: parent_of
+  dst_id: nemean_lion
+  source_ref: Wikidata
+- src_id: echidna
+  rel: parent_of
+  dst_id: orthrus
+  source_ref: Wikidata
+- src_id: echidna
+  rel: parent_of
+  dst_id: cerberus
+  source_ref: Wikidata
+- src_id: echidna
+  rel: parent_of
+  dst_id: hydra
+  source_ref: Wikidata
+- src_id: echidna
+  rel: parent_of
+  dst_id: chimera
+  source_ref: Wikidata
+- src_id: echidna
+  rel: parent_of
+  dst_id: ladon
+  source_ref: Wikidata
+- src_id: echidna
+  rel: parent_of
+  dst_id: scylla
+  source_ref: Wikidata
+- src_id: orthrus
+  rel: parent_of
+  dst_id: sphinx
+  source_ref: Wikidata
+- src_id: orthrus
+  rel: parent_of
+  dst_id: nemean_lion
+  source_ref: Wikidata
+- src_id: chimera
+  rel: parent_of
+  dst_id: sphinx
+  source_ref: Wikidata
+- src_id: chimera
+  rel: parent_of
+  dst_id: nemean_lion
+  source_ref: Wikidata
+- src_id: medusa
+  rel: parent_of
+  dst_id: chrysaor
+  source_ref: Wikidata
+- src_id: medusa
+  rel: parent_of
+  dst_id: pegasus
+  source_ref: Wikidata
+- src_id: chrysaor
+  rel: parent_of
+  dst_id: geryon
+  source_ref: Wikidata
+- src_id: cretan_bull
+  rel: parent_of
+  dst_id: minotaur
+  source_ref: Wikidata
+- src_id: pasiphae
+  rel: parent_of
+  dst_id: minotaur
+  source_ref: Wikidata
+- src_id: gaia
+  rel: parent_of
+  dst_id: python
+  source_ref: Wikidata
+- src_id: gaia
+  rel: parent_of
+  dst_id: cyclopes
+  source_ref: Wikidata
+- src_id: gaia
+  rel: parent_of
+  dst_id: hecatoncheires
+  source_ref: Wikidata
+- src_id: poseidon
+  rel: parent_of
+  dst_id: scylla
+  source_ref: Wikidata
+- src_id: styx
+  rel: parent_of
+  dst_id: scylla
+  source_ref: Wikidata
+- src_id: alcmene
+  rel: parent_of
+  dst_id: heracles
+  source_ref: Wikidata
+- src_id: danae
+  rel: parent_of
+  dst_id: perseus
+  source_ref: Wikidata
+- src_id: andromeda
+  rel: spouse_of
+  dst_id: perseus
+  source_ref: Wikidata
+- src_id: aegeus
+  rel: parent_of
+  dst_id: theseus
+  source_ref: Wikidata
+- src_id: theseus
+  rel: parent_of
+  dst_id: iphigenia
+  source_ref: Wikidata
+- src_id: phaedra
+  rel: spouse_of
+  dst_id: theseus
+  source_ref: Wikidata
+- src_id: ariadne
+  rel: spouse_of
+  dst_id: theseus
+  source_ref: Wikidata
+- src_id: hippolyta
+  rel: spouse_of
+  dst_id: theseus
+  source_ref: Wikidata
+- src_id: helen
+  rel: spouse_of
+  dst_id: theseus
+  source_ref: Wikidata
+- src_id: jason
+  rel: spouse_of
+  dst_id: medea
+  source_ref: Wikidata
+- src_id: cadmus
+  rel: parent_of
+  dst_id: semele
+  source_ref: Wikidata
+- src_id: peleus
+  rel: parent_of
+  dst_id: achilles
+  source_ref: Wikidata
+- src_id: achilles
+  rel: parent_of
+  dst_id: neoptolemus
+  source_ref: Wikidata
+- src_id: achilles
+  rel: spouse_of
+  dst_id: helen
+  source_ref: Wikidata
+- src_id: laertes
+  rel: parent_of
+  dst_id: odysseus
+  source_ref: Wikidata
+- src_id: sisyphus
+  rel: parent_of
+  dst_id: odysseus
+  source_ref: Wikidata
+- src_id: anticlea
+  rel: parent_of
+  dst_id: odysseus
+  source_ref: Wikidata
+- src_id: odysseus
+  rel: parent_of
+  dst_id: telemachus
+  source_ref: Wikidata
+- src_id: odysseus
+  rel: spouse_of
+  dst_id: penelope
+  source_ref: Wikidata
+- src_id: priam
+  rel: parent_of
+  dst_id: hector
+  source_ref: Wikidata
+- src_id: hecuba
+  rel: parent_of
+  dst_id: hector
+  source_ref: Wikidata
+- src_id: andromache
+  rel: spouse_of
+  dst_id: hector
+  source_ref: Wikidata
+- src_id: atreus
+  rel: parent_of
+  dst_id: agamemnon
+  source_ref: Wikidata
+- src_id: agamemnon
+  rel: parent_of
+  dst_id: orestes
+  source_ref: Wikidata
+- src_id: agamemnon
+  rel: parent_of
+  dst_id: iphigenia
+  source_ref: Wikidata
+- src_id: agamemnon
+  rel: parent_of
+  dst_id: electra
+  source_ref: Wikidata
+- src_id: agamemnon
+  rel: spouse_of
+  dst_id: clytemnestra
+  source_ref: Wikidata
+- src_id: atreus
+  rel: parent_of
+  dst_id: menelaus
+  source_ref: Wikidata
+- src_id: helen
+  rel: spouse_of
+  dst_id: menelaus
+  source_ref: Wikidata
+- src_id: andromache
+  rel: spouse_of
+  dst_id: neoptolemus
+  source_ref: Wikidata
+- src_id: penelope
+  rel: parent_of
+  dst_id: telemachus
+  source_ref: Wikidata
+- src_id: clytemnestra
+  rel: parent_of
+  dst_id: orestes
+  source_ref: Wikidata
+- src_id: laius
+  rel: parent_of
+  dst_id: oedipus
+  source_ref: Wikidata
+- src_id: jocasta
+  rel: parent_of
+  dst_id: oedipus
+  source_ref: Wikidata
+- src_id: oedipus
+  rel: parent_of
+  dst_id: antigone
+  source_ref: Wikidata
+- src_id: jocasta
+  rel: spouse_of
+  dst_id: oedipus
+  source_ref: Wikidata
+- src_id: leda
+  rel: parent_of
+  dst_id: helen
+  source_ref: Wikidata
+- src_id: helen
+  rel: parent_of
+  dst_id: iphigenia
+  source_ref: Wikidata
+- src_id: helen
+  rel: spouse_of
+  dst_id: paris
+  source_ref: Wikidata
+- src_id: priam
+  rel: parent_of
+  dst_id: paris
+  source_ref: Wikidata
+- src_id: hecuba
+  rel: parent_of
+  dst_id: paris
+  source_ref: Wikidata
+- src_id: priam
+  rel: parent_of
+  dst_id: cassandra
+  source_ref: Wikidata
+- src_id: hecuba
+  rel: spouse_of
+  dst_id: priam
+  source_ref: Wikidata
+- src_id: hecuba
+  rel: parent_of
+  dst_id: cassandra
+  source_ref: Wikidata
+- src_id: anticlea
+  rel: spouse_of
+  dst_id: laertes
+  source_ref: Wikidata
+- src_id: tyndareus
+  rel: parent_of
+  dst_id: clytemnestra
+  source_ref: Wikidata
+- src_id: leda
+  rel: parent_of
+  dst_id: clytemnestra
+  source_ref: Wikidata
+- src_id: clytemnestra
+  rel: parent_of
+  dst_id: iphigenia
+  source_ref: Wikidata
+- src_id: clytemnestra
+  rel: parent_of
+  dst_id: electra
+  source_ref: Wikidata
+- src_id: leda
+  rel: spouse_of
+  dst_id: tyndareus
+  source_ref: Wikidata
+- src_id: leda
+  rel: parent_of
+  dst_id: dioscuri
+  source_ref: Wikidata
+- src_id: aeetes
+  rel: parent_of
+  dst_id: medea
+  source_ref: Wikidata
+- src_id: aegeus
+  rel: spouse_of
+  dst_id: medea
+  source_ref: Wikidata
+- src_id: minos
+  rel: parent_of
+  dst_id: ariadne
+  source_ref: Wikidata
+- src_id: pasiphae
+  rel: parent_of
+  dst_id: ariadne
+  source_ref: Wikidata
+- src_id: europa
+  rel: parent_of
+  dst_id: minos
+  source_ref: Wikidata
+- src_id: minos
+  rel: parent_of
+  dst_id: phaedra
+  source_ref: Wikidata
+- src_id: minos
+  rel: spouse_of
+  dst_id: pasiphae
+  source_ref: Wikidata
+- src_id: pasiphae
+  rel: parent_of
+  dst_id: phaedra
+  source_ref: Wikidata
+- src_id: daedalus
+  rel: parent_of
+  dst_id: icarus
+  source_ref: Wikidata
+- src_id: acrisius
+  rel: parent_of
+  dst_id: danae
+  source_ref: Wikidata
+- src_id: cassiopeia
+  rel: parent_of
+  dst_id: andromeda
+  source_ref: Wikidata
+- src_id: alcmene
+  rel: spouse_of
+  dst_id: amphitryon
+  source_ref: Wikidata
+- src_id: amphitryon
+  rel: parent_of
+  dst_id: heracles
+  source_ref: Wikidata
+- src_id: jocasta
+  rel: parent_of
+  dst_id: antigone
+  source_ref: Wikidata
+- src_id: jocasta
+  rel: spouse_of
+  dst_id: laius
+  source_ref: Wikidata
+- src_id: pandora
+  rel: parent_of
+  dst_id: pyrrha
+  source_ref: Wikidata
+- src_id: deucalion
+  rel: spouse_of
+  dst_id: pyrrha
+  source_ref: Wikidata
+- src_id: dione
+  rel: spouse_of
+  dst_id: tantalus
+  source_ref: Wikidata

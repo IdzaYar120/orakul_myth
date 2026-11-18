@@ -31,23 +31,24 @@
 
 ### Встановлення та запуск
 
-1. **Клонувати репозиторій та встановити залежності**:
+1. **Встановити залежності** (базові + dev-інструменти):
    ```bash
-   uv sync --all-extras
+   uv sync --extra dev
    ```
+   ML-залежності для RAG (Chroma, sentence-transformers) потрібні з етапу 3: `uv sync --extra dev --extra ml`.
 
 2. **Налаштувати оточення**:
-   Створіть `.env` на основі прикладного файлу:
    ```bash
    cp .env.example .env
    ```
+   Ключ LLM потрібен лише вкладці «Оракул»; енциклопедія і карта працюють без нього.
 
-3. **Ініціалізувати базу даних та початкові дані**:
+3. **Ініціалізувати базу даних і seed-дані** (ідемпотентно; повторний запуск оновлює змінені записи):
    ```bash
    uv run delphi seed
    ```
 
-4. **Запустити веб-інтерфейс Streamlit**:
+4. **Запустити веб-інтерфейс**:
    ```bash
    uv run streamlit run app/main.py
    ```
@@ -56,32 +57,107 @@
 
 ## 🛠️ Команди CLI (`delphi`)
 
-- `uv run delphi seed` — ініціалізувати базу даних SQLite та імпортувати початкові сіди (`entities.yaml`, `places.yaml`, `relations.yaml`, тощо).
-- `uv run delphi ask "Хто виховував Ахілла?" --style піфія` — запитати Оракула через термінал.
-- `uv run delphi eval` — запустити оцінку відповідей на golden set.
-- `uv run delphi ingest` — офлайн-інгест та індексація античних текстів (Chroma + BM25).
+- `uv run delphi seed` — синхронізувати SQLite (`delphi.db`) з `data/seed/*.yaml`, перебудувати FTS5-індекс.
+- `uv run delphi wikidata candidates|pull|draft` — імпорт сутностей з Wikidata і координат з Pleiades.
+- `uv run delphi ingest` — офлайн-інгест текстів (Chroma + BM25) — *етап 3*.
+- `uv run delphi ask "Хто виховував Ахілла?" --style піфія` — запитати Оракула з терміналу.
+- `uv run delphi eval` — оцінка на golden set (`data/eval/golden.yaml`) — *етап 4*.
+
+---
+
+## 📚 Дані енциклопедії
+
+Сід-файли `data/seed/*.yaml` — джерело правди (редагуються вручну, лежать у git):
+183 сутності (боги, титани, герої, смертні, істоти, артефакти), 88 місць, 352 зв'язки, 33 міфи.
+
+- **Wikidata** (CC0) — вибірка сутностей, українські/англійські назви, аліаси, родинні зв'язки.
+- **Pleiades** (CC BY) — координати античних місць.
+- **Вручну** — українські описи, сфери, символи, римські імена, міфи, зв'язки з місцями.
+
+Кожен зв'язок має `source_ref`: посилання на античний текст (`Hes. Theog. 453`, `Hom. Il. 5.370`,
+`Apollod. 3.13.6`) або `Wikidata` / `manual` — такі зв'язки картка позначає ⚠ як ще не звірені
+з першоджерелом. Версії міфу зберігаються окремо (батьки Афродіти за Гесіодом і за Гомером).
+Посилання записано з пам'яті; після інгесту корпусу (етап 3) їх треба звірити з текстами.
+
+Поповнення з Wikidata:
+```bash
+uv run delphi wikidata candidates          # рейтинг кандидатів (SPARQL, за кількістю статей у Вікіпедіях)
+# додати потрібні id/QID у data/wikidata/selection.yaml
+uv run delphi wikidata pull                # назви, аліаси, родини, координати -> data/wikidata/snapshot.yaml
+uv run delphi wikidata draft               # дописати в data/seed/*.yaml лише нові записи
+uv run delphi seed                         # синхронізувати SQLite з YAML (додає, оновлює, видаляє)
+```
+
+---
+
+## 🗂️ Структура
+
+```
+app/                 # Streamlit UI (без бізнес-логіки)
+  main.py            # точка входу: streamlit run app/main.py
+  views/             # вкладки: oracle.py, encyclopedia.py, map.py
+  components/        # entity_card.py, family_tree.py, citations.py
+src/delphi/          # сервіси (чистий Python, не імпортує Streamlit)
+  config.py  cli.py  db/  ingest/  rag/  encyclopedia/  eval/
+data/                # seed YAML, sources.yaml, golden set (у git)
+tests/
+```
+
+> UI-вкладки лежать в `app/views/`, а не в `app/pages/`: тека `pages/` поруч із `main.py`
+> вмикає автоматичну багатосторінкову навігацію Streamlit.
 
 ---
 
 ## 🧪 Тестування та перевірка коду
 
 ```bash
-# Запуск тестів
-uv run pytest
-
-# Лінтер і форматування
-uv run ruff check .
-uv run ruff format --check .
-
-# Перевірка типів
-uv run mypy src/
+uv run pytest                 # тести (не чіпають ваш delphi.db — використовують тимчасову БД)
+uv run ruff check .           # лінтер
+uv run ruff format --check .  # форматування
+uv run mypy src/              # типи
 ```
+
+Pre-commit (ті самі перевірки перед кожним комітом):
+```bash
+uv run pre-commit install
+```
+
+CI (GitHub Actions) запускає ruff, mypy, pytest і збирає Docker-образ.
 
 ---
 
 ## 🐳 Запуск у Docker
 
 ```bash
-docker-compose up --build
+docker compose run --rm ingest     # одноразово: seed SQLite (+ інгест текстів з етапу 3)
+docker compose up app              # http://localhost:8501
 ```
-Додаток буде доступний за адресою: `http://localhost:8501`.
+
+Повністю локальна LLM через Ollama: у `.env` задайте `LLM_PROVIDER=ollama` і `LLM_MODEL=llama3.1`, потім
+```bash
+docker compose --profile ollama up
+```
+
+SQLite зберігається в томі `delphi_storage`, індекс — у `./index`. Налаштування читаються з `.env` (у образ не потрапляє).
+
+---
+
+## 📊 Статус
+
+| Етап | Стан |
+|---|---|
+| 0. Каркас | ✅ |
+| 1. Дані і енциклопедія | ✅ |
+| 2. Карта | ⏳ |
+| 3. RAG-оракул | ⏳ |
+| 4. Якість | ⏳ |
+| 5. Зв'язки і реліз | ⏳ |
+
+---
+
+## 📜 Ліцензії даних
+
+Тексти — переклади початку XX ст. у суспільному надбанні (див. `data/sources.yaml`).
+Wikidata — CC0; координати — [Pleiades](https://pleiades.stoa.org/) (CC BY);
+підкладка карти — Esri World Light Gray / © OpenStreetMap contributors
+(CARTO Positron тепер вимагає API-ключ).

@@ -1,6 +1,7 @@
 import json
 from collections.abc import Generator
 from pathlib import Path
+from typing import Any
 
 import yaml
 from sqlmodel import Session, SQLModel, create_engine, select, text
@@ -53,194 +54,202 @@ def init_db(engine_override=None) -> None:
         conn.commit()
 
 
-def seed_database(data_dir: Path | None = None, engine_override=None) -> dict[str, int]:
-    eng = engine_override or engine
-    base_dir = data_dir or settings.data_dir
-    seed_dir = base_dir / "seed"
+SeedCounts = dict[str, int]
 
+
+def _load_seed(path: Path) -> list[dict[str, Any]]:
+    if not path.exists():
+        return []
+    with open(path, encoding="utf-8") as f:
+        return list(yaml.safe_load(f) or [])
+
+
+def seed_database(data_dir: Path | None = None, engine_override=None) -> SeedCounts:
+    """Synchronise SQLite with data/seed/*.yaml (the YAML files are the source of truth).
+
+    Idempotent: rows are inserted or updated in place, and rows that disappeared from
+    the YAML are removed. Returns counts of *new* rows per table plus ``removed``.
+    """
+    eng = engine_override or engine
+    seed_dir = (data_dir or settings.data_dir) / "seed"
     init_db(eng)
-    counts = {"entities": 0, "places": 0, "relations": 0, "myths": 0, "routes": 0, "aliases": 0}
+
+    entities_data = _load_seed(seed_dir / "entities.yaml")
+    places_data = _load_seed(seed_dir / "places.yaml")
+    relations_data = _load_seed(seed_dir / "relations.yaml")
+    myths_data = _load_seed(seed_dir / "myths.yaml")
+    routes_data = _load_seed(seed_dir / "routes.yaml")
+
+    counts: SeedCounts = {
+        "entities": 0,
+        "places": 0,
+        "relations": 0,
+        "myths": 0,
+        "routes": 0,
+        "aliases": 0,
+        "removed": 0,
+    }
 
     with Session(eng) as session:
-        # 1. Entities
-        entities_file = seed_dir / "entities.yaml"
-        if entities_file.exists():
-            with open(entities_file, encoding="utf-8") as f:
-                entities_data = yaml.safe_load(f) or []
-            for item in entities_data:
-                existing = session.get(Entity, item["id"])
-                symbols = item.get("symbols", [])
-                symbols_json = json.dumps(symbols, ensure_ascii=False)
+        # 1. Entities (places also get an entity row)
+        entity_rows: dict[str, dict[str, Any]] = {}
+        alias_rows: set[tuple[str, str, str]] = set()
+        for item in entities_data:
+            entity_rows[item["id"]] = {
+                "type": item["type"],
+                "name_uk": item["name_uk"],
+                "name_en": item["name_en"],
+                "name_lat": item.get("name_lat"),
+                "summary_uk": item.get("summary_uk"),
+                "domain": item.get("domain"),
+                "symbols_json": json.dumps(item.get("symbols", []), ensure_ascii=False),
+                "wikidata_id": item.get("wikidata_id"),
+            }
+            for a in item.get("aliases", []):
+                alias_rows.add((item["id"], a["alias"], a.get("lang", "uk")))
 
-                if not existing:
-                    entity = Entity(
-                        id=item["id"],
-                        type=item["type"],
-                        name_uk=item["name_uk"],
-                        name_en=item["name_en"],
-                        name_lat=item.get("name_lat"),
-                        summary_uk=item.get("summary_uk"),
-                        domain=item.get("domain"),
-                        symbols_json=symbols_json,
-                        wikidata_id=item.get("wikidata_id"),
-                    )
-                    session.add(entity)
-                    counts["entities"] += 1
+        place_rows: dict[str, dict[str, Any]] = {}
+        for item in places_data:
+            eid = item["entity_id"]
+            entity_rows[eid] = {
+                "type": "place",
+                "name_uk": item["name_uk"],
+                "name_en": item["name_en"],
+                "name_lat": item.get("name_lat"),
+                "summary_uk": item.get("summary_uk"),
+                "domain": None,
+                "symbols_json": "[]",
+                "wikidata_id": item.get("wikidata_id"),
+            }
+            for a in item.get("aliases", []):
+                alias_rows.add((eid, a["alias"], a.get("lang", "uk")))
+            # Mythical places (certainty: none) have no coordinates -> no map marker
+            if item.get("lat") is not None and item.get("lon") is not None:
+                place_rows[eid] = {
+                    "lat": item["lat"],
+                    "lon": item["lon"],
+                    "place_kind": item["place_kind"],
+                    "pleiades_id": item.get("pleiades_id"),
+                    "certainty": item.get("certainty", "high"),
+                }
 
-                # Aliases from entity
-                aliases = item.get("aliases", [])
-                for a in aliases:
-                    # check if alias already exists
-                    stmt = select(Alias).where(
-                        Alias.entity_id == item["id"],
-                        Alias.alias == a["alias"],
-                        Alias.lang == a.get("lang", "uk"),
-                    )
-                    if not session.exec(stmt).first():
-                        alias_obj = Alias(
-                            entity_id=item["id"],
-                            alias=a["alias"],
-                            lang=a.get("lang", "uk"),
-                        )
-                        session.add(alias_obj)
-                        counts["aliases"] += 1
+        counts["entities"] = _sync_rows(session, Entity, entity_rows, counts)
+        counts["places"] = _sync_rows(session, Place, place_rows, counts)
 
-        # 2. Places
-        places_file = seed_dir / "places.yaml"
-        if places_file.exists():
-            with open(places_file, encoding="utf-8") as f:
-                places_data = yaml.safe_load(f) or []
-            for item in places_data:
-                # also ensure entity exists for the place
-                existing_entity = session.get(Entity, item["entity_id"])
-                if not existing_entity:
-                    entity = Entity(
-                        id=item["entity_id"],
-                        type="place",
-                        name_uk=item["name_uk"],
-                        name_en=item["name_en"],
-                        name_lat=item.get("name_lat"),
-                        summary_uk=item.get("summary_uk"),
-                    )
-                    session.add(entity)
-                    counts["entities"] += 1
+        # 2. Pure link tables -> set difference
+        counts["aliases"] = _sync_links(
+            session, Alias, ("entity_id", "alias", "lang"), alias_rows, counts
+        )
+        relation_rows = {
+            (r["src_id"], r["rel"], r["dst_id"], r["source_ref"]) for r in relations_data
+        }
+        counts["relations"] = _sync_links(
+            session, Relation, ("src_id", "rel", "dst_id", "source_ref"), relation_rows, counts
+        )
 
-                existing_place = session.get(Place, item["entity_id"])
-                if not existing_place:
-                    place = Place(
-                        entity_id=item["entity_id"],
-                        lat=item["lat"],
-                        lon=item["lon"],
-                        place_kind=item["place_kind"],
-                        pleiades_id=item.get("pleiades_id"),
-                        certainty=item.get("certainty", "high"),
-                    )
-                    session.add(place)
-                    counts["places"] += 1
+        # 3. Myths and their participants
+        myth_rows = {
+            m["id"]: {
+                "title_uk": m["title_uk"],
+                "summary_uk": m["summary_uk"],
+                "cycle": m.get("cycle", "other"),
+            }
+            for m in myths_data
+        }
+        counts["myths"] = _sync_rows(session, Myth, myth_rows, counts)
+        myth_entity_rows = {
+            (m["id"], e["entity_id"], e.get("role", "participant"))
+            for m in myths_data
+            for e in m.get("entities", [])
+        }
+        _sync_links(session, MythEntity, ("myth_id", "entity_id", "role"), myth_entity_rows, counts)
 
-                aliases = item.get("aliases", [])
-                for a in aliases:
-                    stmt = select(Alias).where(
-                        Alias.entity_id == item["entity_id"],
-                        Alias.alias == a["alias"],
-                    )
-                    if not session.exec(stmt).first():
-                        session.add(
-                            Alias(
-                                entity_id=item["entity_id"],
-                                alias=a["alias"],
-                                lang=a.get("lang", "uk"),
-                            )
-                        )
-                        counts["aliases"] += 1
-
-        # 3. Relations
-        relations_file = seed_dir / "relations.yaml"
-        if relations_file.exists():
-            with open(relations_file, encoding="utf-8") as f:
-                relations_data = yaml.safe_load(f) or []
-            for item in relations_data:
-                rel_stmt = select(Relation).where(
-                    Relation.src_id == item["src_id"],
-                    Relation.rel == item["rel"],
-                    Relation.dst_id == item["dst_id"],
-                    Relation.source_ref == item["source_ref"],
-                )
-                if not session.exec(rel_stmt).first():
-                    relation = Relation(
-                        src_id=item["src_id"],
-                        rel=item["rel"],
-                        dst_id=item["dst_id"],
-                        source_ref=item["source_ref"],
-                    )
-                    session.add(relation)
-                    counts["relations"] += 1
-
-        # 4. Myths
-        myths_file = seed_dir / "myths.yaml"
-        if myths_file.exists():
-            with open(myths_file, encoding="utf-8") as f:
-                myths_data = yaml.safe_load(f) or []
-            for item in myths_data:
-                existing_myth = session.get(Myth, item["id"])
-                if not existing_myth:
-                    myth = Myth(
-                        id=item["id"],
-                        title_uk=item["title_uk"],
-                        summary_uk=item["summary_uk"],
-                        cycle=item.get("cycle", "general"),
-                    )
-                    session.add(myth)
-                    counts["myths"] += 1
-
-                for ent in item.get("entities", []):
-                    myth_stmt = select(MythEntity).where(
-                        MythEntity.myth_id == item["id"],
-                        MythEntity.entity_id == ent["entity_id"],
-                    )
-                    if not session.exec(myth_stmt).first():
-                        session.add(
-                            MythEntity(
-                                myth_id=item["id"],
-                                entity_id=ent["entity_id"],
-                                role=ent.get("role", "participant"),
-                            )
-                        )
-
-        # 5. Routes
-        routes_file = seed_dir / "routes.yaml"
-        if routes_file.exists():
-            with open(routes_file, encoding="utf-8") as f:
-                routes_data = yaml.safe_load(f) or []
-            for item in routes_data:
-                existing_route = session.get(Route, item["id"])
-                stops_json = json.dumps(item.get("stops", []), ensure_ascii=False)
-                if not existing_route:
-                    route = Route(
-                        id=item["id"],
-                        title_uk=item["title_uk"],
-                        hero_id=item.get("hero_id"),
-                        description_uk=item.get("description_uk"),
-                        stops_json=stops_json,
-                    )
-                    session.add(route)
-                    counts["routes"] += 1
+        # 4. Routes
+        route_rows = {
+            r["id"]: {
+                "title_uk": r["title_uk"],
+                "hero_id": r.get("hero_id"),
+                "description_uk": r.get("description_uk"),
+                "stops_json": json.dumps(r.get("stops", []), ensure_ascii=False),
+            }
+            for r in routes_data
+        }
+        counts["routes"] = _sync_rows(session, Route, route_rows, counts)
 
         session.commit()
-
-        # Refresh FTS5 index
         _rebuild_fts5(session)
 
     return counts
 
 
+def _sync_rows(
+    session: Session,
+    model: type[SQLModel],
+    rows: dict[str, dict[str, Any]],
+    counts: SeedCounts,
+) -> int:
+    """Upsert rows keyed by primary key and delete rows that are not in ``rows``.
+
+    Returns the number of newly created rows; deletions go to counts["removed"].
+    """
+    pk_col = next(iter(model.__table__.primary_key.columns))  # type: ignore[attr-defined]
+    pk_name = pk_col.name
+    existing = {getattr(obj, pk_name): obj for obj in session.exec(select(model)).all()}
+
+    created = 0
+    for pk, fields in rows.items():
+        obj = existing.get(pk)
+        if obj is None:
+            session.add(model(**{pk_name: pk, **fields}))
+            created += 1
+            continue
+        changed = False
+        for key, value in fields.items():
+            if getattr(obj, key) != value:
+                setattr(obj, key, value)
+                changed = True
+        if changed:
+            session.add(obj)
+
+    for pk, obj in existing.items():
+        if pk not in rows:
+            session.delete(obj)
+            counts["removed"] += 1
+    session.flush()
+    return created
+
+
+def _sync_links(
+    session: Session,
+    model: type[SQLModel],
+    fields: tuple[str, ...],
+    rows: set[tuple[Any, ...]],
+    counts: SeedCounts,
+) -> int:
+    """Make a link table contain exactly ``rows`` (tuples of ``fields`` values)."""
+    existing: set[tuple[Any, ...]] = set()
+    for obj in session.exec(select(model)).all():
+        key = tuple(getattr(obj, f) for f in fields)
+        if key in existing or key not in rows:  # duplicate or stale row
+            session.delete(obj)
+            counts["removed"] += 1
+        else:
+            existing.add(key)
+
+    missing = rows - existing
+    for key in missing:
+        session.add(model(**dict(zip(fields, key, strict=True))))
+    session.flush()
+    return len(missing)
+
+
 def _rebuild_fts5(session: Session) -> None:
     conn = session.connection()
     conn.execute(text("DELETE FROM entity_fts;"))
-    entities = session.exec(select(Entity)).all()
-    for ent in entities:
-        aliases_list = session.exec(select(Alias.alias).where(Alias.entity_id == ent.id)).all()
-        aliases_str = " ".join(aliases_list)
+    aliases_by_entity: dict[str, list[str]] = {}
+    for alias in session.exec(select(Alias)).all():
+        aliases_by_entity.setdefault(alias.entity_id, []).append(alias.alias)
+    for ent in session.exec(select(Entity)).all():
         conn.execute(
             text(
                 """
@@ -252,7 +261,7 @@ def _rebuild_fts5(session: Session) -> None:
                 "entity_id": ent.id,
                 "name_uk": ent.name_uk,
                 "name_en": ent.name_en,
-                "aliases": aliases_str,
+                "aliases": " ".join(aliases_by_entity.get(ent.id, [])),
                 "summary_uk": ent.summary_uk or "",
             },
         )

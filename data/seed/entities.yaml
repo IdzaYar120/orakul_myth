@@ -1,109 +1,2433 @@
-# Initial mythological entities for project skeleton
+# Encyclopedia entities (Stage 1).
+# Source: Wikidata selection (data/wikidata/selection.yaml, CC0) + manual curation:
+# Ukrainian names and summaries, domains, symbols and Roman names were written by hand.
+# This file is the source of truth: edit it directly, then run `delphi seed`.
+
+# --- Боги й божественні істоти
+- id: chaos
+  type: god
+  name_uk: Хаос
+  name_en: Chaos
+  name_lat: Chaos
+  summary_uk: 'Перша першосутність, що постала на початку світу; з Хаосу народилися Ереб і Нікта.'
+  domain: Первісна безодня
+  wikidata_id: Q131090
+  aliases:
+    - {alias: Хаос, lang: uk}
+    - {alias: Chaos, lang: en}
+    - {alias: Chaos, lang: la}
+- id: gaia
+  type: god
+  name_uk: Гея
+  name_en: Gaia
+  name_lat: Terra
+  summary_uk: 'Земля-праматір, що народила Урана, Понта, титанів, кіклопів і гекатонхейрів.'
+  domain: Земля
+  symbols: [земля, плоди]
+  wikidata_id: Q93172
+  aliases:
+    - {alias: Гея, lang: uk}
+    - {alias: Gaia, lang: en}
+    - {alias: Gaea, lang: en}
+    - {alias: Ge, lang: en}
+    - {alias: Terra, lang: la}
+- id: uranus
+  type: god
+  name_uk: Уран
+  name_en: Uranus
+  name_lat: Caelus
+  summary_uk: 'Небо, син і чоловік Геї; батько титанів, скинутий і оскоплений Кроносом.'
+  domain: Небо
+  wikidata_id: Q79999
+  aliases:
+    - {alias: Уран, lang: uk}
+    - {alias: Uranus, lang: en}
+    - {alias: Ouranos, lang: en}
+    - {alias: Uranos, lang: en}
+    - {alias: Caelus, lang: la}
+- id: tartarus
+  type: god
+  name_uk: Тартар
+  name_en: Tartarus
+  name_lat: Tartarus
+  summary_uk: Первісна безодня під землею і її божество; в'язниця переможених титанів.
+  domain: Безодня підземного світу
+  wikidata_id: Q101322
+  aliases:
+    - {alias: Тартар, lang: uk}
+    - {alias: Tartarus, lang: en}
+    - {alias: Tartaros, lang: en}
+    - {alias: Tartarus, lang: la}
+- id: eros
+  type: god
+  name_uk: Ерос
+  name_en: Eros
+  name_lat: Cupido
+  summary_uk: 'Сила кохання; у Гесіода — одна з першосутностей, у пізніших авторів — син Афродіти.'
+  domain: 'Кохання, потяг'
+  symbols: [лук і стріли, крила]
+  wikidata_id: Q121973
+  aliases:
+    - {alias: Ерос, lang: uk}
+    - {alias: Ерот, lang: uk}
+    - {alias: Ероти, lang: uk}
+    - {alias: Eros, lang: en}
+    - {alias: Cupid, lang: en}
+    - {alias: Cupido, lang: la}
+- id: nyx
+  type: god
+  name_uk: Нікс
+  name_en: Nyx
+  name_lat: Nox
+  summary_uk: 'Ніч, донька Хаосу; мати Сну, Смерті, Мойр, Немесіди та Ериди.'
+  domain: Ніч
+  wikidata_id: Q131203
+  aliases:
+    - {alias: Нікс, lang: uk}
+    - {alias: Нюкта, lang: uk}
+    - {alias: Nyx, lang: en}
+    - {alias: Nox, lang: la}
+- id: erebus
+  type: god
+  name_uk: Ереб
+  name_en: Erebos
+  name_lat: Erebus
+  summary_uk: 'Морок, син Хаосу; разом із Ніктою — батько Ефіру і Гемери.'
+  domain: Підземний морок
+  wikidata_id: Q131122
+  aliases:
+    - {alias: Ереб, lang: uk}
+    - {alias: Erebos, lang: en}
+    - {alias: Erebus, lang: en}
+    - {alias: Erebus, lang: la}
+- id: aether
+  type: god
+  name_uk: Ефір
+  name_en: Aether
+  name_lat: Aether
+  summary_uk: 'Ясне верхнє повітря, син Ереба і Нікти.'
+  domain: 'Верхнє небо, світло'
+  wikidata_id: Q189175
+  aliases:
+    - {alias: Ефір, lang: uk}
+    - {alias: Aether, lang: en}
+    - {alias: Aether, lang: la}
+- id: hemera
+  type: god
+  name_uk: Гемера
+  name_en: Hemera
+  name_lat: Dies
+  summary_uk: 'День, донька Ереба і Нікти, що змінює свою матір на небі.'
+  domain: День
+  wikidata_id: Q192107
+  aliases:
+    - {alias: Гемера, lang: uk}
+    - {alias: Hemera, lang: en}
+    - {alias: Dies, lang: la}
+- id: pontus
+  type: god
+  name_uk: Понт
+  name_en: Pontus
+  name_lat: Pontus
+  summary_uk: 'Море, син Геї; батько морських божеств Нерея, Тавманта, Форкія і Кето.'
+  domain: Море
+  wikidata_id: Q190563
+  aliases:
+    - {alias: Понт, lang: uk}
+    - {alias: Pontus, lang: en}
+    - {alias: Pontos, lang: en}
+    - {alias: Pontus, lang: la}
 - id: zeus
   type: god
   name_uk: Зевс
   name_en: Zeus
-  name_lat: Jupiter
-  summary_uk: Верховний бог олімпійців, володар неба, грому та блискавок.
-  domain: Небо, грім, правосуддя, гостинність
-  symbols: ["блискавка", "орел", "дуб", "скіпетр"]
+  name_lat: Iuppiter
+  summary_uk: 'Верховний бог олімпійців, син Кроноса і Реї, володар неба, грому та блискавок.'
+  domain: 'Небо, грім, правосуддя, гостинність'
+  symbols: [блискавка, орел, дуб, скіпетр]
   wikidata_id: Q34201
   aliases:
-    - alias: Зевс
-      lang: uk
-    - alias: Zeus
-      lang: en
-    - alias: Юпітер
-      lang: uk
-    - alias: Jupiter
-      lang: la
-    - alias: Кронід
-      lang: uk
-    - alias: Cronides
-      lang: en
-
-- id: apollo
+    - {alias: Зевс, lang: uk}
+    - {alias: Юпітер, lang: uk}
+    - {alias: Zeus, lang: en}
+    - {alias: Jupiter, lang: en}
+    - {alias: Dias, lang: en}
+    - {alias: Jove, lang: en}
+    - {alias: Iuppiter, lang: la}
+    - {alias: Кронід, lang: uk}
+    - {alias: Cronides, lang: en}
+    - {alias: Cronion, lang: en}
+- id: hera
   type: god
-  name_uk: Аполлон
-  name_en: Apollo
-  name_lat: Apollo
-  summary_uk: Бог світла, пророцтва, музики, поезії, зцілення та лучництва. Покровитель Дельфійського оракула.
-  domain: Світло, пророцтво, музика, зцілення
-  symbols: ["лавровий вінок", "ліра", "лук і стріли", "триножник"]
-  wikidata_id: Q37340
+  name_uk: Гера
+  name_en: Hera
+  name_lat: Iuno
+  summary_uk: 'Цариця богів, сестра і дружина Зевса, покровителька шлюбу.'
+  domain: 'Шлюб, родина, жінки'
+  symbols: [павич, діадема, гранат]
+  wikidata_id: Q38012
   aliases:
-    - alias: Аполлон
-      lang: uk
-    - alias: Apollo
-      lang: en
-    - alias: Феб
-      lang: uk
-    - alias: Phoebus
-      lang: en
-    - alias: Піфій
-      lang: uk
-    - alias: Pythian
-      lang: en
-
+    - {alias: Гера, lang: uk}
+    - {alias: Hera, lang: en}
+    - {alias: Iuno, lang: la}
+    - {alias: Юнона, lang: uk}
+- id: poseidon
+  type: god
+  name_uk: Посейдон
+  name_en: Poseidon
+  name_lat: Neptunus
+  summary_uk: 'Брат Зевса, володар моря, землетрусів і коней.'
+  domain: 'Море, землетруси, коні'
+  symbols: [тризуб, кінь, дельфін]
+  wikidata_id: Q41127
+  aliases:
+    - {alias: Посейдон, lang: uk}
+    - {alias: Poseidon, lang: en}
+    - {alias: Posidon, lang: en}
+    - {alias: Poseidōn, lang: en}
+    - {alias: Neptunus, lang: la}
+    - {alias: Нептун, lang: uk}
+- id: demeter
+  type: god
+  name_uk: Деметра
+  name_en: Demeter
+  name_lat: Ceres
+  summary_uk: 'Богиня хліборобства, мати Персефони; її горе за викраденою донькою пояснює зміну пір року.'
+  domain: 'Хліборобство, родючість'
+  symbols: [колосся, смолоскип, серп]
+  wikidata_id: Q40730
+  aliases:
+    - {alias: Деметра, lang: uk}
+    - {alias: Матір Део, lang: uk}
+    - {alias: Demeter, lang: en}
+    - {alias: Dêmêtêr, lang: en}
+    - {alias: Deo, lang: en}
+    - {alias: Ceres, lang: la}
+    - {alias: Церера, lang: uk}
+- id: hestia
+  type: god
+  name_uk: Гестія
+  name_en: Hestia
+  name_lat: Vesta
+  summary_uk: 'Старша донька Кроноса і Реї, діва-богиня домашнього вогнища.'
+  domain: 'Вогнище, дім'
+  symbols: [вогнище]
+  wikidata_id: Q41419
+  aliases:
+    - {alias: Гестія, lang: uk}
+    - {alias: Hestia, lang: en}
+    - {alias: ΕΣΤΙΑ, lang: en}
+    - {alias: Εστία, lang: en}
+    - {alias: 'Histia, Vesta', lang: en}
+    - {alias: Vesta, lang: la}
+- id: hades
+  type: god
+  name_uk: Аїд
+  name_en: Hades
+  name_lat: Pluto
+  summary_uk: 'Брат Зевса, володар підземного царства мертвих і чоловік Персефони.'
+  domain: 'Підземне царство, багатство землі'
+  symbols: [шолом-невидимка, двозуб, Цербер]
+  wikidata_id: Q41410
+  aliases:
+    - {alias: Аїд, lang: uk}
+    - {alias: Гадес, lang: uk}
+    - {alias: Аїдоней, lang: uk}
+    - {alias: Hades, lang: en}
+    - {alias: Pluton, lang: en}
+    - {alias: Plouton, lang: en}
+    - {alias: Pluto, lang: la}
+    - {alias: Плутон, lang: uk}
+    - {alias: Pluto, lang: en}
 - id: athena
   type: god
   name_uk: Афіна
   name_en: Athena
   name_lat: Minerva
-  summary_uk: Богиня мудрості, військової стратегії, ремесел та покровителька Афін.
-  domain: Мудрість, справедлива війна, ремесла
-  symbols: ["сова", "оливкова гілка", "егіда", "шолом"]
+  summary_uk: 'Богиня мудрості, справедливої війни та ремесел, що народилася з голови Зевса; покровителька Афін.'
+  domain: 'Мудрість, справедлива війна, ремесла'
+  symbols: [сова, оливкова гілка, егіда, шолом]
   wikidata_id: Q37122
   aliases:
-    - alias: Афіна
-      lang: uk
-    - alias: Athena
-      lang: en
-    - alias: Мінерва
-      lang: uk
-    - alias: Minerva
-      lang: la
-    - alias: Паллада
-      lang: uk
-    - alias: Pallas
-      lang: en
-
-- id: odysseus
-  type: hero
-  name_uk: Одіссей
-  name_en: Odysseus
-  name_lat: Ulysses
-  summary_uk: Цар Ітаки, хитромудрий герой Троянської війни, головний персонаж «Одіссеї».
-  domain: Військова хитрість, мандри
-  symbols: ["лук Одіссея", "вітрильник"]
-  wikidata_id: Q131089
+    - {alias: Афіна, lang: uk}
+    - {alias: Атена, lang: uk}
+    - {alias: Athena, lang: en}
+    - {alias: Athina, lang: en}
+    - {alias: Minerva, lang: la}
+    - {alias: Мінерва, lang: uk}
+    - {alias: Паллада, lang: uk}
+    - {alias: Pallas, lang: en}
+    - {alias: Athene, lang: en}
+- id: apollo
+  type: god
+  name_uk: Аполлон
+  name_en: Apollo
+  name_lat: Apollo
+  summary_uk: 'Бог світла, пророцтва, музики та зцілення, син Зевса і Лето; володар Дельфійського оракула.'
+  domain: 'Світло, пророцтво, музика, зцілення'
+  symbols: [лавровий вінок, ліра, лук і стріли, триножник]
+  wikidata_id: Q37340
   aliases:
-    - alias: Одіссей
-      lang: uk
-    - alias: Odysseus
-      lang: en
-    - alias: Улісс
-      lang: uk
-    - alias: Ulysses
-      lang: la
+    - {alias: Аполлон, lang: uk}
+    - {alias: Аполон, lang: uk}
+    - {alias: Аполлон Дельфійський, lang: uk}
+    - {alias: Apollo, lang: en}
+    - {alias: Phoebus, lang: en}
+    - {alias: Apollōn, lang: en}
+    - {alias: Apellōn, lang: en}
+    - {alias: Apeilōn, lang: en}
+    - {alias: Aploun, lang: en}
+    - {alias: Apollon, lang: en}
+    - {alias: Apollo, lang: la}
+    - {alias: Феб, lang: uk}
+    - {alias: Піфій, lang: uk}
+    - {alias: Pythian, lang: en}
+- id: artemis
+  type: god
+  name_uk: Артеміда
+  name_en: Artemis
+  name_lat: Diana
+  summary_uk: 'Діва-мисливиця, сестра-близнючка Аполлона, покровителька диких звірів і породіль.'
+  domain: 'Полювання, дика природа, пологи'
+  symbols: [лук і стріли, лань, місяць]
+  wikidata_id: Q39503
+  aliases:
+    - {alias: Артеміда, lang: uk}
+    - {alias: Artemis, lang: en}
+    - {alias: Diana, lang: la}
+    - {alias: Діана, lang: uk}
+- id: ares
+  type: god
+  name_uk: Арес
+  name_en: Ares
+  name_lat: Mars
+  summary_uk: 'Бог війни і бойової люті, син Зевса і Гери.'
+  domain: 'Війна, лють бою'
+  symbols: [спис, шолом, собака, шуліка]
+  wikidata_id: Q40901
+  aliases:
+    - {alias: Арес, lang: uk}
+    - {alias: Арей, lang: uk}
+    - {alias: Еніалій, lang: uk}
+    - {alias: Ares, lang: uk}
+    - {alias: Ares, lang: en}
+    - {alias: Mars, lang: la}
+    - {alias: Марс, lang: uk}
+- id: aphrodite
+  type: god
+  name_uk: Афродіта
+  name_en: Aphrodite
+  name_lat: Venus
+  summary_uk: 'Богиня кохання і краси; у Гесіода народилася з морської піни, у Гомера — донька Зевса і Діони.'
+  domain: 'Кохання, краса, пристрасть'
+  symbols: [голуб, троянда, мушля, мирт]
+  wikidata_id: Q35500
+  aliases:
+    - {alias: Афродіта, lang: uk}
+    - {alias: Афродита, lang: uk}
+    - {alias: Aphrodite, lang: en}
+    - {alias: Cytherea, lang: en}
+    - {alias: Erycina, lang: en}
+    - {alias: Venus, lang: la}
+    - {alias: Венера, lang: uk}
+    - {alias: Кіпріда, lang: uk}
+- id: hephaestus
+  type: god
+  name_uk: Гефест
+  name_en: Hephaestus
+  name_lat: Vulcanus
+  summary_uk: 'Кульгавий бог вогню і ковальства, майстер зброї та чудесних витворів для богів.'
+  domain: 'Вогонь, ковальство, ремесло'
+  symbols: [молот, ковадло, кліщі]
+  wikidata_id: Q44384
+  aliases:
+    - {alias: Гефест, lang: uk}
+    - {alias: Ήφαιστος, lang: uk}
+    - {alias: Hephaistos, lang: uk}
+    - {alias: Hephaestus, lang: en}
+    - {alias: Hephaestos, lang: en}
+    - {alias: Vulcanus, lang: la}
+    - {alias: Вулкан, lang: uk}
+- id: hermes
+  type: god
+  name_uk: Гермес
+  name_en: Hermes
+  name_lat: Mercurius
+  summary_uk: 'Вісник богів, син Зевса і Майї, провідник душ, покровитель мандрівників, торгівлі й злодіїв.'
+  domain: 'Вісті, дороги, торгівля, хитрість'
+  symbols: [кадуцей, крилаті сандалі, петас]
+  wikidata_id: Q41484
+  aliases:
+    - {alias: Гермес, lang: uk}
+    - {alias: Hermes, lang: en}
+    - {alias: Mercurius, lang: la}
+    - {alias: Меркурій, lang: uk}
+- id: dionysus
+  type: god
+  name_uk: Діоніс
+  name_en: Dionysus
+  name_lat: Bacchus
+  summary_uk: 'Бог вина, екстазу і театру, син Зевса і смертної Семели.'
+  domain: 'Вино, екстаз, театр'
+  symbols: [тирс, виноград, пантера, плющ]
+  wikidata_id: Q41680
+  aliases:
+    - {alias: Діоніс, lang: uk}
+    - {alias: Вакх, lang: uk}
+    - {alias: Діонис, lang: uk}
+    - {alias: Бахус, lang: uk}
+    - {alias: Dionysus, lang: en}
+    - {alias: Bacchus, lang: la}
+    - {alias: Bacchus, lang: en}
+- id: persephone
+  type: god
+  name_uk: Персефона
+  name_en: Persephone
+  name_lat: Proserpina
+  summary_uk: 'Донька Деметри і Зевса, викрадена Аїдом; частину року цариця підземного світу.'
+  domain: 'Весна, підземне царство'
+  symbols: [гранат, смолоскип]
+  wikidata_id: Q45967
+  aliases:
+    - {alias: Персефона, lang: uk}
+    - {alias: Кора, lang: uk}
+    - {alias: Persephone, lang: en}
+    - {alias: Kore, lang: en}
+    - {alias: Proserpina, lang: la}
+- id: hecate
+  type: god
+  name_uk: Геката
+  name_en: Hecate
+  name_lat: Trivia
+  summary_uk: 'Богиня перехресть, чаклунства і нічних привидів, яку особливо шанує Гесіод.'
+  domain: 'Чари, перехрестя, ніч'
+  symbols: [смолоскипи, собаки]
+  wikidata_id: Q131575
+  aliases:
+    - {alias: Геката, lang: uk}
+    - {alias: Hecate, lang: en}
+    - {alias: Hecat, lang: en}
+    - {alias: Hekate, lang: en}
+    - {alias: Trivia, lang: la}
+- id: helios
+  type: god
+  name_uk: Геліос
+  name_en: Helios
+  name_lat: Sol
+  summary_uk: 'Сонце, син Гіперіона і Теї, що щодня проїжджає небом на колісниці.'
+  domain: Сонце
+  symbols: [колісниця, променистий вінець]
+  wikidata_id: Q134270
+  aliases:
+    - {alias: Геліос, lang: uk}
+    - {alias: Титан, lang: uk}
+    - {alias: Helios, lang: en}
+    - {alias: Helius, lang: en}
+    - {alias: Sol, lang: la}
+- id: selene
+  type: god
+  name_uk: Селена
+  name_en: Selene
+  name_lat: Luna
+  summary_uk: 'Місяць, сестра Геліоса, кохана Ендиміона.'
+  domain: Місяць
+  symbols: [півмісяць, колісниця]
+  wikidata_id: Q131585
+  aliases:
+    - {alias: Селена, lang: uk}
+    - {alias: Selene, lang: en}
+    - {alias: Luna, lang: la}
+- id: eos
+  type: god
+  name_uk: Еос
+  name_en: Eos
+  name_lat: Aurora
+  summary_uk: 'Рожевоперста Зоря, сестра Геліоса і Селени.'
+  domain: Світанок
+  wikidata_id: Q178417
+  aliases:
+    - {alias: Еос, lang: uk}
+    - {alias: Eos, lang: en}
+    - {alias: Rhododactylos, lang: en}
+    - {alias: Erigeneia, lang: en}
+    - {alias: Aurora, lang: la}
+- id: nike
+  type: god
+  name_uk: Ніке
+  name_en: Nike
+  name_lat: Victoria
+  summary_uk: 'Крилата богиня перемоги, донька Стікс і Палланта.'
+  domain: Перемога
+  symbols: [крила, вінок, пальмова гілка]
+  wikidata_id: Q165023
+  aliases:
+    - {alias: Ніке, lang: uk}
+    - {alias: Ніка, lang: uk}
+    - {alias: Nike, lang: en}
+    - {alias: Victoria, lang: la}
+- id: eris
+  type: god
+  name_uk: Ерида
+  name_en: Eris
+  name_lat: Discordia
+  summary_uk: 'Богиня розбрату, що кинула на весіллі Пелея і Фетіди яблуко «найвродливішій».'
+  domain: 'Розбрат, суперництво'
+  symbols: [яблуко розбрату]
+  wikidata_id: Q140001
+  aliases:
+    - {alias: Ерида, lang: uk}
+    - {alias: Еріда, lang: uk}
+    - {alias: Eris, lang: en}
+    - {alias: Strife, lang: en}
+    - {alias: Goddess of Discord, lang: en}
+    - {alias: Discordia, lang: la}
+- id: nemesis
+  type: god
+  name_uk: Немесіда
+  name_en: Nemesis
+  name_lat: Nemesis
+  summary_uk: 'Богиня відплати за гординю й незаслужене щастя, донька Нікти.'
+  domain: 'Відплата, справедливий гнів'
+  wikidata_id: Q185747
+  aliases:
+    - {alias: Немесіда, lang: uk}
+    - {alias: Немезида, lang: uk}
+    - {alias: Немезіда, lang: uk}
+    - {alias: Nemesis, lang: en}
+    - {alias: Rhamnousia, lang: en}
+    - {alias: Rhamnusia, lang: en}
+    - {alias: Nemesis, lang: la}
+- id: thanatos
+  type: god
+  name_uk: Танатос
+  name_en: Thanatos
+  name_lat: Mors
+  summary_uk: 'Смерть, син Нікти і брат-близнюк Гіпноса.'
+  domain: Смерть
+  wikidata_id: Q199647
+  aliases:
+    - {alias: Танатос, lang: uk}
+    - {alias: Танат, lang: uk}
+    - {alias: Thanatos, lang: en}
+    - {alias: Mors, lang: la}
+- id: hypnos
+  type: god
+  name_uk: Гіпнос
+  name_en: Hypnos
+  name_lat: Somnus
+  summary_uk: 'Сон, син Нікти, брат Танатоса.'
+  domain: Сон
+  symbols: [мак]
+  wikidata_id: Q189347
+  aliases:
+    - {alias: Гіпнос, lang: uk}
+    - {alias: Гіпн, lang: uk}
+    - {alias: Hypnos, lang: en}
+    - {alias: Somnus, lang: la}
+- id: iris
+  type: god
+  name_uk: Ірида
+  name_en: Iris
+  name_lat: Iris
+  summary_uk: 'Веселка, вісниця богів, особливо Гери.'
+  domain: 'Веселка, вісті'
+  wikidata_id: Q184570
+  aliases:
+    - {alias: Ірида, lang: uk}
+    - {alias: Іріда, lang: uk}
+    - {alias: Iris, lang: en}
+    - {alias: Iris, lang: la}
+- id: hebe
+  type: god
+  name_uk: Геба
+  name_en: Hebe
+  name_lat: Iuventas
+  summary_uk: 'Донька Зевса і Гери, богиня юності, що наливала богам нектар; дружина обожненого Геракла.'
+  domain: Юність
+  wikidata_id: Q131125
+  aliases:
+    - {alias: Геба, lang: uk}
+    - {alias: Hebe, lang: en}
+    - {alias: Iuventas, lang: la}
+- id: eileithyia
+  type: god
+  name_uk: Ілітія
+  name_en: Eileithyia
+  name_lat: Lucina
+  summary_uk: 'Донька Зевса і Гери, богиня пологів.'
+  domain: Пологи
+  wikidata_id: Q94066
+  aliases:
+    - {alias: Ілітія, lang: uk}
+    - {alias: Ейлейфія, lang: uk}
+    - {alias: Іліфія, lang: uk}
+    - {alias: Ейлейтія, lang: uk}
+    - {alias: Eileithyia, lang: en}
+    - {alias: Ilithyia, lang: en}
+    - {alias: Eilithyia, lang: en}
+    - {alias: Ilithia, lang: en}
+    - {alias: Lucina, lang: la}
+- id: asclepius
+  type: god
+  name_uk: Асклепій
+  name_en: Asclepius
+  name_lat: Aesculapius
+  summary_uk: 'Син Аполлона, божественний лікар, вихований кентавром Хіроном.'
+  domain: 'Медицина, зцілення'
+  symbols: [жезл зі змією]
+  wikidata_id: Q83223
+  aliases:
+    - {alias: Асклепій, lang: uk}
+    - {alias: Asclepius, lang: en}
+    - {alias: Aesculapius, lang: en}
+    - {alias: Asklēpiós, lang: en}
+    - {alias: Ἀσκληπιός, lang: en}
+    - {alias: Æsculapius, lang: en}
+    - {alias: Aesculapius, lang: la}
+- id: pan
+  type: god
+  name_uk: Пан
+  name_en: Pan
+  name_lat: Faunus
+  summary_uk: 'Козлоногий бог пастухів і диких місць Аркадії, син Гермеса.'
+  domain: 'Пастухи, ліси, паніка'
+  symbols: [сиринга, козячі ріжки]
+  wikidata_id: Q132582
+  aliases:
+    - {alias: Пан, lang: uk}
+    - {alias: Pan, lang: en}
+    - {alias: Faunus, lang: la}
+- id: amphitrite
+  type: god
+  name_uk: Амфітріта
+  name_en: Amphitrite
+  name_lat: Salacia
+  summary_uk: 'Морська богиня, дружина Посейдона і мати Тритона.'
+  domain: Море
+  wikidata_id: Q180222
+  aliases:
+    - {alias: Амфітріта, lang: uk}
+    - {alias: Amphitrite, lang: en}
+    - {alias: Salacia, lang: la}
+- id: triton
+  type: god
+  name_uk: Тритон
+  name_en: Triton
+  name_lat: Triton
+  summary_uk: 'Син Посейдона і Амфітріти, морський бог-вісник із риб''ячим хвостом.'
+  domain: Море
+  symbols: [мушля-сурма]
+  wikidata_id: Q148030
+  aliases:
+    - {alias: Тритон, lang: uk}
+    - {alias: Triton, lang: en}
+    - {alias: Triton, lang: la}
+- id: nereus
+  type: god
+  name_uk: Нерей
+  name_en: Nereus
+  name_lat: Nereus
+  summary_uk: '«Морський старець», син Понта і Геї, батько п''ятдесяти нереїд; віщий і правдивий.'
+  domain: 'Море, пророцтво'
+  wikidata_id: Q189527
+  aliases:
+    - {alias: Нерей, lang: uk}
+    - {alias: Nereus, lang: en}
+    - {alias: Nereus, lang: la}
+- id: thetis
+  type: god
+  name_uk: Фетіда
+  name_en: Thetis
+  name_lat: Thetis
+  summary_uk: 'Нереїда, дружина смертного Пелея і мати Ахілла.'
+  domain: Море
+  wikidata_id: Q184437
+  aliases:
+    - {alias: Фетіда, lang: uk}
+    - {alias: Тетіда, lang: uk}
+    - {alias: Thetis, lang: en}
+    - {alias: Thetis, lang: la}
+- id: dione
+  type: god
+  name_uk: Діона
+  name_en: Dione
+  name_lat: Dione
+  summary_uk: 'Богиня, яку Гомер називає матір''ю Афродіти від Зевса.'
+  domain: Шанування в Додоні
+  wikidata_id: Q199923
+  aliases:
+    - {alias: Діона, lang: uk}
+    - {alias: Dione, lang: en}
+    - {alias: Dione, lang: la}
+- id: maia
+  type: god
+  name_uk: Майя
+  name_en: Maia
+  name_lat: Maia
+  summary_uk: 'Плеяда, донька Атланта, мати Гермеса від Зевса.'
+  domain: Німфа гори Кіллени
+  wikidata_id: Q205233
+  aliases:
+    - {alias: Майя, lang: uk}
+    - {alias: Maia, lang: en}
+    - {alias: Maia, lang: la}
+- id: harmonia
+  type: god
+  name_uk: Гармонія
+  name_en: Harmonia
+  name_lat: Concordia
+  summary_uk: 'Донька Ареса і Афродіти, дружина Кадма, засновника Фів.'
+  domain: Злагода
+  wikidata_id: Q978079
+  aliases:
+    - {alias: Гармонія, lang: uk}
+    - {alias: Harmonia, lang: en}
+    - {alias: Harmony, lang: en}
+    - {alias: Concordia, lang: la}
+- id: phobos
+  type: god
+  name_uk: Фобос
+  name_en: Phobos
+  name_lat: Timor
+  summary_uk: 'Страх, син Ареса і Афродіти, що супроводжує батька в битві.'
+  domain: Страх
+  wikidata_id: Q105019
+  aliases:
+    - {alias: Фобос, lang: uk}
+    - {alias: Фоб, lang: uk}
+    - {alias: Phobos, lang: en}
+    - {alias: Timor, lang: en}
+    - {alias: Timor, lang: la}
+- id: deimos
+  type: god
+  name_uk: Деймос
+  name_en: Deimos
+  name_lat: Formido
+  summary_uk: 'Жах, син Ареса і Афродіти, брат Фобоса.'
+  domain: Жах
+  wikidata_id: Q106240
+  aliases:
+    - {alias: Деймос, lang: uk}
+    - {alias: Дейм, lang: uk}
+    - {alias: Deimos, lang: en}
+    - {alias: Formido, lang: la}
+- id: circe
+  type: god
+  name_uk: Кірка
+  name_en: Circe
+  name_lat: Circe
+  summary_uk: 'Чарівниця, донька Геліоса, що на острові Ея перетворила супутників Одіссея на свиней.'
+  domain: 'Чари, зілля'
+  symbols: [чарівна палиця, зілля]
+  wikidata_id: Q187602
+  aliases:
+    - {alias: Кірка, lang: uk}
+    - {alias: Цірцея, lang: uk}
+    - {alias: Цирцея, lang: uk}
+    - {alias: Circe, lang: en}
+    - {alias: Kírkê, lang: en}
+    - {alias: Κίρκη, lang: en}
+    - {alias: Circé, lang: en}
+    - {alias: Kirke, lang: en}
+    - {alias: Circe, lang: la}
+- id: calypso
+  type: god
+  name_uk: Каліпсо
+  name_en: Calypso
+  name_lat: Calypso
+  summary_uk: 'Німфа, донька Атланта, що сім років тримала Одіссея на острові Огігія.'
+  domain: Німфа острова Огігія
+  wikidata_id: Q48961
+  aliases:
+    - {alias: Каліпсо, lang: uk}
+    - {alias: Calypso, lang: en}
+    - {alias: Calypso, lang: la}
+- id: charon
+  type: god
+  name_uk: Харон
+  name_en: Charon
+  name_lat: Charon
+  summary_uk: Перевізник душ померлих через підземні ріки за обол.
+  domain: Переправа мертвих
+  symbols: [човен, весло]
+  wikidata_id: Q6612
+  aliases:
+    - {alias: Харон, lang: uk}
+    - {alias: Charon, lang: en}
+    - {alias: Kharon, lang: en}
+    - {alias: Charon (mythology), lang: en}
+    - {alias: Charon, lang: la}
+- id: muses
+  type: god
+  name_uk: Музи
+  name_en: Muse
+  name_lat: Musae
+  summary_uk: 'Дев''ять доньок Зевса і Мнемосіни, натхненниці поезії, мистецтв і знань.'
+  domain: 'Поезія, мистецтва, наука'
+  wikidata_id: Q66016
+  aliases:
+    - {alias: Музи, lang: uk}
+    - {alias: Аоніди, lang: uk}
+    - {alias: Муси, lang: uk}
+    - {alias: Муза, lang: uk}
+    - {alias: Muse, lang: en}
+    - {alias: Muses, lang: en}
+    - {alias: Nine Muses, lang: en}
+    - {alias: Musae, lang: la}
+- id: moirai
+  type: god
+  name_uk: Мойри
+  name_en: Moirai
+  name_lat: Parcae
+  summary_uk: 'Три богині долі — Клото, Лахесіс і Атропос, що прядуть нитку життя.'
+  domain: Доля
+  symbols: [прядка, нитка, ножиці]
+  wikidata_id: Q180287
+  aliases:
+    - {alias: Мойри, lang: uk}
+    - {alias: Мойра, lang: uk}
+    - {alias: Moirai, lang: en}
+    - {alias: The Fates, lang: en}
+    - {alias: Fates, lang: en}
+    - {alias: Moerae, lang: en}
+    - {alias: Mœræ, lang: en}
+    - {alias: Moirae, lang: en}
+    - {alias: Moîrai, lang: en}
+    - {alias: Parcae, lang: la}
+- id: erinyes
+  type: god
+  name_uk: Еринії
+  name_en: Erinyes
+  name_lat: Furiae
+  summary_uk: 'Богині помсти, народжені з крові Урана; переслідують злочинців, особливо вбивць родичів.'
+  domain: 'Помста, кара за кровний злочин'
+  symbols: [змії, смолоскипи]
+  wikidata_id: Q180262
+  aliases:
+    - {alias: Еринії, lang: uk}
+    - {alias: Евменіди, lang: uk}
+    - {alias: Ерінії, lang: uk}
+    - {alias: Erinyes, lang: en}
+    - {alias: Eumenides, lang: en}
+    - {alias: Erinnyes, lang: en}
+    - {alias: Semnae theae, lang: en}
+    - {alias: Avenging Deities, lang: en}
+    - {alias: Furiae, lang: la}
 
+# --- Титани
+- id: cronus
+  type: titan
+  name_uk: Кронос
+  name_en: Cronus
+  name_lat: Saturnus
+  summary_uk: 'Наймолодший титан, що скинув Урана і ковтав своїх дітей, доки його не переміг Зевс.'
+  domain: 'Влада титанів, час жнив'
+  symbols: [серп]
+  wikidata_id: Q44204
+  aliases:
+    - {alias: Кронос, lang: uk}
+    - {alias: Крон, lang: uk}
+    - {alias: Cronus, lang: en}
+    - {alias: Cronos, lang: en}
+    - {alias: Kronos, lang: en}
+    - {alias: Saturnus, lang: la}
+    - {alias: Сатурн, lang: uk}
+- id: rhea
+  type: titan
+  name_uk: Рея
+  name_en: Rhea
+  name_lat: Ops
+  summary_uk: 'Титаніда, дружина Кроноса і мати олімпійців; врятувала Зевса, підмінивши його каменем.'
+  domain: 'Материнство, плодючість'
+  wikidata_id: Q108419
+  aliases:
+    - {alias: Рея, lang: uk}
+    - {alias: Rhea, lang: en}
+    - {alias: Rheia, lang: en}
+    - {alias: Ops, lang: la}
+- id: oceanus
+  type: titan
+  name_uk: Океан
+  name_en: Oceanus
+  name_lat: Oceanus
+  summary_uk: 'Титан, ріка-Океан, що оперізує світ; батько річок і океанід.'
+  domain: Світова ріка
+  wikidata_id: Q161419
+  aliases:
+    - {alias: Океан, lang: uk}
+    - {alias: Окіян, lang: uk}
+    - {alias: Oceanus, lang: en}
+    - {alias: Okeanos, lang: en}
+    - {alias: Oceanus, lang: la}
+- id: tethys
+  type: titan
+  name_uk: Тефія
+  name_en: Tethys
+  name_lat: Tethys
+  summary_uk: 'Титаніда, дружина Океана, мати річок і трьох тисяч океанід.'
+  domain: Прісні води
+  wikidata_id: Q184216
+  aliases:
+    - {alias: Тефія, lang: uk}
+    - {alias: Тетія, lang: uk}
+    - {alias: Тефіда, lang: uk}
+    - {alias: Tethys, lang: en}
+    - {alias: Parthenope, lang: en}
+    - {alias: Tethys, lang: la}
+- id: hyperion
+  type: titan
+  name_uk: Гіперіон
+  name_en: Hyperion
+  name_lat: Hyperion
+  summary_uk: 'Титан, батько Геліоса, Селени та Еос.'
+  domain: Небесне світло
+  wikidata_id: Q179209
+  aliases:
+    - {alias: Гіперіон, lang: uk}
+    - {alias: Hyperion, lang: en}
+    - {alias: Hyperion, lang: la}
+- id: theia
+  type: titan
+  name_uk: Тея
+  name_en: Theia
+  name_lat: Theia
+  summary_uk: 'Титаніда, дружина Гіперіона і мати Сонця, Місяця й Зорі.'
+  domain: Сяйво
+  wikidata_id: Q184232
+  aliases:
+    - {alias: Тея, lang: uk}
+    - {alias: Theia, lang: en}
+    - {alias: Basileia, lang: en}
+    - {alias: Theia, lang: la}
+- id: coeus
+  type: titan
+  name_uk: Кей
+  name_en: Coeus
+  name_lat: Coeus
+  summary_uk: 'Титан, чоловік Феби і батько Лето.'
+  domain: 'Розум, небесна вісь'
+  wikidata_id: Q182837
+  aliases:
+    - {alias: Кей, lang: uk}
+    - {alias: Кой, lang: uk}
+    - {alias: Coeus, lang: en}
+    - {alias: Polus, lang: en}
+    - {alias: Polos, lang: en}
+    - {alias: Coeus, lang: la}
+- id: phoebe
+  type: titan
+  name_uk: Феба
+  name_en: Phoebe
+  name_lat: Phoebe
+  summary_uk: 'Титаніда, мати Лето і бабуся Аполлона та Артеміди.'
+  domain: 'Пророцтво, сяйво'
+  wikidata_id: Q183281
+  aliases:
+    - {alias: Феба, lang: uk}
+    - {alias: Phoebe, lang: en}
+    - {alias: Phoebe, lang: la}
+- id: crius
+  type: titan
+  name_uk: Крій
+  name_en: Crius
+  name_lat: Crius
+  summary_uk: 'Титан, син Урана і Геї.'
+  domain: Сузір'я
+  wikidata_id: Q192136
+  aliases:
+    - {alias: Крій, lang: uk}
+    - {alias: Crius, lang: en}
+    - {alias: Kreios, lang: en}
+    - {alias: Krios, lang: en}
+    - {alias: Crius, lang: la}
+- id: iapetus
+  type: titan
+  name_uk: Япет
+  name_en: Iapetus
+  name_lat: Iapetus
+  summary_uk: 'Титан, батько Атланта, Менетія, Прометея й Епіметея.'
+  domain: Смертність
+  wikidata_id: Q179543
+  aliases:
+    - {alias: Япет, lang: uk}
+    - {alias: Iapetus, lang: en}
+    - {alias: Iapetos, lang: en}
+    - {alias: Iapetus, lang: la}
+- id: themis
+  type: titan
+  name_uk: Феміда
+  name_en: Themis
+  name_lat: Iustitia
+  summary_uk: 'Титаніда правопорядку, друга дружина Зевса і мати Ор та (за Гесіодом) Мойр.'
+  domain: 'Право, звичай, порядок'
+  symbols: [терези]
+  wikidata_id: Q159168
+  aliases:
+    - {alias: Феміда, lang: uk}
+    - {alias: Теміда, lang: uk}
+    - {alias: Теміс, lang: uk}
+    - {alias: Themis, lang: en}
+    - {alias: Iustitia, lang: la}
+- id: mnemosyne
+  type: titan
+  name_uk: Мнемосіна
+  name_en: Mnemosyne
+  name_lat: Moneta
+  summary_uk: 'Титаніда пам''яті, мати дев''яти Муз від Зевса.'
+  domain: Пам'ять
+  wikidata_id: Q102884
+  aliases:
+    - {alias: Мнемосіна, lang: uk}
+    - {alias: Мнемозіна, lang: uk}
+    - {alias: Мнемозина, lang: uk}
+    - {alias: Mnemosyne, lang: en}
+    - {alias: Mnemosynë, lang: en}
+    - {alias: Moneta, lang: la}
+- id: prometheus
+  type: titan
+  name_uk: Прометей
+  name_en: Prometheus
+  name_lat: Prometheus
+  summary_uk: 'Син Япета, що викрав для людей вогонь і був прикутий Зевсом до скелі.'
+  domain: 'Передбачення, вогонь, ремесла'
+  symbols: [смолоскип, вогонь]
+  wikidata_id: Q83160
+  aliases:
+    - {alias: Прометей, lang: uk}
+    - {alias: Промифій, lang: uk}
+    - {alias: Prometheus, lang: en}
+    - {alias: Prometheus, lang: la}
+- id: epimetheus
+  type: titan
+  name_uk: Епіметей
+  name_en: Epimetheus
+  name_lat: Epimetheus
+  summary_uk: 'Брат Прометея, «той, хто думає потім»; прийняв Пандору від богів.'
+  domain: Нерозсудливість
+  wikidata_id: Q41054
+  aliases:
+    - {alias: Епіметей, lang: uk}
+    - {alias: Epimetheus, lang: en}
+    - {alias: Epimetheus, lang: la}
+- id: atlas
+  type: titan
+  name_uk: Атлант
+  name_en: Atlas
+  name_lat: Atlas
+  summary_uk: 'Титан, син Япета, засуджений тримати небо на краю світу.'
+  domain: 'Витривалість, небосхил'
+  symbols: [небесне склепіння]
+  wikidata_id: Q130818
+  aliases:
+    - {alias: Атлант, lang: uk}
+    - {alias: Атланти, lang: uk}
+    - {alias: Атлас, lang: uk}
+    - {alias: Atlas, lang: en}
+    - {alias: Atlas, lang: la}
+- id: leto
+  type: titan
+  name_uk: Лето
+  name_en: Leto
+  name_lat: Latona
+  summary_uk: 'Донька Кея і Феби, мати Аполлона та Артеміди від Зевса.'
+  domain: Материнство
+  wikidata_id: Q103107
+  aliases:
+    - {alias: Лето, lang: uk}
+    - {alias: Латона, lang: uk}
+    - {alias: Leto, lang: en}
+    - {alias: Latona, lang: la}
+- id: metis
+  type: titan
+  name_uk: Метіда
+  name_en: Metis
+  name_lat: Metis
+  summary_uk: 'Океаніда мудрості, перша дружина Зевса, яку він проковтнув; мати Афіни.'
+  domain: 'Мудрість, хитрість'
+  wikidata_id: Q190565
+  aliases:
+    - {alias: Метіда, lang: uk}
+    - {alias: Metis, lang: en}
+    - {alias: Metis, lang: la}
+
+# --- Чудовиська та істоти
+- id: typhon
+  type: creature
+  name_uk: Тифон
+  name_en: Typhon
+  summary_uk: 'Велетенське вогнедишне чудовисько з сотнею зміїних голів, син Геї й Тартара; переможений Зевсом.'
+  domain: 'Буря, хаос'
+  wikidata_id: Q180237
+  aliases:
+    - {alias: Тифон, lang: uk}
+    - {alias: Typhon, lang: en}
+    - {alias: Typhoeus, lang: en}
+- id: echidna
+  type: creature
+  name_uk: Єхидна
+  name_en: Echidna
+  summary_uk: 'Напівжінка-напівзмія, дружина Тифона і мати багатьох чудовиськ.'
+  domain: Мати чудовиськ
+  wikidata_id: Q185670
+  aliases:
+    - {alias: Єхидна, lang: uk}
+    - {alias: Echidna, lang: en}
+    - {alias: Mother of Monsters, lang: en}
+- id: cerberus
+  type: creature
+  name_uk: Цербер
+  name_en: Cerberus
+  name_lat: Cerberus
+  summary_uk: 'Багатоголовий пес, що стереже вхід до царства Аїда; останній подвиг Геракла.'
+  domain: Сторож підземного світу
+  wikidata_id: Q83496
+  aliases:
+    - {alias: Цербер, lang: uk}
+    - {alias: Кербер, lang: uk}
+    - {alias: Cerberus, lang: en}
+    - {alias: Hound of Hades, lang: en}
+    - {alias: Cerberos, lang: en}
+    - {alias: Cerberus, lang: la}
+- id: orthrus
+  type: creature
+  name_uk: Ортр
+  name_en: Orthrus
+  summary_uk: 'Двоголовий пес велетня Геріона, брат Цербера.'
+  domain: Сторож стад Геріона
+  wikidata_id: Q336230
+  aliases:
+    - {alias: Ортр, lang: uk}
+    - {alias: Orthrus, lang: en}
+- id: hydra
+  type: creature
+  name_uk: Лернейська гідра
+  name_en: Hydra
+  summary_uk: 'Багатоголова водяна змія з боліт Лерни, вбита Гераклом та Іолаєм.'
+  domain: Болота Лерни
+  wikidata_id: Q170379
+  aliases:
+    - {alias: Лернейська гідра, lang: uk}
+    - {alias: Гідра, lang: uk}
+    - {alias: Hydra, lang: en}
+    - {alias: Lernaean Hydra, lang: en}
+    - {alias: Lernean Hydra, lang: en}
+    - {alias: The Lernean Hydra, lang: en}
+    - {alias: Lernæan Hydra, lang: en}
+- id: chimera
+  type: creature
+  name_uk: Химера
+  name_en: Chimera
+  name_lat: Chimaera
+  summary_uk: 'Вогнедишна потвора — лев, коза і змія водночас; її вбив Беллерофонт на Пегасі.'
+  domain: Лікія
+  wikidata_id: Q182790
+  aliases:
+    - {alias: Химера, lang: uk}
+    - {alias: Chimera, lang: en}
+    - {alias: chimæra, lang: en}
+    - {alias: chimaera, lang: en}
+    - {alias: Chimaera, lang: la}
+- id: nemean_lion
+  type: creature
+  name_uk: Немейський лев
+  name_en: Nemean lion
+  name_lat: Leo Nemeaeus
+  summary_uk: 'Лев із невразливою шкурою, якого Геракл задушив у першому подвигу.'
+  domain: Немея
+  wikidata_id: Q199438
+  aliases:
+    - {alias: Немейський лев, lang: uk}
+    - {alias: Nemean lion, lang: en}
+    - {alias: Leo Nemeaeus, lang: la}
+- id: medusa
+  type: creature
+  name_uk: Медуза
+  name_en: Medusa
+  summary_uk: 'Єдина смертна з трьох горгон, чий погляд обертав на камінь; її голову відтяв Персей.'
+  domain: Горгона
+  symbols: [змії замість волосся]
+  wikidata_id: Q160730
+  aliases:
+    - {alias: Медуза, lang: uk}
+    - {alias: Медуза Горгона, lang: uk}
+    - {alias: Горгона Медуза, lang: uk}
+    - {alias: Medusa, lang: en}
+- id: graeae
+  type: creature
+  name_uk: Граї
+  name_en: Graeae
+  summary_uk: 'Три сиві сестри горгон з одним оком і одним зубом на всіх, у яких Персей вивідав шлях.'
+  domain: Сестри горгон
+  wikidata_id: Q257768
+  aliases:
+    - {alias: Граї, lang: uk}
+    - {alias: Graeae, lang: en}
+    - {alias: Graiae, lang: en}
+    - {alias: Graiæ, lang: en}
+    - {alias: Grææ, lang: en}
+    - {alias: Graeæ, lang: en}
+- id: pegasus
+  type: creature
+  name_uk: Пегас
+  name_en: Pegasus
+  summary_uk: 'Крилатий кінь, що постав із крові Медузи; носив Беллерофонта, а згодом блискавки Зевса.'
+  domain: Крилатий кінь
+  wikidata_id: Q162797
+  aliases:
+    - {alias: Пегас, lang: uk}
+    - {alias: Pegasus, lang: en}
+- id: chrysaor
+  type: creature
+  name_uk: Хрісаор
+  name_en: Chrysaor
+  summary_uk: 'Син Посейдона і Медузи, що вийшов з її тіла разом із Пегасом; батько Геріона.'
+  domain: '«Той, що з золотим мечем»'
+  wikidata_id: Q320660
+  aliases:
+    - {alias: Хрісаор, lang: uk}
+    - {alias: Chrysaor, lang: en}
+- id: minotaur
+  type: creature
+  name_uk: Мінотавр
+  name_en: Minotaur
+  name_lat: Minotaurus
+  summary_uk: 'Чоловік із бичачою головою, син Пасіфаї та Критського бика, ув''язнений у Лабіринті; вбитий Тесеєм.'
+  domain: Лабіринт
+  wikidata_id: Q129866
+  aliases:
+    - {alias: Мінотавр, lang: uk}
+    - {alias: Minotaur, lang: en}
+    - {alias: Minotaurus, lang: la}
+- id: python
+  type: creature
+  name_uk: Піфон
+  name_en: Python
+  summary_uk: 'Змій-дракон, що стеріг Дельфи; Аполлон убив його і заснував свій оракул.'
+  domain: Дельфи
+  wikidata_id: Q15721
+  aliases:
+    - {alias: Піфон, lang: uk}
+    - {alias: Python, lang: en}
+- id: sphinx
+  type: creature
+  name_uk: Сфінкс
+  name_en: Sphinx
+  summary_uk: 'Крилата левиця з жіночим обличчям, що загадувала загадку біля Фів, доки її не розгадав Едіп.'
+  domain: 'Загадки, Фіви'
+  wikidata_id: Q151480
+  aliases:
+    - {alias: Сфінкс, lang: uk}
+    - {alias: Sphinx, lang: en}
+- id: chiron
+  type: creature
+  name_uk: Хірон
+  name_en: Chiron
+  name_lat: Chiro
+  summary_uk: 'Мудрий і справедливий кентавр, наставник Ахілла, Ясона та Асклепія.'
+  domain: 'Виховання героїв, лікування'
+  wikidata_id: Q183417
+  aliases:
+    - {alias: Хірон, lang: uk}
+    - {alias: Хейрон, lang: uk}
+    - {alias: Chiron, lang: en}
+    - {alias: Cheiron, lang: en}
+    - {alias: Chiro, lang: la}
+- id: polyphemus
+  type: creature
+  name_uk: Поліфем
+  name_en: Polyphemus
+  summary_uk: 'Одноокий кіклоп, син Посейдона, якого осліпив Одіссей.'
+  domain: Кіклоп
+  wikidata_id: Q193567
+  aliases:
+    - {alias: Поліфем, lang: uk}
+    - {alias: Polyphemus, lang: en}
+- id: cyclopes
+  type: creature
+  name_uk: Кіклопи
+  name_en: Cyclopes
+  name_lat: cyclopes
+  summary_uk: 'Одноокі велетні; у Гесіода — сини Урана і Геї, що викували Зевсові блискавки.'
+  domain: Ковальство блискавок
+  wikidata_id: Q128430
+  aliases:
+    - {alias: Кіклопи, lang: uk}
+    - {alias: Циклопи, lang: uk}
+    - {alias: Кіклоп, lang: uk}
+    - {alias: Cyclopes, lang: en}
+    - {alias: cyclops, lang: en}
+    - {alias: cyclopes, lang: la}
+- id: hecatoncheires
+  type: creature
+  name_uk: Гекатонхейри
+  name_en: Hecatoncheires
+  name_lat: Centimani
+  summary_uk: 'Сторукі п''ятдесятиголові велетні, сини Урана і Геї, союзники Зевса в Титаномахії.'
+  domain: Сила
+  wikidata_id: Q175255
+  aliases:
+    - {alias: Гекатонхейри, lang: uk}
+    - {alias: Hecatoncheires, lang: en}
+    - {alias: Centimanes, lang: en}
+    - {alias: Hundred-Handers, lang: en}
+    - {alias: Centimani, lang: la}
+- id: scylla
+  type: creature
+  name_uk: Скілла
+  name_en: Scylla
+  summary_uk: 'Шестиголова потвора в скелі над протокою, що хапала моряків із корабля Одіссея.'
+  domain: Морська протока
+  wikidata_id: Q193115
+  aliases:
+    - {alias: Скілла, lang: uk}
+    - {alias: Сцилла, lang: uk}
+    - {alias: Сцілла, lang: uk}
+    - {alias: Scylla, lang: en}
+- id: charybdis
+  type: creature
+  name_uk: Харібда
+  name_en: Charybdis
+  summary_uk: 'Морська вирва-потвора, що тричі на день ковтає і вивергає море, навпроти Скілли.'
+  domain: Морська протока
+  wikidata_id: Q192082
+  aliases:
+    - {alias: Харібда, lang: uk}
+    - {alias: Charybdis, lang: en}
+    - {alias: Kharybdis, lang: en}
+- id: sirens
+  type: creature
+  name_uk: Сирени
+  name_en: Sirens
+  name_lat: Sirenes
+  summary_uk: 'Співочі істоти, що чарівним співом заманювали моряків на загибель; Одіссей проплив повз, прив''язаний до щогли.'
+  domain: 'Спів, згуба моряків'
+  wikidata_id: Q150986
+  aliases:
+    - {alias: Сирени, lang: uk}
+    - {alias: сирена, lang: uk}
+    - {alias: Sirens, lang: en}
+    - {alias: siren, lang: en}
+    - {alias: siren song, lang: en}
+    - {alias: Sirenes, lang: la}
+- id: harpies
+  type: creature
+  name_uk: Гарпії
+  name_en: Harpies
+  name_lat: Harpyiae
+  summary_uk: 'Крилаті викрадачки, доньки Тавманта; мучили сліпого Фінея, доки їх не прогнали аргонавти.'
+  domain: Буревії
+  wikidata_id: Q181360
+  aliases:
+    - {alias: Гарпії, lang: uk}
+    - {alias: гарпія, lang: uk}
+    - {alias: Harpies, lang: en}
+    - {alias: The Harpies, lang: en}
+    - {alias: harpy, lang: en}
+    - {alias: Harpyiae, lang: la}
+- id: ladon
+  type: creature
+  name_uk: Ладон
+  name_en: Ladon
+  summary_uk: 'Змій, що стеріг золоті яблука в саду Гесперид.'
+  domain: Сад Гесперид
+  wikidata_id: Q274600
+  aliases:
+    - {alias: Ладон, lang: uk}
+    - {alias: Ладон (дракон), lang: uk}
+    - {alias: Ladon, lang: en}
+    - {alias: Hesperian Dragon, lang: en}
+    - {alias: Drakôn Hesperios, lang: en}
+- id: geryon
+  type: creature
+  name_uk: Геріон
+  name_en: Geryon
+  summary_uk: 'Трикорпусний велетень на далекому заході, чиїх корів викрав Геракл.'
+  domain: Острів Еритея
+  wikidata_id: Q86805
+  aliases:
+    - {alias: Геріон, lang: uk}
+    - {alias: Geryon, lang: en}
+    - {alias: Geryones, lang: en}
+- id: erymanthian_boar
+  type: creature
+  name_uk: Еримантський вепр
+  name_en: Erymanthian Boar
+  summary_uk: 'Величезний вепр з гори Еримант, якого Геракл живим приніс Еврістею.'
+  domain: Аркадія
+  wikidata_id: Q334456
+  aliases:
+    - {alias: Еримантський вепр, lang: uk}
+    - {alias: Ерімантський вепр, lang: uk}
+    - {alias: Erymanthian Boar, lang: en}
+- id: ceryneian_hind
+  type: creature
+  name_uk: Керинейська лань
+  name_en: Ceryneian Hind
+  summary_uk: 'Золоторога лань Артеміди, яку Геракл переслідував цілий рік.'
+  domain: Аркадія
+  wikidata_id: Q466882
+  aliases:
+    - {alias: Керинейська лань, lang: uk}
+    - {alias: Ceryneian Hind, lang: en}
+    - {alias: Cerynitis, lang: en}
+- id: stymphalian_birds
+  type: creature
+  name_uk: Стимфалійські птахи
+  name_en: Stymphalian birds
+  name_lat: Aves Stymphalides
+  summary_uk: 'Хижі птахи з озера Стимфалія, яких Геракл сполохав і перестріляв.'
+  domain: Стимфалійське озеро
+  wikidata_id: Q236429
+  aliases:
+    - {alias: Стимфалійські птахи, lang: uk}
+    - {alias: стімфалійські птахи, lang: uk}
+    - {alias: Stymphalian birds, lang: en}
+    - {alias: Aves Stymphalides, lang: la}
+- id: cretan_bull
+  type: creature
+  name_uk: Критський бик
+  name_en: Cretan Bull
+  summary_uk: 'Бик, посланий Посейдоном Міносові; батько Мінотавра, якого Геракл привів у Пелопоннес.'
+  domain: Крит
+  wikidata_id: Q746198
+  aliases:
+    - {alias: Критський бик, lang: uk}
+    - {alias: Крітський бик, lang: uk}
+    - {alias: Марафонський бик, lang: uk}
+    - {alias: Cretan Bull, lang: en}
+    - {alias: Marathonian bull, lang: en}
+- id: talos
+  type: creature
+  name_uk: Талос
+  name_en: Talos
+  summary_uk: 'Мідний велетень, що охороняв Крит; загинув, коли Медея позбавила його життєвої жили.'
+  domain: Охорона Криту
+  wikidata_id: Q657174
+  aliases:
+    - {alias: Талос, lang: uk}
+    - {alias: Тал, lang: uk}
+    - {alias: Talos, lang: en}
+    - {alias: Talus, lang: en}
+- id: argus
+  type: creature
+  name_uk: Аргус Панопт
+  name_en: Argus Panoptes
+  name_lat: Argus (gigas)
+  summary_uk: 'Багатоокий велетень, якого Гера поставила стерегти Іо; вбитий Гермесом.'
+  domain: Пильність
+  wikidata_id: Q189821
+  aliases:
+    - {alias: Аргус Панопт, lang: uk}
+    - {alias: Argus Panoptes, lang: en}
+    - {alias: Panoptes, lang: en}
+    - {alias: Argus, lang: en}
+    - {alias: Argus (gigas), lang: la}
+
+# --- Герої
+- id: heracles
+  type: hero
+  name_uk: Геракл
+  name_en: Heracles
+  name_lat: Hercules
+  summary_uk: 'Найславетніший герой, син Зевса і Алкмени, що виконав дванадцять подвигів і після смерті став богом.'
+  domain: 'Сила, подвиги'
+  symbols: [палиця, левова шкура, лук]
+  wikidata_id: Q122248
+  aliases:
+    - {alias: Геракл, lang: uk}
+    - {alias: Геркулес, lang: uk}
+    - {alias: Heracles, lang: en}
+    - {alias: Alcaeus, lang: en}
+    - {alias: Alcides, lang: en}
+    - {alias: Hercules, lang: en}
+    - {alias: Herakles, lang: en}
+    - {alias: Hercules, lang: la}
+    - {alias: Алкід, lang: uk}
+- id: perseus
+  type: hero
+  name_uk: Персей
+  name_en: Perseus
+  summary_uk: 'Син Зевса і Данаї, що відтяв голову Медузі й урятував Андромеду.'
+  domain: Подвиги
+  symbols: [голова Медузи, крилаті сандалі, серп]
+  wikidata_id: Q130832
+  aliases:
+    - {alias: Персей, lang: uk}
+    - {alias: Perseus, lang: en}
+- id: theseus
+  type: hero
+  name_uk: Тесей
+  name_en: Theseus
+  summary_uk: 'Афінський герой, син Егея (або Посейдона), що вбив Мінотавра і об''єднав Аттику.'
+  domain: 'Подвиги, Афіни'
+  wikidata_id: Q1320718
+  aliases:
+    - {alias: Тесей, lang: uk}
+    - {alias: Тезей, lang: uk}
+    - {alias: Тезій, lang: uk}
+    - {alias: Theseus, lang: en}
+- id: jason
+  type: hero
+  name_uk: Ясон
+  name_en: Jason
+  name_lat: Iason
+  summary_uk: 'Ватажок аргонавтів, що здобув у Колхіді Золоте руно з допомогою Медеї.'
+  domain: Похід аргонавтів
+  wikidata_id: Q176758
+  aliases:
+    - {alias: Ясон, lang: uk}
+    - {alias: Язон, lang: uk}
+    - {alias: Іасон, lang: uk}
+    - {alias: Jason, lang: en}
+    - {alias: Iason, lang: en}
+    - {alias: Iason, lang: la}
+- id: bellerophon
+  type: hero
+  name_uk: Беллерофонт
+  name_en: Bellerophon
+  summary_uk: 'Коринфський герой, що на Пегасі вбив Химеру.'
+  domain: Подвиги
+  wikidata_id: Q189872
+  aliases:
+    - {alias: Беллерофонт, lang: uk}
+    - {alias: Гіппоной, lang: uk}
+    - {alias: Bellerophon, lang: en}
+    - {alias: Bellerophontes, lang: en}
+    - {alias: Hipponous, lang: en}
+- id: cadmus
+  type: hero
+  name_uk: Кадм
+  name_en: Cadmus
+  summary_uk: 'Фінікійський царевич, брат Європи, засновник Фів, що посіяв зуби дракона.'
+  domain: Засновник Фів
+  wikidata_id: Q27613
+  aliases:
+    - {alias: Кадм, lang: uk}
+    - {alias: Cadmus, lang: en}
+    - {alias: Kadmos, lang: en}
+    - {alias: Cadmos, lang: en}
+- id: orpheus
+  type: hero
+  name_uk: Орфей
+  name_en: Orpheus
+  summary_uk: 'Співець, що чарував музикою звірів і каміння; учасник походу аргонавтів, спускався в Аїд по Еврідіку.'
+  domain: 'Музика, спів'
+  symbols: [ліра]
+  wikidata_id: Q174353
+  aliases:
+    - {alias: Орфей, lang: uk}
+    - {alias: Orpheus, lang: en}
+- id: atalanta
+  type: hero
+  name_uk: Аталанта
+  name_en: Atalanta
+  summary_uk: 'Мисливиця, вихованка ведмедиці, учасниця Калідонського полювання.'
+  domain: 'Полювання, біг'
+  wikidata_id: Q190323
+  aliases:
+    - {alias: Аталанта, lang: uk}
+    - {alias: Атланта, lang: uk}
+    - {alias: Atalanta, lang: en}
+- id: meleager
+  type: hero
+  name_uk: Мелеагр
+  name_en: Meleager
+  summary_uk: 'Калідонський царевич, ватажок полювання на Калідонського вепра.'
+  domain: Калідонське полювання
+  wikidata_id: Q321541
+  aliases:
+    - {alias: Мелеагр, lang: uk}
+    - {alias: Meleager, lang: en}
+- id: dioscuri
+  type: hero
+  name_uk: Діоскури
+  name_en: Dioscuri
+  name_lat: Castor et Pollux
+  summary_uk: 'Брати-близнюки Кастор і Полідевк, сини Леди; аргонавти, покровителі моряків.'
+  domain: 'Порятунок моряків, кінність'
+  wikidata_id: Q190103
+  aliases:
+    - {alias: Діоскури, lang: uk}
+    - {alias: Dioscuri, lang: en}
+    - {alias: Castor and Pollux, lang: en}
+    - {alias: Gemini, lang: en}
+    - {alias: Diskouri brothers, lang: en}
+    - {alias: Pollux and Castor, lang: en}
+    - {alias: Kastor and Pollux, lang: en}
+    - {alias: Tyndaridai, lang: en}
+    - {alias: Castor et Pollux, lang: la}
+    - {alias: Кастор, lang: uk}
+    - {alias: Полідевк, lang: uk}
+    - {alias: Castor, lang: en}
+    - {alias: Polydeuces, lang: en}
+    - {alias: Pollux, lang: la}
+- id: iolaus
+  type: hero
+  name_uk: Іолай
+  name_en: Iolaus
+  summary_uk: 'Племінник і візничий Геракла, що допоміг йому знищити Гідру.'
+  domain: Соратник Геракла
+  wikidata_id: Q504076
+  aliases:
+    - {alias: Іолай, lang: uk}
+    - {alias: Iolaus, lang: en}
+    - {alias: Iolaos, lang: en}
+    - {alias: Sapphire, lang: en}
+- id: pirithous
+  type: hero
+  name_uk: Пірітой
+  name_en: Pirithous
+  summary_uk: 'Цар лапітів, друг Тесея, з яким спустився в Аїд по Персефону.'
+  domain: Лапіти
+  wikidata_id: Q502156
+  aliases:
+    - {alias: Пірітой, lang: uk}
+    - {alias: Пейрітой, lang: uk}
+    - {alias: Піріфой, lang: uk}
+    - {alias: Pirithous, lang: en}
+    - {alias: Perithous, lang: en}
+- id: peleus
+  type: hero
+  name_uk: Пелей
+  name_en: Peleus
+  summary_uk: 'Цар Фтії, чоловік нереїди Фетіди і батько Ахілла.'
+  domain: Фтія
+  wikidata_id: Q178641
+  aliases:
+    - {alias: Пелей, lang: uk}
+    - {alias: Peleus, lang: en}
 - id: achilles
   type: hero
   name_uk: Ахілл
   name_en: Achilles
   name_lat: Achilles
-  summary_uk: Найвеличніший воїн ахейців у Троянській війні, син Пелея та Фетіди.
-  domain: Військова доблесть, слава
-  symbols: ["щит Ахілла", "спис"]
+  summary_uk: 'Найвеличніший воїн ахейців у Троянській війні, син Пелея та Фетіди.'
+  domain: 'Військова доблесть, слава'
+  symbols: [щит Ахілла, спис]
   wikidata_id: Q41746
   aliases:
-    - alias: Ахілл
-      lang: uk
-    - alias: Ахіллес
-      lang: uk
-    - alias: Achilles
-      lang: en
-    - alias: Пелід
-      lang: uk
-    - alias: Pelides
-      lang: en
+    - {alias: Ахілл, lang: uk}
+    - {alias: Ахіллес, lang: uk}
+    - {alias: Ахіл, lang: uk}
+    - {alias: Achilles, lang: en}
+    - {alias: Peleiades, lang: en}
+    - {alias: Pelides, lang: en}
+    - {alias: Achilles, lang: la}
+    - {alias: Пелід, lang: uk}
+- id: odysseus
+  type: hero
+  name_uk: Одіссей
+  name_en: Odysseus
+  name_lat: Ulixes
+  summary_uk: 'Цар Ітаки, хитромудрий герой Троянської війни, що десять років повертався додому.'
+  domain: 'Хитрість, мандри'
+  symbols: [лук Одіссея, корабель]
+  wikidata_id: Q47231
+  aliases:
+    - {alias: Одіссей, lang: uk}
+    - {alias: Одиссей, lang: uk}
+    - {alias: Одісей, lang: uk}
+    - {alias: Одисей, lang: uk}
+    - {alias: Odysseus, lang: en}
+    - {alias: Ulysses, lang: en}
+    - {alias: Ulixes, lang: la}
+    - {alias: Улісс, lang: uk}
+    - {alias: Ulysses, lang: la}
+- id: hector
+  type: hero
+  name_uk: Гектор
+  name_en: Hector
+  summary_uk: 'Найстарший син Пріама, головний захисник Трої, вбитий Ахіллом.'
+  domain: Захист Трої
+  wikidata_id: Q159666
+  aliases:
+    - {alias: Гектор, lang: uk}
+    - {alias: Hector, lang: en}
+- id: aeneas
+  type: hero
+  name_uk: Еней
+  name_en: Aeneas
+  summary_uk: 'Троянський герой, син Афродіти й Анхіза, що вцілів після падіння Трої.'
+  domain: Троянська війна
+  wikidata_id: Q82732
+  aliases:
+    - {alias: Еней, lang: uk}
+    - {alias: Aeneas, lang: en}
+    - {alias: Æneas, lang: en}
+    - {alias: Eneas Ysgwyddwyn, lang: en}
+- id: patroclus
+  type: hero
+  name_uk: Патрокл
+  name_en: Patroclus
+  summary_uk: 'Найближчий друг Ахілла, вбитий Гектором у його обладунку.'
+  domain: Троянська війна
+  wikidata_id: Q186271
+  aliases:
+    - {alias: Патрокл, lang: uk}
+    - {alias: Patroclus, lang: en}
+- id: ajax
+  type: hero
+  name_uk: Аякс Теламонід
+  name_en: Ajax the Great
+  name_lat: Aiax maior
+  summary_uk: 'Велетень-воїн із Саламіну, «стіна ахейців», другий за силою після Ахілла.'
+  domain: Троянська війна
+  wikidata_id: Q172725
+  aliases:
+    - {alias: Аякс Теламонід, lang: uk}
+    - {alias: Еант, lang: uk}
+    - {alias: Аякс, lang: uk}
+    - {alias: Аянт, lang: uk}
+    - {alias: Ajax the Great, lang: en}
+    - {alias: Aias of Salamis, lang: en}
+    - {alias: Telamonian Ajax, lang: en}
+    - {alias: Ajax son of Telamon, lang: en}
+    - {alias: Aias, lang: en}
+    - {alias: Ajax, lang: en}
+    - {alias: Aiax maior, lang: la}
+    - {alias: Аякс Великий, lang: uk}
+- id: diomedes
+  type: hero
+  name_uk: Діомед
+  name_en: Diomedes
+  summary_uk: 'Цар Аргоса, один із найхоробріших ахейців, що поранив у бою Афродіту й Ареса.'
+  domain: Троянська війна
+  wikidata_id: Q208256
+  aliases:
+    - {alias: Діомед, lang: uk}
+    - {alias: Diomedes, lang: en}
+    - {alias: Tydeiades, lang: en}
+    - {alias: Tydeides, lang: en}
+- id: agamemnon
+  type: hero
+  name_uk: Агамемнон
+  name_en: Agamemnon
+  summary_uk: 'Цар Мікен, верховний ватажок ахейців під Троєю, вбитий після повернення дружиною.'
+  domain: 'Влада, Троянська війна'
+  symbols: [скіпетр]
+  wikidata_id: Q128176
+  aliases:
+    - {alias: Агамемнон, lang: uk}
+    - {alias: Agamemnon, lang: en}
+- id: menelaus
+  type: hero
+  name_uk: Менелай
+  name_en: Menelaus
+  summary_uk: 'Цар Спарти, чоловік Єлени, брат Агамемнона.'
+  domain: Троянська війна
+  wikidata_id: Q171839
+  aliases:
+    - {alias: Менелай, lang: uk}
+    - {alias: Menelaus, lang: en}
+- id: nestor
+  type: hero
+  name_uk: Нестор
+  name_en: Nestor
+  summary_uk: 'Старий мудрий цар Пілоса, порадник ахейців під Троєю.'
+  domain: Мудра порада
+  wikidata_id: Q193267
+  aliases:
+    - {alias: Нестор, lang: uk}
+    - {alias: Nestor, lang: en}
+- id: philoctetes
+  type: hero
+  name_uk: Філоктет
+  name_en: Philoctetes
+  summary_uk: 'Лучник, власник лука Геракла, без якого, за пророцтвом, Троя не могла впасти.'
+  domain: Лук Геракла
+  wikidata_id: Q212827
+  aliases:
+    - {alias: Філоктет, lang: uk}
+    - {alias: Філоклет, lang: uk}
+    - {alias: Philoctetes, lang: en}
+    - {alias: Philocretes, lang: en}
+- id: neoptolemus
+  type: hero
+  name_uk: Неоптолем
+  name_en: Neoptolemus
+  summary_uk: 'Син Ахілла, що прибув під Трою після смерті батька й убив Пріама.'
+  domain: Падіння Трої
+  wikidata_id: Q322639
+  aliases:
+    - {alias: Неоптолем, lang: uk}
+    - {alias: Пірр, lang: uk}
+    - {alias: Neoptolemus, lang: en}
+    - {alias: Pyrrhus, lang: en}
+    - {alias: Pyrrus, lang: en}
+    - {alias: Pyrros, lang: en}
+- id: telemachus
+  type: hero
+  name_uk: Телемах
+  name_en: Telemachus
+  summary_uk: 'Син Одіссея і Пенелопи, що вирушив шукати звістки про батька.'
+  domain: Ітака
+  wikidata_id: Q192482
+  aliases:
+    - {alias: Телемах, lang: uk}
+    - {alias: Телемак, lang: uk}
+    - {alias: Telemachus, lang: en}
+- id: orestes
+  type: hero
+  name_uk: Орест
+  name_en: Orestes
+  summary_uk: 'Син Агамемнона, що помстився за батька, вбивши матір Клітемнестру та Егіста.'
+  domain: 'Помста, рід Атрея'
+  wikidata_id: Q192407
+  aliases:
+    - {alias: Орест, lang: uk}
+    - {alias: Orestes, lang: en}
+- id: oedipus
+  type: hero
+  name_uk: Едіп
+  name_en: Oedipus
+  summary_uk: 'Фіванський цар, що розгадав загадку Сфінкс і, не знаючи, вбив батька й одружився з матір''ю.'
+  domain: Фіванський цикл
+  wikidata_id: Q130890
+  aliases:
+    - {alias: Едіп, lang: uk}
+    - {alias: Едип, lang: uk}
+    - {alias: Oedipus, lang: en}
+
+# --- Смертні
+- id: helen
+  type: mortal
+  name_uk: Єлена
+  name_en: Helen
+  name_lat: Helena
+  summary_uk: 'Найвродливіша з жінок, донька Зевса і Леди, дружина Менелая; її викрадення Парісом спричинило Троянську війну.'
+  domain: Краса
+  wikidata_id: Q164061
+  aliases:
+    - {alias: Єлена, lang: uk}
+    - {alias: Єлена Троянська, lang: uk}
+    - {alias: Гелена Троянська, lang: uk}
+    - {alias: Єлена Прекрасна, lang: uk}
+    - {alias: Helen, lang: en}
+    - {alias: Helen of Troy, lang: en}
+    - {alias: Helen of Sparta, lang: en}
+    - {alias: Helen of Argos, lang: en}
+    - {alias: Helena, lang: la}
+    - {alias: Гелена, lang: uk}
+- id: paris
+  type: mortal
+  name_uk: Паріс
+  name_en: Paris
+  summary_uk: 'Троянський царевич, що віддав яблуко Афродіті й викрав Єлену.'
+  domain: Суд Паріса
+  wikidata_id: Q167646
+  aliases:
+    - {alias: Паріс, lang: uk}
+    - {alias: Суд Паріса, lang: uk}
+    - {alias: Paris, lang: en}
+    - {alias: Alexander, lang: en}
+    - {alias: Alexandros, lang: en}
+    - {alias: Александр, lang: uk}
+- id: priam
+  type: mortal
+  name_uk: Пріам
+  name_en: Priam
+  name_lat: Priamus
+  summary_uk: 'Останній цар Трої, батько Гектора і Паріса.'
+  domain: Троя
+  wikidata_id: Q170473
+  aliases:
+    - {alias: Пріам, lang: uk}
+    - {alias: Подарк, lang: uk}
+    - {alias: Priam, lang: en}
+    - {alias: Priamus, lang: la}
+- id: hecuba
+  type: mortal
+  name_uk: Гекаба
+  name_en: Hecuba
+  summary_uk: 'Цариця Трої, дружина Пріама і мати Гектора, Паріса й Кассандри.'
+  domain: Троя
+  wikidata_id: Q193433
+  aliases:
+    - {alias: Гекаба, lang: uk}
+    - {alias: Гекуба, lang: uk}
+    - {alias: Hecuba, lang: en}
+    - {alias: Hekuba, lang: en}
+- id: andromache
+  type: mortal
+  name_uk: Андромаха
+  name_en: Andromache
+  summary_uk: 'Дружина Гектора, після падіння Трої — полонянка Неоптолема.'
+  domain: Троя
+  wikidata_id: Q19376
+  aliases:
+    - {alias: Андромаха, lang: uk}
+    - {alias: Andromache, lang: en}
+- id: cassandra
+  type: mortal
+  name_uk: Кассандра
+  name_en: Cassandra
+  summary_uk: 'Троянська царівна-пророчиця, якій через прокляття Аполлона ніхто не вірив.'
+  domain: Пророцтво
+  wikidata_id: Q170779
+  aliases:
+    - {alias: Кассандра, lang: uk}
+    - {alias: Касандра, lang: uk}
+    - {alias: Cassandra, lang: en}
+- id: penelope
+  type: mortal
+  name_uk: Пенелопа
+  name_en: Penelope
+  summary_uk: 'Вірна дружина Одіссея, що двадцять років чекала на нього, обдурюючи женихів.'
+  domain: Вірність
+  symbols: [ткацький верстат]
+  wikidata_id: Q165769
+  aliases:
+    - {alias: Пенелопа, lang: uk}
+    - {alias: Penelope, lang: en}
+- id: laertes
+  type: mortal
+  name_uk: Лаерт
+  name_en: Laertes
+  summary_uk: 'Старий батько Одіссея, колишній цар Ітаки.'
+  domain: Ітака
+  wikidata_id: Q748296
+  aliases:
+    - {alias: Лаерт, lang: uk}
+    - {alias: Laertes, lang: en}
+- id: anticlea
+  type: mortal
+  name_uk: Антіклея
+  name_en: Anticlea
+  summary_uk: 'Мати Одіссея, донька Автоліка; її тінь Одіссей зустрів в Аїді.'
+  domain: Ітака
+  wikidata_id: Q576170
+  aliases:
+    - {alias: Антіклея, lang: uk}
+    - {alias: Anticlea, lang: en}
+    - {alias: Anticleia, lang: en}
+- id: clytemnestra
+  type: mortal
+  name_uk: Клітемнестра
+  name_en: Clytemnestra
+  name_lat: Clytaemnestra
+  summary_uk: 'Дружина Агамемнона, що разом з Егістом убила чоловіка після його повернення з Трої.'
+  domain: Рід Атрея
+  wikidata_id: Q131157
+  aliases:
+    - {alias: Клітемнестра, lang: uk}
+    - {alias: Clytemnestra, lang: en}
+    - {alias: Clytaemnestra, lang: en}
+    - {alias: Klytemnestra, lang: en}
+    - {alias: Clytaemestra, lang: en}
+    - {alias: Clytaemnestra, lang: la}
+- id: iphigenia
+  type: mortal
+  name_uk: Іфігенія
+  name_en: Iphigenia
+  summary_uk: 'Донька Агамемнона, яку батько мав принести в жертву Артеміді в Авліді.'
+  domain: Рід Атрея
+  wikidata_id: Q192673
+  aliases:
+    - {alias: Іфігенія, lang: uk}
+    - {alias: Iphigenia, lang: en}
+- id: electra
+  type: mortal
+  name_uk: Електра
+  name_en: Electra
+  summary_uk: 'Донька Агамемнона, що допомогла братові Оресту помститися за батька.'
+  domain: Рід Атрея
+  wikidata_id: Q131651
+  aliases:
+    - {alias: Електра, lang: uk}
+    - {alias: Electra, lang: en}
+    - {alias: Elektra, lang: en}
+- id: aegisthus
+  type: mortal
+  name_uk: Егіст
+  name_en: Aegisthus
+  summary_uk: 'Двоюрідний брат Агамемнона, коханець Клітемнестри і співучасник убивства.'
+  domain: Рід Атрея
+  wikidata_id: Q212091
+  aliases:
+    - {alias: Егіст, lang: uk}
+    - {alias: Егісф, lang: uk}
+    - {alias: Aegisthus, lang: en}
+    - {alias: Aegisthos, lang: en}
+    - {alias: Ægisthus, lang: en}
+- id: atreus
+  type: mortal
+  name_uk: Атрей
+  name_en: Atreus
+  summary_uk: 'Цар Мікен, батько Агамемнона і Менелая, родоначальник проклятого роду Атридів.'
+  domain: Рід Атрея
+  wikidata_id: Q192469
+  aliases:
+    - {alias: Атрей, lang: uk}
+    - {alias: Atreus, lang: en}
+- id: tyndareus
+  type: mortal
+  name_uk: Тіндарей
+  name_en: Tyndareus
+  summary_uk: 'Цар Спарти, чоловік Леди, земний батько Клітемнестри.'
+  domain: Спарта
+  wikidata_id: Q192946
+  aliases:
+    - {alias: Тіндарей, lang: uk}
+    - {alias: Тіндар, lang: uk}
+    - {alias: Tyndareus, lang: en}
+- id: leda
+  type: mortal
+  name_uk: Леда
+  name_en: Leda
+  summary_uk: 'Спартанська цариця, до якої Зевс прийшов у подобі лебедя; мати Єлени та Діоскурів.'
+  domain: Спарта
+  symbols: [лебідь]
+  wikidata_id: Q182019
+  aliases:
+    - {alias: Леда, lang: uk}
+    - {alias: Leda, lang: en}
+- id: medea
+  type: mortal
+  name_uk: Медея
+  name_en: Medea
+  summary_uk: 'Колхідська царівна-чарівниця, донька Еета, що допомогла Ясонові здобути руно.'
+  domain: Чари
+  wikidata_id: Q174278
+  aliases:
+    - {alias: Медея, lang: uk}
+    - {alias: Medea, lang: en}
+- id: aeetes
+  type: mortal
+  name_uk: Еет
+  name_en: Aeetes
+  summary_uk: 'Цар Колхіди, син Геліоса, хранитель Золотого руна.'
+  domain: Колхіда
+  wikidata_id: Q241971
+  aliases:
+    - {alias: Еет, lang: uk}
+    - {alias: Aeetes, lang: en}
+    - {alias: Aeëtes, lang: en}
+    - {alias: Aeetis, lang: en}
+    - {alias: Æetis, lang: en}
+    - {alias: Æetes, lang: en}
+- id: pelias
+  type: mortal
+  name_uk: Пелій
+  name_en: Pelias
+  summary_uk: 'Цар Іолка, що відправив Ясона по Золоте руно.'
+  domain: Іолк
+  wikidata_id: Q182439
+  aliases:
+    - {alias: Пелій, lang: uk}
+    - {alias: Pelias, lang: en}
+- id: ariadne
+  type: mortal
+  name_uk: Аріадна
+  name_en: Ariadne
+  summary_uk: 'Критська царівна, що дала Тесеєві нитку для виходу з Лабіринту; згодом дружина Діоніса.'
+  domain: Лабіринт
+  symbols: [клубок ниток]
+  wikidata_id: Q184874
+  aliases:
+    - {alias: Аріадна, lang: uk}
+    - {alias: Нитка Аріадни, lang: uk}
+    - {alias: Аріаднина Нитка, lang: uk}
+    - {alias: Ariadne, lang: en}
+    - {alias: Ariane, lang: en}
+- id: minos
+  type: mortal
+  name_uk: Мінос
+  name_en: Minos
+  summary_uk: 'Цар Криту, син Зевса і Європи, після смерті — суддя в Аїді.'
+  domain: 'Крит, правосуддя'
+  wikidata_id: Q23168
+  aliases:
+    - {alias: Мінос, lang: uk}
+    - {alias: Minos, lang: en}
+    - {alias: Minos II, lang: en}
+- id: pasiphae
+  type: mortal
+  name_uk: Пасіфая
+  name_en: Pasiphae
+  name_lat: Pasiphaë
+  summary_uk: 'Дружина Міноса, донька Геліоса, мати Аріадни, Федри і Мінотавра.'
+  domain: Крит
+  wikidata_id: Q203236
+  aliases:
+    - {alias: Пасіфая, lang: uk}
+    - {alias: Pasiphae, lang: en}
+    - {alias: Pasiphaë, lang: en}
+    - {alias: Pasiphaë, lang: la}
+- id: europa
+  type: mortal
+  name_uk: Європа
+  name_en: Europa
+  summary_uk: 'Фінікійська царівна, яку Зевс у подобі бика переніс на Крит.'
+  domain: Крит
+  symbols: [бик]
+  wikidata_id: Q165170
+  aliases:
+    - {alias: Європа, lang: uk}
+    - {alias: Европа, lang: uk}
+    - {alias: Europa, lang: en}
+    - {alias: Europe, lang: en}
+    - {alias: Evropa, lang: en}
+- id: daedalus
+  type: mortal
+  name_uk: Дедал
+  name_en: Daedalus
+  summary_uk: 'Геніальний афінський майстер, творець Лабіринту і крил для втечі з Криту.'
+  domain: 'Ремесло, винаходи'
+  wikidata_id: Q134756
+  aliases:
+    - {alias: Дедал, lang: uk}
+    - {alias: Daedalus, lang: en}
+- id: icarus
+  type: mortal
+  name_uk: Ікар
+  name_en: Icarus
+  summary_uk: 'Син Дедала, що злетів надто близько до сонця на воскових крилах і загинув.'
+  domain: Зухвалість
+  wikidata_id: Q34041
+  aliases:
+    - {alias: Ікар, lang: uk}
+    - {alias: Icarus, lang: en}
+    - {alias: Ikarus, lang: en}
+    - {alias: Icaros, lang: en}
+    - {alias: Ikaros, lang: en}
+- id: aegeus
+  type: mortal
+  name_uk: Егей
+  name_en: Aegeus
+  summary_uk: 'Цар Афін, батько Тесея, що кинувся в море, побачивши чорне вітрило.'
+  domain: Афіни
+  wikidata_id: Q191725
+  aliases:
+    - {alias: Егей, lang: uk}
+    - {alias: Aegeus, lang: en}
+    - {alias: Ægeus, lang: en}
+- id: phaedra
+  type: mortal
+  name_uk: Федра
+  name_en: Phaedra
+  summary_uk: 'Донька Міноса, дружина Тесея, що закохалася в пасинка Іпполіта.'
+  domain: Афіни
+  wikidata_id: Q212818
+  aliases:
+    - {alias: Федра, lang: uk}
+    - {alias: Phaedra, lang: en}
+- id: hippolyta
+  type: mortal
+  name_uk: Іпполіта
+  name_en: Hippolyta
+  summary_uk: 'Цариця амазонок, чий пояс здобув Геракл у дев''ятому подвигу.'
+  domain: Амазонки
+  symbols: [пояс]
+  wikidata_id: Q210303
+  aliases:
+    - {alias: Іпполіта, lang: uk}
+    - {alias: Гіпполіта, lang: uk}
+    - {alias: Hippolyta, lang: en}
+    - {alias: Hippolytë, lang: en}
+- id: danae
+  type: mortal
+  name_uk: Даная
+  name_en: Danae
+  name_lat: Danaë
+  summary_uk: 'Аргоська царівна, до якої Зевс проник золотим дощем; мати Персея.'
+  domain: Аргос
+  wikidata_id: Q190582
+  aliases:
+    - {alias: Даная, lang: uk}
+    - {alias: Danae, lang: en}
+    - {alias: Danaë, lang: en}
+    - {alias: Danaë, lang: la}
+- id: acrisius
+  type: mortal
+  name_uk: Акрісій
+  name_en: Acrisius
+  summary_uk: 'Цар Аргоса, батько Данаї, якого, за пророцтвом, ненавмисно вбив онук Персей.'
+  domain: Аргос
+  wikidata_id: Q208017
+  aliases:
+    - {alias: Акрісій, lang: uk}
+    - {alias: Acrisius, lang: en}
+    - {alias: Akrisios, lang: en}
+- id: andromeda
+  type: mortal
+  name_uk: Андромеда
+  name_en: Andromeda
+  summary_uk: 'Ефіопська царівна, прикута до скелі як жертва морській потворі й урятована Персеєм.'
+  domain: Ефіопія
+  wikidata_id: Q161582
+  aliases:
+    - {alias: Андромеда, lang: uk}
+    - {alias: Andromeda, lang: en}
+- id: cassiopeia
+  type: mortal
+  name_uk: Кассіопея
+  name_en: Cassiopeia
+  summary_uk: 'Мати Андромеди, чия похвальба красою розгнівала нереїд і Посейдона.'
+  domain: Ефіопія
+  wikidata_id: Q207681
+  aliases:
+    - {alias: Кассіопея, lang: uk}
+    - {alias: Cassiopeia, lang: en}
+    - {alias: Cassiope, lang: en}
+    - {alias: Cassiepeia, lang: en}
+    - {alias: Cassiopea, lang: en}
+    - {alias: Cassiepea, lang: en}
+- id: alcmene
+  type: mortal
+  name_uk: Алкмена
+  name_en: Alcmene
+  summary_uk: 'Дружина Амфітріона, мати Геракла від Зевса.'
+  domain: 'Тиринф, Фіви'
+  wikidata_id: Q190543
+  aliases:
+    - {alias: Алкмена, lang: uk}
+    - {alias: Alcmene, lang: en}
+    - {alias: Alkmene, lang: en}
+    - {alias: Alcmena, lang: en}
+- id: amphitryon
+  type: mortal
+  name_uk: Амфітріон
+  name_en: Amphitryon
+  name_lat: Amphitruo
+  summary_uk: 'Тиринфський вигнанець у Фівах, чоловік Алкмени і земний батько Геракла.'
+  domain: Фіви
+  wikidata_id: Q206214
+  aliases:
+    - {alias: Амфітріон, lang: uk}
+    - {alias: Amphitryon, lang: en}
+    - {alias: Amphitruo, lang: la}
+- id: eurystheus
+  type: mortal
+  name_uk: Еврістей
+  name_en: Eurystheus
+  name_lat: Eurystheus (mythologia)
+  summary_uk: 'Цар Тиринфа і Мікен, за чиїм наказом Геракл виконував подвиги.'
+  domain: Мікени
+  wikidata_id: Q212087
+  aliases:
+    - {alias: Еврістей, lang: uk}
+    - {alias: Еврісфей, lang: uk}
+    - {alias: Eurystheus, lang: en}
+    - {alias: Eurystheus (mythologia), lang: la}
+- id: semele
+  type: mortal
+  name_uk: Семела
+  name_en: Semele
+  summary_uk: 'Донька Кадма, мати Діоніса від Зевса; згоріла, побачивши Зевса в його справжній подобі.'
+  domain: Фіви
+  wikidata_id: Q776139
+  aliases:
+    - {alias: Семела, lang: uk}
+    - {alias: Semele, lang: en}
+- id: jocasta
+  type: mortal
+  name_uk: Йокаста
+  name_en: Jocasta
+  name_lat: Iocasta
+  summary_uk: 'Фіванська цариця, дружина Лаія, яка, не знаючи того, вийшла заміж за власного сина Едіпа.'
+  domain: Фіви
+  wikidata_id: Q131445
+  aliases:
+    - {alias: Йокаста, lang: uk}
+    - {alias: Епікаста, lang: uk}
+    - {alias: Іокаста, lang: uk}
+    - {alias: Jocasta, lang: en}
+    - {alias: Epicaste, lang: en}
+    - {alias: Iokasta, lang: en}
+    - {alias: Iokaste, lang: en}
+    - {alias: Jocaste, lang: en}
+    - {alias: Iocaste, lang: en}
+    - {alias: Iocasta, lang: la}
+- id: laius
+  type: mortal
+  name_uk: Лай
+  name_en: Laius
+  summary_uk: 'Цар Фів, батько Едіпа, вбитий сином на роздоріжжі.'
+  domain: Фіви
+  wikidata_id: Q463898
+  aliases:
+    - {alias: Лай, lang: uk}
+    - {alias: Laius, lang: en}
+- id: antigone
+  type: mortal
+  name_uk: Антігона
+  name_en: Antigone
+  summary_uk: 'Донька Едіпа, що всупереч наказу поховала брата Полініка.'
+  domain: Фіви
+  wikidata_id: Q131351
+  aliases:
+    - {alias: Антігона, lang: uk}
+    - {alias: Antigone, lang: en}
+- id: tiresias
+  type: mortal
+  name_uk: Тіресій
+  name_en: Tiresias
+  summary_uk: 'Сліпий фіванський віщун, якого Одіссей розпитував в Аїді.'
+  domain: Пророцтво
+  wikidata_id: Q656881
+  aliases:
+    - {alias: Тіресій, lang: uk}
+    - {alias: Тиресій, lang: uk}
+    - {alias: Tiresias, lang: en}
+    - {alias: Teiresias, lang: en}
+- id: pandora
+  type: mortal
+  name_uk: Пандора
+  name_en: Pandora
+  summary_uk: 'Перша жінка, створена богами на кару людям; відкрила посудину з бідами.'
+  domain: Кара за вогонь Прометея
+  wikidata_id: Q131346
+  aliases:
+    - {alias: Пандора, lang: uk}
+    - {alias: Pandora, lang: en}
+    - {alias: Anesidora, lang: en}
+- id: deucalion
+  type: mortal
+  name_uk: Девкаліон
+  name_en: Deucalion
+  summary_uk: 'Син Прометея, що разом з Піррою пережив потоп і відродив людство.'
+  domain: Потоп
+  wikidata_id: Q207715
+  aliases:
+    - {alias: Девкаліон, lang: uk}
+    - {alias: Deucalion, lang: en}
+- id: pyrrha
+  type: mortal
+  name_uk: Пірра
+  name_en: Pyrrha
+  summary_uk: 'Донька Епіметея і Пандори, дружина Девкаліона, що пережила потоп.'
+  domain: Потоп
+  wikidata_id: Q622809
+  aliases:
+    - {alias: Пірра, lang: uk}
+    - {alias: Pyrrha, lang: en}
+- id: sisyphus
+  type: mortal
+  name_uk: Сізіф
+  name_en: Sisyphus
+  summary_uk: 'Підступний цар Коринфа, приречений в Аїді вічно котити камінь на гору.'
+  domain: Кара в Аїді
+  wikidata_id: Q102561
+  aliases:
+    - {alias: Сізіф, lang: uk}
+    - {alias: Сізіфів труд, lang: uk}
+    - {alias: Сісіф, lang: uk}
+    - {alias: Сізіфова праця, lang: uk}
+    - {alias: Sisyphus, lang: en}
+    - {alias: Sisyphos, lang: en}
+- id: tantalus
+  type: mortal
+  name_uk: Тантал
+  name_en: Tantalus
+  summary_uk: 'Цар, що випробовував богів і навіки страждає від голоду й спраги в Аїді.'
+  domain: Кара в Аїді
+  wikidata_id: Q182101
+  aliases:
+    - {alias: Тантал, lang: uk}
+    - {alias: Танталові муки, lang: uk}
+    - {alias: Tantalus, lang: en}
+- id: midas
+  type: mortal
+  name_uk: Мідас
+  name_en: Midas
+  summary_uk: 'Фригійський цар, усе, чого він торкався, ставало золотом.'
+  domain: Фригія
+  wikidata_id: Q308398
+  aliases:
+    - {alias: Мідас, lang: uk}
+    - {alias: Midas, lang: en}
+    - {alias: Mita, lang: en}
+    - {alias: Midacritus, lang: en}
+- id: narcissus
+  type: mortal
+  name_uk: Нарцис
+  name_en: Narcissus
+  summary_uk: 'Вродливий юнак, що закохався у власне відображення і перетворився на квітку.'
+  domain: Самозакоханість
+  wikidata_id: Q179256
+  aliases:
+    - {alias: Нарцис, lang: uk}
+    - {alias: Наркіс, lang: uk}
+    - {alias: Narcissus, lang: en}
+- id: adonis
+  type: mortal
+  name_uk: Адоніс
+  name_en: Adonis
+  summary_uk: 'Юнак неймовірної вроди, коханий Афродіти, загиблий від ікла вепра.'
+  domain: 'Краса, щорічне відродження'
+  wikidata_id: Q163920
+  aliases:
+    - {alias: Адоніс, lang: uk}
+    - {alias: Adonis, lang: en}
+- id: ganymede
+  type: mortal
+  name_uk: Ганімед
+  name_en: Ganymede
+  name_lat: Ganymedes
+  summary_uk: 'Троянський юнак, якого Зевс забрав на Олімп за виночерпія.'
+  domain: Виночерпій богів
+  wikidata_id: Q131588
+  aliases:
+    - {alias: Ганімед, lang: uk}
+    - {alias: Ganymede, lang: en}
+    - {alias: Ganymedes, lang: en}
+    - {alias: Ganymedes, lang: la}
+
+# --- Артефакти
+- id: golden_fleece
+  type: artifact
+  name_uk: Золоте руно
+  name_en: Golden Fleece
+  name_lat: Vellus aureum
+  summary_uk: 'Шкура золотого барана, що зберігалася в Колхіді під охороною дракона; мета походу аргонавтів.'
+  domain: Похід аргонавтів
+  wikidata_id: Q212262
+  aliases:
+    - {alias: Золоте руно, lang: uk}
+    - {alias: Golden Fleece, lang: en}
+    - {alias: Vellus aureum, lang: la}
+- id: aegis
+  type: artifact
+  name_uk: Егіда
+  name_en: Aegis
+  name_lat: aegis
+  summary_uk: 'Чарівний щит або накидка Зевса й Афіни, що наводить жах на ворогів; на ній — голова Горгони.'
+  domain: 'Захист, жах'
+  wikidata_id: Q190662
+  aliases:
+    - {alias: Егіда, lang: uk}
+    - {alias: Aegis, lang: en}
+    - {alias: aegis, lang: la}
+- id: argo
+  type: artifact
+  name_uk: Арго
+  name_en: Argo
+  summary_uk: 'Корабель аргонавтів, збудований Аргом за порадою Афіни.'
+  domain: Похід аргонавтів
+  wikidata_id: Q317932
+  aliases:
+    - {alias: Арго, lang: uk}
+    - {alias: Argo, lang: en}
+- id: trojan_horse
+  type: artifact
+  name_uk: Троянський кінь
+  name_en: Trojan Horse
+  name_lat: Equus Troianus
+  summary_uk: 'Порожнистий дерев''яний кінь, у якому ахейські воїни на чолі з Одіссеєм проникли до Трої.'
+  domain: Падіння Трої
+  wikidata_id: Q50193
+  aliases:
+    - {alias: Троянський кінь, lang: uk}
+    - {alias: Trojan Horse, lang: en}
+    - {alias: The Trojan Horse, lang: en}
+    - {alias: Equus Troianus, lang: la}
+- id: pandoras_box
+  type: artifact
+  name_uk: Скринька Пандори
+  name_en: Pandora's box
+  summary_uk: 'Посудина (у Гесіода — піфос), з якої Пандора випустила у світ усі біди; на дні лишилася Надія.'
+  domain: Біди людства
+  wikidata_id: Q937164
+  aliases:
+    - {alias: Скринька Пандори, lang: uk}
+    - {alias: Pandora's box, lang: en}

@@ -1,11 +1,21 @@
-import streamlit as st
+import sys
+from pathlib import Path
 
-from app.pages.encyclopedia import render_encyclopedia_tab
-from app.pages.map import render_map_tab
-from app.pages.oracle import render_oracle_tab
-from delphi.db.repo import init_db
-from delphi.encyclopedia.service import EncyclopediaService, MapService
-from delphi.rag.oracle import OracleService
+# `streamlit run app/main.py` only puts `app/` on sys.path; add the repo root
+# so that `app.*` imports resolve (the `delphi` package is installed via uv).
+_REPO_ROOT = Path(__file__).resolve().parent.parent
+if str(_REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(_REPO_ROOT))
+
+import streamlit as st  # noqa: E402
+
+from app.components.navigation import TABS, go_to_tab, open_entity  # noqa: E402
+from app.views.encyclopedia import render_encyclopedia_tab  # noqa: E402
+from app.views.map import render_map_tab  # noqa: E402
+from app.views.oracle import render_oracle_tab  # noqa: E402
+from delphi.db.repo import init_db  # noqa: E402
+from delphi.encyclopedia.service import EncyclopediaService, MapService  # noqa: E402
+from delphi.rag.oracle import OracleService  # noqa: E402
 
 # Streamlit page setup
 st.set_page_config(
@@ -29,10 +39,10 @@ def get_services():
 def main():
     encyclopedia_svc, map_svc, oracle_svc = get_services()
 
-    # Handle URL query params (?entity=...)
-    query_params = st.query_params
-    if "entity" in query_params and "selected_entity" not in st.session_state:
-        st.session_state["selected_entity"] = query_params["entity"]
+    # Shareable links: ?entity=delphi opens that card on first load
+    if "entity" in st.query_params and "url_entity_handled" not in st.session_state:
+        st.session_state["url_entity_handled"] = True
+        open_entity(st.query_params["entity"])
 
     # Sidebar
     with st.sidebar:
@@ -47,22 +57,21 @@ def main():
         )
         st.divider()
 
-        # Active tab selection
-        tab_options = ["Оракул", "Енциклопедія", "Карта"]
-        default_index = 0
-        if "active_tab" in st.session_state and st.session_state["active_tab"] in tab_options:
-            default_index = tab_options.index(st.session_state["active_tab"])
-
+        # Active tab: `active_tab` is the source of truth. Buttons elsewhere set it and
+        # rerun; the radio's own clicks update it through the callback. Syncing the widget
+        # key before the radio is created lets code switch tabs programmatically.
+        if st.session_state.get("active_tab") not in TABS:
+            st.session_state["active_tab"] = TABS[0]
+        st.session_state["navigation_radio"] = st.session_state["active_tab"]
         chosen_tab = st.radio(
             "Розділи:",
-            tab_options,
-            index=default_index,
+            TABS,
             key="navigation_radio",
+            on_change=lambda: go_to_tab(st.session_state["navigation_radio"]),
         )
-        st.session_state["active_tab"] = chosen_tab
 
         st.divider()
-        st.caption("Версія: 0.1.0 (MVP Stage 0: Skeleton)")
+        st.caption("Версія: 0.1.0 (MVP Stage 1: енциклопедія)")
 
     # Render selected tab
     if chosen_tab == "Оракул":
