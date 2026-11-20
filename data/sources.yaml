@@ -73,10 +73,11 @@ sources:
     translation_license: Public Domain
     encoding_license: CC BY-SA 4.0 (Perseus Digital Library)
     url: "https://www.perseus.tufts.edu/hopper/text?doc=Perseus:text:1999.01.0134"
+    download_url: "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0012/tlg001/tlg0012.tlg001.perseus-eng3.xml"
     format: tei_xml
     stage: 4
-    enabled: false
-    notes: "Троянська війна"
+    enabled: true
+    notes: "Троянська війна. Посилання: книга.рядок початку «картки» (Hom. Il. 1.33)"
 
   - id: homer_odyssey
     author: Homer
@@ -89,9 +90,10 @@ sources:
     translation_license: Public Domain
     encoding_license: CC BY-SA 4.0 (Perseus Digital Library)
     url: "https://www.perseus.tufts.edu/hopper/text?doc=Perseus:text:1999.01.0136"
+    download_url: "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0012/tlg002/tlg0012.tlg002.perseus-eng3.xml"
     format: tei_xml
     stage: 4
-    enabled: false
+    enabled: true
     notes: "Мандри Одіссея"
 
   - id: homeric_hymns
@@ -107,8 +109,141 @@ sources:
     url: "https://www.perseus.tufts.edu/hopper/text?doc=Perseus:text:1999.01.0138"
     format: tei_xml
     stage: 4
-    enabled: false
-    notes: "Гімни богам (Деметра, Аполлон, Гермес)"
+    enabled: true
+    notes: "Гімни богам (Деметра, Аполлон, Гермес); кожен гімн — окремий файл Perseus"
+    parts:
+      - id: "1"
+        title: "Hymn 1 to Dionysus"
+        ref_prefix: "Hom. Hymn 1 Dion."
+        download_url: "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0013/tlg001/tlg0013.tlg001.perseus-eng2.xml"
+      - id: "2"
+        title: "Hymn 2 to Demeter"
+        ref_prefix: "Hom. Hymn 2 Dem."
+        download_url: "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0013/tlg002/tlg0013.tlg002.perseus-eng2.xml"
+      - id: "3"
+        title: "Hymn 3 to Delian and Pythian Apollo"
+        ref_prefix: "Hom. Hymn 3 Ap."
+        download_url: "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0013/tlg003/tlg0013.tlg003.perseus-eng2.xml"
+      - id: "4"
+        title: "Hymn 4 to Hermes"
+        ref_prefix: "Hom. Hymn 4 Herm."
+        download_url: "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0013/tlg004/tlg0013.tlg004.perseus-eng2.xml"
+      - id: "5"
+        title: "Hymn 5 to Aphrodite"
+        ref_prefix: "Hom. Hymn 5 Aphr."
+        download_url: "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0013/tlg005/tlg0013.tlg005.perseus-eng2.xml"
+      - id: "6"
+        title: "Hymn 6 to Aphrodite"
+        ref_prefix: "Hom. Hymn 6 Aphr."
+        download_url: "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0013/tlg006/tlg0013.tlg006.perseus-eng2.xml"
+      - id: "7"
+        title: "Hymn 7 to Dionysus"
+        ref_prefix: "Hom. Hymn 7 Dion."
+        download_url: "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0013/tlg007/tlg0013.tlg007.perseus-eng2.xml"
+      - id: "8"
+        title: "Hymn 8 to Ares"
+        ref_prefix: "Hom. Hymn 8 Ares"
+        download_url: "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0013/tlg008/tlg0013.tlg008.perseus-eng2.xml"
+      - id: "9"
+        title: "Hymn 9 to Artemis"
+        ref_prefix: "Hom. Hymn 9 Art."
+        download_url: "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0013/tlg009/tlg0013.tlg009.perseus-eng2.xml"
+      - id: "10"
+        title: "Hymn 10 to Aphrodite"
+        ref_prefix: "Hom. Hymn 10 Aphr."
+        download_url: "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0013/tlg010/tlg0013.tlg010.perseus-eng2.xml"
+      - id: "11"
+        title: "Hymn 11 to Athena"
+        ref_prefix: "Hom. Hymn 11 Ath."
+        download_url: "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0013/tlg011/tlg0013.tlg011.perseus-eng2.xml"
+      - id: "12"
+        title: "Hymn 12 to Hera"
+        ref_prefix: "Hom. Hymn 12 Hera"
+        download_url: "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0013/tlg012/tlg0013.tlg012.perseus-eng2.xml"
+      - id: "13"
+        title: "Hymn 13 to Demeter"
+        ref_prefix: "Hom. Hymn 13 Dem."
+        download_url: "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0013/tlg013/tlg0013.tlg013.perseus-eng2.xml"
+      - id: "14"
+        title: "Hymn 14 to the Mother of the Gods"
+        ref_prefix: "Hom. Hymn 14 Mother"
+        download_url: "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0013/tlg014/tlg0013.tlg014.perseus-eng2.xml"
+      - id: "15"
+        title: "Hymn 15 to Heracles"
+        ref_prefix: "Hom. Hymn 15 Heracl."
+        download_url: "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0013/tlg015/tlg0013.tlg015.perseus-eng2.xml"
+      - id: "16"
+        title: "Hymn 16 to Asclepius"
+        ref_prefix: "Hom. Hymn 16 Ascl."
+        download_url: "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0013/tlg016/tlg0013.tlg016.perseus-eng2.xml"
+      - id: "17"
+        title: "Hymn 17 to the Dioscuri"
+        ref_prefix: "Hom. Hymn 17 Dios."
+        download_url: "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0013/tlg017/tlg0013.tlg017.perseus-eng2.xml"
+      - id: "18"
+        title: "Hymn 18 to Hermes"
+        ref_prefix: "Hom. Hymn 18 Herm."
+        download_url: "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0013/tlg018/tlg0013.tlg018.perseus-eng2.xml"
+      - id: "19"
+        title: "Hymn 19 to Pan"
+        ref_prefix: "Hom. Hymn 19 Pan"
+        download_url: "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0013/tlg019/tlg0013.tlg019.perseus-eng2.xml"
+      - id: "20"
+        title: "Hymn 20 to Hephaestus"
+        ref_prefix: "Hom. Hymn 20 Heph."
+        download_url: "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0013/tlg020/tlg0013.tlg020.perseus-eng2.xml"
+      - id: "21"
+        title: "Hymn 21 to Apollo"
+        ref_prefix: "Hom. Hymn 21 Ap."
+        download_url: "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0013/tlg021/tlg0013.tlg021.perseus-eng2.xml"
+      - id: "22"
+        title: "Hymn 22 to Poseidon"
+        ref_prefix: "Hom. Hymn 22 Pos."
+        download_url: "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0013/tlg022/tlg0013.tlg022.perseus-eng2.xml"
+      - id: "23"
+        title: "Hymn 23 to Zeus"
+        ref_prefix: "Hom. Hymn 23 Zeus"
+        download_url: "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0013/tlg023/tlg0013.tlg023.perseus-eng2.xml"
+      - id: "24"
+        title: "Hymn 24 to Hestia"
+        ref_prefix: "Hom. Hymn 24 Hest."
+        download_url: "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0013/tlg024/tlg0013.tlg024.perseus-eng2.xml"
+      - id: "25"
+        title: "Hymn 25 to the Muses and Apollo"
+        ref_prefix: "Hom. Hymn 25 Mus."
+        download_url: "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0013/tlg025/tlg0013.tlg025.perseus-eng2.xml"
+      - id: "26"
+        title: "Hymn 26 to Dionysus"
+        ref_prefix: "Hom. Hymn 26 Dion."
+        download_url: "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0013/tlg026/tlg0013.tlg026.perseus-eng2.xml"
+      - id: "27"
+        title: "Hymn 27 to Artemis"
+        ref_prefix: "Hom. Hymn 27 Art."
+        download_url: "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0013/tlg027/tlg0013.tlg027.perseus-eng2.xml"
+      - id: "28"
+        title: "Hymn 28 to Athena"
+        ref_prefix: "Hom. Hymn 28 Ath."
+        download_url: "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0013/tlg028/tlg0013.tlg028.perseus-eng2.xml"
+      - id: "29"
+        title: "Hymn 29 to Hestia"
+        ref_prefix: "Hom. Hymn 29 Hest."
+        download_url: "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0013/tlg029/tlg0013.tlg029.perseus-eng2.xml"
+      - id: "30"
+        title: "Hymn 30 to Earth"
+        ref_prefix: "Hom. Hymn 30 Earth"
+        download_url: "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0013/tlg030/tlg0013.tlg030.perseus-eng2.xml"
+      - id: "31"
+        title: "Hymn 31 to Helios"
+        ref_prefix: "Hom. Hymn 31 Hel."
+        download_url: "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0013/tlg031/tlg0013.tlg031.perseus-eng2.xml"
+      - id: "32"
+        title: "Hymn 32 to Selene"
+        ref_prefix: "Hom. Hymn 32 Sel."
+        download_url: "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0013/tlg032/tlg0013.tlg032.perseus-eng2.xml"
+      - id: "33"
+        title: "Hymn 33 to the Dioscuri"
+        ref_prefix: "Hom. Hymn 33 Dios."
+        download_url: "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0013/tlg033/tlg0013.tlg033.perseus-eng2.xml"
 
   - id: apollonius_argonautica
     author: Apollonius Rhodius
@@ -121,10 +256,12 @@ sources:
     translation_license: Public Domain
     encoding_license: Public Domain (Project Gutenberg plain text)
     url: "https://www.gutenberg.org/ebooks/830"
+    # PG mirror (gutenberg.org itself often blocks scripted downloads)
+    download_url: "https://aleph.pglaf.org/8/3/830/830-0.txt"
     format: gutenberg_text
     stage: 4
-    enabled: false
-    notes: "Похід аргонавтів, маршрут для карти; англійського TEI у Perseus немає"
+    enabled: true
+    notes: "Похід аргонавтів; англійського TEI у Perseus немає. Рядків у тексті Gutenberg немає, тому посилання — книга§абзац (Ap. Rhod. 1§12)"
 
   - id: pausanias_description_of_greece
     author: Pausanias
@@ -137,7 +274,8 @@ sources:
     translation_license: Public Domain
     encoding_license: CC BY-SA 4.0 (Perseus Digital Library)
     url: "https://www.perseus.tufts.edu/hopper/text?doc=Perseus:text:1999.01.0160"
+    download_url: "https://raw.githubusercontent.com/PerseusDL/canonical-greekLit/master/data/tlg0525/tlg001/tlg0525.tlg001.perseus-eng2.xml"
     format: tei_xml
     stage: 4
-    enabled: false
+    enabled: true
     notes: "Географія, святилища і місцеві культи"

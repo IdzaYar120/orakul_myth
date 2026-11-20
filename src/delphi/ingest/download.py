@@ -19,10 +19,13 @@ def raw_dir() -> Path:
 
 
 def download_source(
-    source: Source, force: bool = False, client: httpx.Client | None = None
+    source: Source,
+    force: bool = False,
+    client: httpx.Client | None = None,
+    filename: str | None = None,
 ) -> Path:
-    """Download one source unless it is already present; returns the local path."""
-    target = raw_dir() / source.raw_filename
+    """Download one source file unless it is already present; returns the local path."""
+    target = raw_dir() / (filename or source.raw_filename)
     if target.exists() and target.stat().st_size > 0 and not force:
         return target
     if not source.download_url:

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+  <teiHeader><fileDesc><titleStmt><title>Iliad</title><author>Homer</author></titleStmt></fileDesc></teiHeader>
+  <text><body>
+    <div type="translation">
+      <div type="textpart" subtype="book" n="1">
+        <div type="textpart" subtype="card" n="1">
+          <p><milestone n="1" unit="line"/>The wrath sing, goddess, of Peleus' son, Achilles,<milestone n="5" unit="line"/>from the time when<note resp="Loeb" anchored="true">Or "since".</note> first they parted in strife.
+<quote>Sons of Atreus, <milestone n="20" unit="line"/>out of reverence for Apollo.</quote></p>
+        </div>
+        <div type="textpart" subtype="card" n="33">
+          <p>So he spoke, and the old man was seized with fear.<milestone n="35" unit="line"/>He prayed to the lord Apollo.</p>
+        </div>
+      </div>
+      <div type="textpart" subtype="book" n="2">
+        <div type="textpart" subtype="card" n="1">
+          <p><milestone n="1" unit="line"/>Now all other gods and men slept the whole night through.</p>
+        </div>
+      </div>
+    </div>
+  </body></text>
+</TEI>

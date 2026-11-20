@@ -3,9 +3,18 @@
 from pathlib import Path
 
 import yaml
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 from delphi.config import settings
+
+
+class SourcePart(BaseModel):
+    """One file of a multi-file work (e.g. a single Homeric Hymn)."""
+
+    id: str
+    title: str
+    download_url: str
+    ref_prefix: str
 
 
 class Source(BaseModel):
@@ -25,11 +34,30 @@ class Source(BaseModel):
     stage: int = 3
     enabled: bool = False
     notes: str | None = None
+    parts: list[SourcePart] = Field(default_factory=list)
 
     @property
     def raw_filename(self) -> str:
         ext = ".xml" if self.format == "tei_xml" else ".txt"
         return f"{self.id}{ext}"
+
+    def as_part(self, part: SourcePart) -> "Source":
+        """The same source (same id) restricted to one file, with that file's prefix and title."""
+        return self.model_copy(
+            update={
+                "title": part.title,
+                "ref_prefix": part.ref_prefix,
+                "download_url": part.download_url,
+                "parts": [],
+            }
+        )
+
+    def files(self) -> list[tuple["Source", str]]:
+        """(source view, local raw filename) for every file of this source."""
+        if not self.parts:
+            return [(self, self.raw_filename)]
+        ext = ".xml" if self.format == "tei_xml" else ".txt"
+        return [(self.as_part(p), f"{self.id}__{p.id}{ext}") for p in self.parts]
 
     def format_ref(self, start: str, end: str | None = None) -> str:
         """'Apollod. 1.1.1', 'Apollod. 1.1.1–1.1.3', 'Hes. Theog. 1–21'."""

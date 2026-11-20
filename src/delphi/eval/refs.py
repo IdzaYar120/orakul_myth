@@ -15,9 +15,10 @@ from sqlmodel import Session, select
 from delphi.config import settings
 from delphi.db.models import Passage, PassageEntity
 
-# Perseus line numbers may carry a letter for interpolated lines: "929j"
+# Perseus line numbers may carry a letter for interpolated lines: "929j";
+# Apollonius (Gutenberg) uses book§paragraph: "1§12"
 _RANGE = re.compile(
-    r"^(?P<prefix>.+?) (?P<start>[\d.]+[a-z]?)(?:–(?P<end>[\d.]+[a-z]?))?(?: \(\d+/\d+\))?$"
+    r"^(?P<prefix>.+?) (?P<start>[\d.§]+[a-z]?)(?:–(?P<end>[\d.§]+[a-z]?))?(?: \(\d+/\d+\))?$"
 )
 LINE_BLOCK_SPAN = 5  # a Perseus line block covers ~5 verse lines after its start
 
@@ -33,7 +34,7 @@ class RefCheck:
 
 
 def _key(ref: str) -> tuple[int, ...]:
-    return tuple(int(re.sub(r"[a-z]$", "", p)) for p in ref.split(".") if p[:1].isdigit())
+    return tuple(int(re.sub(r"[a-z]$", "", p)) for p in re.split(r"[.§]", ref) if p[:1].isdigit())
 
 
 def _parse(ref: str) -> tuple[str, tuple[int, ...], tuple[int, ...]] | None:
@@ -45,14 +46,22 @@ def _parse(ref: str) -> tuple[str, tuple[int, ...], tuple[int, ...]] | None:
     return m["prefix"], start, end
 
 
+def ref_contains(passage_ref: str, target: str) -> bool:
+    """Does the passage "Hes. Theog. 116–138" cover the point reference "Hes. Theog. 120"?"""
+    return _contains(passage_ref, target)
+
+
 def _contains(passage_ref: str, target: str) -> bool:
     p, t = _parse(passage_ref), _parse(target)
     if not p or not t or p[0] != t[0]:
         return False
     _, start, end = p
     point = t[1]
-    if len(point) == 1 and len(start) == 1:  # line numbers
+    if len(point) == 1 and len(start) == 1:  # line numbers (Hesiod, hymns)
         return start[0] <= point[0] <= end[0] + LINE_BLOCK_SPAN - 1
+    if len(point) == 2 and len(start) == 2 and len(end) == 2:  # book.line (Homer)
+        last = (end[0], end[1] + LINE_BLOCK_SPAN - 1)
+        return start <= point <= last
     return start <= point <= end
 
 

@@ -119,23 +119,32 @@ def _chunk_prose(
     return chunks
 
 
+def _book(ref: str) -> str:
+    """'13.328' -> '13' (Homer); '453' -> '' (Hesiod: a single run of lines)."""
+    return ref.rpartition(".")[0]
+
+
 def _chunk_lines(
     source: Source, blocks: list[ParsedSection], target_tokens: int, overlap: int
 ) -> list[Chunk]:
+    """Group consecutive line blocks; a chunk never crosses a book boundary."""
     chunks: list[Chunk] = []
     i = 0
     while i < len(blocks):
         group: list[ParsedSection] = []
         j = i
-        while j < len(blocks) and (
-            not group or count_tokens(" ".join(b.text for b in group)) < target_tokens
+        while (
+            j < len(blocks)
+            and (not group or count_tokens(" ".join(b.text for b in group)) < target_tokens)
+            and (not group or _book(blocks[j].ref) == _book(group[0].ref))
         ):
             group.append(blocks[j])
             j += 1
         chunks.append(_make_chunk(source, group))
         if j >= len(blocks):
             break
-        i = max(j - overlap, i + 1)
+        new_book = _book(blocks[j].ref) != _book(group[0].ref)
+        i = j if new_book else max(j - overlap, i + 1)
     return chunks
 
 

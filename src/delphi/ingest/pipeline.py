@@ -11,6 +11,7 @@ from delphi.db.repo import engine, init_db
 from delphi.ingest.chunker import Chunk, chunk_sections
 from delphi.ingest.download import download_source
 from delphi.ingest.indexer import IndexStats, build_indexes
+from delphi.ingest.parsers.gutenberg import parse_gutenberg_text
 from delphi.ingest.parsers.tei import ParsedSection, parse_tei_xml
 from delphi.ingest.sources import Source, load_sources, select_sources
 from delphi.ingest.tagger import EntityTagger
@@ -29,6 +30,8 @@ class SourceReport:
 def parse_source(source: Source, path: Path) -> list[ParsedSection]:
     if source.format == "tei_xml":
         return parse_tei_xml(path, work=source.title, author=source.author)
+    if source.format == "gutenberg_text":
+        return parse_gutenberg_text(path, work=source.title, author=source.author)
     raise NotImplementedError(f"{source.id}: формат {source.format} ще не підтримується")
 
 
@@ -50,9 +53,13 @@ def run_ingest(
     reports: list[SourceReport] = []
     for source in sources:
         progress(f"{source.id}: завантаження")
-        path = download_source(source, force=force_download)
-        sections = parse_source(source, path)
-        chunks = chunk_sections(sections, source)
+        sections = []
+        chunks = []
+        for view, filename in source.files():  # several files for e.g. the Homeric Hymns
+            path = download_source(view, force=force_download, filename=filename)
+            part_sections = parse_source(view, path)
+            sections.extend(part_sections)
+            chunks.extend(chunk_sections(part_sections, view))
         all_chunks.extend(chunks)
         reports.append(
             SourceReport(
