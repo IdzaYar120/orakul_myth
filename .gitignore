@@ -35,7 +35,7 @@ data/raw/*
 !data/raw/.gitkeep
 index/*
 !index/.gitkeep
-eval/results.csv
+/eval/
 
 # Environment variables
 .env
