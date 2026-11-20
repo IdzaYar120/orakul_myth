@@ -16,6 +16,7 @@ os.environ["DB_PATH"] = str(_TMP / "delphi.db")
 os.environ["INDEX_DIR"] = str(_TMP / "index")
 os.environ["EMBEDDING_MODEL"] = "hashing"
 os.environ["RERANK_ENABLED"] = "false"
+os.environ["QUERY_TRANSLATION"] = "false"  # the fake LLMs answer the questions only
 os.environ["LLM_PROVIDER"] = "openai"
 os.environ["OPENAI_API_KEY"] = ""
 os.environ["ANTHROPIC_API_KEY"] = ""

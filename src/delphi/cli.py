@@ -83,11 +83,32 @@ def ask(
         console.print(f"[dim]Розпізнані сутності: {', '.join(ans.entities)}[/dim]")
 
 
-@app.command()
-def eval():
-    """Run evaluation benchmarks against the golden set."""
-    console.print("[bold blue]Запуск тестування на golden set...[/bold blue]")
-    run_evaluation()
+@app.command("eval")
+def eval_cmd(
+    llm: bool = typer.Option(False, "--llm", help="Також відповісти LLM: відмови, посилання"),
+    judge: bool = typer.Option(
+        False, "--judge", help="LLM-суддя: faithfulness і покриття фактів (вмикає --llm)"
+    ),
+    question_id: list[str] = typer.Option(None, "--id", help="Лише ці питання (q001 ...)"),
+    qtype: list[str] = typer.Option(
+        None, "--type", help="Лише цей тип: factual|multi_hop|conflicting|negative"
+    ),
+    limit: int = typer.Option(None, help="Перші N питань"),
+    out: Path = typer.Option(None, help="Куди записати JSON-звіт (типово eval/report-*.json)"),
+):
+    """Evaluate on the golden set: Hit@5, MRR, refusals, citations, faithfulness."""
+    try:
+        run_evaluation(
+            with_llm=llm,
+            with_judge=judge,
+            ids=question_id or None,
+            types=qtype or None,
+            limit=limit,
+            out=out,
+        )
+    except ValueError as exc:
+        console.print(f"[red]{exc}[/red]")
+        raise typer.Exit(1) from exc
 
 
 @app.command("check-refs")

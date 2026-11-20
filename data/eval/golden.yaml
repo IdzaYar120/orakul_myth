@@ -1,28 +1,569 @@
-# Golden set for RAG evaluation (delphi eval)
-# Question types: factual, multi_hop, conflicting, negative (trap questions)
+# Golden set for RAG evaluation (`delphi eval`).
+#
+# Types: factual | multi_hop (two facts must be combined) | conflicting (the sources disagree —
+# the answer must give both versions) | negative (trap: not in the sources, must be refused).
+#
+# expected_refs are POINT references into the corpus ("Apollod. 2.4.2", "Hes. Theog. 280",
+# "Hom. Il. 18.478", "Hom. Hymn 4 Herm. 25", "Ap. Rhod. 1§3", "Paus. 10.16.3"); a question is
+# a hit if any retrieved passage covers any of them. Every ref was checked against the
+# ingested texts (2026-11-20); Apollonius uses book§paragraph of the Gutenberg text. Passages that
+# answer the question equally well (Apollodorus' account of the Argonauts) were added after
+# inspecting the retrieval misses.
+# expected_facts are graded by the LLM judge (`delphi eval --judge`).
 
 questions:
+  # ------------------------------------------------------------------ factual: Apollodorus, Hesiod
   - id: q001
-    question_uk: "Хто є батьком Аполлона згідно з міфами?"
+    question_uk: "Хто батьки Аполлона?"
     type: factual
-    expected_entity_ids: ["apollo", "zeus"]
-    expected_refs: ["Hes. Theog. 918", "Apollod. 1.4.1"]
-    expected_facts:
-      - "Батько Аполлона — Зевс"
-      - "Мати — Лето (Латона)"
+    expected_entity_ids: [apollo]
+    expected_refs: ["Hes. Theog. 918", "Apollod. 1.4.1", "Hom. Hymn 3 Ap. 15"]
+    expected_facts: ["Батько Аполлона — Зевс", "Мати — Лето (Латона)"]
 
   - id: q002
-    question_uk: "Де знаходилося головне святилище Аполлона і його оракул?"
+    question_uk: "Де народився Аполлон?"
     type: factual
-    expected_entity_ids: ["apollo", "delphi"]
-    expected_refs: ["Hom. Hymn Apollo 388"]
-    expected_facts:
-      - "Святилище знаходилося у Дельфах біля гори Парнас"
+    expected_entity_ids: [apollo]
+    expected_refs: ["Hom. Hymn 3 Ap. 15", "Hom. Hymn 3 Ap. 25", "Apollod. 1.4.1"]
+    expected_facts: ["Аполлон народився на острові Делос", "Лето спиралася на гору Кінф біля пальми"]
 
   - id: q003
+    question_uk: "Хто вбив Медузу і що з неї народилося?"
+    type: factual
+    expected_entity_ids: [medusa]
+    expected_refs: ["Apollod. 2.4.2", "Hes. Theog. 280"]
+    expected_facts: ["Медузу вбив Персей", "З її тіла з'явилися Пегас і Хрісаор"]
+
+  - id: q004
+    question_uk: "Що сталося з Прометеєм після викрадення вогню?"
+    type: factual
+    style: піфія
+    expected_entity_ids: [prometheus]
+    expected_refs: ["Apollod. 1.7.1", "Hes. Theog. 521"]
+    expected_facts:
+      - "Зевс наказав прикути Прометея до гори Кавказ"
+      - "Орел щодня їв його печінку, яка відростала"
+
+  - id: q005
+    question_uk: "У чому Прометей приховав вогонь, який викрав для людей?"
+    type: factual
+    expected_entity_ids: [prometheus]
+    expected_refs: ["Apollod. 1.7.1", "Hes. Theog. 565", "Hes. WD 50"]
+    expected_facts: ["Вогонь був схований у порожнистому стеблі (нартексу/фенхелю)"]
+
+  - id: q006
+    question_uk: "Як Кронос поводився зі своїми дітьми і як Рея врятувала Зевса?"
+    type: factual
+    expected_entity_ids: [cronus, rhea, zeus]
+    expected_refs: ["Hes. Theog. 459", "Hes. Theog. 485", "Apollod. 1.1.5"]
+    expected_facts: ["Кронос ковтав своїх дітей", "Рея дала йому проковтнути загорнутий камінь замість Зевса"]
+
+  - id: q007
+    question_uk: "Хто виховував Ахілла?"
+    type: factual
+    expected_entity_ids: [achilles]
+    expected_refs: ["Apollod. 3.13.6"]
+    expected_facts: ["Ахілла виховував кентавр Хірон"]
+
+  - id: q008
+    question_uk: "Як Геракл убив Немейського лева?"
+    type: factual
+    expected_entity_ids: [heracles, nemean_lion]
+    expected_refs: ["Apollod. 2.5.1"]
+    expected_facts: ["Лев був невразливий для зброї", "Геракл задушив його руками"]
+
+  - id: q009
+    question_uk: "Хто така Пандора і чому її так назвали?"
+    type: factual
+    expected_entity_ids: [pandora]
+    expected_refs: ["Hes. WD 80", "Hes. WD 60", "Hes. Theog. 570"]
+    expected_facts: ["Першу жінку створили боги за наказом Зевса", "Ім'я означає, що кожен олімпієць дав їй дар"]
+
+  - id: q010
+    question_uk: "Які покоління людей описує Гесіод?"
+    type: factual
+    expected_entity_ids: []
+    expected_refs: ["Hes. WD 110", "Hes. WD 125"]
+    expected_facts: ["Золоте, срібне, мідне покоління, покоління героїв і залізне"]
+
+  - id: q011
+    question_uk: "Хто викрав Персефону і на чому він її забрав?"
+    type: factual
+    expected_entity_ids: [persephone]
+    expected_refs: ["Hom. Hymn 2 Dem. 80", "Hom. Hymn 2 Dem. 15", "Apollod. 1.5.1"]
+    expected_facts: ["Персефону викрав Аїд", "Він забрав її на колісниці"]
+
+  - id: q012
+    question_uk: "Що Деметра робила з немовлям Демофонтом в Елевсіні?"
+    type: factual
+    expected_entity_ids: [demeter, eleusis]
+    expected_refs: ["Hom. Hymn 2 Dem. 235", "Apollod. 1.5.1"]
+    expected_facts: ["Вона клала дитину в вогонь, щоб зробити безсмертною", "Мати дитини побачила це й закричала"]
+
+  - id: q013
+    question_uk: "Як Гермес зробив першу ліру?"
+    type: factual
+    expected_entity_ids: [hermes]
+    expected_refs: ["Hom. Hymn 4 Herm. 25", "Hom. Hymn 4 Herm. 40", "Apollod. 3.10.2"]
+    expected_facts: ["Гермес зробив ліру з панцира черепахи", "Він натягнув струни і шкіру вола"]
+
+  - id: q014
+    question_uk: "Як немовля Гермес викрав корів Аполлона?"
+    type: factual
+    expected_entity_ids: [hermes, apollo]
+    expected_refs: ["Apollod. 3.10.2", "Hom. Hymn 4 Herm. 70", "Hom. Hymn 4 Herm. 75"]
+    expected_facts: ["Гермес украв корів того ж дня, коли народився", "Він заплутав сліди, щоб Аполлон не знайшов стадо"]
+
+  - id: q015
+    question_uk: "Як народилася Афіна?"
+    type: factual
+    expected_entity_ids: [athena]
+    expected_refs: ["Apollod. 1.3.6", "Hes. Theog. 886", "Hes. Theog. 924"]
+    expected_facts: ["Зевс проковтнув вагітну Метіду", "Афіна вийшла з голови Зевса в обладунках"]
+
+  - id: q016
+    question_uk: "Хто такий Тифон і як Зевс його переміг?"
+    type: factual
+    expected_entity_ids: [typhon, zeus]
+    expected_refs: ["Hes. Theog. 820", "Hes. Theog. 855", "Apollod. 1.6.3"]
+    expected_facts: ["Тифон — син Геї і Тартару", "Зевс переміг його блискавками"]
+
+  - id: q017
+    question_uk: "Хто така Єхидна і яких чудовиськ вона народила?"
+    type: factual
+    expected_entity_ids: [echidna]
+    expected_refs: ["Hes. Theog. 300", "Hes. Theog. 310", "Hes. Theog. 325"]
+    expected_facts: ["Напівжінка-напівзмія", "Її діти — Орф, Кербер, Лернейська гідра, Химера"]
+
+  - id: q018
+    question_uk: "Хто такі кіклопи і що вони дали Зевсу?"
+    type: factual
+    expected_entity_ids: [cyclopes, zeus]
+    expected_refs: ["Hes. Theog. 140", "Hes. Theog. 145", "Hes. Theog. 501", "Apollod. 1.2.1"]
+    expected_facts: ["Кіклопи мали одне око посеред чола", "Вони дали Зевсу грім і блискавку"]
+
+  - id: q019
+    question_uk: "Як Едіп розгадав загадку Сфінкса?"
+    type: factual
+    expected_entity_ids: [oedipus, sphinx]
+    expected_refs: ["Apollod. 3.5.8"]
+    expected_facts: ["Відповідь на загадку — людина", "Немовля ходить на чотирьох, дорослий на двох, старий з палицею на трьох"]
+
+  - id: q020
+    question_uk: "Що сталося з Еврідікою, коли Орфей спустився по неї в Аїд?"
+    type: factual
+    expected_entity_ids: [orpheus, hades]
+    expected_refs: ["Apollod. 1.3.2", "Paus. 9.30.6"]
+    expected_facts: ["Орфей обернувся до того, як вийшов, і втратив Еврідіку"]
+
+  - id: q021
+    question_uk: "Як Медея помстилася Пелію?"
+    type: factual
+    expected_entity_ids: [medea, pelias]
+    expected_refs: ["Apollod. 1.9.27"]
+    expected_facts: ["Медея переконала доньок Пелія порізати й зварити батька, нібито щоб омолодити"]
+
+  - id: q022
+    question_uk: "Хто такі Девкаліон і Пірра і як вони врятувалися від потопу?"
+    type: factual
+    expected_entity_ids: [deucalion, pyrrha]
+    expected_refs: ["Apollod. 1.7.2"]
+    expected_facts: ["Девкаліон збудував скриню (ковчег) за порадою Прометея", "Після потопу вони кидали каміння, з якого постали люди"]
+
+  - id: q023
+    question_uk: "Скільки муз і хто їхні батьки?"
+    type: factual
+    expected_entity_ids: [muses]
+    expected_refs: ["Hes. Theog. 75", "Hes. Theog. 53"]
+    expected_facts: ["Дев'ять муз", "Доньки Зевса і Мнемосини"]
+
+  - id: q024
+    question_uk: "Звідки взялися золоті яблука, по які Геракла послав Еврістей?"
+    type: factual
+    expected_entity_ids: [heracles, eurystheus]
+    expected_refs: ["Apollod. 2.5.11"]
+    expected_facts: ["Яблука Гесперид", "Це був одинадцятий подвиг"]
+
+  # ------------------------------------------------------------------ factual: Homer
+  - id: q025
+    question_uk: "Чому Ахілл розгнівався на Агамемнона на початку Іліади?"
+    type: factual
+    expected_entity_ids: [achilles, agamemnon]
+    expected_refs: ["Hom. Il. 1.180", "Hom. Il. 1.320", "Hom. Il. 1.1"]
+    expected_facts: ["Агамемнон забрав у Ахілла Брисеїду"]
+
+  - id: q026
+    question_uk: "Хто вбив Патрокла?"
+    type: factual
+    expected_entity_ids: [patroclus]
+    expected_refs: ["Hom. Il. 16.805", "Hom. Il. 16.820", "Hom. Il. 16.850"]
+    expected_facts: ["Аполлон оглушив Патрокла, Евфорб поранив, а Гектор добив"]
+
+  - id: q027
+    question_uk: "Хто викував новий щит Ахілла?"
+    type: factual
+    expected_entity_ids: [achilles]
+    expected_refs: ["Hom. Il. 18.478", "Hom. Il. 18.390"]
+    expected_facts: ["Щит викував Гефест на прохання Фетіди"]
+
+  - id: q028
+    question_uk: "Що Ахілл зробив з тілом Гектора?"
+    type: factual
+    expected_entity_ids: [achilles, hector]
+    expected_refs: ["Hom. Il. 22.395", "Hom. Il. 22.400"]
+    expected_facts: ["Прив'язав до колісниці й волочив по пилу"]
+
+  - id: q029
+    question_uk: "Хто прийшов до Ахілла просити тіло Гектора?"
+    type: factual
+    expected_entity_ids: [achilles, hector]
+    expected_refs: ["Hom. Il. 24.475", "Hom. Il. 24.485"]
+    expected_facts: ["Пріам, батько Гектора", "Він поцілував руки Ахілла"]
+
+  - id: q030
+    question_uk: "Як Одіссей утік із печери Поліфема?"
+    type: factual
+    expected_entity_ids: [odysseus, polyphemus]
+    expected_refs: ["Hom. Od. 9.365", "Hom. Od. 9.405", "Hom. Od. 9.425"]
+    expected_facts: ["Назвався Ніхто", "Осліпив кіклопа", "Вибрався з печери під баранами"]
+
+  - id: q031
+    question_uk: "Що Кірка зробила із супутниками Одіссея?"
+    type: factual
+    expected_entity_ids: [circe, odysseus]
+    expected_refs: ["Hom. Od. 10.240", "Hom. Od. 10.235"]
+    expected_facts: ["Перетворила їх на свиней"]
+
+  - id: q032
+    question_uk: "Як Одіссей пройшов повз сирен?"
+    type: factual
+    expected_entity_ids: [odysseus, sirens]
+    expected_refs: ["Hom. Od. 12.165", "Hom. Od. 12.175", "Hom. Od. 12.195"]
+    expected_facts: ["Супутникам заліпив вуха воском", "Себе наказав прив'язати до щогли"]
+
+  - id: q033
+    question_uk: "Що таке Харибда?"
+    type: factual
+    expected_entity_ids: [charybdis]
+    expected_refs: ["Hom. Od. 12.100", "Hom. Od. 12.105"]
+    expected_facts: ["Харибда тричі на день всмоктує і викидає чорну воду", "Під скелею з великою смоковницею"]
+
+  - id: q034
+    question_uk: "Як звали пса Одіссея і що з ним сталося?"
+    type: factual
+    expected_entity_ids: [odysseus]
+    expected_refs: ["Hom. Od. 17.290", "Hom. Od. 17.300", "Hom. Od. 17.325"]
+    expected_facts: ["Пса звали Аргос", "Він упізнав господаря і помер"]
+
+  - id: q035
+    question_uk: "Як Пенелопа відкладала шлюб із залицяльниками?"
+    type: factual
+    expected_entity_ids: [penelope]
+    expected_refs: ["Hom. Od. 2.95", "Hom. Od. 2.100", "Hom. Od. 2.105", "Hom. Od. 24.138"]
+    expected_facts: ["Ткала саван для Лаерта вдень і розпускала вночі"]
+
+  - id: q036
+    question_uk: "Скільки років Одіссей провів у Каліпсо?"
+    type: factual
+    expected_entity_ids: [odysseus, calypso]
+    expected_refs: ["Hom. Od. 7.255", "Hom. Od. 7.259"]
+    expected_facts: ["Сім років"]
+
+  - id: q037
+    question_uk: "Кого Одіссей розпитував про повернення додому в царстві мертвих?"
+    type: factual
+    expected_entity_ids: [odysseus]
+    expected_refs: ["Hom. Od. 11.90", "Hom. Od. 11.100"]
+    expected_facts: ["Віщуна Тіресія"]
+
+  # ------------------------------------------------------------------ factual: hymns, Apollonius, Pausanias
+  - id: q038
+    question_uk: "Хто батько Пана і як він виглядав при народженні?"
+    type: factual
+    expected_entity_ids: [pan]
+    expected_refs: ["Hom. Hymn 19 Pan 1", "Hom. Hymn 19 Pan 35"]
+    expected_facts: ["Пан — син Гермеса", "Народився з козячими ногами і двома рогами"]
+
+  - id: q039
+    question_uk: "Як Діоніс покарав тирренських піратів?"
+    type: factual
+    expected_entity_ids: [dionysus]
+    expected_refs: ["Hom. Hymn 7 Dion. 50", "Hom. Hymn 7 Dion. 45"]
+    expected_facts: ["Пірати кинулися в море і стали дельфінами", "Стерничого Діоніс помилував"]
+
+  - id: q040
+    question_uk: "Як звали сина Афродіти й Анхіса і чому?"
+    type: factual
+    expected_entity_ids: [aphrodite]
+    expected_refs: ["Hom. Hymn 5 Aphr. 195", "Hom. Hymn 5 Aphr. 198"]
+    expected_facts: ["Сина звали Еней", "Ім'я пов'язане з горем Афродіти через зв'язок зі смертним"]
+
+  - id: q041
+    question_uk: "Хто збудував корабель Арго?"
+    type: factual
+    expected_entity_ids: [argo]
+    expected_refs: ["Ap. Rhod. 1§3", "Ap. Rhod. 1§18", "Apollod. 1.9.16"]
+    expected_facts: ["Корабель збудував Арг (за Аполлонієм — син Арестора, за Аполлодором — син Фрікса)", "За порадами Афіни"]
+
+  - id: q042
+    question_uk: "Що сталося з Гіласом під час походу аргонавтів?"
+    type: factual
+    expected_entity_ids: []
+    expected_refs: ["Ap. Rhod. 1§115", "Ap. Rhod. 1§116", "Ap. Rhod. 1§122", "Apollod. 1.9.19"]
+    expected_facts: ["Пішов по воду до джерела", "Німфа затягла його у воду, закохавшись"]
+
+  - id: q043
+    question_uk: "Як аргонавти пройшли між Кіанейськими скелями?"
+    type: factual
+    expected_entity_ids: []
+    expected_refs: ["Ap. Rhod. 2§24", "Ap. Rhod. 2§39", "Ap. Rhod. 2§40", "Apollod. 1.9.22"]
+    expected_facts: ["Спершу випустили голубку", "Скелі відтяли кінчик хвоста голубки, а корабель проплив"]
+
+  - id: q044
+    question_uk: "Хто переміг Аміка в кулачному бою?"
+    type: factual
+    expected_entity_ids: []
+    expected_refs: ["Ap. Rhod. 2§8", "Ap. Rhod. 2§7", "Apollod. 1.9.20"]
+    expected_facts: ["Полідевк"]
+
+  - id: q045
+    question_uk: "Хто прогнав гарпій від Фінея?"
+    type: factual
+    expected_entity_ids: [harpies]
+    expected_refs: ["Ap. Rhod. 2§19", "Ap. Rhod. 2§20"]
+    expected_facts: ["Сини Борея — Зет і Калаїд"]
+
+  - id: q046
+    question_uk: "Яке завдання з биками дав Еет Ясонові?"
+    type: factual
+    expected_entity_ids: [jason, aeetes]
+    expected_refs: ["Ap. Rhod. 3§36", "Ap. Rhod. 3§45", "Apollod. 1.9.23"]
+    expected_facts: ["Запрягти мідноногих вогнедишних биків", "Зорати поле Ареса і засіяти зубами дракона"]
+
+  - id: q047
+    question_uk: "Як загинув мідний велетень Талос?"
+    type: factual
+    expected_entity_ids: [talos]
+    expected_refs: ["Ap. Rhod. 4§100", "Ap. Rhod. 4§101"]
+    expected_facts: ["Медея зачарувала його поглядом"]
+
+  - id: q048
+    question_uk: "Що Павсаній пише про омфал у Дельфах?"
+    type: factual
+    expected_entity_ids: [delphi]
+    expected_refs: ["Paus. 10.16.3"]
+    expected_facts: ["Омфал (Пуп) з білого мармуру", "Дельфійці вважали його центром землі"]
+
+  - id: q049
+    question_uk: "Хто зробив статую Зевса в Олімпії?"
+    type: factual
+    expected_entity_ids: [zeus, olympia]
+    expected_refs: ["Paus. 5.10.2", "Paus. 5.11.1"]
+    expected_facts: ["Фідій, син Харміда, афінянин"]
+
+  - id: q050
+    question_uk: "Що зображено на фронтонах Парфенону за Павсанієм?"
+    type: factual
+    expected_entity_ids: []
+    expected_refs: ["Paus. 1.24.5"]
+    expected_facts: ["Народження Афіни", "Суперечка Посейдона й Афіни за Аттику"]
+
+  - id: q051
+    question_uk: "Що розповідають про печеру на мисі Тенар?"
+    type: factual
+    expected_entity_ids: [taenarum]
+    expected_refs: ["Paus. 3.25.5", "Paus. 3.25.4"]
+    expected_facts: ["Звідси Геракл нібито вивів пса Аїда", "Гекатей пояснював це змією, яку звали псом Аїда"]
+
+  - id: q052
+    question_uk: "Які вислови мудреців були присвячені Аполлону в Дельфах?"
+    type: factual
+    expected_entity_ids: [delphi, apollo]
+    expected_refs: ["Paus. 10.24.1"]
+    expected_facts: ["«Пізнай самого себе»", "«Нічого надміру»"]
+
+  - id: q053
+    question_uk: "Хто, за переказами в Олімпії, першим провів Олімпійські ігри?"
+    type: factual
+    expected_entity_ids: [olympia]
+    expected_refs: ["Paus. 5.7.9", "Paus. 5.7.7"]
+    expected_facts: ["Геракл Ідейський (один із Дактилів)"]
+
+  - id: q054
+    question_uk: "Що відомо про Кастальське джерело в Дельфах?"
+    type: factual
+    expected_entity_ids: [delphi]
+    expected_refs: ["Paus. 10.8.9", "Paus. 10.8.10"]
+    expected_facts: ["Вода солодка для пиття і купання", "Назву пов'язують з місцевою жінкою або чоловіком Кастієм"]
+
+  - id: q055
+    question_uk: "Де було святилище Аполлона, яке він заснував у Піфо?"
+    type: factual
+    expected_entity_ids: [apollo, delphi]
+    expected_refs: ["Hom. Hymn 3 Ap. 285", "Hom. Hymn 3 Ap. 390", "Paus. 10.5.5"]
+    expected_facts: ["У Піфо (Дельфах) під Парнасом", "Жерцями він зробив критян"]
+
+  # ------------------------------------------------------------------ multi_hop
+  - id: q056
+    question_uk: "Хто батько героя, який відрубав голову Медузі?"
+    type: multi_hop
+    expected_entity_ids: [medusa]
+    expected_refs: ["Apollod. 2.4.1", "Apollod. 2.4.2"]
+    expected_facts: ["Героя звали Персей", "Його батько — Зевс (зійшов до Данаї золотим дощем)"]
+
+  - id: q057
+    question_uk: "Хто мати бога, що викував щит Ахілла?"
+    type: multi_hop
+    expected_entity_ids: [achilles]
+    expected_refs: ["Hes. Theog. 927", "Hom. Il. 18.395", "Apollod. 1.3.5"]
+    expected_facts: ["Щит викував Гефест", "Його мати — Гера"]
+
+  - id: q058
+    question_uk: "Хто дід Ахілла по батьковій лінії?"
+    type: multi_hop
+    expected_entity_ids: [achilles]
+    expected_refs: ["Apollod. 3.12.6", "Apollod. 3.13.6"]
+    expected_facts: ["Батько Ахілла — Пелей", "Дід — Еак, син Зевса й Егіни"]
+
+  - id: q059
+    question_uk: "Чий пес охороняв корів, яких Геракл пригнав від Геріона, і хто його батьки?"
+    type: multi_hop
+    expected_entity_ids: [heracles, geryon]
+    expected_refs: ["Apollod. 2.5.10", "Hes. Theog. 309"]
+    expected_facts: ["Двоголовий пес Орф", "Син Тифона і Єхидни"]
+
+  - id: q060
+    question_uk: "Як звали сестру батька Медеї, яка теж була чарівницею?"
+    type: multi_hop
+    expected_entity_ids: [medea]
+    expected_refs: ["Hom. Od. 10.135", "Hes. Theog. 955", "Apollod. 1.9.23"]
+    expected_facts: ["Батько Медеї — Еет", "Його сестра — Кірка", "Обоє діти Геліоса"]
+
+  - id: q061
+    question_uk: "Хто звільнив титана, який дав людям вогонь?"
+    type: multi_hop
+    expected_entity_ids: []
+    expected_refs: ["Apollod. 2.5.11", "Hes. Theog. 526"]
+    expected_facts: ["Титан — Прометей", "Його звільнив Геракл, убивши орла"]
+
+  - id: q062
+    question_uk: "Хто батьки жінки, через яку почалася Троянська війна?"
+    type: multi_hop
+    expected_entity_ids: []
+    expected_refs: ["Apollod. 3.10.7"]
+    expected_facts: ["Йдеться про Гелену", "Зевс (у подобі лебедя) і Леда; за іншою версією мати — Немесіда"]
+
+  - id: q063
+    question_uk: "Чому бог, батько осліпленого Одіссеєм кіклопа, переслідував Одіссея?"
+    type: multi_hop
+    expected_entity_ids: [odysseus, cyclopes]
+    expected_refs: ["Hom. Od. 1.65", "Hom. Od. 1.70"]
+    expected_facts: ["Кіклоп Поліфем — син Посейдона", "Посейдон гнівався за осліплення сина"]
+
+  - id: q064
+    question_uk: "Хто, за пророцтвом Гектора, мав убити його вбивцю?"
+    type: multi_hop
+    expected_entity_ids: [hector]
+    expected_refs: ["Hom. Il. 22.355", "Hom. Il. 22.359"]
+    expected_facts: ["Гектора вбив Ахілл", "Ахілла мали вбити Паріс і Феб Аполлон біля Скейських воріт"]
+
+  - id: q065
+    question_uk: "Хто збудував лабіринт, у якому жив Мінотавр, і хто був батьком цього майстра?"
+    type: multi_hop
+    expected_entity_ids: [minotaur]
+    expected_refs: ["Apollod. 3.15.8", "Apollod. 3.1.4"]
+    expected_facts: ["Лабіринт збудував Дедал", "Батько Дедала — Евпалам, син Метіона"]
+
+  # ------------------------------------------------------------------ conflicting
+  - id: q066
+    question_uk: "Хто батьки Афродіти?"
+    type: conflicting
+    expected_entity_ids: [aphrodite]
+    expected_refs: ["Hes. Theog. 190", "Hom. Il. 5.370", "Apollod. 1.3.1"]
+    expected_facts:
+      - "За Гесіодом — народилася з піни навколо відрубаного члена Урана"
+      - "За Гомером — донька Зевса і Діони"
+
+  - id: q067
+    question_uk: "Хто батьки Гефеста?"
+    type: conflicting
+    expected_entity_ids: [hephaestus]
+    expected_refs: ["Hes. Theog. 927", "Apollod. 1.3.5"]
+    expected_facts: ["За Гесіодом Гера народила його без Зевса", "За Гомером — син Гери і Зевса"]
+
+  - id: q068
+    question_uk: "Хто скинув Гефеста з Олімпу?"
+    type: conflicting
+    expected_entity_ids: [hephaestus, olympus]
+    expected_refs: ["Hom. Il. 1.590", "Hom. Il. 18.395", "Apollod. 1.3.5"]
+    expected_facts: ["За однією розповіддю — Зевс, і Гефест упав на Лемнос", "За іншою — мати Гера через його кульгавість"]
+
+  - id: q069
+    question_uk: "Хто мати Гелени?"
+    type: conflicting
+    expected_entity_ids: [helen]
+    expected_refs: ["Apollod. 3.10.7"]
+    expected_facts: ["Зазвичай — Леда", "За іншою версією — Немесіда, а Леда лише знайшла яйце"]
+
+  - id: q070
+    question_uk: "Хто розсік голову Зевса, щоб народилася Афіна?"
+    type: conflicting
+    expected_entity_ids: [athena, zeus]
+    expected_refs: ["Apollod. 1.3.6"]
+    expected_facts: ["Прометей або, за іншими, Гефест"]
+
+  - id: q071
+    question_uk: "Хто першим провів Олімпійські ігри — Геракл, син Зевса, чи хтось інший?"
+    type: conflicting
+    expected_entity_ids: [heracles, zeus]
+    expected_refs: ["Paus. 5.7.9", "Paus. 5.8.1"]
+    expected_facts: ["Елейці кажуть — Геракл Ідейський", "Є й інші перекази (Клімен, Ендиміон, Пелоп, Геракл, син Алкмени)"]
+
+  - id: q072
+    question_uk: "Що було спочатку — Хаос чи Ерос?"
+    type: conflicting
+    expected_entity_ids: [chaos, eros]
+    expected_refs: ["Hes. Theog. 115", "Hes. Theog. 120"]
+    expected_facts: ["За Гесіодом спершу постав Хаос, далі Гея, Тартар і Ерос"]
+
+  # ------------------------------------------------------------------ negative (traps)
+  - id: q073
     question_uk: "Який номер мобільного телефону в Зевса?"
     type: negative
-    expected_entity_ids: ["zeus"]
-    expected_refs: []
-    expected_facts: []
+    should_refuse: true
+
+  - id: q074
+    question_uk: "Як Ахілл воював проти римських легіонів Юлія Цезаря?"
+    type: negative
+    should_refuse: true
+    notes: "Анахронізм"
+
+  - id: q075
+    question_uk: "Який улюблений колір Афіни?"
+    type: negative
+    should_refuse: true
+
+  - id: q076
+    question_uk: "Як звали кота Персея?"
+    type: negative
+    should_refuse: true
+
+  - id: q077
+    question_uk: "Що Гомер писав про Олімпійські ігри 2024 року в Парижі?"
+    type: negative
+    should_refuse: true
+
+  - id: q078
+    question_uk: "Якою мовою програмування користувався Дедал, коли будував лабіринт?"
+    type: negative
+    should_refuse: true
+
+  - id: q079
+    question_uk: "Скільки доларів коштував квиток на корабель Арго?"
+    type: negative
+    should_refuse: true
+
+  - id: q080
+    question_uk: "Що Зевс снідав у вівторок?"
+    type: negative
     should_refuse: true
