@@ -133,3 +133,35 @@ def test_streaming_matches_finalize(seeded_session: Session):
     text = "".join(oracle.stream(prepared))
     answer = oracle.finalize(prepared, text)
     assert answer.text == "Зевс і Лето [1]." and answer.citations[0].cited
+
+
+class _DownLLM(FakeListChatModel):
+    def _call(self, *args, **kwargs):  # type: ignore[override]
+        import httpx
+
+        raise httpx.ConnectError("connection refused")
+
+    def _stream(self, *args, **kwargs):  # type: ignore[override]
+        import httpx
+
+        raise httpx.ConnectError("connection refused")
+
+
+def test_ollama_down_returns_sources_with_reason(seeded_session: Session, monkeypatch):
+    from delphi.config import settings
+    from delphi.rag.llm import LLMUnavailableError
+
+    monkeypatch.setattr(settings, "llm_provider", "ollama")
+    oracle = OracleService(
+        retriever=FakeRetriever(PASSAGES),
+        reranker=Reranker(enabled=False),
+        linker=EntityLinker(session=seeded_session),
+        llm=_DownLLM(responses=["unused"]),
+    )
+    answer = oracle.ask("Хто батьки Аполлона?")
+    assert answer.error and "Ollama не запущена" in answer.error
+    assert len(answer.citations) == 2
+
+    prepared = oracle.prepare("Хто батьки Аполлона?")
+    with pytest.raises(LLMUnavailableError):
+        "".join(oracle.stream(prepared))

@@ -11,12 +11,16 @@ class Settings(BaseSettings):
         extra="ignore",
     )
 
-    # LLM Settings
-    llm_provider: Literal["openai", "anthropic", "ollama"] = "openai"
-    llm_model: str = "gpt-4o-mini"
+    # LLM Settings: a local model via Ollama by default (no external API, no key)
+    llm_provider: Literal["openai", "anthropic", "ollama"] = "ollama"
+    llm_model: str = "qwen2.5:7b"
     openai_api_key: str | None = None
     anthropic_api_key: str | None = None
     ollama_base_url: str = "http://localhost:11434"
+    # Ollama's default context (2048 tokens) is too small for 5 passages + the prompt
+    ollama_num_ctx: int = 8192
+    ollama_keep_alive: str = "30m"  # keep the model in (GPU) memory between questions
+    llm_temperature: float = 0.2
 
     # Embeddings & Reranker
     embedding_model: str = "BAAI/bge-m3"  # "hashing" = no-model stand-in (tests/CI)
