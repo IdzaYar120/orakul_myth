@@ -28,6 +28,7 @@ from delphi.rag.models import Answer, Citation
 from delphi.rag.prompts import (
     CONDENSE_QUESTION_PROMPT,
     PYTHIA_SYSTEM_PROMPT,
+    QUERY_TRANSLATION_PROMPT,
     REFUSAL_PHRASE,
     STYLES,
 )
@@ -39,6 +40,7 @@ REFUSAL_TEXT = (
     "героїв чи місця античних міфів."
 )
 _CITATION = re.compile(r"\[(\d+)\]")
+_CYRILLIC = re.compile(r"[а-яіїєґ]", re.IGNORECASE)
 
 
 @dataclass
@@ -53,6 +55,8 @@ class PreparedQuestion:
     context: str
     grounded: bool
     notes: list[str] = field(default_factory=list)
+    candidates: list[RetrievedPassage] = field(default_factory=list)  # before reranking
+    query_en: str | None = None  # English translation used for retrieval
 
 
 class OracleService:
@@ -67,6 +71,7 @@ class OracleService:
         self.retriever = retriever or HybridRetriever(
             k_dense=settings.retrieve_k, k_sparse=settings.retrieve_k
         )
+        self._translations: dict[str, str | None] = {}
         self.reranker = reranker or Reranker()
         self.linker = linker or EntityLinker()
         self._llm = llm
@@ -98,6 +103,28 @@ class OracleService:
         text = str(result.content).strip()
         return text or question
 
+    def translate(self, question: str) -> str | None:
+        """English version of the question for retrieval, or None (disabled / LLM unavailable)."""
+        if not settings.query_translation or not question.strip():
+            return None
+        if question in self._translations:
+            return self._translations[question]
+        try:
+            chain = ChatPromptTemplate.from_template(QUERY_TRANSLATION_PROMPT) | self.llm
+            text = str(chain.invoke({"question": question}).content)
+        except Exception as exc:  # retrieval still works on the Ukrainian query
+            if describe_llm_error(exc) is None:
+                raise
+            return None
+        lines = [line.strip().strip('"').strip() for line in text.strip().splitlines()]
+        translation = next((line for line in lines if line), "")
+        # a model that answered in Ukrainian instead of translating is no help to BM25
+        result = translation if translation and not _CYRILLIC.search(translation) else None
+        if len(self._translations) > 1000:
+            self._translations.clear()
+        self._translations[question] = result
+        return result
+
     # ------------------------------------------------------------------ steps
     def prepare(
         self,
@@ -107,9 +134,11 @@ class OracleService:
     ) -> PreparedQuestion:
         standalone = self.condense(question, history)
         entity_ids, expansion = self.linker.extract_and_expand(standalone)
+        expansion = self.retriever.known_terms(expansion)
         query = f"{standalone} {' '.join(expansion)}".strip()
+        query_en = self.translate(standalone)
         candidates = self.retriever.retrieve(
-            query=query, boost_entity_ids=entity_ids, top_k=settings.retrieve_k
+            query=query, boost_entity_ids=entity_ids, top_k=settings.retrieve_k, query_en=query_en
         )
         passages = self.reranker.rerank(standalone, candidates, top_k=settings.context_k)
 
@@ -140,6 +169,8 @@ class OracleService:
             glossary=self.linker.get_glossary_for_entities(glossary_ids),
             context=context,
             grounded=bool(passages),
+            candidates=candidates,
+            query_en=query_en,
         )
 
     def _chain(self):

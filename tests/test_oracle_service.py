@@ -36,10 +36,12 @@ class FakeRetriever(HybridRetriever):
         super().__init__()
         self._passages = passages
         self.last_query: str | None = None
+        self.last_query_en: str | None = None
         self.last_boost: list[str] | None = None
 
-    def retrieve(self, query, boost_entity_ids=None, top_k=10):
+    def retrieve(self, query, boost_entity_ids=None, top_k=10, query_en=None):
         self.last_query = query
+        self.last_query_en = query_en
         self.last_boost = list(boost_entity_ids or [])
         return self._passages[:top_k]
 
@@ -63,6 +65,36 @@ def test_linker_resolves_ukrainian_inflections(seeded_session: Session, question
     ids, expansion = EntityLinker(session=seeded_session).extract_and_expand(question)
     assert ids == ["achilles"]
     assert expansion[0] == "Achilles" and len(expansion) <= 4
+
+
+@pytest.mark.parametrize(
+    ("question", "expected"),
+    [
+        # ordinary words that fuzzy matching used to link to names
+        ("Що сталося з Прометеєм?", ["prometheus"]),  # not Talos
+        ("Хто така Пандора?", ["pandora"]),  # not Ithaca
+        ("Як Геракл убив лева?", ["heracles"]),  # not Hera
+        ("Як Кронос ковтав дітей?", ["cronus"]),  # not Knossos
+        ("Хто звільнив титана?", []),  # "титан" is a common noun here
+        ("Як Гермес викрав корів?", ["hermes"]),  # not Kore
+        # inflections
+        ("Що Павсаній пише про омфал у Дельфах?", ["delphi"]),
+        ("Хто скинув Гефеста з Олімпу?", ["hephaestus", "olympus"]),
+        ("Як народилася Афіна?", ["athena"]),  # exact alias beats Athens
+        ("Що таке Харибда?", ["charybdis"]),  # transliteration variant (fuzzy fallback)
+    ],
+)
+def test_linker_has_no_false_positives(seeded_session: Session, question: str, expected):
+    ids, _ = EntityLinker(session=seeded_session).extract_and_expand(question)
+    assert ids == expected
+
+
+def test_linker_multi_word_alias():
+    from delphi.rag.linker import match_entities
+
+    aliases = [("Немейський лев", "nemean_lion"), ("Лев", "leo")]
+    assert match_entities("Як Геракл убив Немейського лева?", aliases) == ["nemean_lion", "leo"]
+    assert match_entities("Немейські ігри", aliases) == []
 
 
 def test_linker_finds_entities_in_answer(seeded_session: Session):
@@ -165,3 +197,33 @@ def test_ollama_down_returns_sources_with_reason(seeded_session: Session, monkey
     prepared = oracle.prepare("Хто батьки Аполлона?")
     with pytest.raises(LLMUnavailableError):
         "".join(oracle.stream(prepared))
+
+
+def test_query_translation(seeded_session: Session, monkeypatch):
+    from delphi.config import settings
+
+    monkeypatch.setattr(settings, "query_translation", True)
+    retriever = FakeRetriever(PASSAGES)
+    oracle = OracleService(
+        retriever=retriever,
+        reranker=Reranker(enabled=False),
+        linker=EntityLinker(session=seeded_session),
+        llm=FakeListChatModel(responses=['"Who are the parents of Apollo?"', "Відповідь [1]."]),
+    )
+    prepared = oracle.prepare("Хто батьки Аполлона?")
+    assert prepared.query_en == "Who are the parents of Apollo?"
+    assert retriever.last_query_en == prepared.query_en
+    # cached: the second prepare does not call the LLM again (its next answer is kept)
+    assert oracle.prepare("Хто батьки Аполлона?").query_en == prepared.query_en
+    assert "".join(oracle.stream(prepared)) == "Відповідь [1]."
+
+
+def test_query_translation_falls_back(seeded_session: Session, monkeypatch):
+    from delphi.config import settings
+
+    monkeypatch.setattr(settings, "query_translation", True)
+    # no LLM configured -> retrieval on the Ukrainian query, no error
+    assert _oracle(seeded_session, PASSAGES).prepare("Хто батьки Аполлона?").query_en is None
+    # a model that answers in Ukrainian instead of translating is ignored
+    oracle = _oracle(seeded_session, PASSAGES, responses=["Батьки Аполлона — Зевс і Лето."])
+    assert oracle.prepare("Хто батьки Аполлона?").query_en is None

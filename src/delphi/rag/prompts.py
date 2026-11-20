@@ -29,6 +29,13 @@ PYTHIA_SYSTEM_PROMPT = (
 """
 )
 
+QUERY_TRANSLATION_PROMPT = """Translate this question about Greek mythology into English,
+to be used as a search query over early-20th-century English translations of Homer, Hesiod,
+Apollodorus and Pausanias. Use the usual English forms of Greek names (Achilles, Hephaestus,
+Odysseus). Reply with the translation only.
+
+Question: {question}"""
+
 CONDENSE_QUESTION_PROMPT = """Враховуючи історію діалогу та останнє запитання користувача,
 переформулюй останнє запитання у самостійне повне запитання українською мовою, замінивши
 займенники ("її", "він", "там") на імена з історії. Якщо запитання вже самостійне —

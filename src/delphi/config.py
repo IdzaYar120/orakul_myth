@@ -32,6 +32,10 @@ class Settings(BaseSettings):
     # Retrieval parameters
     retrieve_k: int = 20
     context_k: int = 5
+    # Translate the question into English for retrieval (the corpus is English): one short call
+    # to the local LLM (~2 s); without the LLM retrieval falls back to the Ukrainian query.
+    query_translation: bool = True
+    entity_boost: float = 0.5  # soft boost for passages tagged with entities of the question
     min_relevance: float = 0.3
     history_turns: int = 6  # chat turns used to condense follow-up questions
 

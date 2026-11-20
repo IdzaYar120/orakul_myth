@@ -8,8 +8,9 @@ from sqlmodel import Session, select
 from delphi.db.models import Passage, PassageEntity
 from delphi.ingest.chunker import chunk_id, chunk_sections, count_tokens
 from delphi.ingest.indexer import build_indexes
+from delphi.ingest.parsers.gutenberg import parse_gutenberg_text, roman_to_int
 from delphi.ingest.parsers.tei import ParsedSection, parse_tei_xml
-from delphi.ingest.sources import Source, load_sources
+from delphi.ingest.sources import Source, SourcePart, load_sources
 from delphi.ingest.tagger import EntityTagger
 from delphi.rag.embeddings import HashingEmbedder
 from delphi.rag.retriever import HybridRetriever, reciprocal_rank_fusion
@@ -54,6 +55,60 @@ def test_tei_line_blocks():
     assert all(s.kind == "lines" for s in sections)
 
 
+def test_tei_homer_cards_split_at_line_milestones():
+    sections = parse_tei_xml(FIXTURES / "tei_cards.xml")
+    assert [s.ref for s in sections] == ["1.1", "1.5", "1.20", "1.33", "1.35", "2.1"]
+    assert all(s.kind == "lines" for s in sections)
+    assert sections[0].text == "The wrath sing, goddess, of Peleus' son, Achilles,"
+    # the note goes to the piece it was anchored in, and does not glue "when first"
+    assert sections[1].notes == ['Or "since".']
+    assert sections[1].text.startswith("from the time when first they parted")
+    assert sections[2].text == "out of reverence for Apollo."
+    # text before the first milestone of a card belongs to the card's own line
+    assert sections[3].text == "So he spoke, and the old man was seized with fear."
+
+
+def test_line_chunks_do_not_cross_books():
+    sections = parse_tei_xml(FIXTURES / "tei_cards.xml")
+    chunks = chunk_sections(sections, _source("Hom. Il.", "homer_iliad"), target_tokens=10_000)
+    assert [c.ref for c in chunks] == ["Hom. Il. 1.1–1.35", "Hom. Il. 2.1"]
+
+
+def test_gutenberg_books_paragraphs_and_footnotes():
+    sections = parse_gutenberg_text(FIXTURES / "gutenberg.txt", work="Argonautica")
+    assert [s.ref for s in sections] == ["1§1", "1§2", "2§1"]
+    assert sections[0].text == (
+        "Beginning with thee, O Phoebus, I will recount the famous deeds of men of old."
+    )
+    # footnote marker removed from the text, footnote body moved to notes
+    assert sections[1].text == "And men call that beach Aphetae of Argo."
+    assert sections[1].notes == ["_i.e._ the place of starting."]
+    # contents, introduction, endnotes, trailer and licence are not text
+    assert not any("Alexandria" in s.text or "License" in s.text for s in sections)
+    assert sections[-1].text == "Here were the oxstalls of Amycus."
+    assert roman_to_int("IV") == 4 and roman_to_int("XIV") == 14
+
+
+def test_multi_file_source_views():
+    hymns = _source("Hom. Hymn", "homeric_hymns").model_copy(
+        update={
+            "parts": [
+                SourcePart(
+                    id="2",
+                    title="Hymn 2 to Demeter",
+                    ref_prefix="Hom. Hymn 2 Dem.",
+                    download_url="https://example.org/2.xml",
+                )
+            ]
+        }
+    )
+    [(view, filename)] = hymns.files()
+    assert filename == "homeric_hymns__2.xml"
+    assert view.id == "homeric_hymns" and view.ref_prefix == "Hom. Hymn 2 Dem."
+    assert view.format_ref("1", "21") == "Hom. Hymn 2 Dem. 1–21"
+    assert _source().files() == [(_source(), "apollodorus_library.xml")]
+
+
 def test_repo_sources_are_valid():
     sources = load_sources()
     enabled = [s for s in sources if s.enabled]
@@ -61,9 +116,19 @@ def test_repo_sources_are_valid():
         "apollodorus_library",
         "hesiod_theogony",
         "hesiod_works_and_days",
+        "homer_iliad",
+        "homer_odyssey",
+        "homeric_hymns",
+        "apollonius_argonautica",
+        "pausanias_description_of_greece",
     }
-    assert all(s.download_url and s.ref_prefix for s in enabled)
-    assert all("CC BY-SA" in (s.encoding_license or "") for s in enabled)
+    for source in enabled:
+        assert all(view.download_url and view.ref_prefix for view, _ in source.files())
+        expected = "CC BY-SA" if source.format == "tei_xml" else "Public Domain"
+        assert expected in (source.encoding_license or ""), source.id
+    hymns = next(s for s in enabled if s.id == "homeric_hymns")
+    assert len(hymns.parts) == 33
+    assert len({p.ref_prefix for p in hymns.parts}) == 33
 
 
 # ---------------------------------------------------------------- chunker
@@ -184,6 +249,23 @@ def test_hybrid_retrieval_with_entity_boost(indexed, seeded_session: Session):
 
     boosted = retriever.retrieve("children", boost_entity_ids=["cronus"], top_k=3)
     assert "cronus" in boosted[0].entity_ids
+
+
+def test_retriever_with_english_query_and_known_terms(indexed, seeded_session: Session):
+    index_dir, _, _, _ = indexed
+    retriever = HybridRetriever(
+        index_dir=index_dir, embedder=HashingEmbedder(), session=seeded_session
+    )
+    # a Ukrainian query shares no words with the English corpus; its translation does
+    hits = retriever.retrieve(
+        "Де народилися Аполлон і Артеміда?", query_en="Latona Delos Artemis Apollo", top_k=3
+    )
+    assert hits and hits[0].ref == "Apollod. 1.4.1"
+    # aliases absent from the corpus are dropped from the query expansion
+    assert retriever.known_terms(["Apollo", "Aploun", "Cape Matapan", "Delos"]) == [
+        "Apollo",
+        "Delos",
+    ]
 
 
 def test_retriever_without_index_returns_nothing(tmp_path: Path):
