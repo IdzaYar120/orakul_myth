@@ -13,7 +13,7 @@ class Settings(BaseSettings):
 
     # LLM Settings: a local model via Ollama by default (no external API, no key)
     llm_provider: Literal["openai", "anthropic", "ollama"] = "ollama"
-    llm_model: str = "qwen2.5:7b"
+    llm_model: str = "hf.co/INSAIT-Institute/MamayLM-Gemma-3-12B-IT-v1.0-GGUF:Q4_K_M"
     openai_api_key: str | None = None
     anthropic_api_key: str | None = None
     ollama_base_url: str = "http://localhost:11434"
