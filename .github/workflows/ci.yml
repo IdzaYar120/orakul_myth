@@ -23,7 +23,7 @@ jobs:
         run: uv python install 3.12
 
       - name: Install dependencies
-        run: uv sync --locked --extra dev
+        run: uv sync --locked --extra dev --extra ml  # ml = chromadb + CPU torch for RAG tests
 
       - name: Lint with ruff
         run: |
