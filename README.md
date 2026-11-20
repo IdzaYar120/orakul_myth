@@ -1,235 +1,233 @@
-# 🔮 Дельфійський оракул (Delphi Oracle)
+# 🔮 Delphi Oracle
 
-> Веб-додаток на Python над спільною базою знань давньогрецької міфології: ШІ-чат, що відповідає від імені Піфії з цитатами з першоджерел, та енциклопедія богів, героїв і місць з інтерактивною картою Середземномор'я.
-
----
-
-## 🏛️ Ключові можливості
-
-1. **Чат «Оракул»**:
-   - Відповіді українською мовою на основі античного корпусу текстів.
-   - Два режими стилю: «Піфія» (урочистий, образний) та «Науковий» (сухий, академічний).
-   - Точні посилання на першоджерела (наприклад, `Hes. Theog. 918`, `Apollod. 1.4.1`) та англійські уривки у спойлерах.
-   - Відмова відповідати на питання, яких немає в джерелах («Дим над триножником не дає відповіді»).
-2. **Антична енциклопедія**:
-   - Працює без LLM (швидко і безкоштовно через SQLite + FTS5 + rapidfuzz).
-   - Картки сутностей: описи, атрибути, сфера впливу, Wikidata ID.
-   - Інтерактивне дерево родоводу (батьки, діти, подружжя) на основі Pyvis/NetworkX.
-   - Перехресні посилання: «Запитати оракула про це».
-3. **Карта Середземномор'я**:
-   - Folium + підкладка CartoDB Positron, координати Pleiades.
-   - Маркери місць (святилища, міста, гори, острови) з фільтрами.
-   - Маршрути героїв (мандри Одіссея, похід аргонавтів).
+> A Python web app over a shared knowledge base of ancient Greek mythology: an AI chat that answers in the voice of the Pythia with quotes from primary sources, and an encyclopedia of gods, heroes and places with an interactive Mediterranean map.
 
 ---
 
-## 🚀 Швидкий старт (локально)
+## 🏛️ Key features
 
-### Передумови
+1. **"Oracle" chat**:
+   - Answers in Ukrainian, based on an ancient text corpus (English sources).
+   - Two style modes: "Pythia" (solemn, figurative) and "Scientific" (dry, academic).
+   - Precise references to primary sources (for example `Hes. Theog. 918`, `Apollod. 1.4.1`) and the English passages in spoilers.
+   - Refuses questions the sources do not answer ("Дим над триножником не дає відповіді" — "The smoke over the tripod gives no answer").
+2. **Ancient encyclopedia**:
+   - Works without an LLM (fast and free, via SQLite + FTS5 + rapidfuzz).
+   - Entity cards: descriptions, attributes, spheres of influence, Wikidata ID.
+   - Interactive family tree (parents, children, spouses) built with Pyvis/NetworkX.
+   - Cross-links: "Ask the oracle about this".
+3. **Mediterranean map**:
+   - Folium with the CartoDB Positron base layer, coordinates from Pleiades.
+   - Place markers (sanctuaries, cities, mountains, islands) with filters.
+   - Hero routes (the Odyssey, the Argonauts' voyage).
+
+---
+
+## 🚀 Quick start (local)
+
+### Prerequisites
 - Python 3.12+
 - [uv](https://docs.astral.sh/uv/)
-- [Ollama](https://ollama.com) — лише для вкладки «Оракул» (локальна LLM, без API-ключів)
+- [Ollama](https://ollama.com) — only for the "Oracle" tab (local LLM, no API keys)
 
-### Встановлення та запуск
+### Install and run
 
-1. **Встановити залежності** (базові + dev-інструменти):
+1. **Install dependencies** (core + dev tools):
    ```bash
    uv sync --extra dev
    ```
-   ML-залежності для RAG (Chroma, sentence-transformers) потрібні з етапу 3: `uv sync --extra dev --extra ml`.
+   ML dependencies for RAG (Chroma, sentence-transformers) are needed from stage 3 on: `uv sync --extra dev --extra ml`.
 
-2. **Налаштувати оточення**:
+2. **Set up the environment**:
    ```bash
    cp .env.example .env
    ```
-   LLM потрібна лише вкладці «Оракул»; енциклопедія і карта працюють без неї.
+   The LLM is needed only for the "Oracle" tab; the encyclopedia and the map work without it.
 
-3. **Ініціалізувати базу даних і seed-дані** (ідемпотентно; повторний запуск оновлює змінені записи):
+3. **Initialize the database and seed data** (idempotent; rerunning updates changed records):
    ```bash
    uv run delphi seed
    ```
 
-4. **Запустити веб-інтерфейс**:
+4. **Start the web interface**:
    ```bash
    uv run streamlit run app/main.py
    ```
 
 ---
 
-## 🛠️ Команди CLI (`delphi`)
+## 🛠️ CLI commands (`delphi`)
 
-- `uv run delphi seed` — синхронізувати SQLite (`delphi.db`) з `data/seed/*.yaml`, перебудувати FTS5-індекс.
-- `uv run delphi wikidata candidates|pull|draft` — імпорт сутностей з Wikidata і координат з Pleiades.
-- `uv run delphi ingest [--source ID]` — офлайн-інгест текстів (Chroma + BM25), ідемпотентний.
-- `uv run delphi check-refs` — перевірка посилань на джерела в родоводі за корпусом.
-- `uv run delphi ask "Хто виховував Ахілла?" --style піфія` — запитати Оракула з терміналу.
-- `uv run delphi eval` — оцінка на golden set (`data/eval/golden.yaml`) — *етап 4*.
+- `uv run delphi seed` — sync SQLite (`delphi.db`) with `data/seed/*.yaml` and rebuild the FTS5 index.
+- `uv run delphi wikidata candidates|pull|draft` — import entities from Wikidata and coordinates from Pleiades.
+- `uv run delphi ingest [--source ID]` — offline ingest of texts (Chroma + BM25), idempotent.
+- `uv run delphi check-refs` — check the source references in the family trees against the corpus.
+- `uv run delphi ask "Хто виховував Ахілла?" --style піфія` — ask the oracle from the terminal.
+- `uv run delphi eval` — evaluate on the golden set (`data/eval/golden.yaml`) — *stage 4*.
 
 ---
 
-## 📚 Дані енциклопедії
+## 📚 Encyclopedia data
 
-Сід-файли `data/seed/*.yaml` — джерело правди (редагуються вручну, лежать у git):
-183 сутності (боги, титани, герої, смертні, істоти, артефакти), 88 місць, 352 зв'язки, 33 міфи.
+The seed files `data/seed/*.yaml` are the source of truth (edited by hand, tracked in git):
+183 entities (gods, titans, heroes, mortals, creatures, artifacts), 88 places, 352 relations, 33 myths.
 
-- **Wikidata** (CC0) — вибірка сутностей, українські/англійські назви, аліаси, родинні зв'язки.
-- **Pleiades** (CC BY) — координати античних місць.
-- **Вручну** — українські описи, сфери, символи, римські імена, міфи, зв'язки з місцями.
+- **Wikidata** (CC0) — selected entities, Ukrainian/English names, aliases, family relations.
+- **Pleiades** (CC BY) — coordinates of ancient places.
+- **Manual** — Ukrainian descriptions, spheres, symbols, Roman names, myths, links to places.
 
-Кожен зв'язок має `source_ref`: посилання на античний текст (`Hes. Theog. 453`, `Hom. Il. 5.370`,
-`Apollod. 3.13.6`) або `Wikidata` / `manual` — такі зв'язки картка позначає ⚠ як ще не звірені
-з першоджерелом. Версії міфу зберігаються окремо (батьки Афродіти за Гесіодом і за Гомером).
-Посилання записано з пам'яті; після інгесту корпусу (етап 3) їх треба звірити з текстами.
+Every relation has a `source_ref`: a reference to an ancient text (`Hes. Theog. 453`, `Hom. Il. 5.370`,
+`Apollod. 3.13.6`) or `Wikidata` / `manual`. Relations without a primary-source reference are marked ⚠ on the card as not yet verified against the source. Versions of a myth are stored separately (Aphrodite's parents according to Hesiod and according to Homer).
+These references were written from memory; after the corpus is ingested (stage 3) they must be checked against the texts.
 
-Поповнення з Wikidata:
+Pulling from Wikidata:
 ```bash
-uv run delphi wikidata candidates          # рейтинг кандидатів (SPARQL, за кількістю статей у Вікіпедіях)
-# додати потрібні id/QID у data/wikidata/selection.yaml
-uv run delphi wikidata pull                # назви, аліаси, родини, координати -> data/wikidata/snapshot.yaml
-uv run delphi wikidata draft               # дописати в data/seed/*.yaml лише нові записи
-#   (зв'язки з data/wikidata/rejected.yaml, відхилені під час чистки, не пропонуються)
-uv run delphi seed                         # синхронізувати SQLite з YAML (додає, оновлює, видаляє)
+uv run delphi wikidata candidates          # ranked candidates (SPARQL, by number of Wikipedia articles)
+# add the needed ids/QIDs to data/wikidata/selection.yaml
+uv run delphi wikidata pull                # names, aliases, families, coordinates -> data/wikidata/snapshot.yaml
+uv run delphi wikidata draft               # add only new records to data/seed/*.yaml
+#   (relations in data/wikidata/rejected.yaml, rejected during cleanup, are not suggested)
+uv run delphi seed                         # sync SQLite with the YAML (adds, updates, deletes)
 ```
 
 ---
 
-## 🔮 Оракул (RAG)
+## 🔮 Oracle (RAG)
 
-Корпус етапу 3 — Аполлодор («Бібліотека», пер. Frazer 1921) і Гесіод («Теогонія», «Роботи і дні»,
-пер. Evelyn-White 1914): 227 уривків. Тексти — TEI XML з Perseus Digital Library
-(переклади в суспільному надбанні, розмітка CC BY-SA 4.0; див. `data/sources.yaml`).
+The stage 3 corpus is Apollodorus ("Bibliotheca", tr. Frazer 1921) and Hesiod ("Theogony", "Works and Days",
+tr. Evelyn-White 1914): 227 passages. The texts are TEI XML from the Perseus Digital Library
+(translations in the public domain, markup CC BY-SA 4.0; see `data/sources.yaml`).
 
 ```bash
-uv sync --extra dev --extra ml   # PyTorch, Chroma, sentence-transformers (кілька ГБ)
-uv run delphi ingest             # завантажити -> TEI -> чанки -> теги -> Chroma + BM25
-uv run delphi check-refs         # звірити source_ref родоводу з текстами
+uv sync --extra dev --extra ml   # PyTorch, Chroma, sentence-transformers (several GB)
+uv run delphi ingest             # download -> TEI -> chunks -> tags -> Chroma + BM25
+uv run delphi check-refs         # check the family tree source_refs against the texts
 uv run delphi ask "Хто виховував Ахілла?"
 ```
 
-Як відповідає оракул: питання -> (переформулювання уточнення з історії) -> українські імена
--> англійські (`Ахілла` -> `Achilles`) -> гібридний пошук (bge-m3 + BM25, Reciprocal Rank
-Fusion, буст уривків зі згаданими сутностями) -> реранкер bge-reranker-v2-m3 (поріг
-`MIN_RELEVANCE`: нижче — «Дим над триножником не дає відповіді») -> LLM лише за знайденими
-уривками з посиланнями `[1]` -> перевірка посилань, чіпи згаданих сутностей.
-Реранкер на CPU повільний (~40 с на питання), тому поки вимкнений (`RERANK_ENABLED=false`).
+How the oracle answers: question -> (rephrasing with the chat history) -> Ukrainian names
+-> English names (`Ахілла` -> `Achilles`) -> hybrid search (bge-m3 + BM25, Reciprocal Rank
+Fusion, a boost for passages mentioning the entities) -> reranker bge-reranker-v2-m3 (threshold
+`MIN_RELEVANCE`: below it the answer is "Дим над триножником не дає відповіді") -> the LLM sees only the found
+passages, cites them as `[1]` -> citation check, entity chips.
+The reranker is slow on CPU (~40 s per question), so it is disabled for now (`RERANK_ENABLED=false`).
 
-### Локальна LLM (Ollama)
+### Local LLM (Ollama)
 
-Відповіді генерує локальна модель через [Ollama](https://ollama.com) — без зовнішніх API і ключів.
-За замовчуванням — **MamayLM** (Gemma 3 12B, донавчена на українській, INSAIT):
+Answers are generated by a local model through [Ollama](https://ollama.com) — no external APIs or keys.
+The default is **MamayLM** (Gemma 3 12B, fine-tuned for Ukrainian by INSAIT):
 
 ```bash
-# 1. встановити Ollama з https://ollama.com і запустити (іконка в треї або `ollama serve`)
-# 2. завантажити модель (~7.3 ГБ, один раз)
+# 1. install Ollama from https://ollama.com and start it (tray icon, or `ollama serve`)
+# 2. download the model (~7.3 GB, once)
 ollama pull hf.co/INSAIT-Institute/MamayLM-Gemma-3-12B-IT-v1.0-GGUF:Q4_K_M
-# 3. перевірити
+# 3. check it
 uv run delphi ask "Хто вбив Медузу?"
 ```
 
-Порівняння на GTX 1070 (8 ГБ), однакові знайдені уривки:
+Comparison on a GTX 1070 (8 GB), same retrieved passages:
 
-| Модель | Українська | Час відповіді |
+| Model | Ukrainian | Answer time |
 |---|---|---|
-| MamayLM 12B (за замовчуванням) | природна, без вигаданих слів | ~25 с (⅓ моделі на CPU) |
-| `gemma3:12b` | добра, але гірше дотримується правил відмови | ~60–110 с |
-| `qwen2.5:7b` | факти правильні, мова ламана | ~15 с (повністю на GPU) |
+| MamayLM 12B (default) | natural, no invented words | ~25 s (⅓ of the model on CPU) |
+| `gemma3:12b` | good, but follows the refusal rules less well | ~60–110 s |
+| `qwen2.5:7b` | facts correct, awkward language | ~15 s (fully on GPU) |
 
-Модель змінюється в `.env` (`LLM_MODEL=qwen2.5:7b` — для слабших машин). Перша відповідь після
-запуску довша: завантажуються LLM і bge-m3. Якщо Ollama не запущена чи модель не завантажена,
-оракул пише, що зробити, і все одно показує знайдені уривки. Підтримуються й хмарні
-`LLM_PROVIDER=openai|anthropic` (з ключем), але це необов'язково.
-
----
-
-## 🗺️ Карта
-
-- 85 місць з координатами Pleiades; маркери й кольори за типом (святилище, місто, гора, острів,
-  ріка, край), групування при віддаленні; попап — назва, опис, боги-покровителі.
-- Фільтри в сайдбарі: тип місця, бог (місця культу), міф, маршрути.
-- Маршрути **Одіссея** (14 зупинок) і **аргонавтів** (10 зупинок) з нумерованими зупинками й
-  посиланнями на текст; пунктир — традиційні ототожнення, а не факт.
-- Клік по маркеру → картка місця справа; кнопка «Показати на карті» на картці місця.
-- 6 міфічних місць без локалізації (Аїд, Елісій, Огігія…) — у списку «Поза картою».
-
-Посилання, якими можна поділитися: `?entity=delphi` (картка), `?tab=map` (карта),
-`?entity=delphi&tab=map` (карта з виділеним місцем).
+Change the model in `.env` (`LLM_MODEL=qwen2.5:7b` for weaker machines). The first answer after
+startup is slower: the LLM and bge-m3 are loaded. If Ollama is not running or the model is not pulled,
+the oracle says what to do and still shows the found passages. Cloud providers
+`LLM_PROVIDER=openai|anthropic` (with a key) are supported too, but optional.
 
 ---
 
-## 🗂️ Структура
+## 🗺️ Map
+
+- 85 places with Pleiades coordinates; markers and colors by type (sanctuary, city, mountain, island,
+  river, region), grouped when zoomed out; popup with name, description, patron gods.
+- Sidebar filters: place type, god (cult places), myth, routes.
+- Routes of the **Odyssey** (14 stops) and the **Argonauts** (10 stops) with numbered stops and
+  links to the text; dotted lines are traditional identifications, not facts.
+- Click a marker → place card on the right; "Show on map" button on a place card.
+- 6 mythical places without a location (Hades, Elysium, Ogygia…) are listed under "Off the map".
+
+Shareable links: `?entity=delphi` (card), `?tab=map` (map), `?entity=delphi&tab=map` (map with the place highlighted).
+
+---
+
+## 🗂️ Structure
 
 ```
-app/                 # Streamlit UI (без бізнес-логіки)
-  main.py            # точка входу: streamlit run app/main.py
-  views/             # вкладки: oracle.py, encyclopedia.py, map.py
+app/                 # Streamlit UI (no business logic)
+  main.py            # entry point: streamlit run app/main.py
+  views/             # tabs: oracle.py, encyclopedia.py, map.py
   components/        # entity_card.py, family_tree.py, citations.py
-src/delphi/          # сервіси (чистий Python, не імпортує Streamlit)
+src/delphi/          # services (plain Python, does not import Streamlit)
   config.py  cli.py  db/  ingest/  rag/  encyclopedia/  eval/
-data/                # seed YAML, sources.yaml, golden set (у git)
+data/                # seed YAML, sources.yaml, golden set (in git)
 tests/
 ```
 
-> UI-вкладки лежать в `app/views/`, а не в `app/pages/`: тека `pages/` поруч із `main.py`
-> вмикає автоматичну багатосторінкову навігацію Streamlit.
+> UI tabs live in `app/views/`, not in `app/pages/`: a `pages/` folder next to `main.py`
+> turns on Streamlit's automatic multipage navigation.
 
 ---
 
-## 🧪 Тестування та перевірка коду
+## 🧪 Testing and code checks
 
 ```bash
-uv run pytest                 # тести (не чіпають ваш delphi.db — використовують тимчасову БД)
-uv run ruff check .           # лінтер
-uv run ruff format --check .  # форматування
-uv run mypy src/              # типи
+uv run pytest                 # tests (they do not touch your delphi.db — they use a temporary DB)
+uv run ruff check .           # linter
+uv run ruff format --check .  # formatting
+uv run mypy src/              # types
 ```
 
-Pre-commit (ті самі перевірки перед кожним комітом):
+Pre-commit (the same checks before every commit):
 ```bash
 uv run pre-commit install
 ```
 
-CI (GitHub Actions) запускає ruff, mypy, pytest і збирає Docker-образ. Тести не потребують
-Ollama: LLM у них підмінена фейковою моделлю, ембедінги — хеш-заглушкою.
+CI (GitHub Actions) runs ruff, mypy and pytest and builds the Docker image. The tests do not need
+Ollama: the LLM is replaced by a fake model and the embeddings by a hashing stub.
 
 ---
 
-## 🐳 Запуск у Docker
+## 🐳 Running in Docker
 
 ```bash
-docker compose run --rm ingest     # одноразово: seed SQLite (+ інгест текстів з етапу 3)
+docker compose run --rm ingest     # one-time: seed SQLite (+ ingest the stage 3 texts)
 docker compose up app              # http://localhost:8501
 ```
 
-Оракул звертається до Ollama. Два варіанти:
+The oracle talks to Ollama. Two options:
 
-- **Ollama в контейнері** (потрібен NVIDIA Container Toolkit для GPU):
+- **Ollama in a container** (needs the NVIDIA Container Toolkit for GPU):
   ```bash
-  docker compose --profile ollama run --rm ollama-pull   # один раз завантажити модель
+  docker compose --profile ollama run --rm ollama-pull   # download the model once
   docker compose --profile ollama up
   ```
-- **Ollama на хості** (встановлена на Windows/macOS): у `.env` задайте
-  `OLLAMA_BASE_URL=http://host.docker.internal:11434` і запускайте лише `docker compose up app`.
+- **Ollama on the host** (installed on Windows/macOS): in `.env` set
+  `OLLAMA_BASE_URL=http://host.docker.internal:11434` and run only `docker compose up app`.
 
-SQLite зберігається в томі `delphi_storage`, індекс — у `./index`. Налаштування читаються з `.env` (у образ не потрапляє).
+SQLite is stored in the `delphi_storage` volume, the index in `./index`. Settings are read from `.env` (it is not baked into the image).
 
 ---
 
-## 📊 Статус
+## 📊 Status
 
-| Етап | Стан |
+| Stage | Status |
 |---|---|
-| 0. Каркас | ✅ |
-| 1. Дані і енциклопедія | ✅ |
-| 2. Карта | ✅ |
-| 3. RAG-оракул | ✅ |
-| 4. Якість | ⏳ |
-| 5. Зв'язки і реліз | ⏳ |
+| 0. Skeleton | ✅ |
+| 1. Data and encyclopedia | ✅ |
+| 2. Map | ✅ |
+| 3. RAG oracle | ✅ |
+| 4. Quality | ⏳ |
+| 5. Relations and release | ⏳ |
 
 ---
 
-## 📜 Ліцензії даних
+## 📜 Data licenses
 
-Тексти — переклади початку XX ст. у суспільному надбанні (див. `data/sources.yaml`).
-Wikidata — CC0; координати — [Pleiades](https://pleiades.stoa.org/) (CC BY);
-підкладка карти — Esri World Light Gray / © OpenStreetMap contributors
-(CARTO Positron тепер вимагає API-ключ).
+The texts are early-20th-century translations in the public domain (see `data/sources.yaml`).
+Wikidata — CC0; coordinates — [Pleiades](https://pleiades.stoa.org/) (CC BY);
+map base layer — Esri World Light Gray / © OpenStreetMap contributors
+(CARTO Positron now requires an API key).
