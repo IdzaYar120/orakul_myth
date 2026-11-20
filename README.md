@@ -63,7 +63,7 @@
 - `uv run delphi ingest [--source ID]` — offline ingest of texts (Chroma + BM25), idempotent.
 - `uv run delphi check-refs` — check the source references in the family trees against the corpus.
 - `uv run delphi ask "Хто виховував Ахілла?" --style піфія` — ask the oracle from the terminal.
-- `uv run delphi eval` — evaluate on the golden set (`data/eval/golden.yaml`) — *stage 4*.
+- `uv run delphi eval [--llm] [--judge]` — evaluate on the golden set (`data/eval/golden.yaml`).
 
 ---
 
@@ -94,23 +94,64 @@ uv run delphi seed                         # sync SQLite with the YAML (adds, up
 
 ## 🔮 Oracle (RAG)
 
-The stage 3 corpus is Apollodorus ("Bibliotheca", tr. Frazer 1921) and Hesiod ("Theogony", "Works and Days",
-tr. Evelyn-White 1914): 227 passages. The texts are TEI XML from the Perseus Digital Library
-(translations in the public domain, markup CC BY-SA 4.0; see `data/sources.yaml`).
+The corpus: 8 works, ~3,400 passages, all in public-domain translations (see `data/sources.yaml`).
+
+| Work | Translation | Reference format |
+|---|---|---|
+| Apollodorus, *Library* | Frazer 1921 | `Apollod. 2.4.2` |
+| Hesiod, *Theogony*, *Works and Days* | Evelyn-White 1914 | `Hes. Theog. 280`, `Hes. WD 110` |
+| Homer, *Iliad*, *Odyssey* | Murray 1924 / 1919 | `Hom. Il. 18.475–18.500` (book.line) |
+| *Homeric Hymns* (all 33) | Evelyn-White 1914 | `Hom. Hymn 2 Dem. 80` |
+| Apollonius of Rhodes, *Argonautica* | Seaton 1912 | `Ap. Rhod. 1§115` (book§paragraph*) |
+| Pausanias, *Description of Greece* | Jones 1918 | `Paus. 10.16.3` |
+
+TEI XML comes from the Perseus Digital Library (markup CC BY-SA 4.0); Apollonius is the Project
+Gutenberg plain text (*it has no line numbers, hence paragraph references). Homer's Perseus
+"cards" are cut at the line milestones, so citations point to the exact lines.
 
 ```bash
 uv sync --extra dev --extra ml   # PyTorch, Chroma, sentence-transformers (several GB)
-uv run delphi ingest             # download -> TEI -> chunks -> tags -> Chroma + BM25
+uv run delphi ingest             # download -> parse -> chunks -> tags -> Chroma + BM25 (~50 min on CPU)
 uv run delphi check-refs         # check the family tree source_refs against the texts
 uv run delphi ask "Хто виховував Ахілла?"
 ```
 
-How the oracle answers: question -> (rephrasing with the chat history) -> Ukrainian names
--> English names (`Ахілла` -> `Achilles`) -> hybrid search (bge-m3 + BM25, Reciprocal Rank
-Fusion, a boost for passages mentioning the entities) -> reranker bge-reranker-v2-m3 (threshold
-`MIN_RELEVANCE`: below it the answer is "Дим над триножником не дає відповіді") -> the LLM sees only the found
-passages, cites them as `[1]` -> citation check, entity chips.
-The reranker is slow on CPU (~40 s per question), so it is disabled for now (`RERANK_ENABLED=false`).
+How the oracle answers: question -> (rephrasing with the chat history) -> entity linking
+(`Ахілла`, `у Дельфах` -> achilles, delphi) -> **the local LLM translates the question into
+English** (the corpus is English) -> hybrid search: dense bge-m3 on the English and the Ukrainian
+query + BM25 on the English one, Reciprocal Rank Fusion, a boost for passages tagged with the
+named entities and a mild genre prior (Apollodorus/Hesiod over Pausanias) -> the LLM sees only
+the 5 best passages, cites them as `[1]` -> citation check, entity chips.
+
+The cross-encoder reranker (bge-reranker-v2-m3) is off: on CPU it takes ~40 s per question and
+scores Ukrainian-question/English-passage pairs too low, dropping correct passages. Without it
+there is no relevance threshold; trap questions are refused by the LLM itself ("Дим над
+триножником не дає відповіді").
+
+### Quality (stage 4)
+
+`data/eval/golden.yaml` holds 80 questions: 55 factual, 10 multi-hop (two facts combined),
+7 where the sources disagree (the answer must give both versions) and 8 traps. Every expected
+reference was checked against the texts.
+
+```bash
+uv run delphi eval            # retrieval only: Hit@5, Hit@20, MRR, entity recall (minutes)
+uv run delphi eval --llm      # + answers: refusals, citation validity, cited the right passage
+uv run delphi eval --judge    # + LLM judge: faithfulness, fact coverage (~1 h locally)
+uv run delphi eval --type negative --id q001   # subsets; a JSON report goes to eval/
+```
+
+Retrieval, before and after the stage 4 changes (same 72 answerable questions):
+
+| | Hit@5 | Hit@20 | MRR@20 |
+|---|---|---|---|
+| Ukrainian query, BM25 + dense (stage 3 pipeline) | 57% | 74% | 40% |
+| + English translation of the query, 3-way fusion, prior, clean expansion | **71%** | **82%** | **57%** |
+
+Other stage 4 fixes: the entity linker no longer links ordinary words to names ("сталося" was
+Talos, "Геракл" was Hera — 43 false positives on the golden set, now 0) and understands case
+endings ("у Дельфах", "з Олімпу"); `check-refs` confirms 222 family-tree references in the texts,
+none points to a wrong place.
 
 ### Local LLM (Ollama)
 
@@ -220,7 +261,7 @@ SQLite is stored in the `delphi_storage` volume, the index in `./index`. Setting
 | 1. Data and encyclopedia | ✅ |
 | 2. Map | ✅ |
 | 3. RAG oracle | ✅ |
-| 4. Quality | ⏳ |
+| 4. Quality | ✅ |
 | 5. Relations and release | ⏳ |
 
 ---
