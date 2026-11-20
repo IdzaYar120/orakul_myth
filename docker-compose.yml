@@ -1,7 +1,7 @@
 # Usage:
 #   docker compose run --rm ingest              # one-shot: seed SQLite (+ ingest texts from Stage 3)
 #   docker compose up app                       # Streamlit on http://localhost:8501
-#   docker compose --profile ollama up          # + local LLM (set LLM_PROVIDER=ollama in .env)
+#   docker compose --profile ollama up          # + local LLM in a container (Ollama)
 x-delphi: &delphi
   build: .
   image: delphi-oracle:latest
@@ -32,6 +32,8 @@ services:
       INDEX_DIR: /app/index
     command: ["sh", "-c", "delphi seed && delphi ingest"]
 
+  # Local LLM. Pull the model once:
+  #   docker compose --profile ollama run --rm ollama-pull
   ollama:
     image: ollama/ollama:latest
     profiles: ["ollama"]
@@ -39,6 +41,26 @@ services:
       - "11434:11434"
     volumes:
       - ollama_data:/root/.ollama
+    # NVIDIA GPU (needs the NVIDIA Container Toolkit); remove this block for CPU-only
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+
+  ollama-pull:
+    image: ollama/ollama:latest
+    profiles: ["ollama"]
+    environment:
+      OLLAMA_HOST: http://ollama:11434
+    entrypoint: ["sh", "-c", "ollama pull $${LLM_MODEL:-qwen2.5:7b}"]
+    env_file:
+      - path: .env
+        required: false
+    depends_on:
+      - ollama
 
 volumes:
   delphi_storage:

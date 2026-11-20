@@ -18,7 +18,12 @@ from langchain_core.prompts import ChatPromptTemplate
 from delphi.config import settings
 from delphi.ingest.sources import load_sources
 from delphi.rag.linker import EntityLinker
-from delphi.rag.llm import LLMConfigError, get_chat_model
+from delphi.rag.llm import (
+    LLMConfigError,
+    LLMUnavailableError,
+    describe_llm_error,
+    get_chat_model,
+)
 from delphi.rag.models import Answer, Citation
 from delphi.rag.prompts import (
     CONDENSE_QUESTION_PROMPT,
@@ -86,7 +91,9 @@ class OracleService:
         try:
             chain = ChatPromptTemplate.from_template(CONDENSE_QUESTION_PROMPT) | self.llm
             result = chain.invoke({"chat_history": chat_history, "question": question})
-        except LLMConfigError:
+        except Exception as exc:  # a follow-up is still answerable as asked
+            if describe_llm_error(exc) is None:
+                raise
             return question
         text = str(result.content).strip()
         return text or question
@@ -154,7 +161,15 @@ class OracleService:
         if not prepared.grounded:
             yield REFUSAL_TEXT
             return
-        yield from self._chain().stream(self._inputs(prepared))
+        try:
+            yield from self._chain().stream(self._inputs(prepared))
+        except LLMConfigError:
+            raise
+        except Exception as exc:
+            reason = describe_llm_error(exc)
+            if reason is None:
+                raise
+            raise LLMUnavailableError(reason) from exc
 
     def finalize(self, prepared: PreparedQuestion, text: str, error: str | None = None) -> Answer:
         """Validate [n] citations, find mentioned entities, decide whether it is grounded."""
@@ -197,8 +212,11 @@ class OracleService:
             )
         try:
             text = self._chain().invoke(self._inputs(prepared))
-        except LLMConfigError as exc:
-            return self.finalize(prepared, "", error=str(exc))
+        except Exception as exc:
+            reason = describe_llm_error(exc)
+            if reason is None:
+                raise
+            return self.finalize(prepared, "", error=reason)
         return self.finalize(prepared, text)
 
 
