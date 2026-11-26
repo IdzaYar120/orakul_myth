@@ -143,3 +143,80 @@ def test_cli_eval_writes_report(seeded_default_db: Path, tmp_path: Path):
     assert report["mode"] == "retrieval"
     assert report["summary"]["усі"]["n"] == len(report["results"]) > 0
     assert all(r["type"] == "negative" for r in report["results"])
+
+
+def _golden_file(tmp_path: Path) -> Path:
+    path = tmp_path / "golden.yaml"
+    path.write_text(
+        yaml.safe_dump(
+            {"questions": [q.model_dump() for q in GOLDEN]}, allow_unicode=True, sort_keys=False
+        ),
+        encoding="utf-8",
+    )
+    return path
+
+
+def test_resume_reuses_partial_results_and_writes_history(
+    seeded_default_db: Path, seeded_session: Session, tmp_path: Path
+):
+    from dataclasses import asdict
+
+    from delphi.eval.run import QuestionResult, run_evaluation
+
+    out = tmp_path / "report.json"
+    partial = tmp_path / "report.json.partial.jsonl"
+    finished = QuestionResult(
+        id="q1", type="factual", question="?", should_refuse=False, rank=99, hit_context=False
+    )
+    partial.write_text(json.dumps(asdict(finished)) + "\n{torn line", encoding="utf-8")
+    history = tmp_path / "history.csv"
+
+    run_evaluation(
+        golden_path=_golden_file(tmp_path),
+        out=out,
+        resume=True,
+        oracle=_oracle(seeded_session, PASSAGES),
+        history=history,
+        note="test",
+    )
+    report = json.loads(out.read_text(encoding="utf-8"))
+    by_id = {r["id"]: r for r in report["results"]}
+    assert by_id["q1"]["rank"] == 99  # reused, not recomputed
+    assert by_id["q2"]["type"] == "negative"  # the missing one was evaluated
+    assert not partial.exists()  # cleaned up after the report is written
+    rows = history.read_text(encoding="utf-8").splitlines()
+    assert rows[0].startswith("date,commit,mode,note") and len(rows) == 2
+    assert ",test," in rows[1]
+
+
+def test_partial_results_are_saved_per_question(
+    seeded_default_db: Path, seeded_session: Session, tmp_path: Path
+):
+    from delphi.eval.run import load_partial, run_evaluation
+
+    class PowerCutError(Exception):
+        pass
+
+    oracle = _oracle(seeded_session, PASSAGES)
+    calls = {"n": 0}
+    original = oracle.prepare
+
+    def flaky_prepare(*args, **kwargs):
+        calls["n"] += 1
+        if calls["n"] == 2:
+            raise PowerCutError  # "power cut" on the second question
+        return original(*args, **kwargs)
+
+    oracle.prepare = flaky_prepare  # type: ignore[method-assign]
+    out = tmp_path / "report.json"
+    with pytest.raises(PowerCutError):
+        run_evaluation(golden_path=_golden_file(tmp_path), out=out, oracle=oracle)
+    saved = load_partial(tmp_path / "report.json.partial.jsonl")
+    assert list(saved) == ["q1"] and not out.exists()
+
+
+def test_resume_requires_out():
+    from delphi.eval.run import run_evaluation
+
+    with pytest.raises(ValueError, match="--resume"):
+        run_evaluation(resume=True)

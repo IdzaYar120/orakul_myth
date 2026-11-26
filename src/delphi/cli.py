@@ -95,6 +95,10 @@ def eval_cmd(
     ),
     limit: int = typer.Option(None, help="Перші N питань"),
     out: Path = typer.Option(None, help="Куди записати JSON-звіт (типово eval/report-*.json)"),
+    resume: bool = typer.Option(
+        False, "--resume", help="Продовжити перерваний прогін (разом з --out його звіту)"
+    ),
+    note: str = typer.Option("", help="Примітка до рядка в data/eval/history.csv"),
 ):
     """Evaluate on the golden set: Hit@5, MRR, refusals, citations, faithfulness."""
     try:
@@ -105,6 +109,8 @@ def eval_cmd(
             types=qtype or None,
             limit=limit,
             out=out,
+            resume=resume,
+            note=note,
         )
     except ValueError as exc:
         console.print(f"[red]{exc}[/red]")

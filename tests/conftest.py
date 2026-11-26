@@ -3,7 +3,9 @@
 Settings are overridden through environment variables (they win over a developer's .env)
 *before* any `delphi` module is imported:
 - DB_PATH / INDEX_DIR point to a temp dir: tests never touch the real delphi.db or index;
-- no model downloads (hashing embedder, reranker off) and no LLM/network calls (empty keys).
+- no model downloads (hashing embedder, reranker off) and no LLM/network calls (empty keys);
+- `delphi ingest` never downloads the corpus: every source is read from tests/fixtures/
+  (see `offline_sources`), so data/raw/ stays untouched and the tests run without a network.
 """
 
 import os
@@ -47,6 +49,21 @@ def seeded_engine(tmp_path: Path) -> Engine:
 def seeded_session(seeded_engine: Engine) -> Iterator[Session]:
     with Session(seeded_engine) as session:
         yield session
+
+
+FIXTURES = Path(__file__).parent / "fixtures"
+
+
+@pytest.fixture(autouse=True)
+def offline_sources(monkeypatch: pytest.MonkeyPatch) -> None:
+    """Replace the corpus download with local fixture files for every test."""
+
+    def fixture_file(source, force=False, client=None, filename=None):
+        return FIXTURES / (
+            "gutenberg.txt" if source.format == "gutenberg_text" else "tei_prose.xml"
+        )
+
+    monkeypatch.setattr("delphi.ingest.pipeline.download_source", fixture_file)
 
 
 @pytest.fixture(scope="session")

@@ -1,0 +1,4 @@
+date,commit,mode,note,llm_model,query_translation,rerank_enabled,n,hit@5,hit@20,mrr@20,entity_recall,refusal_accuracy,trap_refused,false_refusal,citation_validity,cited_hit,faithfulness,fact_coverage,avg_seconds
+2026-11-20T21:04,047605b,retrieval,stage 3 pipeline on the stage 4 corpus (Ukrainian query),,False,False,80,0.569,0.736,0.398,1.0,,,,,,,,
+2026-11-20T21:19,88c881f,retrieval,"English query translation, 3-way fusion, genre prior",,True,False,80,0.708,0.819,0.568,1.0,,,,,,,,
+2026-11-26T17:18,3b0e4db,retrieval,same pipeline without query translation (current golden set),,False,False,80,0.611,0.778,0.498,1.0,,,,,,,,
