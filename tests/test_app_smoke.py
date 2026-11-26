@@ -126,3 +126,14 @@ def test_cli_seed_and_ask(seeded_default_db: Path):
 
     res = runner.invoke(cli_app, ["wikidata", "--help"])
     assert res.exit_code == 0 and "pull" in res.output
+
+
+def test_map_place_asks_the_oracle(seeded_default_db: Path):
+    at = _app()
+    at.query_params["entity"] = "delphi"
+    _ok(at.run())
+    _ok(_button(at, "show_on_map_delphi").click().run())
+    _ok(_button(at, "map_ask_delphi").click().run())
+    assert at.sidebar.radio[0].value == "Оракул"
+    roles = [m.name for m in at.chat_message]
+    assert roles[-2:] == ["user", "assistant"]  # the question about Delphi was asked

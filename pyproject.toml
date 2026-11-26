@@ -5,11 +5,6 @@ description = "Дельфійський оракул — RAG-чат та енц�
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
-    "streamlit>=1.67.0",
-    "folium>=0.16.0",
-    "streamlit-folium>=0.20.0",
-    "networkx>=3.2",
-    "pyvis>=0.3.2",
     "sqlmodel>=0.0.19",
     "pydantic-settings>=2.2.0",
     "pyyaml>=6.0.1",
@@ -23,9 +18,19 @@ dependencies = [
     "langchain-openai>=0.1.0",
     "langchain-anthropic>=0.1.0",
     "langchain-ollama>=0.1.0",
+    "fastapi>=0.115",
+    "uvicorn[standard]>=0.30",
 ]
 
 [project.optional-dependencies]
+# Streamlit MVP UI (app/). The HTTP API and the CLI do not need it.
+ui = [
+    "streamlit>=1.67.0",
+    "folium>=0.16.0",
+    "streamlit-folium>=0.20.0",
+    "networkx>=3.2",
+    "pyvis>=0.3.2",
+]
 ml = [
     "chromadb>=0.5.0",
     "sentence-transformers>=3.0.0",

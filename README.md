@@ -32,11 +32,13 @@
 
 ### Install and run
 
-1. **Install dependencies** (core + dev tools):
+1. **Install dependencies** (core + Streamlit UI + dev tools):
    ```bash
-   uv sync --extra dev
+   uv sync --extra ui --extra dev
    ```
-   ML dependencies for RAG (Chroma, sentence-transformers) are needed from stage 3 on: `uv sync --extra dev --extra ml`.
+   Extras: `ui` — the Streamlit app; `ml` — the RAG oracle (Chroma, sentence-transformers, torch:
+   several GB); `dev` — tests and linters. Everything: `uv sync --extra ui --extra ml --extra dev`.
+   The HTTP API without the oracle (`ORACLE_MODE=remote|off`) needs only the core.
 
 2. **Set up the environment**:
    ```bash
@@ -110,7 +112,7 @@ Gutenberg plain text (*it has no line numbers, hence paragraph references). Home
 "cards" are cut at the line milestones, so citations point to the exact lines.
 
 ```bash
-uv sync --extra dev --extra ml   # PyTorch, Chroma, sentence-transformers (several GB)
+uv sync --extra ui --extra ml --extra dev   # PyTorch, Chroma, sentence-transformers (several GB)
 uv run delphi ingest             # download -> parse -> chunks -> tags -> Chroma + BM25 (~50 min on CPU)
 uv run delphi check-refs         # check the family tree source_refs against the texts
 uv run delphi ask "Хто виховував Ахілла?"
@@ -243,12 +245,75 @@ Ollama: the LLM is replaced by a fake model and the embeddings by a hashing stub
 
 ---
 
+## 🌐 HTTP API (stage 5)
+
+The backend of the future website (Next.js) and mobile app (React Native): FastAPI over the same
+services the Streamlit UI uses.
+
+```bash
+uv run delphi serve                 # http://127.0.0.1:8000/api/docs (interactive docs)
+uv run delphi openapi               # openapi.json -> TypeScript client for web/mobile
+```
+
+| Endpoint | What |
+|---|---|
+| `GET /api/health` | version, counts, whether the oracle can answer right now |
+| `GET /api/meta?lang=uk\|en` | UI labels (entity types, place kinds, myth cycles), answer styles |
+| `GET /api/entities?q=&type=&cycle=` | search (Ukrainian/English, fuzzy) or list |
+| `GET /api/entities/{id}` | full card: family tree, relations, places, myths, passages |
+| `GET /api/myths?cycle=` | myths with participants and their map routes |
+| `GET /api/map/layer?kinds=&god=&myth=&routes=` | markers, hero routes, places off the map |
+| `GET /api/map/filters`, `GET /api/map/nearest?lat=&lon=` | map filter options, place under a click |
+| `POST /api/oracle/ask` | one JSON answer |
+| `POST /api/oracle/stream` | Server-Sent Events: `meta` (sources, before generation) → `token`… → `done` (answer, checked citations) or `error` |
+
+Oracle requests take `{"question", "history", "style": "pythia"|"scholar", "lang": "uk"|"en"}`.
+English questions are answered in English (and need no query translation: the corpus is English).
+Every citation carries the entity ids tagged in its passage, and every answer the entities it
+names, so the frontends can link an answer to cards and to the map.
+
+## 🚀 Deployment: public demo + the oracle on your PC
+
+The encyclopedia and the map need only SQLite; the oracle needs Ollama, a GPU and a 3 GB index.
+So the public part runs on any small host, and oracle questions are forwarded to your PC:
+
+```
+browser / app ──► public API (image `api`, no ML)  ──X-Oracle-Token──►  Cloudflare Tunnel ──► API on your PC
+                  encyclopedia, map: always on       ORACLE_MODE=remote                          ORACLE_MODE=local
+                                                                                                  Ollama + index
+```
+
+1. **On your PC** (the oracle node), in `.env` set a long random `ORACLE_TOKEN`, then run the API
+   and a tunnel:
+   ```bash
+   uv run delphi serve --port 8000
+   cloudflared tunnel --url http://localhost:8000        # prints https://<random>.trycloudflare.com
+   ```
+   With Docker: `docker compose --profile tunnel up api tunnel`. A quick tunnel gets a new URL on
+   every start; a named tunnel (free Cloudflare account) keeps one, e.g. `oracle.example.com`.
+2. **On the public host**, run the light image (`docker build --target api`: no torch, Chroma or
+   Streamlit; the database is baked in) with
+   `ORACLE_MODE=remote`, `ORACLE_BACKEND_URL=<tunnel URL>`, the same `ORACLE_TOKEN`, and
+   `API_CORS_ORIGINS=<your website>`.
+3. When the PC is off, `/api/health` reports the oracle unavailable and oracle requests get
+   `503` "Піфія зараз мовчить…"; the encyclopedia and the map keep working.
+4. **Moving to a GPU server later**: run the full image there with `ORACLE_MODE=local` and point
+   `ORACLE_BACKEND_URL` at it (or serve everything from it) — the frontends do not change.
+
+The oracle node rejects requests without the token (401) and the public API limits every client
+to `ORACLE_RATE_LIMIT` questions per hour (429).
+
 ## 🐳 Running in Docker
 
 ```bash
-docker compose run --rm ingest     # one-time: seed SQLite (+ ingest the stage 3 texts)
-docker compose up app              # http://localhost:8501
+docker compose run --rm ingest     # one-time: seed SQLite + ingest the texts (~50 min on CPU)
+docker compose up app              # Streamlit UI: http://localhost:8501
+docker compose up api              # HTTP API:     http://localhost:8000/api/docs
+docker compose --profile public up api api-public   # the whole chain locally: :8080 -> :8000
 ```
+
+Images: `api` (public, no ML) **663 MB**; `full` (oracle, Streamlit) **3.35 GB** — was 5.82 GB
+before the uv download cache moved out of the image layers (BuildKit cache mount).
 
 The oracle talks to Ollama. Two options:
 
@@ -273,7 +338,7 @@ SQLite is stored in the `delphi_storage` volume, the index in `./index`. Setting
 | 2. Map | ✅ |
 | 3. RAG oracle | ✅ |
 | 4. Quality | ✅ |
-| 5. Relations and release | ⏳ |
+| 5. API and release | 🔄 API, deployment setup done |
 
 ---
 

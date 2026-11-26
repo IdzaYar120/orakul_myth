@@ -23,7 +23,7 @@ jobs:
         run: uv python install 3.12
 
       - name: Install dependencies
-        run: uv sync --locked --extra dev --extra ml  # ml = chromadb + CPU torch for RAG tests
+        run: uv sync --locked --extra dev --extra ml --extra ui  # ml: RAG tests, ui: Streamlit smoke tests
 
       - name: Lint with ruff
         run: |
@@ -42,8 +42,18 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Build image
-        run: docker build -t delphi-oracle:ci .
+      - name: Build the public API image (no ML stack)
+        run: docker build --target api -t delphi-api:ci .
 
-      - name: Seed DB inside the image
+      - name: Public API answers /api/health
+        run: |
+          docker run -d --name api -p 8000:8000 -e ORACLE_BACKEND_URL=http://127.0.0.1:9 delphi-api:ci
+          for i in $(seq 1 30); do curl -sf localhost:8000/api/health && break; sleep 1; done
+          curl -sf localhost:8000/api/entities/zeus | grep -q '"name_en":"Zeus"'
+          docker images delphi-api:ci --format 'api image: {{.Size}}'
+
+      - name: Build the full image
+        run: docker build --target full -t delphi-oracle:ci .
+
+      - name: Seed DB inside the full image
         run: docker run --rm delphi-oracle:ci delphi seed

@@ -11,6 +11,7 @@ class Citation(BaseModel):
     source_url: str | None = None
     notes: list[str] = Field(default_factory=list)
     cited: bool = False  # the answer actually refers to [num]
+    entity_ids: list[str] = Field(default_factory=list)  # entities tagged in the passage
 
 
 class Answer(BaseModel):
@@ -22,3 +23,5 @@ class Answer(BaseModel):
     standalone_question: str | None = None  # after condensing a follow-up question
     invalid_citations: list[int] = Field(default_factory=list)  # [n] with no such source
     error: str | None = None  # e.g. LLM not configured; sources are still returned
+    lang: str = "uk"
+    refused: bool = False  # "the smoke over the tripod gives no answer"

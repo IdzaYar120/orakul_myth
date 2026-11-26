@@ -1,9 +1,15 @@
-# Usage:
-#   docker compose run --rm ingest              # one-shot: seed SQLite (+ ingest texts from Stage 3)
-#   docker compose up app                       # Streamlit on http://localhost:8501
+# Usage (on your PC, the "oracle node"):
+#   docker compose run --rm ingest              # one-shot: seed SQLite + ingest the texts
+#   docker compose up app                       # Streamlit UI on http://localhost:8501
+#   docker compose up api                       # HTTP API on http://localhost:8000/api/docs
 #   docker compose --profile ollama up          # + local LLM in a container (Ollama)
+#   docker compose --profile tunnel up api tunnel   # expose the API through Cloudflare
+#
+# Public demo host (no GPU, no ML stack): only the `api-public` image, see README "Deployment".
 x-delphi: &delphi
-  build: .
+  build:
+    context: .
+    target: full
   image: delphi-oracle:latest
   env_file:
     - path: .env
@@ -22,7 +28,24 @@ services:
     environment:
       DB_PATH: /app/storage/delphi.db
       INDEX_DIR: /app/index
-      OLLAMA_BASE_URL: http://ollama:11434
+      OLLAMA_BASE_URL: ${OLLAMA_BASE_URL:-http://ollama:11434}
+
+  # The API that answers questions (oracle_mode=local). Put ORACLE_TOKEN in .env before
+  # exposing it through the tunnel: only your public API should be able to call it.
+  api:
+    <<: *delphi
+    ports:
+      - "8000:8000"
+    environment:
+      DB_PATH: /app/storage/delphi.db
+      INDEX_DIR: /app/index
+      OLLAMA_BASE_URL: ${OLLAMA_BASE_URL:-http://ollama:11434}
+      ORACLE_MODE: local
+    command: ["delphi", "serve", "--host", "0.0.0.0", "--port", "8000"]
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/api/health')"]
+      interval: 30s
+      start_period: 60s
 
   ingest:
     <<: *delphi
@@ -31,6 +54,31 @@ services:
       DB_PATH: /app/storage/delphi.db
       INDEX_DIR: /app/index
     command: ["sh", "-c", "delphi seed && delphi ingest"]
+
+  # Light public API (no torch/Chroma): encyclopedia + map, oracle forwarded to your PC.
+  # Normally deployed on a hosting service; here for trying the whole chain locally.
+  api-public:
+    build:
+      context: .
+      target: api
+    image: delphi-api:latest
+    profiles: ["public"]
+    ports:
+      - "8080:8000"
+    environment:
+      ORACLE_MODE: remote
+      ORACLE_BACKEND_URL: ${ORACLE_BACKEND_URL:-http://api:8000}
+      ORACLE_TOKEN: ${ORACLE_TOKEN:-}
+      API_CORS_ORIGINS: ${API_CORS_ORIGINS:-http://localhost:3000}
+
+  # Cloudflare quick tunnel: prints a https://*.trycloudflare.com URL for the `api` service.
+  # For a stable URL use a named tunnel (README "Deployment").
+  tunnel:
+    image: cloudflare/cloudflared:latest
+    profiles: ["tunnel"]
+    command: ["tunnel", "--no-autoupdate", "--url", "http://api:8000"]
+    depends_on:
+      - api
 
   # Local LLM. Pull the model once:
   #   docker compose --profile ollama run --rm ollama-pull

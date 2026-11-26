@@ -691,24 +691,21 @@ name = "delphi-oracle"
 version = "0.1.0"
 source = { editable = "." }
 dependencies = [
-    { name = "folium" },
+    { name = "fastapi" },
     { name = "httpx" },
     { name = "langchain-anthropic" },
     { name = "langchain-core" },
     { name = "langchain-ollama" },
     { name = "langchain-openai" },
     { name = "lxml" },
-    { name = "networkx" },
     { name = "pydantic-settings" },
-    { name = "pyvis" },
     { name = "pyyaml" },
     { name = "rank-bm25" },
     { name = "rapidfuzz" },
     { name = "rich" },
     { name = "sqlmodel" },
-    { name = "streamlit" },
-    { name = "streamlit-folium" },
     { name = "typer" },
+    { name = "uvicorn", extra = ["standard"] },
 ]
 
 [package.optional-dependencies]
@@ -728,11 +725,19 @@ ml = [
     { name = "torch", version = "2.15.0", source = { registry = "https://pypi.org/simple" }, marker = "sys_platform != 'linux'" },
     { name = "torch", version = "2.15.0+cpu", source = { registry = "https://download.pytorch.org/whl/cpu" }, marker = "sys_platform == 'linux'" },
 ]
+ui = [
+    { name = "folium" },
+    { name = "networkx" },
+    { name = "pyvis" },
+    { name = "streamlit" },
+    { name = "streamlit-folium" },
+]
 
 [package.metadata]
 requires-dist = [
     { name = "chromadb", marker = "extra == 'ml'", specifier = ">=0.5.0" },
-    { name = "folium", specifier = ">=0.16.0" },
+    { name = "fastapi", specifier = ">=0.115" },
+    { name = "folium", marker = "extra == 'ui'", specifier = ">=0.16.0" },
     { name = "httpx", specifier = ">=0.27.0" },
     { name = "langchain-anthropic", specifier = ">=0.1.0" },
     { name = "langchain-core", specifier = ">=0.2.0" },
@@ -740,11 +745,11 @@ requires-dist = [
     { name = "langchain-openai", specifier = ">=0.1.0" },
     { name = "lxml", specifier = ">=5.2.0" },
     { name = "mypy", marker = "extra == 'dev'", specifier = ">=1.10.0" },
-    { name = "networkx", specifier = ">=3.2" },
+    { name = "networkx", marker = "extra == 'ui'", specifier = ">=3.2" },
     { name = "pre-commit", marker = "extra == 'dev'", specifier = ">=3.7.0" },
     { name = "pydantic-settings", specifier = ">=2.2.0" },
     { name = "pytest", marker = "extra == 'dev'", specifier = ">=8.2.0" },
-    { name = "pyvis", specifier = ">=0.3.2" },
+    { name = "pyvis", marker = "extra == 'ui'", specifier = ">=0.3.2" },
     { name = "pyyaml", specifier = ">=6.0.1" },
     { name = "ragas", marker = "extra == 'eval'", specifier = ">=0.1.0" },
     { name = "rank-bm25", specifier = ">=0.2.2" },
@@ -753,14 +758,15 @@ requires-dist = [
     { name = "ruff", marker = "extra == 'dev'", specifier = ">=0.4.0" },
     { name = "sentence-transformers", marker = "extra == 'ml'", specifier = ">=3.0.0" },
     { name = "sqlmodel", specifier = ">=0.0.19" },
-    { name = "streamlit", specifier = ">=1.67.0" },
-    { name = "streamlit-folium", specifier = ">=0.20.0" },
+    { name = "streamlit", marker = "extra == 'ui'", specifier = ">=1.67.0" },
+    { name = "streamlit-folium", marker = "extra == 'ui'", specifier = ">=0.20.0" },
     { name = "torch", marker = "sys_platform == 'linux' and extra == 'ml'", specifier = ">=2.4.0", index = "https://download.pytorch.org/whl/cpu" },
     { name = "torch", marker = "sys_platform != 'linux' and extra == 'ml'", specifier = ">=2.4.0" },
     { name = "typer", specifier = ">=0.12.0" },
     { name = "types-pyyaml", marker = "extra == 'dev'", specifier = ">=6.0.12" },
+    { name = "uvicorn", extras = ["standard"], specifier = ">=0.30" },
 ]
-provides-extras = ["ml", "eval", "dev"]
+provides-extras = ["ui", "ml", "eval", "dev"]
 
 [[package]]
 name = "dill"
@@ -823,6 +829,24 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/52/92/8a611141e42930c0f194f7504063ab87dfe970cf1a5af28e7703df448734/executing-2.3.0.tar.gz", hash = "sha256:15919cb5d667e5cb4e099511971d00d659573fff2dd5c4e6cd8b71636c7858d2", size = 1338003, upload-time = "2026-10-10T14:06:04.64Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/4d/dd/8bc67e7d5ffc1d88aa5af511189dfb76dc4e1e5b808fab186146ef2663e5/executing-2.3.0-py3-none-any.whl", hash = "sha256:736e859c9f8701f11fcf516856f26f562e04776387824b43a35a1dfe21c84122", size = 29393, upload-time = "2026-10-10T14:06:02.777Z" },
+]
+
+[[package]]
+name = "fastapi"
+version = "0.165.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "annotated-doc" },
+    { name = "anyio" },
+    { name = "opentelemetry-api" },
+    { name = "pydantic" },
+    { name = "starlette" },
+    { name = "typing-extensions" },
+    { name = "typing-inspection" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/27/f9/e7820ef181026fea100bde02d811445bf8e883362d7092b6928767147056/fastapi-0.165.0.tar.gz", hash = "sha256:dd94d4128319c1e1d50535ab023ab698f850a4d2822f0e181747b46f4ff3c0ab", size = 557984, upload-time = "2026-11-18T19:15:37.076Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/c4/c1/3b74c030262a1b38b1fee180f80b4007bbc11c9ac12028cb18c7bcecaec9/fastapi-0.165.0-py3-none-any.whl", hash = "sha256:896f48462042bb4f162147eb8fac7e858753dc1f486765709baf105d70e4fc5b", size = 159475, upload-time = "2026-11-18T19:15:35.345Z" },
 ]
 
 [[package]]
