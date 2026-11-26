@@ -70,6 +70,17 @@ class MythRef(BaseModel):
     participants: list[EntityRef] = Field(default_factory=list)
 
 
+class MythSummary(BaseModel):
+    """A myth for the myths list: participants and the map routes that tell it."""
+
+    id: str
+    title_uk: str
+    cycle: str
+    summary_uk: str
+    participants: list[EntityRef] = Field(default_factory=list)
+    route_ids: list[str] = Field(default_factory=list)
+
+
 class PassageRef(BaseModel):
     work: str
     author: str

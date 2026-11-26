@@ -79,3 +79,68 @@ UNVERIFIED_REFS: set[str] = {"Wikidata", "manual"}
 
 def is_verified(source_ref: str) -> bool:
     return source_ref not in UNVERIFIED_REFS
+
+
+# English labels for the bilingual API (the website and the mobile app); same keys as above.
+ENTITY_TYPES_EN: dict[str, str] = {
+    "god": "God / deity",
+    "titan": "Titan",
+    "hero": "Hero",
+    "mortal": "Mortal",
+    "creature": "Creature",
+    "place": "Place",
+    "artifact": "Artifact",
+}
+PLACE_KINDS_EN: dict[str, str] = {
+    "sanctuary": "Sanctuary",
+    "city": "City",
+    "mountain": "Mountain",
+    "island": "Island",
+    "river": "River / lake",
+    "region": "Region",
+}
+CERTAINTY_EN: dict[str, str] = {
+    "high": "reliable location",
+    "medium": "approximate location",
+    "low": "traditional identification",
+    "none": "mythical place, off the map",
+}
+MYTH_CYCLES_EN: dict[str, str] = {
+    "theogony": "Theogony",
+    "olympians": "Olympian gods",
+    "heracles": "Heracles",
+    "perseus": "Perseus",
+    "theseus": "Theseus",
+    "argonauts": "Argonauts",
+    "theban": "Theban cycle",
+    "trojan": "Trojan cycle",
+    "other": "Other myths",
+}
+MYTH_ROLES_EN: dict[str, str] = {
+    "protagonist": "protagonist",
+    "antagonist": "antagonist",
+    "helper": "helper",
+    "victim": "victim",
+    "participant": "participant",
+    "location": "setting",
+    "object": "object",
+}
+
+
+def vocab_labels(lang: str = "uk") -> dict[str, dict[str, str]]:
+    """All label dictionaries in one language, for UI filters and badges."""
+    if lang == "en":
+        return {
+            "entity_types": ENTITY_TYPES_EN,
+            "place_kinds": PLACE_KINDS_EN,
+            "certainty": CERTAINTY_EN,
+            "myth_cycles": MYTH_CYCLES_EN,
+            "myth_roles": MYTH_ROLES_EN,
+        }
+    return {
+        "entity_types": ENTITY_TYPES,
+        "place_kinds": PLACE_KINDS,
+        "certainty": CERTAINTY,
+        "myth_cycles": MYTH_CYCLES,
+        "myth_roles": MYTH_ROLES,
+    }

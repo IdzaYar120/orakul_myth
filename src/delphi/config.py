@@ -47,6 +47,19 @@ class Settings(BaseSettings):
     max_question_chars: int = 500
     max_questions_per_session: int = 30
 
+    # HTTP API (`delphi serve`), the backend of the website and the mobile app
+    # local  = this process answers (needs Ollama + the search index: the user's PC, a GPU server)
+    # remote = forward oracle requests to ORACLE_BACKEND_URL (a public host without the ML stack
+    #          reaches the PC through a tunnel); off = encyclopedia and map only
+    oracle_mode: Literal["local", "remote", "off"] = "local"
+    oracle_backend_url: str | None = None
+    # Shared secret between the public API and the oracle backend (header X-Oracle-Token).
+    # Set it on any oracle exposed to the internet, so only your public API can use it.
+    oracle_token: str | None = None
+    oracle_rate_limit: int = 30  # questions per client IP per hour; 0 = unlimited
+    oracle_warmup: bool = True  # load the embedding model at startup, not on the 1st question
+    api_cors_origins: str = "http://localhost:3000,http://localhost:8081"  # comma-separated
+
     # Paths
     db_path: Path = Path("delphi.db")
     index_dir: Path = Path("index")

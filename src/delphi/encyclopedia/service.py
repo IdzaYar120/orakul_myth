@@ -11,6 +11,7 @@ from delphi.db.models import (
     PassageEntity,
     Place,
     Relation,
+    Route,
 )
 from delphi.encyclopedia.map_service import MapService
 from delphi.encyclopedia.models import (
@@ -20,6 +21,7 @@ from delphi.encyclopedia.models import (
     Lineage,
     MapMarker,
     MythRef,
+    MythSummary,
     PassageRef,
     RelatedEntity,
     RelationGroup,
@@ -110,6 +112,39 @@ class EncyclopediaService(SessionMixin):
             .where(Myth.cycle == cycle)
         )
         return set(session.exec(stmt).all())
+
+    # ------------------------------------------------------------------ myths
+    def list_myths(self, cycle: str | None = None) -> list[MythSummary]:
+        """All myths (optionally of one cycle) with participants and map routes."""
+        with self._use_session() as session:
+            stmt = select(Myth)
+            if cycle:
+                stmt = stmt.where(Myth.cycle == cycle)
+            myths = session.exec(stmt).all()
+            entities = {e.id: e for e in session.exec(select(Entity)).all()}
+            members: dict[str, list[str]] = {}
+            for me in session.exec(select(MythEntity)).all():
+                members.setdefault(me.myth_id, []).append(me.entity_id)
+            routes: dict[str, list[str]] = {}
+            for route in session.exec(select(Route)).all():
+                if route.myth_id:
+                    routes.setdefault(route.myth_id, []).append(route.id)
+            return sorted(
+                (
+                    MythSummary(
+                        id=m.id,
+                        title_uk=m.title_uk,
+                        cycle=m.cycle,
+                        summary_uk=m.summary_uk,
+                        participants=[
+                            entity_ref(entities[e]) for e in members.get(m.id, []) if e in entities
+                        ],
+                        route_ids=sorted(routes.get(m.id, [])),
+                    )
+                    for m in myths
+                ),
+                key=lambda m: (m.cycle, m.title_uk.lower()),
+            )
 
     # ------------------------------------------------------------------ card
     def get_entity_card(self, entity_id: str, session: Session | None = None) -> EntityCard | None:

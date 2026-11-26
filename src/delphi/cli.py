@@ -227,5 +227,36 @@ def wikidata_draft(
     )
 
 
+@app.command()
+def serve(
+    host: str = typer.Option("127.0.0.1", help="0.0.0.0 to listen on all interfaces"),
+    port: int = typer.Option(8000),
+    reload: bool = typer.Option(False, help="Restart on code changes (development)"),
+):
+    """Run the HTTP API (backend of the website and the app): /api/docs, /api/health."""
+    import uvicorn
+
+    console.print(
+        f"[bold]Delphi API[/bold] http://{host}:{port}/api/docs  "
+        f"(oracle: {settings.oracle_mode}, CORS: {settings.api_cors_origins})"
+    )
+    uvicorn.run("delphi.api.app:create_app", factory=True, host=host, port=port, reload=reload)
+
+
+@app.command()
+def openapi(
+    out: Path = typer.Option(Path("openapi.json"), help="Where to write the OpenAPI schema"),
+):
+    """Write the OpenAPI schema (input for the TypeScript client of the web/mobile apps)."""
+    import json
+
+    from delphi.api.app import create_app
+    from delphi.api.oracle_backends import OffOracle
+
+    schema = create_app(oracle=OffOracle()).openapi()
+    out.write_text(json.dumps(schema, ensure_ascii=False, indent=2), encoding="utf-8")
+    console.print(f"[green]OpenAPI: {out} ({len(schema['paths'])} шляхів)[/green]")
+
+
 if __name__ == "__main__":
     app()
