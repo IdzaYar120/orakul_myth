@@ -312,6 +312,9 @@ docker compose up api              # HTTP API:     http://localhost:8000/api/doc
 docker compose --profile public up api api-public   # the whole chain locally: :8080 -> :8000
 ```
 
+Images: `api` (public, no ML) **663 MB**; `full` (oracle, Streamlit) **3.35 GB** — was 5.82 GB
+before the uv download cache moved out of the image layers (BuildKit cache mount).
+
 The oracle talks to Ollama. Two options:
 
 - **Ollama in a container** (needs the NVIDIA Container Toolkit for GPU):
