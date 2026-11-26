@@ -6,7 +6,7 @@ from folium.plugins import MarkerCluster
 from streamlit_folium import st_folium
 
 from app.components.mini_map import KIND_COLORS, KIND_ICONS, base_map
-from app.components.navigation import open_entity
+from app.components.navigation import ask_oracle, open_entity
 from delphi.encyclopedia.models import MapLayer, MapMarker, MapRoute
 from delphi.encyclopedia.service import EncyclopediaService, MapService
 from delphi.encyclopedia.vocab import CERTAINTY, PLACE_KINDS
@@ -207,6 +207,13 @@ def _side_card(service: EncyclopediaService, entity_id: str) -> None:
         key=f"map_open_{card.id}",
         on_click=open_entity,
         args=(card.id,),
+        width="stretch",
+    )
+    st.button(
+        "🔮 Що тут відбувалося?",
+        key=f"map_ask_{card.id}",
+        on_click=ask_oracle,
+        args=(f"Які міфи пов'язані з місцем {card.name_uk} і що там відбувалося?",),
         width="stretch",
     )
 

@@ -91,7 +91,8 @@ def _render_extras(msg: dict, idx: int, encyclopedia: EncyclopediaService | None
             "Нижче — знайдені уривки."
         )
     if msg.get("citations"):
-        render_citations(msg["citations"], key=f"cit_{idx}")
+        names = {e.id: e.name_uk for e in encyclopedia.list_entities()} if encyclopedia else None
+        render_citations(msg["citations"], key=f"cit_{idx}", names=names)
     if msg.get("entities"):
         _entity_chips(msg["entities"], idx, encyclopedia)
 
