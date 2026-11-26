@@ -140,7 +140,15 @@ class OracleService:
         candidates = self.retriever.retrieve(
             query=query, boost_entity_ids=entity_ids, top_k=settings.retrieve_k, query_en=query_en
         )
-        passages = self.reranker.rerank(standalone, candidates, top_k=settings.context_k)
+        # the cross-encoder judges English question/English passage pairs far better than
+        # Ukrainian/English ones, and only the best few candidates are worth its CPU time
+        passages = self.reranker.rerank(
+            query_en or standalone,
+            candidates[: max(settings.rerank_candidates, settings.context_k)]
+            if self.reranker.enabled
+            else candidates,
+            top_k=settings.context_k,
+        )
 
         citations = [
             Citation(
