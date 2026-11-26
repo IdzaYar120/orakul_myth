@@ -27,10 +27,16 @@ from delphi.rag.llm import (
 from delphi.rag.models import Answer, Citation
 from delphi.rag.prompts import (
     CONDENSE_QUESTION_PROMPT,
+    CONDENSE_QUESTION_PROMPT_EN,
     PYTHIA_SYSTEM_PROMPT,
+    PYTHIA_SYSTEM_PROMPT_EN,
     QUERY_TRANSLATION_PROMPT,
     REFUSAL_PHRASE,
+    REFUSAL_PHRASE_EN,
+    REFUSAL_PHRASES,
+    STYLE_IDS,
     STYLES,
+    STYLES_EN,
 )
 from delphi.rag.reranker import Reranker
 from delphi.rag.retriever import HybridRetriever, RetrievedPassage
@@ -39,6 +45,18 @@ REFUSAL_TEXT = (
     f"{REFUSAL_PHRASE}: джерела мовчать про це. Запитай мене про богів Олімпу, "
     "героїв чи місця античних міфів."
 )
+REFUSAL_TEXTS = {
+    "uk": REFUSAL_TEXT,
+    "en": f"{REFUSAL_PHRASE_EN}: the sources are silent on this. Ask me about the gods of "
+    "Olympus, the heroes or the places of the ancient myths.",
+}
+
+
+def normalize_style(style: str) -> str:
+    """'pythia' / 'scholar' (API) or 'піфія' / 'науковий' -> the internal key."""
+    return STYLE_IDS.get(style, style if style in STYLES else "піфія")
+
+
 _CITATION = re.compile(r"\[(\d+)\]")
 _CYRILLIC = re.compile(r"[а-яіїєґ]", re.IGNORECASE)
 
@@ -57,6 +75,7 @@ class PreparedQuestion:
     notes: list[str] = field(default_factory=list)
     candidates: list[RetrievedPassage] = field(default_factory=list)  # before reranking
     query_en: str | None = None  # English translation used for retrieval
+    lang: str = "uk"  # language of the question and of the answer
 
 
 class OracleService:
@@ -85,16 +104,20 @@ class OracleService:
             self._llm = self._llm_factory()  # raises LLMConfigError without an API key
         return self._llm
 
-    def condense(self, question: str, history: list[dict[str, str]] | None) -> str:
+    def condense(
+        self, question: str, history: list[dict[str, str]] | None, lang: str = "uk"
+    ) -> str:
         """Rewrite a follow-up ("а хто її мати?") into a standalone question."""
         turns = [h for h in (history or []) if h.get("text")][-settings.history_turns :]
         if not turns:
             return question
+        user, pythia = ("User", "Pythia") if lang == "en" else ("Користувач", "Піфія")
         chat_history = "\n".join(
-            f"{'Користувач' if h.get('role') == 'user' else 'Піфія'}: {h['text']}" for h in turns
+            f"{user if h.get('role') == 'user' else pythia}: {h['text']}" for h in turns
         )
+        template = CONDENSE_QUESTION_PROMPT_EN if lang == "en" else CONDENSE_QUESTION_PROMPT
         try:
-            chain = ChatPromptTemplate.from_template(CONDENSE_QUESTION_PROMPT) | self.llm
+            chain = ChatPromptTemplate.from_template(template) | self.llm
             result = chain.invoke({"chat_history": chat_history, "question": question})
         except Exception as exc:  # a follow-up is still answerable as asked
             if describe_llm_error(exc) is None:
@@ -131,12 +154,16 @@ class OracleService:
         question: str,
         history: list[dict[str, str]] | None = None,
         style: str = "піфія",
+        lang: str = "uk",
     ) -> PreparedQuestion:
-        standalone = self.condense(question, history)
+        lang = lang if lang in REFUSAL_PHRASES else "uk"
+        style = normalize_style(style)
+        standalone = self.condense(question, history, lang)
         entity_ids, expansion = self.linker.extract_and_expand(standalone)
         expansion = self.retriever.known_terms(expansion)
         query = f"{standalone} {' '.join(expansion)}".strip()
-        query_en = self.translate(standalone)
+        # an English question needs no translation: the corpus is English
+        query_en = standalone if lang == "en" else self.translate(standalone)
         candidates = self.retriever.retrieve(
             query=query, boost_entity_ids=entity_ids, top_k=settings.retrieve_k, query_en=query_en
         )
@@ -160,6 +187,7 @@ class OracleService:
                 translator=p.translator,
                 source_url=self._source_urls.get(p.work),
                 notes=p.notes,
+                entity_ids=p.entity_ids,
             )
             for i, p in enumerate(passages, 1)
         ]
@@ -179,17 +207,18 @@ class OracleService:
             grounded=bool(passages),
             candidates=candidates,
             query_en=query_en,
+            lang=lang,
         )
 
-    def _chain(self):
-        prompt = ChatPromptTemplate.from_messages(
-            [("system", PYTHIA_SYSTEM_PROMPT), ("human", "{question}")]
-        )
+    def _chain(self, lang: str = "uk"):
+        system = PYTHIA_SYSTEM_PROMPT_EN if lang == "en" else PYTHIA_SYSTEM_PROMPT
+        prompt = ChatPromptTemplate.from_messages([("system", system), ("human", "{question}")])
         return prompt | self.llm | StrOutputParser()
 
     def _inputs(self, prepared: PreparedQuestion) -> dict[str, str]:
+        styles = STYLES_EN if prepared.lang == "en" else STYLES
         return {
-            "style": STYLES.get(prepared.style, STYLES["піфія"]),
+            "style": styles.get(prepared.style, styles["піфія"]),
             "glossary": prepared.glossary,
             "context": prepared.context,
             "question": prepared.standalone,
@@ -198,10 +227,10 @@ class OracleService:
     def stream(self, prepared: PreparedQuestion) -> Iterator[str]:
         """Token stream of the answer (raises LLMConfigError if the LLM is not configured)."""
         if not prepared.grounded:
-            yield REFUSAL_TEXT
+            yield REFUSAL_TEXTS[prepared.lang]
             return
         try:
-            yield from self._chain().stream(self._inputs(prepared))
+            yield from self._chain(prepared.lang).stream(self._inputs(prepared))
         except LLMConfigError:
             raise
         except Exception as exc:
@@ -219,9 +248,9 @@ class OracleService:
         cited = {n for n in numbers if n in valid}
         citations = [c.model_copy(update={"cited": c.num in cited}) for c in prepared.citations]
 
-        refused = REFUSAL_PHRASE.lower() in text.lower()
+        refused = any(phrase.lower() in text.lower() for phrase in REFUSAL_PHRASES.values())
         candidates = [*prepared.entity_ids, *(e for p in prepared.passages for e in p.entity_ids)]
-        entities = self.linker.find_in_text(clean, candidates) if clean else []
+        entities = self.linker.find_in_text(clean, candidates, prepared.lang) if clean else []
         return Answer(
             text=clean.strip(),
             citations=citations,
@@ -231,6 +260,8 @@ class OracleService:
             standalone_question=prepared.standalone,
             invalid_citations=invalid,
             error=error,
+            lang=prepared.lang,
+            refused=refused or not prepared.grounded,
         )
 
     # ------------------------------------------------------------------ one-shot
@@ -239,18 +270,21 @@ class OracleService:
         question: str,
         history: list[dict[str, str]] | None = None,
         style: str = "піфія",
+        lang: str = "uk",
     ) -> Answer:
-        prepared = self.prepare(question, history, style)
+        prepared = self.prepare(question, history, style, lang)
         if not prepared.grounded:
             return Answer(
-                text=REFUSAL_TEXT,
+                text=REFUSAL_TEXTS[prepared.lang],
                 entities=prepared.entity_ids,
                 grounded=False,
                 question=question,
                 standalone_question=prepared.standalone,
+                lang=prepared.lang,
+                refused=True,
             )
         try:
-            text = self._chain().invoke(self._inputs(prepared))
+            text = self._chain(prepared.lang).invoke(self._inputs(prepared))
         except Exception as exc:
             reason = describe_llm_error(exc)
             if reason is None:

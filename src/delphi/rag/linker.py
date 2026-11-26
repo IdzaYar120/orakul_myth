@@ -166,21 +166,24 @@ class EntityLinker:
         finally:
             self._close(session)
 
-    def find_in_text(self, text: str, candidate_ids: Iterable[str]) -> list[str]:
-        """Which of the candidate entities are named in a (Ukrainian) answer text."""
+    def find_in_text(self, text: str, candidate_ids: Iterable[str], lang: str = "uk") -> list[str]:
+        """Which of the candidate entities are named in an answer text (Ukrainian or English)."""
         candidates = list(dict.fromkeys(candidate_ids))
         if not candidates:
             return []
+        alias_langs = ["en", "la"] if lang == "en" else ["uk"]
         session = self._get_session()
         try:
             names: list[tuple[str, str]] = [
                 (a.alias, a.entity_id)
                 for a in session.exec(
-                    select(Alias).where(col(Alias.entity_id).in_(candidates), Alias.lang == "uk")
+                    select(Alias).where(
+                        col(Alias.entity_id).in_(candidates), col(Alias.lang).in_(alias_langs)
+                    )
                 ).all()
             ]
             names += [
-                (ent.name_uk, ent.id)
+                (ent.name_en if lang == "en" else ent.name_uk, ent.id)
                 for ent in session.exec(select(Entity).where(col(Entity.id).in_(candidates)))
             ]
             mentioned = set(match_entities(text, names))
