@@ -15,10 +15,17 @@ With ``--llm`` every question is answered by the configured model:
 With ``--judge`` an LLM grades **faithfulness** (every claim is supported by the passages) and
 **fact coverage** (share of ``expected_facts`` present in the answer). A local model judging
 its own answers is biased, so treat these two as a trend between runs, not absolute numbers.
+
+Every question's result is appended to ``<report>.partial.jsonl`` as soon as it is ready, so an
+interrupted run (a power cut, Ollama restarting) continues with ``--resume --out <report>``.
+A full run (no ``--id``/``--type``/``--limit``) adds one row to ``data/eval/history.csv``, the
+metrics history kept in git.
 """
 
+import csv
 import json
 import re
+import subprocess
 import time
 from collections.abc import Callable
 from dataclasses import asdict, dataclass, field
@@ -39,6 +46,28 @@ from delphi.rag.prompts import REFUSAL_PHRASE
 
 console = Console()
 TYPES = ("factual", "multi_hop", "conflicting", "negative")
+HISTORY_FIELDS = [
+    "date",
+    "commit",
+    "mode",
+    "note",
+    "llm_model",
+    "query_translation",
+    "rerank_enabled",
+    "n",
+    "hit@5",
+    "hit@20",
+    "mrr@20",
+    "entity_recall",
+    "refusal_accuracy",
+    "trap_refused",
+    "false_refusal",
+    "citation_validity",
+    "cited_hit",
+    "faithfulness",
+    "fact_coverage",
+    "avg_seconds",
+]
 
 
 class GoldenQuestion(BaseModel):
@@ -196,10 +225,17 @@ def evaluate(
     with_llm: bool = False,
     judge: BaseChatModel | None = None,
     progress: Callable[[str], None] = lambda _msg: None,
+    done: dict[str, QuestionResult] | None = None,
+    on_result: Callable[[QuestionResult], None] = lambda _r: None,
 ) -> list[QuestionResult]:
+    """Evaluate every question; results already in ``done`` (a resumed run) are reused."""
     oracle = oracle or OracleService()
+    done = done or {}
     results = []
     for n, q in enumerate(questions, 1):
+        if q.id in done:
+            results.append(done[q.id])
+            continue
         progress(f"[{n}/{len(questions)}] {q.id} {q.question_uk}")
         prepared = oracle.prepare(q.question_uk, style=q.style)
         result = retrieval_result(q, prepared)
@@ -223,7 +259,59 @@ def evaluate(
                     judge, q, prepared, answer.text
                 )
         results.append(result)
+        on_result(result)
     return results
+
+
+def load_partial(path: Path) -> dict[str, QuestionResult]:
+    """Results of an interrupted run (one JSON object per line; a torn last line is skipped)."""
+    done: dict[str, QuestionResult] = {}
+    if not path.exists():
+        return done
+    for line in path.read_text(encoding="utf-8").splitlines():
+        try:
+            data = json.loads(line)
+        except json.JSONDecodeError:
+            continue
+        done[data["id"]] = QuestionResult(**data)
+    return done
+
+
+def _commit() -> str:
+    try:
+        out = subprocess.run(
+            ["git", "rev-parse", "--short", "HEAD"], capture_output=True, text=True, timeout=5
+        )
+        return out.stdout.strip()
+    except (OSError, subprocess.SubprocessError):
+        return ""
+
+
+def append_history(
+    summary: dict[str, float | int | None],
+    mode: str,
+    note: str = "",
+    path: Path | None = None,
+) -> Path:
+    """One row per full run in data/eval/history.csv (tracked in git): the metrics over time."""
+    target = path or settings.data_dir / "eval" / "history.csv"
+    new_file = not target.exists()
+    row = {
+        "date": datetime.now().isoformat(timespec="minutes"),
+        "commit": _commit(),
+        "mode": mode,
+        "note": note,
+        "llm_model": settings.llm_model if "LLM" in mode else "",
+        "query_translation": settings.query_translation,
+        "rerank_enabled": settings.rerank_enabled,
+        **{k: summary.get(k) for k in HISTORY_FIELDS if k in summary},
+    }
+    with open(target, "a", encoding="utf-8", newline="") as f:
+        writer = csv.DictWriter(f, fieldnames=HISTORY_FIELDS)
+        if new_file:
+            writer.writeheader()
+        writer.writerow({k: ("" if row.get(k) is None else row.get(k)) for k in HISTORY_FIELDS})
+    return target
 
 
 def _mean(values: list[float]) -> float | None:
@@ -307,9 +395,15 @@ def run_evaluation(
     out: Path | None = None,
     oracle: OracleService | None = None,
     judge: BaseChatModel | None = None,
+    resume: bool = False,
+    note: str = "",
+    history: Path | None = None,
 ) -> dict[str, dict]:
     """Evaluate on the golden set, print the report, save per-question results as JSON."""
+    if resume and out is None:
+        raise ValueError("--resume потребує --out <звіт.json> перерваного прогону")
     questions = load_golden(golden_path)
+    full_run = not (ids or types or limit)
     if ids:
         questions = [q for q in questions if q.id in set(ids)]
     if types:
@@ -333,13 +427,30 @@ def run_evaluation(
         )
 
     mode = "retrieval" + (" + LLM" if with_llm else "") + (" + judge" if judge else "")
-    console.print(f"[bold]Golden set: {len(questions)} питань; режим: {mode}[/bold]")
+    target = out or Path("eval") / f"report-{datetime.now():%Y%m%d-%H%M%S}.json"
+    target.parent.mkdir(parents=True, exist_ok=True)
+    partial = target.with_name(target.name + ".partial.jsonl")
+    done = load_partial(partial) if resume else {}
+    if not resume:
+        partial.unlink(missing_ok=True)
+    console.print(
+        f"[bold]Golden set: {len(questions)} питань; режим: {mode}"
+        + (f"; продовження: готово {len(done)}" if resume else "")
+        + "[/bold]"
+    )
+
+    def save(result: QuestionResult) -> None:
+        with open(partial, "a", encoding="utf-8") as f:
+            f.write(json.dumps(asdict(result), ensure_ascii=False) + "\n")
+
     results = evaluate(
         questions,
         oracle=oracle,
         with_llm=with_llm,
         judge=judge,
         progress=lambda msg: console.print(f"[dim]{msg}[/dim]"),
+        done=done,
+        on_result=save,
     )
     summaries = print_report(results, f"Оцінка ({mode})")
 
@@ -353,12 +464,15 @@ def run_evaluation(
             "min_relevance": settings.min_relevance,
             "retrieve_k": settings.retrieve_k,
             "context_k": settings.context_k,
+            "query_translation": settings.query_translation,
+            "entity_boost": settings.entity_boost,
         },
         "summary": summaries,
         "results": [asdict(r) for r in results],
     }
-    target = out or Path("eval") / f"report-{datetime.now():%Y%m%d-%H%M%S}.json"
-    target.parent.mkdir(parents=True, exist_ok=True)
     target.write_text(json.dumps(report, ensure_ascii=False, indent=2), encoding="utf-8")
+    partial.unlink(missing_ok=True)
     console.print(f"Звіт: {target}")
+    if full_run:
+        console.print(f"Історія метрик: {append_history(summaries['усі'], mode, note, history)}")
     return summaries

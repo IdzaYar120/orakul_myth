@@ -1,8 +1,12 @@
 """Cross-encoder reranker (BAAI/bge-reranker-v2-m3).
 
-Re-scores the fused candidates against the question and keeps the best `top_k`. Passages below
-`min_relevance` are dropped; if nothing is left, the oracle honestly says the sources are silent.
-Disabled by default (RERANK_ENABLED) because the model needs a few GB of RAM.
+Re-scores the best fused candidates against the (English) question and keeps the best
+`top_k`. Passages below `min_relevance` are dropped; if nothing is left, the oracle refuses
+before generating ("the sources are silent").
+
+Measured on the golden set (stage 4): with the English query and a 0.05 threshold it refuses
+5 of 8 trap questions and loses 3 of 72 answerable ones; with the Ukrainian query its scores are
+too low to be useful. Disabled by default (RERANK_ENABLED): ~7.5 s per question on CPU.
 """
 
 import math

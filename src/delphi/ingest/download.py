@@ -30,10 +30,13 @@ def download_source(
         return target
     if not source.download_url:
         raise ValueError(f"{source.id}: немає download_url у sources.yaml")
-    http = client or httpx.Client(
-        headers={"User-Agent": USER_AGENT}, timeout=120, follow_redirects=True
-    )
-    resp = http.get(source.download_url)
+    if client is None:
+        with httpx.Client(
+            headers={"User-Agent": USER_AGENT}, timeout=120, follow_redirects=True
+        ) as own:
+            resp = own.get(source.download_url)
+    else:
+        resp = client.get(source.download_url)
     resp.raise_for_status()
     tmp = target.with_suffix(target.suffix + ".part")
     tmp.write_bytes(resp.content)

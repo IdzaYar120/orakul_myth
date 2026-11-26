@@ -4,7 +4,7 @@ Fusion; chunks mentioning entities linked in the question get a soft boost.
 With an English translation of the question (the corpus is English) three rankings are fused:
 dense(English), dense(Ukrainian + English names) and BM25(English). Without it: dense and BM25
 over the Ukrainian query with the English names. Measured on the golden set (stage 4,
-`delphi eval`): Hit@5 57% -> 69%, Hit@20 74% -> 81%.
+`delphi eval`): the translation lifts Hit@5 61% -> 71%, Hit@20 78% -> 82%, MRR@20 50% -> 57%.
 """
 
 import logging

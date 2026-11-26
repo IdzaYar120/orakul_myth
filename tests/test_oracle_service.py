@@ -227,3 +227,42 @@ def test_query_translation_falls_back(seeded_session: Session, monkeypatch):
     # a model that answers in Ukrainian instead of translating is ignored
     oracle = _oracle(seeded_session, PASSAGES, responses=["Батьки Аполлона — Зевс і Лето."])
     assert oracle.prepare("Хто батьки Аполлона?").query_en is None
+
+
+def test_reranker_scores_english_query_and_refuses_below_threshold(
+    seeded_session: Session, monkeypatch
+):
+    from delphi.config import settings
+
+    monkeypatch.setattr(settings, "query_translation", True)
+    monkeypatch.setattr(settings, "rerank_candidates", 1)
+    monkeypatch.setattr(settings, "context_k", 1)
+
+    class FakeCrossEncoder:
+        def __init__(self, score: float):
+            self.pairs: list[tuple[str, str]] = []
+            self._score = score
+
+        def predict(self, pairs):
+            self.pairs = list(pairs)
+            return [self._score] * len(self.pairs)
+
+    def oracle_with(score: float) -> tuple[OracleService, FakeCrossEncoder]:
+        model = FakeCrossEncoder(score)
+        oracle = OracleService(
+            retriever=FakeRetriever(PASSAGES),
+            reranker=Reranker(enabled=True, min_relevance=0.05, model=model),
+            linker=EntityLinker(session=seeded_session),
+            llm=FakeListChatModel(responses=["What is Zeus's phone number?"]),
+        )
+        return oracle, model
+
+    oracle, model = oracle_with(0.9)
+    prepared = oracle.prepare("Який номер телефону в Зевса?")
+    assert [q for q, _ in model.pairs] == ["What is Zeus's phone number?"]  # English, top-1 only
+    assert prepared.grounded
+
+    oracle, _ = oracle_with(0.01)  # below the threshold: refuse before generating
+    prepared = oracle.prepare("Який номер телефону в Зевса?")
+    assert not prepared.grounded and prepared.passages == []
+    assert REFUSAL_PHRASE in "".join(oracle.stream(prepared))

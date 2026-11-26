@@ -27,7 +27,11 @@ class Settings(BaseSettings):
     embedding_device: str | None = None  # None = auto (cuda if available), or "cpu"
     embedding_batch_size: int = 16
     reranker_model: str = "BAAI/bge-reranker-v2-m3"
+    # Off by default: +7.5 s per question on CPU. It scores the ENGLISH query against the top
+    # `rerank_candidates` passages; below `min_relevance` the oracle refuses before generating
+    # (golden set: 5 of 8 traps refused, 3 of 72 answerable questions lost at 0.05).
     rerank_enabled: bool = False
+    rerank_candidates: int = 8
 
     # Retrieval parameters
     retrieve_k: int = 20
@@ -36,7 +40,7 @@ class Settings(BaseSettings):
     # to the local LLM (~2 s); without the LLM retrieval falls back to the Ukrainian query.
     query_translation: bool = True
     entity_boost: float = 0.5  # soft boost for passages tagged with entities of the question
-    min_relevance: float = 0.3
+    min_relevance: float = 0.05  # reranker threshold, tuned on the golden set
     history_turns: int = 6  # chat turns used to condense follow-up questions
 
     # Public demo protection

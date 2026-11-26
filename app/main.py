@@ -87,7 +87,7 @@ def main():
         )
 
         st.divider()
-        st.caption("Версія: 0.1.0 (MVP Stage 3: RAG-оракул)")
+        st.caption("Версія: 0.1.0 (MVP Stage 4: якість)")
 
     # Render selected tab
     if chosen_tab == "Оракул":

@@ -123,10 +123,13 @@ query + BM25 on the English one, Reciprocal Rank Fusion, a boost for passages ta
 named entities and a mild genre prior (Apollodorus/Hesiod over Pausanias) -> the LLM sees only
 the 5 best passages, cites them as `[1]` -> citation check, entity chips.
 
-The cross-encoder reranker (bge-reranker-v2-m3) is off: on CPU it takes ~40 s per question and
-scores Ukrainian-question/English-passage pairs too low, dropping correct passages. Without it
-there is no relevance threshold; trap questions are refused by the LLM itself ("Дим над
-триножником не дає відповіді").
+**Refusing trap questions before generation.** A cheap threshold on the dense similarity does not
+work: trap questions score 0.45–0.59, answerable ones 0.46–0.69. The cross-encoder reranker
+(bge-reranker-v2-m3) on the *English* query does separate them: at `MIN_RELEVANCE=0.05` it
+refuses 5 of 8 traps before the LLM is called and loses 3 of 72 answerable questions (on the
+Ukrainian query its scores are useless). It costs ~7.5 s per question on CPU, so it is off by
+default (`RERANK_ENABLED=false`) and meant for a GPU server; without it trap questions are
+refused by the LLM itself ("Дим над триножником не дає відповіді").
 
 ### Quality (stage 4)
 
@@ -139,14 +142,22 @@ uv run delphi eval            # retrieval only: Hit@5, Hit@20, MRR, entity recal
 uv run delphi eval --llm      # + answers: refusals, citation validity, cited the right passage
 uv run delphi eval --judge    # + LLM judge: faithfulness, fact coverage (~1 h locally)
 uv run delphi eval --type negative --id q001   # subsets; a JSON report goes to eval/
+uv run delphi eval --judge --resume --out eval/report-X.json   # continue an interrupted run
 ```
 
-Retrieval, before and after the stage 4 changes (same 72 answerable questions):
+Results are saved after every question, so a power cut costs one question, not the run.
+Every full run appends a row to `data/eval/history.csv` (kept in git, `--note` describes it).
+
+Retrieval on the 72 answerable questions (the full history is in `data/eval/history.csv`):
 
 | | Hit@5 | Hit@20 | MRR@20 |
 |---|---|---|---|
-| Ukrainian query, BM25 + dense (stage 3 pipeline) | 57% | 74% | 40% |
-| + English translation of the query, 3-way fusion, prior, clean expansion | **71%** | **82%** | **57%** |
+| Stage 3 pipeline: Ukrainian query, dense + BM25* | 57% | 74% | 40% |
+| + genre prior, entity boost 0.5, expansion cleaned of unknown aliases | 61% | 78% | 50% |
+| + English translation of the query, 3-way fusion (current) | **71%** | **82%** | **57%** |
+
+\* measured before 5 equally valid Apollodorus passages were added to the golden set, so this
+row is slightly pessimistic; the other two rows use the current golden set.
 
 Other stage 4 fixes: the entity linker no longer links ordinary words to names ("сталося" was
 Talos, "Геракл" was Hera — 43 false positives on the golden set, now 0) and understands case
